@@ -11,69 +11,46 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import Background from './Background';
 
 const tiers = [
   {
-    title: 'Pakiet Podstawowy',
+    title: 'Podstawowe',
     price: '3,99',
     description: [
-      'Mapowanie umiejętności',
-      // '2 GB of storage',
-      // 'Help center access',
-      // 'Email support',
+    'Możliwość wystawienia ogłoszeń w ilości : 2',
+    'Wybór 5 umiejętności per ogłoszenie',
+    
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-  
   {
-    title: 'Premium ',
-    price: '4,99',
-    description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
-    ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
-  },
-  
-
-  {
-    title: 'Pakiet Profesionalny',
+    title: 'Profesionalne',
     subheader: 'Polecane',
-    price: '6,99',
+    price: '99',
     description: [
-      'Mapowanie umiejętności',
-      'Możliwość kontaktu z potencjalnym pracodawcą',
-      'Zaczepki bez limitu',
-      'Możliwość dodania portfolio',
-      'Podgląd firm w obszarze do 25 km',
-      'Dostęp do kalendarza eventów i targów branżowych',
+      'Możliwość wystawienia ogłoszeń w ilości : 3',
+      'Wybór 10 umiejętności per ogłoszenie',
+      'Brak ograniczeń wyszukiwań',
+      
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'contained',
     
   },
-
-    
   {
-    title: 'Premium +',
-    price: '23,49',
+    title: 'Premium',
+    price: '4,99',
     description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
+      'Możliwość wystawienia ogłoszeń w ilości : 1',
+      'Wybór 3 umiejętności per ogłoszenie',
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-
-
 ];
 
-export default function Pricing1() {
+export default function PricingCom() {
   return (
     <Container
       id="pricing"
@@ -85,6 +62,7 @@ export default function Pricing1() {
         flexDirection: 'column',
         alignItems: 'center',
         gap: { xs: 3, sm: 6 },
+        
       }}
     >
       <Box
@@ -94,7 +72,7 @@ export default function Pricing1() {
         }}
       >
         <Typography component="h2" variant="h4" color="#A758B5" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
-          ABONAMENT DLA STUDENTÓW
+          ABONAMENT DLA FIRM
         </Typography>
         <Typography variant="body1" color="text.secondary">
           {/* Quickly build an effective pricing table for your potential customers with
@@ -110,7 +88,7 @@ export default function Pricing1() {
             key={tier.title}
             xs={12}
             sm={tier.title === 'Premium' ? 12 : 6}
-            md={3}   //tutaj zmieniam szerokość cenników 3 dla 4 cenników , 4 dla 3 cenników//
+            md={4}
           >
             <Card
               sx={{
@@ -118,11 +96,11 @@ export default function Pricing1() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
-                border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
+                border: tier.title === 'Profesionalne' ? '2px solid' : '2px solid',
                 borderColor:
-                  tier.title === 'Pakiet Profesionalny' ? '3A758B5' : 'undefined',
+                  tier.title === 'Profesionalne' ? '3A758B5' : 'undefined',
                 background:
-                  tier.title === 'Pakiet Profesionalny'
+                  tier.title === 'Profesionalne'
                     ? '#A758B5'
                     : undefined,
               }}
@@ -134,13 +112,13 @@ export default function Pricing1() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    color: tier.title === 'Pakiet Profesionalny' ? 'grey.100' : '',
+                    color: tier.title === 'Profesionalne' ? 'grey.100' : '',
                   }}
                 >
                   <Typography component="h3" variant="h6">
                     {tier.title}
                   </Typography>
-                  {tier.title === 'Pakiet Profesionalny' && (
+                  {tier.title === 'Profesionalne' && (
                     <Chip
                       icon={<AutoAwesomeIcon />}
                       label={tier.subheader}
@@ -163,14 +141,14 @@ export default function Pricing1() {
                   sx={{
                     display: 'flex',
                     alignItems: 'baseline',
-                    color: tier.title === 'Pakiet Profesionalny' ? 'grey.50' : undefined,
+                    color: tier.title === 'Profesionalne' ? 'grey.50' : undefined,
                   }}
                 >
                   <Typography component="h3" variant="h2">
-                    {tier.price}
+                    {tier.price} 
                   </Typography>
-                  <Typography component="h4" variant="h6" fontSize={15}>
-                    &nbsp; miesięcznie
+                  <Typography component="h3" variant="h6">
+                    zł &nbsp; miesięcznie 
                   </Typography>
                 </Box>
                 <Divider
@@ -195,7 +173,7 @@ export default function Pricing1() {
                       sx={{
                         width: 20,
                         color:
-                          tier.title === 'Pakiet Profesionalny'
+                          tier.title === 'Profesionalne'
                             ? 'white'
                             : '#A758B5',
                       }}
@@ -205,7 +183,7 @@ export default function Pricing1() {
                       variant="subtitle2"
                       sx={{
                         color:
-                          tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
+                          tier.title === 'Profesionalne' ? 'grey.200' : undefined,
                           fontSize: "15px"
                       }}
                     >
@@ -217,18 +195,18 @@ export default function Pricing1() {
               <CardActions>
                 <Button sx={{
                     backgroundColor:
-                    tier.title === 'Pakiet Profesionalny'
+                    tier.title === 'Profesionalne'
                       ? 'white'
                       : '#A758B5',
 
                       color:
-                      tier.title === 'Pakiet Profesionalny'
+                      tier.title === 'Profesionalne'
                       ? 'black'
                       : 'white',
 
 
                       
-                     ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
+                     ' &:hover' : tier.title === 'Profesionalne' ? {
                         backgroundColor: '#A758B5', color:'white',
                      } : {
                         backgroundColor: "white", color: 'black'

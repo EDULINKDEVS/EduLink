@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import im2 from "../public/images/Twoja praca jest tutaj - 6.png";
-import im3 from "../public/images/Twoja praca jest tutaj - 7.png";
-import im4 from "../public/images/Twoja praca jest tutaj - 8.png";
-import im5 from "../public/images/Twoja praca jest tutaj - 9.png";
-import im6 from "../public/images/test.jpg";
+import im2 from "@/public/images/Twoja praca jest tutaj - 6.png";
+import im3 from "@/public/images/Twoja praca jest tutaj - 7.png";
+import im4 from "@/public/images/Twoja praca jest tutaj - 8.png";
+import im5 from "@/public/images/Twoja praca jest tutaj - 9.png";
+import im6 from "@/public/images/test.jpg";
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";

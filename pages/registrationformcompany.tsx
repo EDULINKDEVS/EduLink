@@ -23,8 +23,6 @@ const StyledPaper = styled(Paper)({
   padding: 20,
   width: '500px',
   backgroundColor: '#fff',
-  // boxShadow: '0 0 10px 50px rgba(147, 66, 160)', // Zmieniony kolor cienia
-
 });
 
 const StyledButton = styled(Button)({

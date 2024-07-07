@@ -11,7 +11,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import Background from './Background';
 
 const tiers = [
   {
@@ -26,8 +25,8 @@ const tiers = [
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-
-    {
+  
+  {
     title: 'Premium ',
     price: '4,99',
     description: [
@@ -39,17 +38,6 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   
-  {
-    title: 'Premium +',
-    price: '23,49',
-    description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
-    ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
-  },
 
   {
     title: 'Pakiet Profesionalny',
@@ -68,10 +56,23 @@ const tiers = [
     
   },
 
+    
+  {
+    title: 'Premium +',
+    price: '23,49',
+    description: [
+      'Mapowanie umiejętności',
+      'Podgląd firm w obszarze do 5 km',
+      'Zaczepki limit: 3',
+    ],
+    buttonText: 'Rozpocznij teraz',
+    buttonVariant: 'outlined',
+  },
+
 
 ];
 
-export default function Pricing() {
+export default function Pricing1() {
   return (
     <Container
       id="pricing"
@@ -204,7 +205,7 @@ export default function Pricing() {
                       sx={{
                         color:
                           tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
-                        fontSize: "15px"
+                          fontSize: "15px"
                       }}
                     >
                       {line}

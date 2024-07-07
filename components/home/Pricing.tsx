@@ -11,47 +11,66 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import Background from './Background';
 
 const tiers = [
   {
-    title: 'Podstawowe',
+    title: 'Pakiet Podstawowy',
     price: '3,99',
     description: [
-    'Możliwość wystawienia ogłoszeń w ilości : 2',
-    'Wybór 5 umiejętności per ogłoszenie',
-    
+      'Mapowanie umiejętności',
+      // '2 GB of storage',
+      // 'Help center access',
+      // 'Email support',
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-  {
-    title: 'Profesionalne',
-    subheader: 'Polecane',
-    price: '99',
+
+    {
+    title: 'Premium ',
+    price: '4,99',
     description: [
-      'Możliwość wystawienia ogłoszeń w ilości : 3',
-      'Wybór 10 umiejętności per ogłoszenie',
-      'Brak ograniczeń wyszukiwań',
-      
+      'Mapowanie umiejętności',
+      'Podgląd firm w obszarze do 5 km',
+      'Zaczepki limit: 3',
+    ],
+    buttonText: 'Rozpocznij teraz',
+    buttonVariant: 'outlined',
+  },
+  
+  {
+    title: 'Premium +',
+    price: '23,49',
+    description: [
+      'Mapowanie umiejętności',
+      'Podgląd firm w obszarze do 5 km',
+      'Zaczepki limit: 3',
+    ],
+    buttonText: 'Rozpocznij teraz',
+    buttonVariant: 'outlined',
+  },
+
+  {
+    title: 'Pakiet Profesionalny',
+    subheader: 'Polecane',
+    price: '6,99',
+    description: [
+      'Mapowanie umiejętności',
+      'Możliwość kontaktu z potencjalnym pracodawcą',
+      'Zaczepki bez limitu',
+      'Możliwość dodania portfolio',
+      'Podgląd firm w obszarze do 25 km',
+      'Dostęp do kalendarza eventów i targów branżowych',
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'contained',
     
   },
-  {
-    title: 'Premium',
-    price: '4,99',
-    description: [
-      'Możliwość wystawienia ogłoszeń w ilości : 1',
-      'Wybór 3 umiejętności per ogłoszenie',
-    ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
-  },
+
+
 ];
 
-export default function PricingCom() {
+export default function Pricing() {
   return (
     <Container
       id="pricing"
@@ -63,7 +82,6 @@ export default function PricingCom() {
         flexDirection: 'column',
         alignItems: 'center',
         gap: { xs: 3, sm: 6 },
-        
       }}
     >
       <Box
@@ -73,7 +91,7 @@ export default function PricingCom() {
         }}
       >
         <Typography component="h2" variant="h4" color="#A758B5" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
-          ABONAMENT DLA FIRM
+          ABONAMENT DLA STUDENTÓW
         </Typography>
         <Typography variant="body1" color="text.secondary">
           {/* Quickly build an effective pricing table for your potential customers with
@@ -89,7 +107,7 @@ export default function PricingCom() {
             key={tier.title}
             xs={12}
             sm={tier.title === 'Premium' ? 12 : 6}
-            md={4}
+            md={3}   //tutaj zmieniam szerokość cenników 3 dla 4 cenników , 4 dla 3 cenników//
           >
             <Card
               sx={{
@@ -97,11 +115,11 @@ export default function PricingCom() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
-                border: tier.title === 'Profesionalne' ? '2px solid' : '2px solid',
+                border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
                 borderColor:
-                  tier.title === 'Profesionalne' ? '3A758B5' : 'undefined',
+                  tier.title === 'Pakiet Profesionalny' ? '3A758B5' : 'undefined',
                 background:
-                  tier.title === 'Profesionalne'
+                  tier.title === 'Pakiet Profesionalny'
                     ? '#A758B5'
                     : undefined,
               }}
@@ -113,13 +131,13 @@ export default function PricingCom() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    color: tier.title === 'Profesionalne' ? 'grey.100' : '',
+                    color: tier.title === 'Pakiet Profesionalny' ? 'grey.100' : '',
                   }}
                 >
                   <Typography component="h3" variant="h6">
                     {tier.title}
                   </Typography>
-                  {tier.title === 'Profesionalne' && (
+                  {tier.title === 'Pakiet Profesionalny' && (
                     <Chip
                       icon={<AutoAwesomeIcon />}
                       label={tier.subheader}
@@ -142,14 +160,14 @@ export default function PricingCom() {
                   sx={{
                     display: 'flex',
                     alignItems: 'baseline',
-                    color: tier.title === 'Profesionalne' ? 'grey.50' : undefined,
+                    color: tier.title === 'Pakiet Profesionalny' ? 'grey.50' : undefined,
                   }}
                 >
                   <Typography component="h3" variant="h2">
-                    {tier.price} 
+                    {tier.price}
                   </Typography>
-                  <Typography component="h3" variant="h6">
-                    zł &nbsp; miesięcznie 
+                  <Typography component="h4" variant="h6" fontSize={15}>
+                    &nbsp; miesięcznie
                   </Typography>
                 </Box>
                 <Divider
@@ -174,7 +192,7 @@ export default function PricingCom() {
                       sx={{
                         width: 20,
                         color:
-                          tier.title === 'Profesionalne'
+                          tier.title === 'Pakiet Profesionalny'
                             ? 'white'
                             : '#A758B5',
                       }}
@@ -184,8 +202,8 @@ export default function PricingCom() {
                       variant="subtitle2"
                       sx={{
                         color:
-                          tier.title === 'Profesionalne' ? 'grey.200' : undefined,
-                          fontSize: "15px"
+                          tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
+                        fontSize: "15px"
                       }}
                     >
                       {line}
@@ -196,18 +214,18 @@ export default function PricingCom() {
               <CardActions>
                 <Button sx={{
                     backgroundColor:
-                    tier.title === 'Profesionalne'
+                    tier.title === 'Pakiet Profesionalny'
                       ? 'white'
                       : '#A758B5',
 
                       color:
-                      tier.title === 'Profesionalne'
+                      tier.title === 'Pakiet Profesionalny'
                       ? 'black'
                       : 'white',
 
 
                       
-                     ' &:hover' : tier.title === 'Profesionalne' ? {
+                     ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
                         backgroundColor: '#A758B5', color:'white',
                      } : {
                         backgroundColor: "white", color: 'black'
