@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {
   Box,
   Typography,
@@ -8,70 +8,19 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
-  MenuItem,
-  Select,
   Button,
-  Divider
+  TextField,
+  Autocomplete
 } from '@mui/material';
 import { styled } from '@mui/system';
-import SchoolIcon from '@mui/icons-material/School'
-import { studentSchools, technicalSchools, vocationalSchools, highSchools} from '../schoolsData';
-
-// Styled Components
-const StyledContainer = styled(Box)({
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  alignItems: 'stretch',
-  justifyContent: 'center',
-});
-
-const LeftContainer = styled(Box)({
-  flex: 0.5,
-  backgroundColor: '#A758B5',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'column',
-});
-
-const RightContainer = styled(Box)({
-  flex: 1.5,
-  backgroundColor: 'white',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'column',
-});
+import { RegisterContext } from '@/context/register/RegisterContext';
 
 const StyledPaper = styled(Paper)({
   padding: 20,
-  width: '500px',
+  width: '100%',
   backgroundColor: '#fff',
   boxShadow: 'none',
   marginTop: 20,
-});
-
-const StyledSelect = styled(Select)({
-  width: '100%',
-  marginTop: 20,
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#A758B5',
-    },
-    '&:hover fieldset': {
-      borderColor: '#A758B5',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#A758B5',
-    },
-  },
-  '& .MuiInputBase-input': {
-    color: '#A758B5',
-  },
-  '& .MuiInputLabel-root': {
-    color: '#A758B5',
-  },
 });
 
 const StyledRadioGroup = styled(RadioGroup)({
@@ -102,147 +51,116 @@ const StyledButton = styled(Button)({
   },
 });
 
-const StyledDivider = styled(Divider)({
-  backgroundColor: '#A758B5',
-  margin: '20px 0',
+const StyledTextField = styled(TextField)({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#A758B5',
+    },
+    '&:hover fieldset': {
+      borderColor: '#A758B5',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#A758B5',
+    },
+  },
+  '& .MuiInputBase-input': {
+    color: '#A758B5',
+  },
+  '& .MuiInputLabel-root': {
+    color: '#A758B5',
+  },
+  width: '100%',
 });
-const StudentStatus = () => {
-    const [status, setStatus] = useState('');
-    const [schoolType, setSchoolType] = useState('');
-    const [schools, setSchools] = useState([{ schoolName: '', studentType: '' }]);
-  
-    const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setStatus((event.target as HTMLInputElement).value);
-      setSchoolType('');
-      setSchools([{ schoolName: '', studentType: '' }]);
-    };
-  
-    const handleSchoolTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSchoolType((event.target as HTMLInputElement).value);
-      setSchools([{ schoolName: '', studentType: '' }]);
-    };
-  
-    const handleSchoolNameChange = (index: number, value: string) => {
-      const newSchools = [...schools];
-      newSchools[index].schoolName = value;
-      setSchools(newSchools);
-    };
-  
-    const handleStudentTypeChange = (index: number, value: string) => {
-      const newSchools = [...schools];
-      newSchools[index].studentType = value;
-      if (value === 'wTrakcie') {
-        newSchools.push({ schoolName: '', studentType: '' });
-      }
-      setSchools(newSchools);
-    };
-  
-    const getSchoolOptions = () => {
-      if (status === 'student') {
-        return studentSchools;
-      } else if (schoolType === 'technikum') {
-        return technicalSchools;
-      } else if (schoolType === 'zawodowka') {
-        return vocationalSchools;
-      } else if (schoolType === 'liceum') {
-        return highSchools;
-      }
-      return [];
-    };
-  
-    return (
-      <StyledContainer>
-        {/* Lewa część ekranu */}
-        <LeftContainer>
-          <SchoolIcon style={{ fontSize: 100, color: 'white' }} />
-        </LeftContainer>
-  
-        {/* Prawa część ekranu */}
-        <RightContainer>
-          <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
-            Wybierz swój status
-          </Typography>
-          <StyledPaper>
-            <FormControl component="fieldset">
-              <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Status</FormLabel>
-              <StyledRadioGroup value={status} onChange={handleStatusChange}>
-                <StyledFormControlLabel value="uczen" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Uczeń" />
-                <StyledFormControlLabel value="student" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Student" />
-              </StyledRadioGroup>
-            </FormControl>
-  
-            {status === 'uczen' && (
-              <StyledFormControl component="fieldset">
-                <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
-                <StyledRadioGroup value={schoolType} onChange={handleSchoolTypeChange}>
-                  <StyledFormControlLabel value="zawodowka" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Zawodówka" />
-                  <StyledFormControlLabel value="technikum" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Technikum" />
-                  <StyledFormControlLabel value="liceum" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Liceum" />
-                </StyledRadioGroup>
-              </StyledFormControl>
-            )}
-  
-            {schools.map((school, index) => (
-              <React.Fragment key={index}>
-                {(schoolType || status === 'student') && (
-                  <StyledFormControl>
-                    <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>
-                      {index === 0 ? 'Wybierz szkołę' : 'Wybierz kolejną szkołę'}
-                    </FormLabel>
-                    <StyledSelect
-                      value={school.schoolName}
-                      onChange={(e) => handleSchoolNameChange(index, e.target.value as string)}
-                      displayEmpty
-                    >
-                      <MenuItem value="" disabled>
-                        Wybierz szkołę
-                      </MenuItem>
-                      {getSchoolOptions().map((schoolOption) => (
-                        <MenuItem key={schoolOption.value} value={schoolOption.value}>
-                          {schoolOption.label}
-                        </MenuItem>
-                      ))}
-                    </StyledSelect>
-                  </StyledFormControl>
-                )}
-  
-                {status === 'student' && (
-                  <StyledFormControl component="fieldset">
-                    <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
-                    <StyledRadioGroup
-                      value={school.studentType}
-                      onChange={(e) => handleStudentTypeChange(index, (e.target as HTMLInputElement).value)}
-                    >
-                      <StyledFormControlLabel value="wTrakcie" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
-                      <StyledFormControlLabel value="absolwent" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
-                    </StyledRadioGroup>
-                  </StyledFormControl>
-                )}
-  
-                {school.studentType === 'absolwent' && (
-                  <StyledFormControl>
-                    <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
-                    <StyledRadioGroup
-                      value={school.schoolName}
-                      onChange={(e) => handleSchoolNameChange(index, e.target.value as string)}
-                    >
-                      <StyledFormControlLabel value="licencjat" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
-                      <StyledFormControlLabel value="magister" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Magister" />
-                    </StyledRadioGroup>
-                  </StyledFormControl>
-                )}
-  
-                {index < schools.length - 1 && <StyledDivider />}
-              </React.Fragment>
-            ))}
-  
-            <StyledButton>
-              Dalej
-            </StyledButton>
-          </StyledPaper>
-        </RightContainer>
-      </StyledContainer>
-    );
+
+const suggestions = [
+  'Techniku asdmoipms',
+  'Option 2',
+  'Option 3',
+  'Option 4',
+  'Option 5',
+];
+
+const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
+  const registerContext = useContext(RegisterContext);
+
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const status = event.currentTarget.value as "school" | "study" | null;
+    registerContext?.setRegisterData({
+      ...registerContext.registerData,
+      status
+    });
   };
-  
-export default StudentStatus
+
+  const handleSchoolTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const schoolType = event.currentTarget.value as "vocational" | "technical" | "high_school";
+    registerContext?.setRegisterData({
+      ...registerContext.registerData,
+      school_level: schoolType
+    });
+  };
+
+  const handleSubmit = () => {
+    setStep(1);
+  };
+
+  const handleInputChange = (event: React.SyntheticEvent, value: string) => {
+    registerContext?.setRegisterData({
+      ...registerContext.registerData,
+      school_name: value,
+    });
+  };
+
+  return (
+    <Box sx={{ animation: '.7s showAnim forwards' }}>
+      <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
+        Wybierz swój status
+      </Typography>
+      <StyledPaper>
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Status</FormLabel>
+          <StyledRadioGroup value={registerContext?.registerData.status} onChange={handleStatusChange}>
+            <StyledFormControlLabel value="school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="school" />
+            <StyledFormControlLabel value="study" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="study" />
+          </StyledRadioGroup>
+        </FormControl>
+
+        {registerContext?.registerData.status === 'school' && (
+          <>
+            <StyledFormControl>
+              <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
+              <StyledRadioGroup value={registerContext.registerData.school_level} onChange={handleSchoolTypeChange}>
+                <StyledFormControlLabel value="vocational" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="vocational" />
+                <StyledFormControlLabel value="technical" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="technical" />
+                <StyledFormControlLabel value="high_school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="high school" />
+              </StyledRadioGroup>
+            </StyledFormControl>
+            {
+              registerContext.registerData.school_level !== '' &&
+            <StyledPaper>
+              <Autocomplete
+                freeSolo
+                options={suggestions}
+                inputValue={registerContext.registerData.school_name}
+                onInputChange={handleInputChange}
+                renderInput={(params) => (
+                  <StyledTextField
+                    {...params}
+                    label="Szukaj"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </StyledPaper>
+            }
+          </>
+        )}
+
+        <StyledButton onClick={handleSubmit}>
+          Dalej
+        </StyledButton>
+      </StyledPaper>
+    </Box>
+  );
+};
+
+export default StudentStatus;

@@ -110,7 +110,7 @@ export default function Home() {
                  
 
                 }}
-                href="/register?type=student"
+                href="/register/student"
                 >Rejestracja</Button>
               </div>}
             
@@ -162,7 +162,7 @@ export default function Home() {
                     }
 
                   }}
-                  href="/regiistrationformcompany"
+                  href="/register/company"
                   >Rejestracja</Button>
                 </div>}
               />
