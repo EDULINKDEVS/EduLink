@@ -14,10 +14,10 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
+import NewSchool from './University';
 
 const StyledPaper = styled(Paper)({
-  padding: 20,
-  width: '100%',
+  width: '400px',
   backgroundColor: '#fff',
   boxShadow: 'none',
   marginTop: 20,
@@ -154,7 +154,10 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
             }
           </>
         )}
+        {
+          registerContext?.registerData.status === 'study' && <NewSchool />
 
+        }
         <StyledButton onClick={handleSubmit}>
           Dalej
         </StyledButton>

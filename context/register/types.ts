@@ -15,7 +15,7 @@ export enum degreeEnum{
 export interface School {
     id: string;
     name: string;
-    degree: string;
+    degree: degreeEnum;
   }
 
   

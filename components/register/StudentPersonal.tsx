@@ -13,11 +13,11 @@ import * as Yup from 'yup';
 import { RegisterContext, RegisterContextType } from '@/context/register/RegisterContext';
 
 const StyledPaper = styled(Paper)({
-  padding: 20,
   margin: 'auto',
   width: 'clamp(200px,95%,500px)',
   backgroundColor: '#fff',
   boxShadow: 'none',
+  
 });
 
 const StyledButton = styled(Button)({
@@ -79,10 +79,26 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const handleBlur = async (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     try {
-      await validationSchema.validateAt(name, { [name]: value });
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+
+      if (name === 'confirm_pass') {
+
+
+        if (registerContext.registerData.pass !== value) {
+          setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
+        } else {
+ 
+          setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: '' }));
+        }
+      }
+      else{
+        await validationSchema.validateAt(name, { [name]: value });
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+  
+      }
+      
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
+        
         setErrors((prevErrors) => ({ ...prevErrors, [name]: err.message }));
       }
     }
@@ -93,6 +109,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
     l_name: Yup.string().required('Nazwisko jest wymagane'),
     phone: Yup.string().required('Nr telefonu jest wymagany'),
     email: Yup.string().email('Nieprawidłowy adres email').required('Adres email jest wymagany'),
+    pass: Yup.string().required('Hasło jest wymagane').min(6, 'Hasło musi mieć co najmniej 6 znaków'),
     birthDay: Yup.number().required('Dzień urodzenia jest wymagany').min(1, 'Nieprawidłowy dzień').max(31, 'Nieprawidłowy dzień'),
     birthMonth: Yup.number().required('Miesiąc urodzenia jest wymagany').min(1, 'Nieprawidłowy miesiąc').max(12, 'Nieprawidłowy miesiąc'),
     birthYear: Yup.number().required('Rok urodzenia jest wymagany').min(new Date().getFullYear() - 100, 'Nieprawidłowy rok').max(new Date().getFullYear(), 'Nieprawidłowy rok')
@@ -105,14 +122,23 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
         l_name: registerContext.registerData.l_name,
         phone: registerContext.registerData.phone,
         email: registerContext.registerData.email,
+        pass: registerContext.registerData.pass,
+        confirm_pass: registerContext.registerData.confirm_pass,
         birthDay: parseInt(birthDay, 10),
         birthMonth: parseInt(birthMonth, 10),
         birthYear: parseInt(birthYear, 10)
       };
       await validationSchema.validate(values, { abortEarly: false });
-      setErrors({});
-      setGeneralError('');
-      return true;
+      if (values.pass !== values.confirm_pass) {
+        setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
+        setGeneralError('Uzupełnij poprawnie wszystkie pola');
+
+      } else {
+
+        setErrors({});
+        setGeneralError('');
+        return true;
+      }
     } catch (err) {
       const newErrors: { [key: string]: string } = {};
       if (err instanceof Yup.ValidationError && err.inner) {
@@ -120,7 +146,13 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
           if (error.path) newErrors[error.path] = error.message;
         });
       }
+      
       setErrors(newErrors);
+      if (registerContext.registerData.pass !== registerContext.registerData.confirm_pass) {
+        setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
+        setGeneralError('Uzupełnij poprawnie wszystkie pola');
+
+      }
       setGeneralError('Uzupełnij poprawnie wszystkie pola');
       return false;
     }
@@ -174,6 +206,42 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               onBlur={handleBlur}
               error={!!errors.l_name}
               helperText={errors.l_name}
+              required
+            />
+            <StyledTextField
+              fullWidth
+              margin="normal"
+              type='password'
+              id="password"
+              name="pass"
+              label="Hasło"
+              value={registerContext.registerData.pass}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={!!errors.pass}
+              helperText={errors.pass}
+              required
+            />
+            <StyledTextField
+              fullWidth
+              type='password'
+              margin="normal"
+              id="confirm_password"
+              name="confirm_pass"
+              label="Potwierdź hasło"
+              value={registerContext.registerData.confirm_pass}
+              onChange={handleChange}
+              onBlur={(e) => {
+                handleBlur(e);
+                // if (registerContext.registerData.pass !== e.target.value) {
+                //   setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
+                // } else {
+                //   console.log('asdas');
+                //   setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: '' }));
+                // }
+              }}
+              error={!!errors.confirm_pass}
+              helperText={errors.confirm_pass}
               required
             />
             <StyledTextField
