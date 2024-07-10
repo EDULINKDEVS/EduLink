@@ -7,9 +7,11 @@ import {
   List,
   ListItem,
   ListItemText,
-  Button
+  Button,
+  IconButton
 } from '@mui/material';
 import { styled } from '@mui/system';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledPaper = styled(Paper)({
   width: '800px',
@@ -48,14 +50,27 @@ const StyledButton = styled(Button)({
     backgroundColor: '#9342a0',
   },
 });
- 
+
 const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
   const allTraits = [
-    'Intelligent', 'Creative', 'Hardworking', 'Team Player',
-    'Organized', 'Punctual', 'Adaptable', 'Reliable',
-    'Leader', 'Friendly', 'Motivated', 'Efficient',
+    'Inteligentny', 'Kreatywny', 'Pracowity', 'Gracz zespołowy',
+    'Zorganizowany', 'Punktualny', 'Elastyczny', 'Niezawodny',
+    'Lider', 'Przyjazny', 'Zmotywowany', 'Wydajny',
+    'Ambitny', 'Komunikatywny', 'Cierpliwy', 'Dokładny',
+    'Odpowiedzialny', 'Uczciwy', 'Innowacyjny', 'Przystosowujący się',
+    'Proaktywny', 'Empatyczny', 'Zdeterminowany', 'Samodzielny',
+    'Analityczny', 'Sumienny', 'Uważny', 'Inspirujący',
+    'Zrównoważony', 'Zorganizowany', 'Spostrzegawczy', 'Entuzjastyczny',
+    'Przewidujący', 'Zdolny do negocjacji', 'Opanowany', 'Kulturalny',
+    'Techniczny', 'Kreatywny myśliciel', 'Dyplomatyczny', 'Otwartość umysłu',
+    'Zorientowany na szczegóły', 'Skrupulatny', 'Lojalny', 'Optymistyczny',
+    'Systematyczny', 'Wszechstronny', 'Wspierający', 'Perswazyjny',
+    'Rzetelny', 'Zdolny do pracy pod presją', 'Zaradny', 'Zdolności przywódcze',
+    'Zorientowany na klienta', 'Zdolny do multitaskingu', 'Przewidywalny', 'Elokwentny',
+    'Zdolny do nauki', 'Inicjatywny', 'Oszczędny', 'Skuteczny komunikator',
+    'Entuzjasta technologii', 'Zorientowany na cel'
   ];
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,9 +86,17 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
     });
   };
 
-  const filteredTraits = allTraits.filter((trait) =>
-    trait.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleRemoveTrait = (trait: string) => {
+    setSelectedTraits((prevSelectedTraits) =>
+      prevSelectedTraits.filter((selectedTrait) => selectedTrait !== trait)
+    );
+  };
+
+  const filteredTraits = allTraits
+    .filter((trait) => trait.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((trait) => !selectedTraits.includes(trait));
+
+  const initialTraits = filteredTraits.slice(0, 12);
 
   return (
     <Box sx={{ animation: '.7s showAnim forwards' }}>
@@ -82,7 +105,7 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
       </Typography>
       <StyledPaper>
         <StyledTextField
-          label="Szukaj cech"
+          label="Wpisz cechę..."
           variant="outlined"
           value={searchTerm}
           onChange={handleSearchChange}
@@ -90,7 +113,7 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
         <Box display="flex" marginTop={4}>
           <Box flex={3} marginRight={2}>
             <Box display="grid" gridTemplateColumns="repeat(4, 1fr)" gap={2}>
-              {filteredTraits.map((trait, index) => (
+              {initialTraits.map((trait, index) => (
                 <Paper
                   key={index}
                   onClick={() => handleTraitClick(trait)}
@@ -110,7 +133,10 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
               ))}
             </Box>
           </Box>
-          <Box flex={1} border="1px solid #A758B5" padding={2}>
+          <Box sx={{
+            height: '400px',
+            overflow: 'auto'
+          }} flex={1} border="1px solid #A758B5" padding={2}>
             <Typography variant="h6" color="#A758B5" gutterBottom>
               Wybrane cechy:
             </Typography>
@@ -118,17 +144,16 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
               {selectedTraits.map((trait, index) => (
                 <ListItem key={index}>
                   <ListItemText primary={trait} />
+                  <IconButton edge="end" onClick={() => handleRemoveTrait(trait)}>
+                    <DeleteIcon />
+                  </IconButton>
                 </ListItem>
               ))}
             </List>
           </Box>
         </Box>
-        <StyledButton onClick={()=>{setStep(1)}}>
-          Wróć
-        </StyledButton>
-
         <StyledButton>
-          Zatwierdź
+          Zarejestruj
         </StyledButton>
       </StyledPaper>
     </Box>
