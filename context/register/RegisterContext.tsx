@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { registerSchoolsActions, School } from "./types";
+import { degreeEnum, registerSchoolsActions, School } from "./types";
 import { schoolReducer } from "./reducer";
 
 type RegisterDataType = {
@@ -19,8 +19,8 @@ type RegisterDataType = {
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string, degree: registerSchoolsActions) => void;
-  handleEditSchool: (name: string, degree: registerSchoolsActions, id: string) => void;
+  handleAddSchool: (name: string, degree: degreeEnum) => void;
+  handleEditSchool: (name: string, degree: degreeEnum, id: string) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
   setRegisterData: (value: RegisterDataType) => void;
@@ -44,7 +44,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dateOfBirth: new Date()
   });
 
-  const handleAddSchool = (name: string, degree: registerSchoolsActions) => {
+  const handleAddSchool = (name: string, degree: degreeEnum) => {
     if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
@@ -55,7 +55,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleEditSchool = (name: string, degree: registerSchoolsActions, id: string) => {
+  const handleEditSchool = (name: string, degree: degreeEnum, id: string) => {
     const updatedSchool: School = {
       id,
       name,
