@@ -9,11 +9,11 @@ const StudiesTabCreator = () => {
     <>
     {
         registerContext?.schools.map((element)=>(
-            <University name={element.name} degree={element.degree} id={element.id} /> 
+            <University name={element.name} degree={element.degree} id={element.id} key={element.id} /> 
         ))
 
     }
-    <University />
+    <University key={'new'}/>
     </>
   )
 }

@@ -14,7 +14,9 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
-import NewSchool from './University';
+import University from './University';
+import StudiesTabCreator from './StudiesTabCreator';
+import { ElevatorSharp } from '@mui/icons-material';
 
 const StyledPaper = styled(Paper)({
   width: '400px',
@@ -100,7 +102,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
   };
 
   const handleSubmit = () => {
-    setStep(1);
+    setStep(2);
   };
 
   const handleInputChange = (event: React.SyntheticEvent, value: string) => {
@@ -109,7 +111,20 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
       school_name: value,
     });
   };
-
+  const validate = () =>{
+    if(registerContext?.registerData.status === 'study'){
+      if(registerContext.schools.length > 0){
+        return true;
+      }
+    }
+    else if(registerContext?.registerData.status === 'school'){
+        if(registerContext.registerData.school_level && registerContext.registerData.school_name){
+          return true;
+        }
+    }
+    return false;
+    
+  }
   return (
     <Box sx={{ animation: '.7s showAnim forwards' }}>
       <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
@@ -155,12 +170,15 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
           </>
         )}
         {
-          registerContext?.registerData.status === 'study' && <NewSchool />
+          registerContext?.registerData.status === 'study' && <StudiesTabCreator />
 
         }
-        <StyledButton onClick={handleSubmit}>
+        {
+          validate() &&
+          <StyledButton onClick={handleSubmit}>
           Dalej
         </StyledButton>
+        }
       </StyledPaper>
     </Box>
   );

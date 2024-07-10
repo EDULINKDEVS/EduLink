@@ -56,6 +56,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleEditSchool = (name: string, degree: degreeEnum, id: string) => {
+    console.log('edit')
     const updatedSchool: School = {
       id,
       name,

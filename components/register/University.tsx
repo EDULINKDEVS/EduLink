@@ -73,15 +73,39 @@ const University = ({ name, degree, id }: UniversityType) => {
   const registerContext = useContext(RegisterContext);
   const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
   const [currentName, setCurrentName] = useState('');
-  const [duringStudies, setDuringStudies] = useState(true);
+  const [duringStudies, setDuringStudies] = useState<boolean| null>(null);
   const [edit, setEdit] = useState(false);
+  const [addable, setAddable] = useState(false);
 
   useEffect(() => {
     if (name && degree) {
       setCurrentName(name);
       setCurrentDegree(degree);
+      setDuringStudies(degree === degreeEnum.DURING);
     }
   }, [name, degree]);
+
+  useEffect(()=>{
+    if(validate()){
+      setAddable(true);
+    }else{
+      setAddable(false);
+    }
+  }, [currentDegree, currentName, duringStudies]);
+
+  useEffect(() => {
+    const handleDataChanged = () => {
+      if (id) {
+        if (name !== currentName || degree !== currentDegree || (degree !== degreeEnum.DURING && duringStudies)) {
+          setEdit(true);
+        } else {
+          setEdit(false);
+        }
+      }
+    };
+
+    handleDataChanged();
+  }, [currentName, currentDegree, duringStudies, id, name, degree]);
 
   const suggestions = [
     'Techniku asdmoipms',
@@ -93,32 +117,45 @@ const University = ({ name, degree, id }: UniversityType) => {
 
   const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
     setCurrentName(value);
-    handleDataChanged();
-  }, [name, currentName, degree, currentDegree]);
-
-  const handleDataChanged = useCallback(() => {
-    if (name !== currentName || degree !== currentDegree) {
-      setEdit(true);
-    } else {
-      setEdit(false);
-    }
-  }, [name, currentName, degree, currentDegree]);
+  }, []);
 
   const handleAdd = useCallback(() => {
-    if (currentDegree !== null) {
-      if (id) {
+    if (id) {
+      if(duringStudies){
+        setCurrentDegree(degreeEnum.DURING);
+        currentDegree &&
         registerContext?.handleEditSchool(currentName, currentDegree, id);
-      } else {
+      }else{
+        currentDegree &&
+        registerContext?.handleEditSchool(currentName, currentDegree, id);
+      }
+    } else {
+      if(duringStudies){
+        registerContext?.handleAddSchool(currentName, degreeEnum.DURING);
+      }
+      else{
+        currentDegree &&
         registerContext?.handleAddSchool(currentName, currentDegree);
       }
+      setCurrentDegree(null);
+      setCurrentName('');
+      setDuringStudies(null);
     }
-  }, [currentName, currentDegree, id, registerContext]);
+    setEdit(false);
+  }, [currentName, currentDegree, id, duringStudies, registerContext]);
 
   const handleDelete = useCallback(() => {
     if (id) {
       registerContext?.handleRemoveSchool(id);
     }
   }, [id, registerContext]);
+
+  const validate = () => {
+    if(duringStudies){
+      return currentName.length > 0;
+    }
+    return currentName.length > 0 && currentDegree;
+  }
 
   return (
     <div>
@@ -135,7 +172,7 @@ const University = ({ name, degree, id }: UniversityType) => {
                   renderInput={(params) => (
                     <StyledTextField
                       {...params}
-                      label="Szukaj"
+                      label="Nazwa szkoły"
                       variant="outlined"
                     />
                   )}
@@ -146,29 +183,35 @@ const University = ({ name, degree, id }: UniversityType) => {
             <StyledFormControl>
               <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
               <StyledRadioGroup
-                value={duringStudies ? 'wTrakcie' : 'absolwent'}
-                onChange={(event) => setDuringStudies(event.target.value === 'wTrakcie')}
+                value={duringStudies === null ? '' : (duringStudies ? 'during' : 'absolwent')}
+                onChange={(event) => {
+                  setDuringStudies(event.target.value === 'during');
+                }}
               >
-                <StyledFormControlLabel value="wTrakcie" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
+                <StyledFormControlLabel value="during" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
                 <StyledFormControlLabel value="absolwent" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
               </StyledRadioGroup>
             </StyledFormControl>
-
-            <StyledFormControl>
-              <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
-              <StyledRadioGroup
-                value={currentDegree || ''}
-                onChange={(event) => setCurrentDegree(event.target.value as degreeEnum)}
-              >
-                <StyledFormControlLabel value="licencjat" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
-                <StyledFormControlLabel value="magister" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Magister" />
-              </StyledRadioGroup>
-            </StyledFormControl>
+            {
+              (!duringStudies && duringStudies !== null) &&
+              <StyledFormControl>
+                <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
+                <StyledRadioGroup
+                  value={currentDegree || ''}
+                  onChange={(event) => {
+                    setCurrentDegree(event.target.value as degreeEnum);
+                  }}
+                >
+                  <StyledFormControlLabel value="licencjat" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
+                  <StyledFormControlLabel value="magister" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Magister" />
+                </StyledRadioGroup>
+              </StyledFormControl>
+            }
           </Grid>
           <Grid item xs={2}>
             <Box display="flex" sx={{ width: '100%', height: '100%' }} justifyContent="center" alignItems="center" marginTop={2}>
               {id ? (
-                edit ? 
+                (edit && addable) ? 
                   <IconButton color="secondary" onClick={handleAdd}>
                     <AddIcon /> 
                   </IconButton>
@@ -177,7 +220,7 @@ const University = ({ name, degree, id }: UniversityType) => {
                     <DeleteIcon />
                   </IconButton>
               ) : (
-                <IconButton color="secondary" onClick={handleAdd}>
+                addable && <IconButton color="secondary" onClick={handleAdd}>
                   <AddIcon />
                 </IconButton>
               )}
