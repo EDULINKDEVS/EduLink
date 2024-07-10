@@ -1,40 +1,66 @@
 import React, { ReactNode } from 'react';
 import { Box } from '@mui/material';
-import { FaCog, FaEnvelope, FaSearch, FaCalendarAlt } from 'react-icons/fa';
-type userOptionType= {
-    icon: ReactNode;
-    text: string;
+
+type userOptionType = {
+  icon: ReactNode;
+  text: string;
 }
 
-const Useroption = ({icon, text}:userOptionType) => {
+const Useroption = ({ icon, text }: userOptionType) => {
   return (
     <Box sx={{
-        "&: hover" : {
-              "*": {
-                width: '200px',
-                // borderRadius: '30px',
-                // padding: '0 10px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }
-        }
+      "&:hover": {
+        ".icon-text": {
+          visibility: 'visible',
+          opacity: 1,
+          
+        },
+       
 
-
+      }
     }}>
-            <Box sx={{
-            borderRadius: "38px",
-            border: "2px solid white",
-            backgroundColor: '#A758B5',
-            width: "75px",
-            height: "75px",
-            transition: "width 1s "
-            
-        }}>
+      <Box className='optionBox' 
+      sx={{
+        borderRadius: "38px",
+        border: "2px solid white",
+        backgroundColor: '#A758B5',
+        width: "75px",
+        height: "75px",
+        transition: "width 0.6s",
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+        position: 'relative',
+        fontSize: '25px'
+      }}>
+        {icon}
+     
 
-            </Box>
+        <Box
+          className="icon-text"
+          sx={{
+            position: 'absolute',
+            top: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'white',
+            color: '#A758B5',
+            padding: '5px 10px',
+            borderRadius: '5px',
+            marginTop: '5px',
+            whiteSpace: 'nowrap',
+            visibility: 'hidden',
+            opacity: 0,
+            transition: 'visibility 0s, opacity 0.5s linear',
+            fontSize: "18px",
+            fontWeight: "600"
+          }}
+        >
+          {text}
         </Box>
+      </Box>
+    </Box>
+  )
+}
 
-  )}
-
-export default Useroption
+export default Useroption;
