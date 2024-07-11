@@ -23,6 +23,7 @@ const StyledPaper = styled(Paper)({
   backgroundColor: '#fff',
   boxShadow: 'none',
   marginTop: 20,
+  
 });
 
 const StyledRadioGroup = styled(RadioGroup)({
@@ -134,8 +135,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
         <FormControl component="fieldset">
           <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Status</FormLabel>
           <StyledRadioGroup value={registerContext?.registerData.status} onChange={handleStatusChange}>
-            <StyledFormControlLabel value="school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="school" />
-            <StyledFormControlLabel value="study" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="study" />
+            <StyledFormControlLabel value="school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Uczeń" />
+            <StyledFormControlLabel value="study" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Student" />
           </StyledRadioGroup>
         </FormControl>
 

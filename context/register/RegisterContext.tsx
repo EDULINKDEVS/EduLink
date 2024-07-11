@@ -44,23 +44,25 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dateOfBirth: new Date()
   });
 
-  const handleAddSchool = (name: string, degree: degreeEnum) => {
+  const handleAddSchool = (name: string, degree: degreeEnum, profile: string) => {
     if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
         name,
         degree,
+        profile
       };
       dispatch({ type: registerSchoolsActions.ADD_SCHOOL, payload: newSchool });
     }
   };
 
-  const handleEditSchool = (name: string, degree: degreeEnum, id: string) => {
+  const handleEditSchool = (name: string, degree: degreeEnum, id: string, profile: string) => {
     console.log('edit')
     const updatedSchool: School = {
       id,
       name,
       degree,
+      profile
     };
     dispatch({
       type: registerSchoolsActions.EDIT_SCHOOL,

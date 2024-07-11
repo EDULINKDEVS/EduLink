@@ -76,7 +76,9 @@ const StudentRegister = () => {
       <RightContainer>
         <Box sx={{
           height: '80vh',
-          overflowY: 'auto'
+          overflowY: 'auto',
+          display: 'flex',
+          justifyContent: 'center'
         }}>
           {stepsComponentsTab[step]}
         </Box>

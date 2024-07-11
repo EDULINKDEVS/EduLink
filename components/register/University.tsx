@@ -158,10 +158,11 @@ const University = ({ name, degree, id }: UniversityType) => {
   }
 
   return (
-    <div>
       <React.Fragment>
-        <Grid container sx={{ width: 'clamp(200px, 90%, 300px)' }}>
-          <Grid item xs={10}>
+        
+
+        <Grid container>
+          <Grid item xs={10} width={'100%'}>
             <StyledFormControl>
               <StyledPaper>
                 <Autocomplete
@@ -171,12 +172,12 @@ const University = ({ name, degree, id }: UniversityType) => {
                   onInputChange={handleInputChange}
                   renderInput={(params) => (
                     <StyledTextField
-                      {...params}
-                      label="Nazwa szkoły"
-                      variant="outlined"
+                    {...params}
+                    label="Nazwa szkoły"
+                    variant="outlined"
                     />
                   )}
-                />
+                  />
               </StyledPaper>
             </StyledFormControl>
 
@@ -187,7 +188,7 @@ const University = ({ name, degree, id }: UniversityType) => {
                 onChange={(event) => {
                   setDuringStudies(event.target.value === 'during');
                 }}
-              >
+                >
                 <StyledFormControlLabel value="during" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
                 <StyledFormControlLabel value="absolwent" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
               </StyledRadioGroup>
@@ -202,8 +203,11 @@ const University = ({ name, degree, id }: UniversityType) => {
                     setCurrentDegree(event.target.value as degreeEnum);
                   }}
                 >
-                  <StyledFormControlLabel value="licencjat" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
+                  <StyledFormControlLabel value="bachrlor" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
+                  <StyledFormControlLabel value="engineer" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Inżynier" />
                   <StyledFormControlLabel value="magister" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Magister" />
+                  <StyledFormControlLabel value="doctor" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Doktor" />
+
                 </StyledRadioGroup>
               </StyledFormControl>
             }
@@ -212,11 +216,11 @@ const University = ({ name, degree, id }: UniversityType) => {
             <Box display="flex" sx={{ width: '100%', height: '100%' }} justifyContent="center" alignItems="center" marginTop={2}>
               {id ? (
                 (edit && addable) ? 
-                  <IconButton color="secondary" onClick={handleAdd}>
+                <IconButton color="secondary" onClick={handleAdd}>
                     <AddIcon /> 
                   </IconButton>
                 : 
-                  <IconButton color="secondary" onClick={handleDelete}>
+                <IconButton color="secondary" onClick={handleDelete}>
                     <DeleteIcon />
                   </IconButton>
               ) : (
@@ -228,7 +232,6 @@ const University = ({ name, degree, id }: UniversityType) => {
           </Grid>
         </Grid>
       </React.Fragment>
-    </div>
   );
 };
 
