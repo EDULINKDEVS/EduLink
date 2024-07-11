@@ -6,12 +6,14 @@ import SchoolIcon from '@mui/icons-material/School';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import TraitSelector from './FeaturesChosing';
 const StudentRegister = () => {
   const [step, setStep] = useState(0);
   const router = useRouter();
   const stepsComponentsTab = [
     <StudentPersonal setStep={setStep} />,
-    <StudentStatus setStep={setStep} />
+    <StudentStatus setStep={setStep} />,
+    <TraitSelector setStep={setStep} />
   ];
 
   const StyledContainer = styled(Box)`
@@ -72,7 +74,14 @@ const StudentRegister = () => {
         <SchoolIcon style={{ fontSize: 300, color: 'white' }} />
       </LeftContainer>
       <RightContainer>
-        {stepsComponentsTab[step]}
+        <Box sx={{
+          height: '80vh',
+          overflowY: 'auto',
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          {stepsComponentsTab[step]}
+        </Box>
       </RightContainer>
     </StyledContainer>
   );

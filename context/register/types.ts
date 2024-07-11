@@ -16,6 +16,7 @@ export interface School {
     id: string;
     name: string;
     degree: degreeEnum;
+    profile: string;
   }
 
   

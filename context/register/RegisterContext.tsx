@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { registerSchoolsActions, School } from "./types";
+import { degreeEnum, registerSchoolsActions, School } from "./types";
 import { schoolReducer } from "./reducer";
 
 type RegisterDataType = {
@@ -19,8 +19,8 @@ type RegisterDataType = {
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string, degree: registerSchoolsActions) => void;
-  handleEditSchool: (name: string, degree: registerSchoolsActions, id: string) => void;
+  handleAddSchool: (name: string, degree: degreeEnum) => void;
+  handleEditSchool: (name: string, degree: degreeEnum, id: string) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
   setRegisterData: (value: RegisterDataType) => void;
@@ -44,22 +44,25 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dateOfBirth: new Date()
   });
 
-  const handleAddSchool = (name: string, degree: registerSchoolsActions) => {
+  const handleAddSchool = (name: string, degree: degreeEnum, profile: string) => {
     if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
         name,
         degree,
+        profile
       };
       dispatch({ type: registerSchoolsActions.ADD_SCHOOL, payload: newSchool });
     }
   };
 
-  const handleEditSchool = (name: string, degree: registerSchoolsActions, id: string) => {
+  const handleEditSchool = (name: string, degree: degreeEnum, id: string, profile: string) => {
+    console.log('edit')
     const updatedSchool: School = {
       id,
       name,
       degree,
+      profile
     };
     dispatch({
       type: registerSchoolsActions.EDIT_SCHOOL,
