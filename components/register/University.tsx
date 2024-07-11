@@ -97,7 +97,7 @@ const University = ({ name, degree, id }: UniversityType) => {
   });
   const handleDataChanged = ()=>{
     const value = registerContext?.schools.find(school => school.id === id);
-    if(value?.degree !== de)
+   
   }
   const handleAdd = () => {
 
