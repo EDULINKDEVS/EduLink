@@ -21,12 +21,12 @@ const Useroption = ({ icon, text }: userOptionType) => {
     }}>
       <Box className='optionBox' 
       sx={{
-        borderRadius: "38px",
+        borderRadius: "50%",
         border: "2px solid white",
         backgroundColor: '#A758B5',
-        width: "75px",
-        height: "75px",
-        transition: "width 0.6s",
+        width: "115px",
+        height: "95px",
+        transition: "all .9s",
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',

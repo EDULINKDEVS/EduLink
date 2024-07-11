@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { FaCog, FaEnvelope, FaSearch, FaCalendarAlt } from 'react-icons/fa';
 import { styled } from '@mui/system';
+import UserOptionWraper from '@/components/userpanel/nav/UserOptionWraper';
 
 const options = [
   { icon: <FaCog />, label: 'Ustawienia' },
@@ -94,7 +95,7 @@ const UserPanel: React.FC = () => {
             flexDirection: selectedOption ? 'column' : 'row',
           }}
         >
-          <CircularContainer sx={{ display: selectedOption ? 'none' : 'flex' }}>
+          {/* <CircularContainer sx={{ display: selectedOption ? 'none' : 'flex' }}>
             {options.map((option, index) => {
               const angle = (index / options.length) * 2 * Math.PI;
               const x = 150 + 100 * Math.cos(angle) - 30; // 150 to połowa szerokości kontenera, 100 to promień okręgu, 30 to połowa szerokości kółka
@@ -110,14 +111,16 @@ const UserPanel: React.FC = () => {
                     <Box display="flex" alignItems="center">
                       {option.icon}
                       <IconLabel>
-                        <Typography variant="caption">{option.label}</Typography>
+                        <Typography   variant="caption">{option.label}</Typography>
                       </IconLabel>
                     </Box>
                   )}
                 </CircularItem>
               );
             })}
-          </CircularContainer>
+          </CircularContainer> */}
+           <UserOptionWraper  />
+
           {selectedOption && (
             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               {options.map((option, index) => (
