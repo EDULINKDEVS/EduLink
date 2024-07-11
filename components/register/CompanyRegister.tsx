@@ -53,7 +53,6 @@ const CompanyRegister: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Tutaj można dodać logikę do wysyłania danych do bazy danych
     console.log(formData);
   };
 

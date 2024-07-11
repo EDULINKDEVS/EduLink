@@ -152,6 +152,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
             </StyledFormControl>
             {
               registerContext.registerData.school_level !== '' &&
+              <>
             <StyledPaper>
               <Autocomplete
                 freeSolo
@@ -161,12 +162,29 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                 renderInput={(params) => (
                   <StyledTextField
                     {...params}
-                    label="Szukaj"
+                    label="Nazwa szkoły"
                     variant="outlined"
                   />
                 )}
               />
             </StyledPaper>
+                        <StyledPaper>
+                        <Autocomplete
+                          freeSolo
+                          options={suggestions}
+                          inputValue={registerContext.registerData.school_name}
+                          onInputChange={handleInputChange}
+                          renderInput={(params) => (
+                            <StyledTextField
+                              {...params}
+                              label="Profil"
+                              variant="outlined"
+                            />
+                          )}
+                        />
+                      </StyledPaper>
+          
+</>
             }
           </>
         )}

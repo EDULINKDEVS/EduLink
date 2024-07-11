@@ -76,7 +76,8 @@ const University = ({ name, degree, id }: UniversityType) => {
   const [duringStudies, setDuringStudies] = useState<boolean| null>(null);
   const [edit, setEdit] = useState(false);
   const [addable, setAddable] = useState(false);
-
+  const [facultyName, setFacultyName] = useState('');
+  const [cityName, setCityName] = useState('');
   useEffect(() => {
     if (name && degree) {
       setCurrentName(name);
@@ -118,6 +119,14 @@ const University = ({ name, degree, id }: UniversityType) => {
   const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
     setCurrentName(value);
   }, []);
+  const handleFacultyInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setFacultyName(value);
+  }, []);
+
+  const handleCityInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setCityName(value);
+  }, []);
+
 
   const handleAdd = useCallback(() => {
     if (id) {
@@ -163,6 +172,23 @@ const University = ({ name, degree, id }: UniversityType) => {
 
         <Grid container>
           <Grid item xs={10} width={'100%'}>
+          <StyledFormControl>
+              <StyledPaper>
+                <Autocomplete
+                  freeSolo
+                  options={suggestions}
+                  inputValue={cityName}
+                  onInputChange={handleCityInputChange}
+                  renderInput={(params) => (
+                    <StyledTextField
+                    {...params}
+                    label="Miasto"
+                    variant="outlined"
+                    />
+                  )}
+                  />
+              </StyledPaper>
+            </StyledFormControl>
             <StyledFormControl>
               <StyledPaper>
                 <Autocomplete
@@ -180,6 +206,24 @@ const University = ({ name, degree, id }: UniversityType) => {
                   />
               </StyledPaper>
             </StyledFormControl>
+            <StyledFormControl>
+              <StyledPaper>
+                <Autocomplete
+                  freeSolo
+                  options={suggestions}
+                  inputValue={facultyName}
+                  onInputChange={handleFacultyInputChange}
+                  renderInput={(params) => (
+                    <StyledTextField
+                    {...params}
+                    label="Nazwa wydziału"
+                    variant="outlined"
+                    />
+                  )}
+                  />
+              </StyledPaper>
+            </StyledFormControl>
+
 
             <StyledFormControl>
               <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
