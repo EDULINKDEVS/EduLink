@@ -48,42 +48,147 @@ const StyledFormControlLabel = styled(FormControlLabel)({
   },
 });
 
-  const StyledTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#A758B5',
-      },
-      '&:hover fieldset': {
-        borderColor: '#A758B5',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#A758B5',
-      },
+const StyledTextField = styled(TextField)({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#A758B5',
     },
-    '& .MuiInputBase-input': {
-      color: '#A758B5',
+    '&:hover fieldset': {
+      borderColor: '#A758B5',
     },
-    '& .MuiInputLabel-root': {
-      color: '#A758B5',
+    '&.Mui-focused fieldset': {
+      borderColor: '#A758B5',
     },
-    width: '100%',
-  });
-  const handleDataChanged = ()=>{
-    const value = registerContext?.schools.find(school => school.id === id);
-    if(value?.degree !== de)
-  }
-  const handleAdd = () => {
+  },
+  '& .MuiInputBase-input': {
+    color: '#A758B5',
+  },
+  '& .MuiInputLabel-root': {
+    color: '#A758B5',
+  },
+  width: '100%',
+});
 
-  };
-  const handleDelete = ()=>{
+const University = ({ name, degree, id }: UniversityType) => {
+  const registerContext = useContext(RegisterContext);
+  const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
+  const [currentName, setCurrentName] = useState('');
+  const [duringStudies, setDuringStudies] = useState<boolean| null>(null);
+  const [edit, setEdit] = useState(false);
+  const [addable, setAddable] = useState(false);
+  const [facultyName, setFacultyName] = useState('');
+  const [cityName, setCityName] = useState('');
+  useEffect(() => {
+    if (name && degree) {
+      setCurrentName(name);
+      setCurrentDegree(degree);
+      setDuringStudies(degree === degreeEnum.DURING);
+    }
+  }, [name, degree]);
 
+  useEffect(()=>{
+    if(validate()){
+      setAddable(true);
+    }else{
+      setAddable(false);
+    }
+  }, [currentDegree, currentName, duringStudies]);
+
+  useEffect(() => {
+    const handleDataChanged = () => {
+      if (id) {
+        if (name !== currentName || degree !== currentDegree || (degree !== degreeEnum.DURING && duringStudies)) {
+          setEdit(true);
+        } else {
+          setEdit(false);
+        }
+      }
+    };
+
+    handleDataChanged();
+  }, [currentName, currentDegree, duringStudies, id, name, degree]);
+
+  const suggestions = [
+    'Techniku asdmoipms',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+  ];
+
+  const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setCurrentName(value);
+  }, []);
+  const handleFacultyInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setFacultyName(value);
+  }, []);
+
+  const handleCityInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setCityName(value);
+  }, []);
+
+
+  const handleAdd = useCallback(() => {
+    if (id) {
+      if(duringStudies){
+        setCurrentDegree(degreeEnum.DURING);
+        currentDegree &&
+        registerContext?.handleEditSchool(currentName, currentDegree, id);
+      }else{
+        currentDegree &&
+        registerContext?.handleEditSchool(currentName, currentDegree, id);
+      }
+    } else {
+      if(duringStudies){
+        registerContext?.handleAddSchool(currentName, degreeEnum.DURING);
+      }
+      else{
+        currentDegree &&
+        registerContext?.handleAddSchool(currentName, currentDegree);
+      }
+      setCurrentDegree(null);
+      setCurrentName('');
+      setDuringStudies(null);
+    }
+    setEdit(false);
+  }, [currentName, currentDegree, id, duringStudies, registerContext]);
+
+  const handleDelete = useCallback(() => {
+    if (id) {
+      registerContext?.handleRemoveSchool(id);
+    }
+  }, [id, registerContext]);
+
+  const validate = () => {
+    if(duringStudies){
+      return currentName.length > 0;
+    }
+    return currentName.length > 0 && currentDegree;
   }
+
   return (
       <React.Fragment>
         
 
         <Grid container>
           <Grid item xs={10} width={'100%'}>
+          <StyledFormControl>
+              <StyledPaper>
+                <Autocomplete
+                  freeSolo
+                  options={suggestions}
+                  inputValue={cityName}
+                  onInputChange={handleCityInputChange}
+                  renderInput={(params) => (
+                    <StyledTextField
+                    {...params}
+                    label="Miasto"
+                    variant="outlined"
+                    />
+                  )}
+                  />
+              </StyledPaper>
+            </StyledFormControl>
             <StyledFormControl>
               <StyledPaper>
                 <Autocomplete
@@ -101,6 +206,24 @@ const StyledFormControlLabel = styled(FormControlLabel)({
                   />
               </StyledPaper>
             </StyledFormControl>
+            <StyledFormControl>
+              <StyledPaper>
+                <Autocomplete
+                  freeSolo
+                  options={suggestions}
+                  inputValue={facultyName}
+                  onInputChange={handleFacultyInputChange}
+                  renderInput={(params) => (
+                    <StyledTextField
+                    {...params}
+                    label="Nazwa wydziału"
+                    variant="outlined"
+                    />
+                  )}
+                  />
+              </StyledPaper>
+            </StyledFormControl>
+
 
             <StyledFormControl>
               <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
