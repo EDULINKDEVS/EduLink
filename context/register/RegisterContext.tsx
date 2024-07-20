@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { degreeEnum, registerSchoolsActions, School } from "./types";
+import { degreeEnum, registerSchoolsActions, School, Action } from "./types";
 import { schoolReducer } from "./reducer";
 
 type RegisterDataType = {
@@ -15,21 +15,21 @@ type RegisterDataType = {
   school_level: "vocational" | "technical" | "high_school" | "";
   school_name: string;
   dateOfBirth: Date;
-}
+};
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string, degree: degreeEnum) => void;
-  handleEditSchool: (name: string, degree: degreeEnum, id: string) => void;
+  handleAddSchool: (name: string, degree: degreeEnum, profile: string) => void;
+  handleEditSchool: (name: string, degree: degreeEnum, id: string, profile: string) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
-  setRegisterData: (value: RegisterDataType) => void;
-}
+  setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
+};
 
 export const RegisterContext = createContext<RegisterContextType | undefined>(undefined);
 
 const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
-  const [schools, dispatch] = useReducer(schoolReducer, []);
+  const [schools, dispatch] = useReducer<React.Reducer<School[], Action>>(schoolReducer, []);
   const [registerData, setRegisterData] = useState<RegisterDataType>({
     email: '',
     confirm_email: '',
@@ -45,7 +45,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const handleAddSchool = (name: string, degree: degreeEnum, profile: string) => {
-    if (name && degree) {
+    if (name && degree && profile) {
       const newSchool: School = {
         id: uuidv4(),
         name,
@@ -57,7 +57,6 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleEditSchool = (name: string, degree: degreeEnum, id: string, profile: string) => {
-    console.log('edit')
     const updatedSchool: School = {
       id,
       name,
@@ -74,14 +73,14 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: registerSchoolsActions.REMOVE_SCHOOL, payload: id });
   };
 
-  const value = {
+  const value: RegisterContextType = {
     schools,
     handleAddSchool,
     handleEditSchool,
     handleRemoveSchool,
     registerData,
     setRegisterData
-  }
+  };
 
   return <RegisterContext.Provider value={value}>{children}</RegisterContext.Provider>;
 };

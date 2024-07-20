@@ -33,7 +33,6 @@ const StyledButton = styled(Button)({
   }
 });
 
-// Component
 const CompanyRegister: React.FC = () => {
   const [formData, setFormData] = useState({
     companyName: '',

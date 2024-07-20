@@ -1,0 +1,51 @@
+          {/* <CircularContainer sx={{ display: selectedOption ? 'none' : 'flex' }}>
+            {options.map((option, index) => {
+              const angle = (index / options.length) * 2 * Math.PI;
+              const x = 150 + 100 * Math.cos(angle) - 30; // 150 to połowa szerokości kontenera, 100 to promień okręgu, 30 to połowa szerokości kółka
+              const y = 150 + 100 * Math.sin(angle) - 30; // 150 to połowa wysokości kontenera, 100 to promień okręgu, 30 to połowa wysokości kółka
+              return (
+                <CircularItem
+                  key={index}
+                  style={{ top: `${y}px`, left: `${x}px` }}
+                  onClick={() => handleIconClick(option.label)}
+                  expanded={false}
+                >
+                  {option.icon && (
+                    <Box display="flex" alignItems="center">
+                      {option.icon}
+                      <IconLabel>
+                        <Typography   variant="caption">{option.label}</Typography>
+                      </IconLabel>
+                    </Box>
+                  )}
+                </CircularItem>
+              );
+            })}
+          </CircularContainer> */}
+
+
+
+                    {/* {selectedOption && (
+            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              {options.map((option, index) => (
+                <CircularItem
+                  key={index}
+                  onClick={() => handleIconClick(option.label)}
+                  expanded={false}
+                  sx={{ position: 'static', margin: '10px 0' }}
+                >
+                  {option.icon && (
+                    <Box display="flex" alignItems="center">
+                      {option.icon}
+                    </Box>
+                  )}
+                </CircularItem>
+              ))}
+            </Box>
+          )} */}
+
+
+
+          
+
+
