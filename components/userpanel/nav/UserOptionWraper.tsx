@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import Useroption from "./Useroption";
 import { FaCog, FaEnvelope, FaSearch, FaCalendarAlt } from "react-icons/fa";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 const options = [
   {
     id: "profile",
@@ -19,6 +19,8 @@ const options = [
   { id: "messages", icon: <FaEnvelope />, label: "Wiadomości" },
   { id: "search", icon: <FaSearch />, label: "Szukaj ofert" },
   { id: "settings", icon: <FaCog />, label: "Ustawienia profilu" },
+  { id: "back", icon: <KeyboardArrowRightIcon sx={{fontSize: '2em'}}/>, label: "Wróć" },
+
 ];
 
 const UserOptionWraper = ({

@@ -6,6 +6,7 @@ import Profile from "../profile/Profile";
 import Messages from "../messages/Messages";
 import Search from "../search/Search";
 import Settings from "../settings/Settings";
+import ShowAnim from "../helpers/ShowAnim";
 
 const PanelContent = ({ id }: { id: string }) => {
     const [acContent, setAcContent] = useState<ReactNode | null>(null);

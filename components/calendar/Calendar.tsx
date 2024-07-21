@@ -21,7 +21,7 @@ const Calendar: React.FC = () => {
   const [dayViewOpen, setDayViewOpen] = useState(false);
 
   const renderHeader = () => (
-    <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+    <Box display="flex" justifyContent="space-between" alignItems="center" mb={2} sx={{opacity: 0, animation: '.8s showAnim forwards'}}>
       <IconButton onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>
         <ArrowBack />
       </IconButton>

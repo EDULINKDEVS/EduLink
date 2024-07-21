@@ -31,6 +31,7 @@ const Useroption = ({ icon, text }: userOptionType) => {
           alignItems: "center",
           display: "flex",
           position: "relative",
+          pt: '10px',
           fontSize: "25px",
         }}
       >
