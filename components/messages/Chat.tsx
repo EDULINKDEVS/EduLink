@@ -25,7 +25,7 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
   };
 
   return (
-    <Paper elevation={3} sx={{ padding: 2, flex: 1, display: 'flex', flexDirection: 'column', height: '93%' }}>
+    <Paper elevation={3} sx={{ padding: 2, flex: 1, display: 'flex', flexDirection: 'column', height: '93%', animation: '1s showAnimLev1 forwards' }}>
       <Box display="flex" alignItems="center" mb={2}>
         <Avatar src={selectedUser.avatar} sx={{ marginRight: 2 }} />
         <Typography variant="h5">{selectedUser.name}</Typography>

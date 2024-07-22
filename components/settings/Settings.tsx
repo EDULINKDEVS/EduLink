@@ -19,7 +19,7 @@ const Settings = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{opacity: 0, animation: '1s showAnimLev1 forwards'}}>
       <Paper elevation={3} style={{ padding: '2em', marginTop: '2em' }}>
         <Typography variant="h4" gutterBottom>
           Ustawienia Konta

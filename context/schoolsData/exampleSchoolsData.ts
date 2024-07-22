@@ -147,7 +147,6 @@ export const faculty = [
 ];
 
 
-
 export const schools = [
     {
         schoolName: "Liceum Ogólnokształcące św. Marii Magdaleny",
@@ -156,7 +155,9 @@ export const schools = [
             "klasa biologiczno-chemiczno-matematyczna",
             "klasa matematyczno-fizyczna",
             "klasa matematyczno-geograficzna"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "I Liceum Ogólnokształcące im. Karola Marcinkowskiego w ZSO Nr 1",
@@ -168,7 +169,9 @@ export const schools = [
             "MEDICUS biol-chem",
             "GALIA gr 1 wstępny humanistyczny",
             "GALIA gr 2 wstępny biologiczno - chemiczny"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "II Liceum Ogólnokształcące im. Generałowej Zamoyskiej i Heleny Modrzejewskiej",
@@ -178,7 +181,9 @@ export const schools = [
             "POLITECHNICZNA AI",
             "EKONOMICZNA AI",
             "MEDYCZNA"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "III Liceum Ogólnokształcące im. św. Jana Kantego",
@@ -187,7 +192,9 @@ export const schools = [
             "LINUX - akademicka",
             "DA VINCI - akademicka",
             "AVICENNA – akademicka"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "IV Liceum Ogólnokształcące im. Komisji Edukacji Narodowej",
@@ -196,7 +203,9 @@ export const schools = [
             "Medyczny",
             "Informatyczny",
             "Psychologiczno-Prawniczy"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "V Liceum Ogólnokształcące im. Klaudyny Potockiej",
@@ -206,7 +215,9 @@ export const schools = [
             "dziennikarsko prawna",
             "politechniczna",
             "turystyczno ekonomiczna"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "VI Liceum Ogólnokształcące w ZSO Nr 7",
@@ -215,7 +226,9 @@ export const schools = [
             "Informatyka z kwantem",
             "Matematyczno-geograficzna",
             "Biologiczno-chemiczna"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "VII Liceum Ogólnokształcące im. Dąbrówki",
@@ -225,7 +238,9 @@ export const schools = [
             "Ekonomiczny",
             "Politechniczny",
             "Wstępny"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "VIII Liceum Ogólnokształcące im. Adama Mickiewicza",
@@ -234,7 +249,9 @@ export const schools = [
             "MKA Matematyczna Klasa Akademicka mat.-fiz.-inf.",
             "PKM Patronacka Klasa Medyczna biol.-chem.",
             "EKA Ekonomiczna Klasa Akademicka mat.-geo.-językowa"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "IX Liceum Ogólnokształcące im. Karola Libelta",
@@ -243,7 +260,9 @@ export const schools = [
             "inżynieryjna",
             "biznesowa",
             "europejska"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "X Liceum Ogólnokształcące w ZSO nr 8",
@@ -252,7 +271,9 @@ export const schools = [
             "POLITECHNICZNO-EKONOMICZNA (klasa akademicka Uniwersytetu Ekonomicznego)",
             "MEDIALNA",
             "PRZYRODNICZA"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "XI Liceum Ogólnokształcące im. Jadwigi i Wacława Zembrzuskich",
@@ -261,7 +282,9 @@ export const schools = [
             "lingwistyczno - geograficzny",
             "humanistyczno - medialny",
             "matematyczno - geograficzny"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "XII Liceum Ogólnokształcące im. Marie Skłodowskiej - Curie",
@@ -271,7 +294,9 @@ export const schools = [
             "klasa humanistyczna: profil prawniczy",
             "klasa o profilu biologiczno-chemicznym",
             "klasa politechniczna: profil matematyczno-informatyczno-językowy"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "XIV Liceum Ogólnokształcące im. Kazimierza Wielkiego",
@@ -280,7 +305,9 @@ export const schools = [
             "psychologiczna SELF-CARE",
             "matematyczno-chemiczna ANALITYK",
             "dwujęzyczna prawniczo-ekonomiczna PRAWNIK"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "XV Liceum Ogólnokształcące im. prof. Wiktora Degi",
@@ -292,7 +319,9 @@ export const schools = [
             "matematyczno-geograficzny z językiem niemieckim",
             "matematyczno-geograficzny z językiem hiszpańskim",
             "biologiczno-chemiczny"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "XVI Liceum Ogólnokształcące w ZSO Nr 2",
@@ -301,7 +330,9 @@ export const schools = [
             "Dwujęzyczny medyczny",
             "Dwujęzyczny ekonomiczno-informatyczno-społeczny",
             "Dwujęzyczny politechniczny"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "XVII Liceum Ogólnokształcące w ZSO Nr 4",
@@ -313,14 +344,18 @@ export const schools = [
             "MEDICORUM",
             "PEREGRINUS",
             "SECCION BILLINGUE - WSTĘPNY"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "XVIII Liceum Ogólnokształcące",
         profiles: [
             "Liceum Ogólnokształcące - klasa sportowa",
             "Liceum Ogólnokształcące"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "XX Liceum Ogólnokształcące",
@@ -329,14 +364,18 @@ export const schools = [
             "kryminalistyczno - resocjalizacyjna z rozszerzeniem językowym",
             "psychologiczno - językowa",
             "sportowa z piłką nożną"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "XXI Liceum Ogólnokształcące",
         profiles: [
             "architektura i design z elementami nauczania outdoorowego",
             "projektowanie gier komputerowych z elementami sztucznej inteligencji"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "XXV Liceum Ogólnokształcące im. Generałowej Jadwigi Zamoyskiej w Poznaniu",
@@ -345,14 +384,18 @@ export const schools = [
             "biologiczno-chemiczna",
             "psychologiczno-językowa",
             "lingwistyczna"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "XXVIII Liceum Ogólnokształcące",
         profiles: [
             "klasa psychologiczna - psychologia i resocjalizacja",
             "klasa prawna - kryminologia i resocjalizacja"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "XXIX Liceum Ogólnokształcące",
@@ -362,7 +405,9 @@ export const schools = [
             "sportowo-obronna",
             "policyjna",
             "Oddział Przygotowania Wojskowego OPW"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "XXXI Liceum Ogólnokształcące",
@@ -370,13 +415,17 @@ export const schools = [
             "klasa kosmetyczna",
             "klasa policyjna",
             "klasa strażacka"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "XXXVII Liceum Ogólnokształcące z Oddziałami Terapeutycznymi im. Jana Pawła II",
         profiles: [
             "terapeutyczny"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "XXXVIII Dwujęzyczne Liceum Ogólnokształcące",
@@ -387,7 +436,9 @@ export const schools = [
             "Dwujęzyczna Patronacka Klasa Medyczna",
             "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną chemią",
             "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną fizyką"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące Mistrzostwa Sportowego",
@@ -398,14 +449,18 @@ export const schools = [
             "sportowy, koszykówka",
             "mistrzostwa sportowego, pływanie, pływanie synchroniczne, wioślarstwo, skoki do wody",
             "sportowy, sportowy, sztuki walki, piłka nożna dziewcząt 'Warta', piłka nożna 'Przemysław'"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "Sportowe Liceum Ogólnokształcące",
         profiles: [
             "Mistrzostwa Sportowego",
             "Sportowy"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące w ZS w Bolechowie",
@@ -414,13 +469,17 @@ export const schools = [
             "policyjna",
             "strażacko-ratownicza",
             "ogólnokształcąca"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące w Zespole Szkół im. Konstytucji 3 Maja w Pobiedziskach Letnisku",
         profiles: [
             "Turystyczno - Językowy"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "II Liceum Ogólnokształcące im. Tadeusza Staniewskiego w Swarzędzu",
@@ -429,7 +488,9 @@ export const schools = [
             "matematyczno-geograficzna",
             "biologiczno-chemiczna",
             "policyjna"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące im. Powstańców Wielkopolskich w Tarnowie Podgórnym",
@@ -437,7 +498,9 @@ export const schools = [
             "Profil językowo - prawniczy",
             "Profil politechniczny",
             "Profil medyczno - przyrodniczy"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące im. Generałowej Jadwigi Zamoyskiej w Kórniku",
@@ -445,7 +508,9 @@ export const schools = [
             "HUMANISTYCZNO-DZIENNIKARSKA",
             "PRZYRODNICZA",
             "EKONOMICZNO-TURYSTYCZNA"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące im. Mikołaja Kopernika w Puszczykowie",
@@ -455,34 +520,44 @@ export const schools = [
             "grupa ekonomiczna",
             "grupa biznesowa",
             "przyrodnicza"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące w Rokietnicy",
         profiles: [
             "liceum ogólnokształcące"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
     },
     {
         schoolName: "Dwujęzyczne Liceum Ogólnokształcące w Luboniu",
         profiles: [
             "klasa dwujęzyczna z rozszerzonym j.polskim oraz biologią",
             "klasa dwujęzyczna z rozszerzoną matematyką i geografią"
-        ]
+        ],
+        city: "Gdańsk",
+        label: "High School"
     },
     {
         schoolName: "Publiczne Liceum Ogólnokształcące im. Romka Strzałkowskiego",
         profiles: [
             "Oddział Jeżyce",
             "Oddział Nieszawska"
-        ]
+        ],
+        city: "Warszawa",
+        label: "High School"
     },
     {
         schoolName: "Liceum Ogólnokształcące im. Romka Strzałkowskiego w Suchym Lesie",
         profiles: [
             "klasa 1A",
             "klasa 1B"
-        ]
+        ],
+        city: "Kraków",
+        label: "High School"
     },
     {
         schoolName: "Publiczne Liceum Ogólnokształcące Zakonu Pijarów im. św. Józefa Kalasancjusza w Poznaniu",
@@ -490,7 +565,120 @@ export const schools = [
             "klasa humanistyczna",
             "politechniczna",
             "medyczna"
-        ]
+        ],
+        city: "Poznań",
+        label: "High School"
+    },
+    // Adding vocational and technical schools
+    {
+        schoolName: "Zespół Szkół Zawodowych Nr 1",
+        profiles: [
+            "mechanik samochodowy",
+            "elektryk",
+            "technik informatyk",
+            "kucharz"
+        ],
+        city: "Warszawa",
+        label: "Vocational School"
+    },
+    {
+        schoolName: "Technikum Mechaniczne",
+        profiles: [
+            "technik mechanik",
+            "technik mechatronik",
+            "technik elektryk",
+            "technik energetyk"
+        ],
+        city: "Kraków",
+        label: "Technical School"
+    },
+    {
+        schoolName: "Zespół Szkół Gastronomicznych",
+        profiles: [
+            "kucharz",
+            "technik żywienia i usług gastronomicznych",
+            "cukiernik",
+            "kelner"
+        ],
+        city: "Poznań",
+        label: "Vocational School"
+    },
+    {
+        schoolName: "Technikum Budowlane",
+        profiles: [
+            "technik budownictwa",
+            "technik architektury krajobrazu",
+            "technik geodeta",
+            "technik robót wykończeniowych w budownictwie"
+        ],
+        city: "Gdańsk",
+        label: "Technical School"
+    },
+    {
+        schoolName: "Zespół Szkół Elektronicznych",
+        profiles: [
+            "technik elektronik",
+            "technik teleinformatyk",
+            "technik informatyk",
+            "technik programista"
+        ],
+        city: "Warszawa",
+        label: "Vocational School"
+    },
+    {
+        schoolName: "Technikum Informatyczne",
+        profiles: [
+            "technik informatyk",
+            "technik programista",
+            "technik teleinformatyk",
+            "technik grafiki i poligrafii cyfrowej"
+        ],
+        city: "Kraków",
+        label: "Technical School"
+    },
+    {
+        schoolName: "Zespół Szkół Odzieżowych",
+        profiles: [
+            "krawiec",
+            "technik przemysłu mody",
+            "technik technologii odzieży",
+            "technik usług fryzjerskich"
+        ],
+        city: "Poznań",
+        label: "Vocational School"
+    },
+    {
+        schoolName: "Technikum Elektryczne",
+        profiles: [
+            "technik elektryk",
+            "technik energetyk",
+            "technik elektronik",
+            "technik mechatronik"
+        ],
+        city: "Gdańsk",
+        label: "Technical School"
+    },
+    {
+        schoolName: "Zespół Szkół Chemicznych",
+        profiles: [
+            "technik analityk",
+            "technik ochrony środowiska",
+            "technik technologii chemicznej",
+            "technik laboratoriów chemicznych"
+        ],
+        city: "Warszawa",
+        label: "Vocational School"
+    },
+    {
+        schoolName: "Technikum Ekonomiczne",
+        profiles: [
+            "technik ekonomista",
+            "technik rachunkowości",
+            "technik handlowiec",
+            "technik logistyk"
+        ],
+        city: "Kraków",
+        label: "Technical School"
     }
 ];
 
@@ -565,14 +753,16 @@ export const universities = [
         name: 'Uniwersytet im. Adama Mickiewicza ',
         faculties: [
             79, 41, 50, 72, 20, 11, 9, 42, 8, 67, 13, 56, 38, 74, 64, 95, 83, 4, 25, 100, 68, 25, 49, 96, 27
-        ]
+        ],
+        city: 'Poznań'
 
     },
     {
         name: 'Politechnika',
         faculties: [
             43, 43, 87, 77, 4, 76, 51, 86, 2, 57
-        ]
+        ],
+        City: 'Wrocław'
     },
 
 ] 

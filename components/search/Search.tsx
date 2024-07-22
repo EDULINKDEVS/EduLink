@@ -23,9 +23,9 @@ const Search: React.FC = () => {
   const paginatedJobs = jobs.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
 
   return (
-    <Container>
+    <Container sx={{animation: '1s showAnimLev1 forwards', opacity: 0}}>
       <Box sx={{ mt: 5, textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, color: '#1976d2' }}>
+        <Typography variant="h3" sx={{ fontWeight: 700, color: 'white' }}>
           Oferty wybrane dla Ciebie
         </Typography>
       </Box>

@@ -5,7 +5,7 @@ import AddDescriptionView from './AddDescriptionView';
 import ProfileView from './ProfileView';
 
 const Profile = () => {
-  const [firstLogged, setFirstLogged] = useState(false);
+  const [firstLogged, setFirstLogged] = useState(true);
   const [steps, setSteps] = useState(0);
 
   return (

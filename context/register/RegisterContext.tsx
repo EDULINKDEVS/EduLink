@@ -14,6 +14,7 @@ type RegisterDataType = {
   status: "school" | "study" | null;
   school_level: "vocational" | "technical" | "high_school" | "";
   school_name: string;
+  school_city: string;
   dateOfBirth: Date;
 };
 
@@ -41,6 +42,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     status: null,
     school_level: '',
     school_name: '',
+    school_city: '',
     dateOfBirth: new Date()
   });
 

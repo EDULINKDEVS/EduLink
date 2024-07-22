@@ -28,16 +28,18 @@ const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
   return (
     <Box sx={{
         overflow: 'hidden',
-        height: '93%'
+        height: '93%',
+        padding: '2px'
     }}>
       <TextField
         fullWidth
+        
         variant="outlined"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Szukaj"
         
-        sx={{ marginBottom: 2 }}
+        sx={{ marginBottom: 2, }}
       />
       <List sx={{height: '100%', overflowY: 'auto' }} onScroll={(e) => {
         const bottom = e.currentTarget.scrollHeight - e.currentTarget.scrollTop === e.currentTarget.clientHeight;

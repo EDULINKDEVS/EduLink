@@ -14,9 +14,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
-import University from './University';
 import StudiesTabCreator from './StudiesTabCreator';
-import { ElevatorSharp } from '@mui/icons-material';
 
 const StyledPaper = styled(Paper)({
   width: '400px',
@@ -74,6 +72,19 @@ const StyledTextField = styled(TextField)({
   },
   width: '100%',
 });
+const cities = [
+  "Warszawa",
+  "Kraków",
+  "Łódź",
+  "Wrocław",
+  "Poznań",
+  "Gdańsk",
+  "Szczecin",
+  "Bydgoszcz",
+  "Lublin",
+  "Katowice"
+];
+
 
 const suggestions = [
   'Techniku asdmoipms',
@@ -153,6 +164,21 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
             {
               registerContext.registerData.school_level !== '' &&
               <>
+              <StyledPaper>
+              <Autocomplete
+                freeSolo
+                options={ci}
+                inputValue={registerContext.registerData.school_city}
+                onInputChange={handleInputChange}
+                renderInput={(params) => (
+                  <StyledTextField
+                    {...params}
+                    label="Miasto"
+                    variant="outlined"
+                  />
+                )}
+              />
+            </StyledPaper>
             <StyledPaper>
               <Autocomplete
                 freeSolo
