@@ -21,12 +21,12 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
   return (
     <ShowAnim>
 
-    <Container maxWidth="sm">
+    <Container className='ubuntu-medium' maxWidth="sm">
       <Box textAlign="center" mt={5}>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom color='white'>
           Dodaj swoje zdjęcie profilowe
         </Typography>
-        <Typography variant="subtitle1" component="p" gutterBottom>
+        <Typography variant="subtitle1" component="p" gutterBottom color='white'>
           Uśmiech tworzy dobre pierwsze wrażenie
         </Typography>
         <Box
@@ -39,11 +39,13 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
         >
           {!image ? (
             <>
-              <IconButton color="primary" aria-label="upload picture" component="label">
+              <IconButton  aria-label="upload picture" component="label" sx={{
+                color:"white"
+              }}>
                 <input hidden accept="image/*" type="file" onChange={handleImageUpload} />
                 <PhotoCamera style={{ fontSize: 40 }} />
               </IconButton>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant="body2" color="white">
                 Kliknij, aby dodać zdjęcie profilowe
               </Typography>
             </>
@@ -52,16 +54,23 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
               <img src={image} alt="Profile" style={{ width: '100%', height: 'auto', maxWidth: 200, borderRadius: '50%' }} />
               <IconButton
                 style={{ position: 'absolute', top: -10, right: -10 }}
-                color="secondary"
                 aria-label="delete picture"
                 onClick={handleRemoveImage}
+                
               >
                 <DeleteIcon />
               </IconButton>
             </Box>
           )}
         </Box>
-        <Button variant="contained" color="primary" onClick={()=>{setSteps(1)}}>
+        <Button sx={{
+          color: 'black',
+          backgroundColor: 'white',
+          '&:hover' : {
+                    backgroundColor: '#A758B5',
+                    color: 'white'
+                  }
+        }} variant="contained"  onClick={()=>{setSteps(1)}}>
           {image ? 'Dodaj zdjęcie' : 'Dalej'}
         </Button>
       </Box>

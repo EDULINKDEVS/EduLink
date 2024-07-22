@@ -213,7 +213,7 @@ export default function Pricing1() {
                   </Box>
                 ))}
               </CardContent>
-              <CardActions>
+              {/* <CardActions>
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Pakiet Profesionalny'
@@ -243,7 +243,7 @@ export default function Pricing1() {
                 >
                   {tier.buttonText}
                 </Button>
-              </CardActions>
+              </CardActions> */}
             </Card>
           </Grid>
         ))}

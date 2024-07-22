@@ -40,6 +40,7 @@ export default function Home() {
         </Grid>
 
       </Box>
+<<<<<<< HEAD
 
 
       <Box>
@@ -58,6 +59,28 @@ export default function Home() {
       <Box>
         <Grid container justifyContent={'center'} sx={{
           minHeight: '70vh',
+=======
+         
+         
+        <Box>
+          <Grid
+            item
+            xs={12}
+            display={"flex"}
+            justifyContent={"center"}
+            marginTop={"90px"}
+          >
+            <Slider />
+          </Grid>
+         </Box> 
+        
+        
+        <Box>
+          <Grid container justifyContent={'center'} sx={{
+          userSelect: 'none',
+          minHeight:'70vh', 
+
+>>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
         }}>
 
           <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'} sx={{
@@ -155,14 +178,55 @@ export default function Home() {
                 <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
                 <Button variant="contained" sx={{
                   position: 'absolute',
+<<<<<<< HEAD
                   bottom: -120, // Odstęp od dolnej krawędzi
                   fontSize: 20,
                   backgroundColor: 'white',
                   color: 'black',
+=======
+                
+                  top: 45,
+>>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
                   '&:hover': {
                     backgroundColor: '#A758B5',
                     color: 'white'
                   }
+<<<<<<< HEAD
+=======
+                }} />}
+                frontText={<div style={{
+                  top: 95,
+                  fontSize: 25,
+                  position: 'relative',
+                  fontFamily: 'playfair-display, sans-serif',
+                  fontWeight: '700',
+                  userSelect: 'none',
+                  fontStyle: 'normal'
+                }}><span className="non-selectable-text">JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</span></div>}
+                backText={<div style={{
+                  position: 'relative',
+                  fontSize: 25,
+                  fontFamily: 'playfair-display, sans-serif',
+                  fontWeight: '700',
+                  fontStyle: 'normal',
+                  height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                  <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
+                  <Button variant="contained" sx={{
+                    position: 'absolute',
+                    bottom: -120, // Odstęp od dolnej krawędzi
+                    fontSize: 20,
+                    backgroundColor: 'white',
+                    color: 'black',
+                    '&:hover' : {
+                      backgroundColor: '#A758B5',
+                      color: 'white'
+                    }
+>>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
 
                 }}
                   href="/register/company"

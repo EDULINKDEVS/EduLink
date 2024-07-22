@@ -32,12 +32,12 @@ const Search: React.FC = () => {
       <JobList jobs={paginatedJobs} />
       <Grid container spacing={2} justifyContent="center" sx={{ mt: 3 }}>
         <Grid item>
-          <Button variant="contained" color="primary" onClick={handlePrev} disabled={page === 0}>
+          <Button sx={{backgroundColor:'white' , color: '#A758B5', fontWeight:"600"}} variant="contained" onClick={handlePrev} disabled={page === 0}>
             Wróć
           </Button>
         </Grid>
         <Grid item>
-          <Button variant="contained" color="primary" onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
+          <Button sx={{backgroundColor:'white' , color: '#A758B5', fontWeight:"600"}} variant="contained"  onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
             Dalej
           </Button>
         </Grid>

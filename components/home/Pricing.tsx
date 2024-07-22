@@ -1,16 +1,20 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import Collapse from '@mui/material/Collapse';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const tiers = [
   {
@@ -18,15 +22,9 @@ const tiers = [
     price: '3,99',
     description: [
       'Mapowanie umiejętności',
-      // '2 GB of storage',
-      // 'Help center access',
-      // 'Email support',
     ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
   },
-
-    {
+  {
     title: 'Premium ',
     price: '4,99',
     description: [
@@ -34,22 +32,7 @@ const tiers = [
       'Podgląd firm w obszarze do 5 km',
       'Zaczepki limit: 3',
     ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
   },
-  
-  {
-    title: 'Premium +',
-    price: '23,49',
-    description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
-    ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
-  },
-
   {
     title: 'Pakiet Profesionalny',
     subheader: 'Polecane',
@@ -62,15 +45,29 @@ const tiers = [
       'Podgląd firm w obszarze do 25 km',
       'Dostęp do kalendarza eventów i targów branżowych',
     ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'contained',
-    
   },
-
-
+  {
+    title: 'Premium +',
+    price: '23,49',
+    description: [
+      'Mapowanie umiejętności',
+      'Podgląd firm w obszarze do 5 km',
+      'Zaczepki limit: 3',
+    ],
+  },
 ];
 
 export default function Pricing() {
+  const [expanded, setExpanded] = useState(Array(tiers.length).fill(false));
+
+  const handleExpandClick = (index: number) => {
+    setExpanded((prevExpanded) => {
+      const newExpanded = [...prevExpanded];
+      newExpanded[index] = !newExpanded[index];
+      return newExpanded;
+    });
+  };
+
   return (
     <Container
       id="pricing"
@@ -101,27 +98,24 @@ export default function Pricing() {
         </Typography>
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
-        {tiers.map((tier) => (
+        {tiers.map((tier, index) => (
           <Grid
             item
             key={tier.title}
             xs={12}
             sm={tier.title === 'Premium' ? 12 : 6}
-            md={3}   //tutaj zmieniam szerokość cenników 3 dla 4 cenników , 4 dla 3 cenników//
+            md={3} // tutaj zmieniam szerokość cenników 3 dla 4 cenników, 4 dla 3 cenników //
           >
             <Card
               sx={{
-                p: 2,
+                height: '200', // Stała wysokość karty
+                overflow: 'hidden', // Ukryj nadmiarową treść
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 4,
+                justifyContent: 'space-between',
                 border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
-                borderColor:
-                  tier.title === 'Pakiet Profesionalny' ? '3A758B5' : 'undefined',
-                background:
-                  tier.title === 'Pakiet Profesionalny'
-                    ? '#A758B5'
-                    : undefined,
+                borderColor: tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
+                background: tier.title === 'Pakiet Profesionalny' ? '#A758B5' : undefined,
               }}
             >
               <CardContent>
@@ -143,8 +137,6 @@ export default function Pricing() {
                       label={tier.subheader}
                       size="small"
                       sx={{
-                        background: (theme) =>
-                          theme.palette.mode === 'light' ? '' : 'none',
                         backgroundColor: 'primary.contrastText',
                         '& .MuiChip-label': {
                           color: 'primary.dark',
@@ -177,7 +169,7 @@ export default function Pricing() {
                     borderColor: 'black',
                   }}
                 />
-                {tier.description.map((line) => (
+                {tier.description.slice(0, 1).map((line) => (
                   <Box
                     key={line}
                     sx={{
@@ -185,61 +177,72 @@ export default function Pricing() {
                       display: 'flex',
                       gap: 1.5,
                       alignItems: 'center',
-                      
                     }}
                   >
                     <CheckCircleRoundedIcon
                       sx={{
                         width: 20,
-                        color:
-                          tier.title === 'Pakiet Profesionalny'
-                            ? 'white'
-                            : '#A758B5',
+                        color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
                       }}
                     />
                     <Typography
                       component="text"
                       variant="subtitle2"
                       sx={{
-                        color:
-                          tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
-                        fontSize: "15px"
+                        color: tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
+                        fontSize: '15px',
                       }}
                     >
                       {line}
                     </Typography>
                   </Box>
                 ))}
+                <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
+                  {tier.description.slice(1).map((line) => (
+                    <Box
+                      key={line}
+                      sx={{
+                        py: 1,
+                        display: 'flex',
+                        gap: 1.5,
+                        alignItems: 'center',
+                      }}
+                    >
+                      <CheckCircleRoundedIcon
+                        sx={{
+                          width: 20,
+                          color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                        }}
+                      />
+                      <Typography
+                        component="text"
+                        variant="subtitle2"
+                        sx={{
+                          color: tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
+                          fontSize: '15px',
+                        }}
+                      >
+                        {line}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Collapse>
               </CardContent>
-              <CardActions>
-                <Button sx={{
-                    backgroundColor:
-                    tier.title === 'Pakiet Profesionalny'
-                      ? 'white'
-                      : '#A758B5',
-
-                      color:
-                      tier.title === 'Pakiet Profesionalny'
-                      ? 'black'
-                      : 'white',
-
-
-                      
-                     ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
-                        backgroundColor: '#A758B5', color:'white',
-                     } : {
-                        backgroundColor: "white", color: 'black'
-                     }
-                      
-                      
+              <CardActions
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
-                  fullWidth
-                  variant={tier.buttonVariant as 'outlined' | 'contained'}
-                  component="a"
-                  href="/material-ui/getting-started/templates/checkout/"
-                  target="_blank"
+              >
+                <Button className='ubuntu-medium'
+                  sx={{
+                    textAlign: 'center',
+                    color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                  }}
+                  onClick={() => handleExpandClick(index)}
+                  endIcon={expanded[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                 >
-                  {tier.buttonText}
+                  {expanded[index] ? 'Pokaż mniej' : 'Pokaż więcej'}
                 </Button>
               </CardActions>
             </Card>
