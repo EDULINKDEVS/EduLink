@@ -18,14 +18,10 @@ const tiers = [
     price: '3,99',
     description: [
       'Mapowanie umiejętności',
-      // '2 GB of storage',
-      // 'Help center access',
-      // 'Email support',
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-  
   {
     title: 'Premium ',
     price: '4,99',
@@ -37,8 +33,6 @@ const tiers = [
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-  
-
   {
     title: 'Pakiet Profesionalny',
     subheader: 'Polecane',
@@ -53,10 +47,7 @@ const tiers = [
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'contained',
-    
   },
-
-    
   {
     title: 'Premium +',
     price: '23,49',
@@ -68,8 +59,6 @@ const tiers = [
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
   },
-
-
 ];
 
 export default function Pricing1() {
@@ -109,7 +98,7 @@ export default function Pricing1() {
             key={tier.title}
             xs={12}
             sm={tier.title === 'Premium' ? 12 : 6}
-            md={3}   //tutaj zmieniam szerokość cenników 3 dla 4 cenników , 4 dla 3 cenników//
+            md={3} // tutaj zmieniam szerokość cenników 3 dla 4 cenników, 4 dla 3 cenników //
           >
             <Card
               sx={{
@@ -118,12 +107,8 @@ export default function Pricing1() {
                 flexDirection: 'column',
                 gap: 4,
                 border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
-                borderColor:
-                  tier.title === 'Pakiet Profesionalny' ? '3A758B5' : 'undefined',
-                background:
-                  tier.title === 'Pakiet Profesionalny'
-                    ? '#A758B5'
-                    : undefined,
+                borderColor: tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
+                background: tier.title === 'Pakiet Profesionalny' ? '#A758B5' : undefined,
               }}
             >
               <CardContent>
@@ -145,8 +130,6 @@ export default function Pricing1() {
                       label={tier.subheader}
                       size="small"
                       sx={{
-                        background: (theme) =>
-                          theme.palette.mode === 'light' ? '' : 'none',
                         backgroundColor: 'primary.contrastText',
                         '& .MuiChip-label': {
                           color: 'primary.dark',
@@ -187,25 +170,20 @@ export default function Pricing1() {
                       display: 'flex',
                       gap: 1.5,
                       alignItems: 'center',
-                      
                     }}
                   >
                     <CheckCircleRoundedIcon
                       sx={{
                         width: 20,
-                        color:
-                          tier.title === 'Pakiet Profesionalny'
-                            ? 'white'
-                            : '#A758B5',
+                        color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
                       }}
                     />
                     <Typography
                       component="text"
                       variant="subtitle2"
                       sx={{
-                        color:
-                          tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
-                          fontSize: "15px"
+                        color: tier.title === 'Pakiet Profesionalny' ? 'grey.200' : undefined,
+                        fontSize: '15px',
                       }}
                     >
                       {line}
@@ -213,28 +191,26 @@ export default function Pricing1() {
                   </Box>
                 ))}
               </CardContent>
-              <CardActions>
-                <Button sx={{
-                    backgroundColor:
-                    tier.title === 'Pakiet Profesionalny'
-                      ? 'white'
-                      : '#A758B5',
-
-                      color:
-                      tier.title === 'Pakiet Profesionalny'
-                      ? 'black'
-                      : 'white',
-
-
-                      
-                     ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
-                        backgroundColor: '#A758B5', color:'white',
-                     } : {
-                        backgroundColor: "white", color: 'black'
-                     }
-                      
-                      
+              <CardActions
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
                 }}
+              >
+                <Button
+                  sx={{
+                    backgroundColor: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                    color: tier.title === 'Pakiet Profesionalny' ? 'black' : 'white',
+                    '&:hover': tier.title === 'Pakiet Profesionalny'
+                      ? {
+                          backgroundColor: '#A758B5',
+                          color: 'white',
+                        }
+                      : {
+                          backgroundColor: 'white',
+                          color: 'black',
+                        },
+                  }}
                   fullWidth
                   variant={tier.buttonVariant as 'outlined' | 'contained'}
                   component="a"
