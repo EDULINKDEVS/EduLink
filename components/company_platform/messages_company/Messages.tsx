@@ -17,7 +17,7 @@ const Messages = () => {
           <UserList onSelectUser={handleSelectUser} />
         </Paper>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          {selectedUser ? <Chat selectedUser={selectedUser} /> : <Typography variant="h5">Wybierz firmę, z którą chciałbyś czatować</Typography>}
+          {selectedUser ? <Chat selectedUser={selectedUser} /> : <Typography sx={{textAlign:'center', justifyContent: 'center', justifyItems: 'center', display: 'flex'}} variant="h5">Wybierz przyszłego pracownika, z którym chciałbyś czatować</Typography>}
         </Box>
         <Paper sx={{ width: 300, marginLeft: 2, padding: 2 }}>
           {selectedUser && (
