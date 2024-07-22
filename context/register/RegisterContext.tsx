@@ -15,13 +15,14 @@ type RegisterDataType = {
   school_level: "vocational" | "technical" | "high_school" | "";
   school_name: string;
   school_city: string;
+  school_profile: string;
   dateOfBirth: Date;
 };
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string, degree: degreeEnum, profile: string) => void;
-  handleEditSchool: (name: string, degree: degreeEnum, id: string, profile: string) => void;
+  handleAddSchool: (name: string,city:string, faculty:string, degree: degreeEnum) => void;
+  handleEditSchool: (name: string, city:string, faculty:string, degree: degreeEnum, id: string) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
   setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
@@ -43,27 +44,30 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     school_level: '',
     school_name: '',
     school_city: '',
+    school_profile: '',
     dateOfBirth: new Date()
   });
 
-  const handleAddSchool = (name: string, degree: degreeEnum, profile: string) => {
-    if (name && degree && profile) {
+  const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum) => {
+    if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
         name,
         degree,
-        profile
+        city,
+        faculty
       };
       dispatch({ type: registerSchoolsActions.ADD_SCHOOL, payload: newSchool });
     }
   };
 
-  const handleEditSchool = (name: string, degree: degreeEnum, id: string, profile: string) => {
+  const handleEditSchool = (name: string,city:string, faculty:string, degree: degreeEnum, id: string) => {
     const updatedSchool: School = {
       id,
       name,
+      city,
+      faculty,
       degree,
-      profile
     };
     dispatch({
       type: registerSchoolsActions.EDIT_SCHOOL,

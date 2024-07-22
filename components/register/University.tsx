@@ -1,90 +1,50 @@
 import {
   Box,
-  Paper,
   Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
   FormLabel,
   Autocomplete,
-  TextField,
   IconButton,
-  Grid
+  Grid,
+  Button
 } from '@mui/material';
 import React, { useContext, useEffect, useState, useCallback } from 'react';
-import styled from 'styled-components';
 import AddIcon from '@mui/icons-material/Add';
 import { degreeEnum } from '@/context/register/types';
 import { RegisterContext } from '@/context/register/RegisterContext';
-import DeleteIcon from '@mui/icons-material/Delete';
+import InList from './InList';
+import { StyledFormControl, StyledFormControlLabel, StyledPaper, StyledRadioGroup, StyledTextField, UniversityType } from './UniversityTypesAndFunctions';
+import { cities } from '@/context/schoolsData/exampleSchoolsData';
+import { generateUniversities } from './Validate';
 
-export type UniversityType = {
-  name?: string;
-  degree?: degreeEnum;
-  id?: string;
-}
 
-const StyledFormControl = styled(FormControl)({
-  width: '100%',
-});
 
-const StyledPaper = styled(Paper)({
-  marginTop: '20px',
-  width: '100%',
-  boxShadow: 'none',
-});
-
-const StyledRadioGroup = styled(RadioGroup)({
-  display: 'flex',
-  flexDirection: 'row',
-});
-
-const StyledFormControlLabel = styled(FormControlLabel)({
-  color: '#A758B5',
-  fontWeight: 'bold',
-  '& .MuiTypography-root': {
-    color: '#A758B5',
-    fontWeight: 'bold',
-  },
-});
-
-const StyledTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#A758B5',
-    },
-    '&:hover fieldset': {
-      borderColor: '#A758B5',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#A758B5',
-    },
-  },
-  '& .MuiInputBase-input': {
-    color: '#A758B5',
-  },
-  '& .MuiInputLabel-root': {
-    color: '#A758B5',
-  },
-  width: '100%',
-});
-
-const University = ({ name, degree, id }: UniversityType) => {
+const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   const registerContext = useContext(RegisterContext);
   const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
   const [currentName, setCurrentName] = useState('');
   const [duringStudies, setDuringStudies] = useState<boolean | null>(null);
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(true);
   const [addable, setAddable] = useState(false);
   const [facultyName, setFacultyName] = useState('');
   const [cityName, setCityName] = useState('');
-  const [profile, setProfile] = useState('');
+  const [citiesState, setCitiesState] = useState<string[]>([]);
+  const [universities, setUniversities] = useState<string[]>([]); 
+   useEffect(()=>{
+    setCitiesState(cities);
+  }, [cities])
+
+  
 
   useEffect(() => {
-    if (name && degree) {
+    if (id && name && degree && city && faculty) {
       setCurrentName(name);
       setCurrentDegree(degree);
       setDuringStudies(degree === degreeEnum.DURING);
+      setCityName(city);
+      setFacultyName(faculty);
+      setEdit(false);
+    }else{
+      setEdit(true);
     }
   }, [name, degree]);
 
@@ -94,22 +54,10 @@ const University = ({ name, degree, id }: UniversityType) => {
     } else {
       setAddable(false);
     }
-  }, [currentDegree, currentName, duringStudies, profile]);
+  }, [currentDegree, currentName, duringStudies]);
 
-  useEffect(() => {
-    const handleDataChanged = () => {
-      if (id) {
-        if (name !== currentName || degree !== currentDegree || (degree !== degreeEnum.DURING && duringStudies)) {
-          setEdit(true);
-        } else {
-          setEdit(false);
-        }
-      }
-    };
 
-    handleDataChanged();
-  }, [currentName, currentDegree, duringStudies, id, name, degree]);
-
+ 
   const suggestions = [
     'Techniku asdmoipms',
     'Option 2',
@@ -130,34 +78,31 @@ const University = ({ name, degree, id }: UniversityType) => {
     setCityName(value);
   }, []);
 
-  const handleProfileInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
-    setProfile(value);
-  }, []);
-
   const handleAdd = useCallback(() => {
+
     if (id) {
       if (duringStudies) {
         setCurrentDegree(degreeEnum.DURING);
         currentDegree &&
-        registerContext?.handleEditSchool(currentName, currentDegree, id, profile);
+        registerContext?.handleEditSchool(cityName, facultyName, currentName, currentDegree, id);
       } else {
         currentDegree &&
-        registerContext?.handleEditSchool(currentName, currentDegree, id, profile);
+        registerContext?.handleEditSchool(cityName, facultyName, currentName, currentDegree, id);
       }
     } else {
       if (duringStudies) {
-        registerContext?.handleAddSchool(currentName, degreeEnum.DURING, profile);
+        registerContext?.handleAddSchool(cityName, facultyName, currentName, degreeEnum.DURING);
       } else {
         currentDegree &&
-        registerContext?.handleAddSchool(currentName, currentDegree, profile);
+        registerContext?.handleAddSchool(cityName, facultyName, currentName, currentDegree);
       }
       setCurrentDegree(null);
       setCurrentName('');
       setDuringStudies(null);
-      setProfile('');
+      setFacultyName('');
+      setCityName('');      
     }
-    setEdit(false);
-  }, [currentName, currentDegree, id, duringStudies, registerContext, profile]);
+  }, [currentName, currentDegree, id, duringStudies, registerContext, facultyName, cityName]);
 
   const handleDelete = useCallback(() => {
     if (id) {
@@ -167,49 +112,64 @@ const University = ({ name, degree, id }: UniversityType) => {
 
   const validate = () => {
     if (duringStudies) {
-      return currentName.length > 0 && profile.length > 0;
+      return currentName.length > 0 && facultyName.length > 0 && cityName.length > 0;
     }
-    return currentName.length > 0 && currentDegree && profile.length > 0;
+    return currentName.length > 0 && currentDegree && facultyName.length > 0 && cityName.length;
   }
-
   return (
     <React.Fragment>
-      <Grid container>
-        <Grid item xs={10} width={'100%'}>
+ 
+
+      {
+        edit 
+        ?
+        
+        <Box>
           <StyledFormControl>
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={suggestions}
+                options={citiesState}
                 inputValue={cityName}
+                onBlur={() => {
+                  setUniversities(generateUniversities(cityName));
+              }}
                 onInputChange={handleCityInputChange}
                 renderInput={(params) => (
                   <StyledTextField
-                    {...params}
-                    label="Miasto"
+                  {...params}
+                  label="Miasto"
                     variant="outlined"
+                    />
+                  )}
                   />
-                )}
-              />
             </StyledPaper>
           </StyledFormControl>
-          <StyledFormControl>
+          {
+            cityName !== ''&&
+            <StyledFormControl>
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={suggestions}
+
+                options={universities}
                 inputValue={currentName}
                 onInputChange={handleInputChange}
                 renderInput={(params) => (
                   <StyledTextField
-                    {...params}
-                    label="Nazwa szkoły"
-                    variant="outlined"
+                  {...params}
+                  label="Nazwa szkoły"
+                  variant="outlined"
                   />
                 )}
-              />
+                />
             </StyledPaper>
           </StyledFormControl>
+          }
+          
+          {
+            (currentName !== '' && cityName !== '' ) &&
+            <>
           <StyledFormControl>
             <StyledPaper>
               <Autocomplete
@@ -219,29 +179,12 @@ const University = ({ name, degree, id }: UniversityType) => {
                 onInputChange={handleFacultyInputChange}
                 renderInput={(params) => (
                   <StyledTextField
-                    {...params}
-                    label="Nazwa wydziału"
-                    variant="outlined"
+                  {...params}
+                  label="Kierunek"
+                  variant="outlined"
                   />
                 )}
-              />
-            </StyledPaper>
-          </StyledFormControl>
-          <StyledFormControl>
-            <StyledPaper>
-              <Autocomplete
-                freeSolo
-                options={suggestions}
-                inputValue={profile}
-                onInputChange={handleProfileInputChange}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    label="Profil"
-                    variant="outlined"
-                  />
-                )}
-              />
+                />
             </StyledPaper>
           </StyledFormControl>
           <StyledFormControl>
@@ -251,11 +194,13 @@ const University = ({ name, degree, id }: UniversityType) => {
               onChange={(event) => {
                 setDuringStudies(event.target.value === 'during');
               }}
-            >
+              >
               <StyledFormControlLabel value="during" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
               <StyledFormControlLabel value="absolwent" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
             </StyledRadioGroup>
           </StyledFormControl>
+          </>
+          }
           {
             (!duringStudies && duringStudies !== null) &&
             <StyledFormControl>
@@ -265,7 +210,7 @@ const University = ({ name, degree, id }: UniversityType) => {
                 onChange={(event) => {
                   setCurrentDegree(event.target.value as degreeEnum);
                 }}
-              >
+                >
                 <StyledFormControlLabel value={degreeEnum.BACHELOR} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Licencjat" />
                 <StyledFormControlLabel value={degreeEnum.ENGINEER} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Inżynier" />
                 <StyledFormControlLabel value={degreeEnum.MASTER} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Magister" />
@@ -273,26 +218,16 @@ const University = ({ name, degree, id }: UniversityType) => {
               </StyledRadioGroup>
             </StyledFormControl>
           }
-        </Grid>
-        <Grid item xs={2}>
-          <Box display="flex" sx={{ width: '100%', height: '100%' }} justifyContent="center" alignItems="center" marginTop={2}>
-            {id ? (
-              (edit && addable) ?
-                <IconButton color="secondary" onClick={handleAdd}>
-                  <AddIcon />
-                </IconButton>
-                :
-                <IconButton color="secondary" onClick={handleDelete}>
-                  <DeleteIcon />
-                </IconButton>
-            ) : (
-              addable && <IconButton color="secondary" onClick={handleAdd}>
-                <AddIcon />
-              </IconButton>
-            )}
-          </Box>
-        </Grid>
-      </Grid>
+          {
+                 addable && <Button color="secondary" onClick={handleAdd}>
+                Dodaj <AddIcon />
+              </Button>
+}
+      </Box>
+      :
+      (id && currentDegree )?<InList id={id} name={currentName} city={cityName} degree={currentDegree} deleteFunction={handleDelete} editFunction={(value: boolean) => {setEdit(value)}}/> : `id: ${id} town: ${currentName}`
+    }
+    
     </React.Fragment>
   );
 };

@@ -146,7 +146,24 @@ export const faculty = [
     {name: "Zmiany klimatu Ziemi", id: 145, features_1: [1, 7, 15, 22, 30, 323], features_2: [2, 8, 16, 23, 31, 324]}
 ];
 
-
+export const cities = [
+    "Warszawa",
+    "Kraków",
+    "Łódź",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Szczecin",
+    "Bydgoszcz",
+    "Lublin",
+    "Katowice",
+    "Białystok",
+    "Gdynia",
+    "Częstochowa",
+    "Radom",
+    "Toruń"
+  ];
+  
 export const schools = [
     {
         schoolName: "Liceum Ogólnokształcące św. Marii Magdaleny",
@@ -748,7 +765,7 @@ export const traits = [
 ];
 
 
-export const universities = [
+export const univercities = [
     {
         name: 'Uniwersytet im. Adama Mickiewicza ',
         faculties: [
@@ -762,8 +779,133 @@ export const universities = [
         faculties: [
             43, 43, 87, 77, 4, 76, 51, 86, 2, 57
         ],
-        City: 'Wrocław'
+        city: 'Wrocław'
     },
+    {
+        name: 'Uniwersytet Jagielloński',
+        faculties: [
+            10, 12, 23, 45, 32, 61, 75, 81, 91, 94, 58, 63, 70, 18, 66, 33, 7, 29, 52, 89
+        ],
+        city: 'Kraków'
+    },
+    {
+        name: 'Uniwersytet Warszawski',
+        faculties: [
+            3, 5, 15, 17, 26, 28, 30, 35, 37, 39, 44, 46, 47, 53, 55, 59, 60, 62, 65, 71
+        ],
+        city: 'Warszawa'
+    },
+    {
+        name: 'Uniwersytet Wrocławski',
+        faculties: [
+            1, 6, 14, 16, 19, 21, 22, 24, 31, 34, 36, 40, 48, 54, 73, 78, 80, 82, 84, 88
+        ],
+        city: 'Wrocław'
+    },
+    {
+        name: 'Politechnika Warszawska',
+        faculties: [
+            2, 5, 13, 15, 25, 27, 34, 38, 41, 45, 49, 53, 58, 61, 67, 72, 74, 79, 85, 93
+        ],
+        city: 'Warszawa'
+    },
+    {
+        name: 'Uniwersytet Gdański',
+        faculties: [
+            7, 9, 11, 20, 23, 26, 29, 32, 35, 39, 42, 46, 50, 52, 55, 57, 60, 64, 68, 75
+        ],
+        city: 'Gdańsk'
+    },
+    {
+        name: 'Politechnika Gdańska',
+        faculties: [
+            4, 8, 12, 16, 19, 21, 24, 28, 31, 36, 40, 44, 48, 51, 54, 59, 62, 65, 69, 73
+        ],
+        city: 'Gdańsk'
+    },
+    {
+        name: 'Uniwersytet Śląski',
+        faculties: [
+            5, 10, 14, 18, 22, 25, 30, 33, 37, 41, 43, 47, 51, 56, 59, 63, 66, 70, 76, 81
+        ],
+        city: 'Katowice'
+    },
+    {
+        name: 'Politechnika Śląska',
+        faculties: [
+            6, 13, 17, 20, 24, 27, 31, 34, 38, 42, 45, 49, 52, 55, 58, 61, 65, 71, 77, 83
+        ],
+        city: 'Gliwice'
+    },
+    {
+        name: 'Uniwersytet Łódzki',
+        faculties: [
+            8, 12, 16, 19, 22, 26, 29, 32, 36, 39, 43, 46, 50, 53, 57, 60, 64, 68, 72, 79
+        ],
+        city: 'Łódź'
+    },
+    {
+        name: 'Politechnika Łódzka',
+        faculties: [
+            3, 7, 11, 14, 17, 21, 25, 28, 32, 35, 38, 41, 45, 48, 51, 55, 58, 62, 66, 70
+        ],
+        city: 'Łódź'
+    },
+    {
+        name: 'Uniwersytet im. Marii Curie-Skłodowskiej',
+        faculties: [
+            2, 9, 13, 18, 22, 27, 30, 34, 37, 42, 46, 50, 54, 58, 63, 67, 71, 75, 78, 84
+        ],
+        city: 'Lublin'
+    },{
+        name: 'Uniwersytet Przyrodniczy w Poznaniu',
+        faculties: [
+            5, 14, 18, 27, 31, 34, 39, 43, 48, 51, 55, 60, 63, 68, 72, 76, 80, 85, 89, 94
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Uniwersytet Ekonomiczny w Poznaniu',
+        faculties: [
+            3, 7, 12, 19, 23, 28, 33, 38, 42, 47, 50, 54, 59, 64, 69, 73, 77, 82, 87, 92
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Akademia Muzyczna im. Ignacego Jana Paderewskiego w Poznaniu',
+        faculties: [
+            2, 8, 13, 17, 22, 26, 30, 36, 40, 45, 49, 53, 57, 62, 66, 71, 75, 79, 84, 90
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Politechnika Poznańska',
+        faculties: [
+            1, 6, 11, 15, 20, 25, 29, 35, 41, 44, 48, 52, 58, 61, 65, 70, 74, 78, 83, 88
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Akademia Wychowania Fizycznego w Poznaniu',
+        faculties: [
+            4, 9, 16, 21, 24, 27, 32, 37, 41, 46, 50, 56, 60, 64, 68, 73, 77, 81, 86, 91
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Akademia Sztuk Pięknych w Poznaniu',
+        faculties: [
+            5, 10, 14, 19, 23, 28, 32, 38, 43, 47, 51, 55, 60, 65, 69, 74, 79, 84, 89, 93
+        ],
+        city: 'Poznań'
+    },
+    {
+        name: 'Wyższa Szkoła Bankowa w Poznaniu',
+        faculties: [
+            7, 12, 18, 22, 26, 31, 35, 40, 44, 49, 53, 58, 62, 67, 71, 76, 80, 85, 90, 95
+        ],
+        city: 'Poznań'
+    }
 
 ] 
 
