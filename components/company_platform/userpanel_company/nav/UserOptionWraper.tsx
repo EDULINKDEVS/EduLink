@@ -19,7 +19,7 @@ const options = [
     label: "Profil",
   },
   { id: "messages", icon: <FaEnvelope />, label: "Wiadomości" },
-  { id: "search", icon: <FaSearch />, label: "Szukaj ofert" },
+  { id: "search", icon: <FaSearch />, label: "Szukaj pracowników" },
   { id: "settings", icon: <FaCog />, label: "Ustawienia profilu" },
   { id: "back", icon: <KeyboardArrowRightIcon sx={{fontSize: '2em'}}/>, label: "Wróć" },
 

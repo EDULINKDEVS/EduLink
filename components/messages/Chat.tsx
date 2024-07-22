@@ -36,7 +36,8 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
             <ListItemText
               primary={msg.content}
               sx={{
-                backgroundColor: msg.sender === 'User' ? '#cfe8fc' : '#f0f0f0',
+                backgroundColor: msg.sender === 'User' ? '#A758B5' : 'white',
+                color: msg.sender === 'User' ? 'white' : '#A758B5',
                 borderRadius: 2,
                 padding: 1,
                 maxWidth: '75%',
@@ -47,6 +48,28 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
       </List>
       <Box display="flex" mt={2}>
         <TextField
+         InputProps={{
+          sx: {
+            color: 'black', // Kolor wpisywanego tekstu
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#A758B5', // Kolor obramowania
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#A758B5', // Kolor obramowania podczas hover
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#A758B5', // Kolor obramowania podczas focus
+            },
+          },
+        }}
+        InputLabelProps={{
+          sx: {
+            color: 'black', // Kolor tekstu etykiety
+            '&.Mui-focused': {
+              color: '#A758B5', // Kolor tekstu etykiety podczas focus
+            },
+          },
+        }}
           fullWidth
           variant="outlined"
           value={input}
@@ -54,7 +77,15 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
           onKeyPress={handleKeyPress}
           placeholder="Wpisz wiadomość..."
         />
-        <Button variant="contained" color="primary" onClick={handleSend} sx={{ marginLeft: 1 }}>
+        <Button sx={{
+          backgroundColor: '#A758B5',
+          marginLeft: 1,
+
+        '&:hover' : {
+                    backgroundColor: '#A758B5',
+                    color: 'white' }
+
+        }} variant="contained"  onClick={handleSend} >
           Wyślij
         </Button>
       </Box>
