@@ -16,15 +16,15 @@ import Pricing1 from "@/components/home/Pricing1";
 export default function Home() {
   return (
     <Box
-      sx={{
-        minHeight: "100vh",
-        minWidth: "200px",
-        maxWidth: "1200px",
-        width: "80%",
-        mx: "auto",
-      }}
-    >
-      <AppAppBar />
+    sx={{
+      minHeight: "100vh",
+      minWidth: "200px",
+      maxWidth: "1200px",
+      width: "80%",
+      mx: "auto",
+    }}
+  >
+    <AppAppBar />
 
       <Box>
         <Grid container justifyContent={"center"} alignItems={"center"}>
@@ -37,29 +37,9 @@ export default function Home() {
           >
             <Page />
           </Grid>
-        </Grid>
+          </Grid>
 
       </Box>
-<<<<<<< HEAD
-
-
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
-          <Slider />
-        </Grid>
-      </Box>
-
-
-      <Box>
-        <Grid container justifyContent={'center'} sx={{
-          minHeight: '70vh',
-=======
          
          
         <Box>
@@ -76,26 +56,21 @@ export default function Home() {
         
         
         <Box>
-          <Grid container justifyContent={'center'} sx={{
-          userSelect: 'none',
-          minHeight:'70vh', 
-
->>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
+          <Grid container justifyContent={'center'}  sx={{
+          minHeight:'70vh',
         }}>
-
-          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'} sx={{
-            userSelect: 'none',
-          }}>
+          
+          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
             <CardFlip
-              frontIcon={<SchoolIcon sx={{
-                fontSize: '150px',
+              frontIcon= {<SchoolIcon sx={{
+                fontSize:'150px',
                 transition: '.4s',
                 cursor: 'pointer',
                 position: 'absolute',
                 top: 45,
-                '&:hover': {
+                  '&:hover': {
                   transform: 'rotateZ(5deg) scale(1.3)',
-
+                
                 },
 
               }}
@@ -106,8 +81,8 @@ export default function Home() {
                 position: 'relative',
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
-                fontStyle: 'normal',
-
+                fontStyle: 'normal',                  
+                
               }}>JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY</div>}
               backText={<div style={{
                 position: 'relative',
@@ -128,71 +103,32 @@ export default function Home() {
                   fontSize: 20,
                   backgroundColor: 'white',
                   color: 'black',
-                  '&:hover': {
+                  '&:hover' : {
                     backgroundColor: '#A758B5',
                     color: 'white'
                   }
-
+                 
 
                 }}
-                  href="/register/student"
+                href="/register/student"
                 >Rejestracja</Button>
               </div>}
-
+            
             />
           </Grid>
 
           <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
             <CardFlip
-              frontIcon={<HandshakeIcon sx={{
-                fontSize: '150px',
-                transition: '.4s',
-                cursor: 'pointer',
-                position: 'absolute',
-                top: 45,
-                '&:hover': {
-                  transform: 'rotateZ(5deg) scale(1.3)',
-                }
-              }} />}
-              frontText={<div style={{
-                top: 95,
-                fontSize: 25,
-                position: 'relative',
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-                userSelect: 'none'
-              }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
-              backText={<div style={{
-                position: 'relative',
-                fontSize: 25,
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-                height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-                <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
-                <Button variant="contained" sx={{
+                frontIcon={<HandshakeIcon sx={{
+                  fontSize: '150px',
+                  transition: '.4s',
+                  cursor: 'pointer',
                   position: 'absolute',
-<<<<<<< HEAD
-                  bottom: -120, // Odstęp od dolnej krawędzi
-                  fontSize: 20,
-                  backgroundColor: 'white',
-                  color: 'black',
-=======
-                
+                  userSelect: 'none',
                   top: 45,
->>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
                   '&:hover': {
-                    backgroundColor: '#A758B5',
-                    color: 'white'
+                    transform: 'rotateZ(5deg) scale(1.3)',
                   }
-<<<<<<< HEAD
-=======
                 }} />}
                 frontText={<div style={{
                   top: 95,
@@ -200,9 +136,9 @@ export default function Home() {
                   position: 'relative',
                   fontFamily: 'playfair-display, sans-serif',
                   fontWeight: '700',
-                  userSelect: 'none',
-                  fontStyle: 'normal'
-                }}><span className="non-selectable-text">JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</span></div>}
+                  fontStyle: 'normal',
+                  userSelect: 'none'
+                }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
                 backText={<div style={{
                   position: 'relative',
                   fontSize: 25,
@@ -226,58 +162,57 @@ export default function Home() {
                       backgroundColor: '#A758B5',
                       color: 'white'
                     }
->>>>>>> 781af63f33dc8e5e5f2628762b1130daefae0496
 
-                }}
+                  }}
                   href="/register/company"
-                >Rejestracja</Button>
-              </div>}
-            />
+                  >Rejestracja</Button>
+                </div>}
+              />
+            </Grid>
+
           </Grid>
+        </Box>
 
-        </Grid>
-      </Box>
+        <Box>
+          <Grid
+            item
+            xs={12}
+            display={"flex"}
+            justifyContent={"center"}
+            marginTop={"90px"}
+          >
+            <Pricing1 />
+          </Grid>
+         </Box>
 
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
-          <Pricing1 />
-        </Grid>
-      </Box>
+         <Box>
+          <Grid
+            item
+            xs={12}
+            display={"flex"}
+            justifyContent={"center"}
+            marginTop={"90px"}
+          >
+            <Pricing />
+          </Grid>
+         </Box>
 
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
-          <Pricing />
-        </Grid>
-      </Box>
-
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
-          <PricingCom />
-        </Grid>
-      </Box>
+        <Box>
+          <Grid 
+           item
+           xs={12}
+           display={"flex"}
+           justifyContent={"center"}
+           marginTop={"90px"}
+           >
+            <PricingCom/>
+           </Grid>
+        </Box>
 
 
-    </Box>
-
-
-
-  );
-}
+       </Box>
+      
+      
+      
+    );
+  }
