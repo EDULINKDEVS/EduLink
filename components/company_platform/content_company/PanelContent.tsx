@@ -1,12 +1,13 @@
-import { optionsEnum } from "@/pages/userpanel";
-import { Box, Typography } from "@mui/material";
+import { optionsEnum } from "@/pages/userpanel_company";
+import { Box } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import Calendar from "../calendar_company/Calendar";
 import Profile from "../profile_company/Profile";
 import Messages from "../messages_company/Messages";
 import Search from "../search_company/Search";
 import Settings from "../settings_company/Settings";
-import ShowAnim from "../helpers_company/ShowAnim";
+import PlusOfferCompany from "../plus_offer_company/plus_offer";
+import WatchOffer from "@/components/company_platform/watch_offer_company/WatchOffer";
 
 const PanelContent = ({ id }: { id: string }) => {
     const [acContent, setAcContent] = useState<ReactNode | null>(null);
@@ -26,6 +27,12 @@ const PanelContent = ({ id }: { id: string }) => {
                 break;
             case optionsEnum.SEARCH: 
                 setAcContent(<Search />)
+                break;
+            case optionsEnum.PLUS_OFFER_COMPANY:
+                setAcContent(<PlusOfferCompany />)
+                break;
+            case optionsEnum.WATCH_OFFER:
+                setAcContent(<WatchOffer />)
                 break;
             default:
                 setAcContent(null);

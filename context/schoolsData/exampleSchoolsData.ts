@@ -764,6 +764,49 @@ export const traits = [
     { name: "Zorientowany na cel", id: 62, popularity: 196 },
 ];
 
+export const hardSkills = [
+    { name: "Programowanie w Java", id: 63, popularity: 287 },
+    { name: "Analiza danych", id: 64, popularity: 254 },
+    { name: "Zarządzanie projektami", id: 65, popularity: 310 },
+    { name: "Znajomość SQL", id: 66, popularity: 276 },
+    { name: "Tworzenie stron internetowych", id: 67, popularity: 289 },
+    { name: "Obsługa systemów ERP", id: 68, popularity: 198 },
+    { name: "Testowanie oprogramowania", id: 69, popularity: 203 },
+    { name: "Tworzenie aplikacji mobilnych", id: 70, popularity: 254 },
+    { name: "Zarządzanie bazami danych", id: 71, popularity: 275 },
+    { name: "Projektowanie graficzne", id: 72, popularity: 285 },
+    { name: "Znajomość języka Python", id: 73, popularity: 290 },
+    { name: "Tworzenie interfejsów użytkownika", id: 74, popularity: 263 },
+    { name: "Administrowanie systemami operacyjnymi", id: 75, popularity: 278 },
+    { name: "Inżynieria oprogramowania", id: 76, popularity: 299 },
+    { name: "Znajomość JavaScript", id: 77, popularity: 305 },
+    { name: "Tworzenie raportów", id: 78, popularity: 187 },
+    { name: "Zarządzanie kampaniami marketingowymi", id: 79, popularity: 240 },
+    { name: "Znajomość narzędzi DevOps", id: 80, popularity: 267 },
+    { name: "Obsługa programu Excel", id: 81, popularity: 279 },
+    { name: "Projektowanie systemów", id: 82, popularity: 233 },
+    { name: "Modelowanie procesów biznesowych", id: 83, popularity: 197 },
+    { name: "Znajomość języka C#", id: 84, popularity: 265 },
+    { name: "Analiza finansowa", id: 85, popularity: 256 },
+    { name: "Znajomość systemów CRM", id: 86, popularity: 217 },
+    { name: "Znajomość narzędzi analitycznych", id: 87, popularity: 248 },
+    { name: "Znajomość technologii chmurowych", id: 88, popularity: 269 },
+    { name: "Programowanie w języku R", id: 89, popularity: 205 },
+    { name: "Automatyzacja testów", id: 90, popularity: 222 },
+    { name: "Obsługa oprogramowania CAD", id: 91, popularity: 198 },
+    { name: "Znajomość języka PHP", id: 92, popularity: 231 },
+    { name: "Zarządzanie zespołami", id: 93, popularity: 283 },
+    { name: "Tworzenie treści SEO", id: 94, popularity: 209 },
+    { name: "Znajomość narzędzi BI", id: 95, popularity: 247 },
+    { name: "Znajomość języka Swift", id: 96, popularity: 221 },
+    { name: "Znajomość języka Kotlin", id: 97, popularity: 233 },
+    { name: "Znajomość języka Ruby", id: 98, popularity: 217 },
+    { name: "Tworzenie i zarządzanie API", id: 99, popularity: 258 },
+    { name: "Znajomość narzędzi CI/CD", id: 100, popularity: 275 },
+    { name: "Znajomość narzędzi monitorujących", id: 101, popularity: 265 },
+];
+
+
 
 export const univercities = [
     {

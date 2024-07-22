@@ -6,6 +6,8 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { AccountBox } from "@mui/icons-material";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 const options = [
   {
     id: "profile",
@@ -18,10 +20,13 @@ const options = [
     ),
     label: "Profil",
   },
+  {id:  "watchOffer", icon: <LocalOfferIcon sx={{fontSize:"50px"}} />, label: "Przejrzyj swoje oferty" },
+  { id: "plusOffer", icon: <AddCircleOutlineIcon sx={{fontSize:"50px"}} />, label: "Dodaj ofertę" },
   { id: "messages", icon: <FaEnvelope />, label: "Wiadomości" },
   { id: "search", icon: <FaSearch />, label: "Szukaj pracowników" },
   { id: "settings", icon: <FaCog />, label: "Ustawienia profilu" },
   { id: "back", icon: <KeyboardArrowRightIcon sx={{fontSize: '2em'}}/>, label: "Wróć" },
+
 
 ];
 
