@@ -192,7 +192,7 @@ export default function PricingCom() {
                   </Box>
                 ))}
               </CardContent>
-              <CardActions>
+              {/* <CardActions>
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Profesionalne'
@@ -222,7 +222,7 @@ export default function PricingCom() {
                 >
                   {tier.buttonText}
                 </Button>
-              </CardActions>
+              </CardActions> */}
             </Card>
           </Grid>
         ))}

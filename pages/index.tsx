@@ -56,8 +56,10 @@ export default function Home() {
         
         
         <Box>
-          <Grid container justifyContent={'center'}  sx={{
-          minHeight:'70vh',
+          <Grid container justifyContent={'center'} sx={{
+          userSelect: 'none',
+          minHeight:'70vh', 
+
         }}>
           
           <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
@@ -124,6 +126,7 @@ export default function Home() {
                   transition: '.4s',
                   cursor: 'pointer',
                   position: 'absolute',
+                
                   top: 45,
                   '&:hover': {
                     transform: 'rotateZ(5deg) scale(1.3)',
@@ -135,8 +138,9 @@ export default function Home() {
                   position: 'relative',
                   fontFamily: 'playfair-display, sans-serif',
                   fontWeight: '700',
+                  userSelect: 'none',
                   fontStyle: 'normal'
-                }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
+                }}><span className="non-selectable-text">JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</span></div>}
                 backText={<div style={{
                   position: 'relative',
                   fontSize: 25,

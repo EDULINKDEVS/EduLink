@@ -234,7 +234,7 @@ export default function Pricing() {
                   justifyContent: 'center',
                 }}
               >
-                <Button
+                <Button className='ubuntu-medium'
                   sx={{
                     textAlign: 'center',
                     color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
