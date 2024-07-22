@@ -4,11 +4,13 @@ import Useroption from "./Useroption";
 import { FaCog, FaEnvelope, FaSearch, FaCalendarAlt } from "react-icons/fa";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { AccountBox } from "@mui/icons-material";
 const options = [
   {
     id: "profile",
     icon: (
-      <PermIdentityIcon
+      <AccountBox
         style={{
           fontSize: "1.6em",
         }}
