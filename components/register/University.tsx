@@ -13,6 +13,8 @@ import { degreeEnum } from '@/context/register/types';
 import { RegisterContext } from '@/context/register/RegisterContext';
 import InList from './InList';
 import { StyledFormControl, StyledFormControlLabel, StyledPaper, StyledRadioGroup, StyledTextField, UniversityType } from './UniversityTypesAndFunctions';
+import { cities } from '@/context/schoolsData/exampleSchoolsData';
+import { generateUniversities } from './Validate';
 
 
 
@@ -25,7 +27,14 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   const [addable, setAddable] = useState(false);
   const [facultyName, setFacultyName] = useState('');
   const [cityName, setCityName] = useState('');
+  const [citiesState, setCitiesState] = useState<string[]>([]);
+  const [universities, setUniversities] = useState<string[]>([]); 
+   useEffect(()=>{
+    setCitiesState(cities);
+  }, [cities])
+
   
+
   useEffect(() => {
     if (id && name && degree && city && faculty) {
       setCurrentName(name);
@@ -120,8 +129,11 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={suggestions}
+                options={citiesState}
                 inputValue={cityName}
+                onBlur={() => {
+                  setUniversities(generateUniversities(cityName));
+              }}
                 onInputChange={handleCityInputChange}
                 renderInput={(params) => (
                   <StyledTextField
@@ -139,7 +151,8 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={suggestions}
+
+                options={universities}
                 inputValue={currentName}
                 onInputChange={handleInputChange}
                 renderInput={(params) => (
