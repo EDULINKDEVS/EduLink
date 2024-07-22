@@ -16,7 +16,8 @@ export enum registerSchoolsActions {
     id: string;
     name: string;
     degree: degreeEnum;
-    profile: string;
+    city:string;
+    faculty:string;
   }
   
   export type Action =

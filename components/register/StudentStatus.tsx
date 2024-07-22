@@ -21,7 +21,7 @@ const StyledPaper = styled(Paper)({
   backgroundColor: '#fff',
   boxShadow: 'none',
   marginTop: 20,
-  
+
 });
 
 const StyledRadioGroup = styled(RadioGroup)({
@@ -101,7 +101,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
     const status = event.currentTarget.value as "school" | "study" | null;
     registerContext?.setRegisterData({
       ...registerContext.registerData,
-      status
+      status,
+
     });
   };
 
@@ -109,7 +110,10 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
     const schoolType = event.currentTarget.value as "vocational" | "technical" | "high_school";
     registerContext?.setRegisterData({
       ...registerContext.registerData,
-      school_level: schoolType
+      school_level: schoolType,
+      school_city: '',
+      school_name: '',
+      school_profile: ''
     });
   };
 
@@ -117,28 +121,40 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
     setStep(2);
   };
 
-  const handleInputChange = (event: React.SyntheticEvent, value: string) => {
+  const handleInputChangeCity = (event: React.SyntheticEvent, value: string) => {
+    registerContext?.setRegisterData({
+      ...registerContext.registerData,
+      school_city: value,
+    });
+  };
+  const handleInputChangeName = (event: React.SyntheticEvent, value: string) => {
     registerContext?.setRegisterData({
       ...registerContext.registerData,
       school_name: value,
     });
   };
-  const validate = () =>{
-    if(registerContext?.registerData.status === 'study'){
-      if(registerContext.schools.length > 0){
+  const handleInputChangeProfil = (event: React.SyntheticEvent, value: string) => {
+    registerContext?.setRegisterData({
+      ...registerContext.registerData,
+      school_profile: value,
+    });
+  };
+  const validate = () => {
+    if (registerContext?.registerData.status === 'study') {
+      if (registerContext.schools.length > 0) {
         return true;
       }
     }
-    else if(registerContext?.registerData.status === 'school'){
-        if(registerContext.registerData.school_level && registerContext.registerData.school_name){
-          return true;
-        }
+    else if (registerContext?.registerData.status === 'school') {
+      if (registerContext.registerData.school_level && registerContext.registerData.school_name) {
+        return true;
+      }
     }
     return false;
-    
+
   }
   return (
-    <Box sx={{ animation: '.7s showAnim forwards' }}>
+    <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
       <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
         Wybierz swój status
       </Typography>
@@ -164,53 +180,53 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
             {
               registerContext.registerData.school_level !== '' &&
               <>
-              <StyledPaper>
-              <Autocomplete
-                freeSolo
-                options={ci}
-                inputValue={registerContext.registerData.school_city}
-                onInputChange={handleInputChange}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    label="Miasto"
-                    variant="outlined"
+                <StyledPaper>
+                  <Autocomplete
+                    freeSolo
+                    options={cities}
+                    inputValue={registerContext.registerData.school_city}
+                    onInputChange={handleInputChangeCity}
+                    renderInput={(params) => (
+                      <StyledTextField
+                        {...params}
+                        label="Miasto"
+                        variant="outlined"
+                      />
+                    )}
                   />
-                )}
-              />
-            </StyledPaper>
-            <StyledPaper>
-              <Autocomplete
-                freeSolo
-                options={suggestions}
-                inputValue={registerContext.registerData.school_name}
-                onInputChange={handleInputChange}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    label="Nazwa szkoły"
-                    variant="outlined"
+                </StyledPaper>
+                <StyledPaper>
+                  <Autocomplete
+                    freeSolo
+                    options={suggestions}
+                    inputValue={registerContext.registerData.school_name}
+                    onInputChange={handleInputChangeName}
+                    renderInput={(params) => (
+                      <StyledTextField
+                        {...params}
+                        label="Nazwa szkoły"
+                        variant="outlined"
+                      />
+                    )}
                   />
-                )}
-              />
-            </StyledPaper>
-                        <StyledPaper>
-                        <Autocomplete
-                          freeSolo
-                          options={suggestions}
-                          inputValue={registerContext.registerData.school_name}
-                          onInputChange={handleInputChange}
-                          renderInput={(params) => (
-                            <StyledTextField
-                              {...params}
-                              label="Profil"
-                              variant="outlined"
-                            />
-                          )}
-                        />
-                      </StyledPaper>
-          
-</>
+                </StyledPaper>
+                <StyledPaper>
+                  <Autocomplete
+                    freeSolo
+                    options={suggestions}
+                    inputValue={registerContext.registerData.school_profile}
+                    onInputChange={handleInputChangeProfil}
+                    renderInput={(params) => (
+                      <StyledTextField
+                        {...params}
+                        label="Profil"
+                        variant="outlined"
+                      />
+                    )}
+                  />
+                </StyledPaper>
+
+              </>
             }
           </>
         )}
@@ -221,8 +237,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
         {
           validate() &&
           <StyledButton onClick={handleSubmit}>
-          Dalej
-        </StyledButton>
+            Dalej
+          </StyledButton>
         }
       </StyledPaper>
     </Box>
