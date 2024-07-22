@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Typography, Paper, Grid } from '@mui/material';
+import { Box, Button, Typography, Paper, Grid, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface JobOffer {
   position: string;
@@ -28,6 +29,13 @@ const WatchOffer: React.FC = () => {
     setCurrentIndex((prevIndex) => (prevIndex < offers.length - 1 ? prevIndex + 1 : 0));
   };
 
+  const handleDelete = () => {
+    const updatedOffers = offers.filter((_, index) => index !== currentIndex);
+    setOffers(updatedOffers);
+    localStorage.setItem('jobOffers', JSON.stringify(updatedOffers));
+    setCurrentIndex(0);
+  };
+
   if (offers.length === 0) {
     return <Typography variant="h6">Nie masz żadnych zapisanych ofert pracy.</Typography>;
   }
@@ -37,20 +45,54 @@ const WatchOffer: React.FC = () => {
   return (
     <Paper elevation={3} sx={{ p: 3, maxWidth: 800, mx: 'auto', mt: 5, borderRadius: 2, bgcolor: '#f5f5f5' }}>
       <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
-        Przeglądaj oferty pracy
+        Twoje oferty
       </Typography>
-      <Box sx={{ textAlign: 'center', mb: 4 }}>
-        <Typography variant="h5" sx={{ fontWeight: 600, color: '#A758B5' }}>{currentOffer.position}</Typography>
-        <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>{currentOffer.location}</Typography>
+      <Box sx={{ mt: 2 }}>
+        <Typography variant="h6" sx={{ color: '#A758B5' }}>Stanowisko: {currentOffer.position}</Typography>
+        <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Lokalizacja: {currentOffer.location}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności twarde: {currentOffer.hardSkills.join(', ')}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności miękkie: {currentOffer.softSkills.join(', ')}</Typography>
-        <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Twój zakres obowiązków: {currentOffer.responsibilities.join(', ')}</Typography>
+        <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Zakres obowiązków: {currentOffer.responsibilities.join(', ')}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Wymagania: {currentOffer.requirements.join(', ')}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Oferujemy: {currentOffer.offerings.join(', ')}</Typography>
       </Box>
       <Grid container justifyContent="space-between" mt={2}>
-        <Button variant="contained" color="primary" onClick={handlePrev}>Poprzednia</Button>
-        <Button variant="contained" color="primary" onClick={handleNext}>Następna</Button>
+        <Button 
+          sx={{ 
+            backgroundColor: '#A758B5', 
+            color: 'white', 
+            '&:hover': { 
+              backgroundColor: '#A758B5', 
+              color: 'white' 
+            } 
+          }} 
+          variant="contained" 
+          onClick={handlePrev}
+        >
+          Poprzednia
+        </Button>
+        <Button 
+          sx={{ 
+            backgroundColor: '#A758B5', 
+            color: 'white', 
+            '&:hover': { 
+              backgroundColor: '#A758B5', 
+              color: 'white' 
+            } 
+          }} 
+          variant="contained" 
+          onClick={handleNext}
+        >
+          Następna
+        </Button>
+      </Grid>
+      <Grid container justifyContent="center" mt={2}>
+        <IconButton onClick={handleDelete}>
+          <DeleteIcon sx={{
+            fontSize: '40px',
+            color: '#A758B5'
+          }}/>
+        </IconButton>
       </Grid>
     </Paper>
   );
