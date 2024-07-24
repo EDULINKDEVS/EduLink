@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Box,
   Typography,
@@ -15,6 +15,8 @@ import {
 import { styled } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
 import StudiesTabCreator from './StudiesTabCreator';
+import { School } from '@/context/schoolsData/exampleSchoolsData';
+import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 
 const StyledPaper = styled(Paper)({
   width: '400px',
@@ -96,7 +98,7 @@ const suggestions = [
 
 const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
   const registerContext = useContext(RegisterContext);
-
+  const dataContext = useSchoolsData();
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const status = event.currentTarget.value as "school" | "study" | null;
     registerContext?.setRegisterData({
@@ -153,6 +155,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
     return false;
 
   }
+  const [schools, setSchools] = useState<String[]>([]);
+  const [profiles, setProfiles] = useState<String[]>([]);
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
       <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
@@ -186,6 +190,11 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                     options={cities}
                     inputValue={registerContext.registerData.school_city}
                     onInputChange={handleInputChangeCity}
+                    onBlur={()=>{
+                      if(registerContext.registerData.school_level !== ""){
+                        setSchools(dataContext.schoolsClass.getSchoolsByDegreeAndCity(registerContext.registerData.school_level, registerContext.registerData.school_city))
+                      }
+                    }}
                     renderInput={(params) => (
                       <StyledTextField
                         {...params}
@@ -195,12 +204,17 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                     )}
                   />
                 </StyledPaper>
+                {
+                  registerContext.registerData.school_city.length > 0 &&
                 <StyledPaper>
                   <Autocomplete
                     freeSolo
-                    options={suggestions}
+                    options={schools}
                     inputValue={registerContext.registerData.school_name}
                     onInputChange={handleInputChangeName}
+                    onBlur={()=>{
+                      setProfiles(dataContext.schoolsClass.getProfilesBySchools(registerContext.registerData.school_name))
+                    }}
                     renderInput={(params) => (
                       <StyledTextField
                         {...params}
@@ -210,10 +224,14 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                     )}
                   />
                 </StyledPaper>
+                }
+                {
+                (registerContext.registerData.school_city.length > 0 && registerContext.registerData.school_name.length > 0)&&
+
                 <StyledPaper>
                   <Autocomplete
                     freeSolo
-                    options={suggestions}
+                    options={profiles}
                     inputValue={registerContext.registerData.school_profile}
                     onInputChange={handleInputChangeProfil}
                     renderInput={(params) => (
@@ -225,6 +243,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                     )}
                   />
                 </StyledPaper>
+                }
 
               </>
             }

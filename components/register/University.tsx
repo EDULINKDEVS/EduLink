@@ -15,10 +15,12 @@ import InList from './InList';
 import { StyledFormControl, StyledFormControlLabel, StyledPaper, StyledRadioGroup, StyledTextField, UniversityType } from './UniversityTypesAndFunctions';
 import { cities } from '@/context/schoolsData/exampleSchoolsData';
 import { generateUniversities } from './Validate';
+import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 
 
 
 const University = ({ city,faculty, name, degree, id }: UniversityType) => {
+  const dataContext = useSchoolsData();
   const registerContext = useContext(RegisterContext);
   const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
   const [currentName, setCurrentName] = useState('');
@@ -30,8 +32,8 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   const [citiesState, setCitiesState] = useState<string[]>([]);
   const [universities, setUniversities] = useState<string[]>([]); 
    useEffect(()=>{
-    setCitiesState(cities);
-  }, [cities])
+    setCitiesState(dataContext.schoolsClass.cities);
+  }, [dataContext.schoolsClass.cities])
 
   
 
@@ -109,7 +111,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
       registerContext?.handleRemoveSchool(id);
     }
   }, [id, registerContext]);
-
+  const [faculties, setFaculties] = useState<string[]>([]);
   const validate = () => {
     if (duringStudies) {
       return currentName.length > 0 && facultyName.length > 0 && cityName.length > 0;
@@ -132,7 +134,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
                 options={citiesState}
                 inputValue={cityName}
                 onBlur={() => {
-                  setUniversities(generateUniversities(cityName));
+                  setUniversities(dataContext.schoolsClass.generateUniversities(cityName));
               }}
                 onInputChange={handleCityInputChange}
                 renderInput={(params) => (
@@ -154,6 +156,9 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
 
                 options={universities}
                 inputValue={currentName}
+                onBlur={()=>{
+                  setFaculties(dataContext.schoolsClass.generateFaculties(currentName));
+                }}
                 onInputChange={handleInputChange}
                 renderInput={(params) => (
                   <StyledTextField
@@ -174,7 +179,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={suggestions}
+                options={faculties}
                 inputValue={facultyName}
                 onInputChange={handleFacultyInputChange}
                 renderInput={(params) => (

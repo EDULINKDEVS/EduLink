@@ -1,43 +1,82 @@
-import {faculty, schools, traits, universities} from './exampleSchoolsData'
-class SchoolsClass {
+import { degreeEnum } from '../register/types';
+import { cities, City, Faculty, faculty, HardSkill, hardSkills, human, Keywords, Profile, profiles, School, schools, science, Trait, traits, univercities, University } from './exampleSchoolsData'
 
-    generateFeaturesByFacultate = (facultyId: number) => {
-        const foundFaculty = faculty.find(f => f.id === facultyId);
-        if (!foundFaculty) {
-            return `Faculty with id ${facultyId} not found.`;
-        }
+export class SchoolsClass {
+    schools: School[] = [];
+    universities: University[] = [];
+    faculties: Faculty[] = [];
+    cities: City[] = [];
+    traits: Trait[] = [];
+    hardSkills: HardSkill[] = [];
+    science: string[] = [];
+    human: string[] = [];
+    profiles: Profile[] = [];
 
-        const features1 = foundFaculty.features_1.map(id => {
-            const feature = traits.find(t => t.id === id);
-            return feature ? feature : { name: `Feature with id ${id} not found.`, id: id, popularity: 0 };
-        });
-
-        const features2 = foundFaculty.features_2.map(id => {
-            const feature = traits.find(t => t.id === id);
-            return feature ? feature : { name: `Feature with id ${id} not found.`, id: id, popularity: 0 };
-        });
-
-        const otherFeatures = traits.filter(t => 
-            !foundFaculty.features_1.includes(t.id) && !foundFaculty.features_2.includes(t.id)
-        );
-
-        const allFeatures = [...features1, ...features2, ...otherFeatures];
-        allFeatures.sort((a, b) => b.popularity - a.popularity);
-
-        return allFeatures;
+    init = async () => {
+        this.schools = schools;
+        this.universities = univercities;
+        this.faculties = faculty;
+        this.cities = cities;
+        this.traits = traits;
+        this.hardSkills = hardSkills;
+        this.science = science;
+        this.human = human;
+        this.profiles = profiles;
     }
 
-    generateFacultatesByUniversities = (universityName: string) => {
-        const foundUniversity = universities.find(u => u.name === universityName);
-        if (!foundUniversity) {
-            return `University with name ${universityName} not found.`;
+    generateFaculties = (universityName: string): string[] => {
+        const university = this.universities.find(u => u.name.toLowerCase() === universityName.toLowerCase());
+        if (!university) {
+            return [`University with name ${universityName} not found.`];
         }
 
-        const facultates = foundUniversity.faculties.map(id => {
-            const facultate = faculty.find(f => f.id === id);
-            return facultate ? facultate.name : `Faculty with id ${id} not found.`;
+        const facultyNames = university.faculties.map(facultyId => {
+            const faculty = this.faculties.find(f => f.id === facultyId);
+            return faculty ? faculty.name : `Faculty with id ${facultyId} not found.`;
         });
 
-        return facultates;
+        return facultyNames;
     }
+
+    getSchoolsByDegreeAndCity(school_level: "vocational" | "technical" | "high_school", city: string): string[] {
+        let label: string;
+        switch (school_level) {
+            case "high_school":
+                label = "High School";
+                break;
+            case "vocational":
+                label = "Vocational School";
+                break;
+            case "technical":
+                label = "Technical School";
+                break;
+            default:
+                label = "";
+                break;
+        }
+    
+        return schools
+            .filter(school => school.city === city && school.label === label)
+            .map(school => school.schoolName);
+    }
+    getProfilesBySchools(schoolName: string) {
+        const school = schools.find(s => s.schoolName === schoolName);
+
+        if (!school) return [];
+
+        const profileIds = school.profiles;
+
+        const profileNames = profileIds.map(id => {
+            const profile = profiles.find(p => p.id === id);
+            return profile ? profile.profileName : null;
+        }).filter(name => name !== null);
+        return profileNames;
+    }
+    generateUniversities = (city: string): string[] => {
+        return univercities
+            .filter(univercity => univercity.city.toLowerCase() === city.toLowerCase())
+            .map(univercity => univercity.name);
+    }
+
+
 }

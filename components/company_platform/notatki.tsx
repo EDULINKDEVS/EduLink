@@ -48,15 +48,27 @@ const StyledTextField = styled(TextField)({
   },
 });
 
+type FormDataKey = 'position' | 'location' | 'hardSkills' | 'softSkills' | 'responsibilities' | 'requirements' | 'offerings';
+
+interface FormData {
+  position: string;
+  location: string;
+  hardSkills: string[];
+  softSkills: string[];
+  responsibilities: string[];
+  requirements: string[];
+  offerings: string[];
+}
+
 const PlusOfferCompany: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     position: '',
     location: '',
-    hardSkills: [] as string[],
-    softSkills: [] as string[],
-    responsibilities: [] as string[],
-    requirements: [] as string[],
-    offerings: [] as string[]
+    hardSkills: [],
+    softSkills: [],
+    responsibilities: [],
+    requirements: [],
+    offerings: []
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,23 +79,28 @@ const PlusOfferCompany: React.FC = () => {
     });
   };
 
-  const handleSkillChange = (event: any, value: string[], name: string) => {
+  const handleSkillChange = (event: any, value: string[], name: FormDataKey) => {
     setFormData({
       ...formData,
       [name]: value
     });
   };
 
-  const handleListChange = (e: React.KeyboardEvent<HTMLInputElement>, listName: string) => {
+  const handleListChange = (e: React.KeyboardEvent<HTMLInputElement>, listName: FormDataKey) => {
     if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim() !== '') {
-      setFormData(prevState => ({
-        ...prevState,
-        [listName]: [...prevState[listName], (e.target as HTMLInputElement).value.trim()]
-      }));
+      const newValue = (e.target as HTMLInputElement).value.trim();
+      setFormData(prevState => {
+        const updatedList = [...prevState[listName] as string[], newValue];
+        return {
+          ...prevState,
+          [listName]: updatedList
+        };
+      });
       (e.target as HTMLInputElement).value = '';
       e.preventDefault();
     }
   };
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,7 +178,7 @@ const PlusOfferCompany: React.FC = () => {
             id="responsibilities"
             name="responsibilities"
             label="Twój zakres obowiązków"
-            onKeyDown={(e) => handleListChange(e, 'responsibilities')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLInputElement>, 'responsibilities')}
           />
           {renderListItems(formData.responsibilities)}
           <StyledTextField
@@ -170,7 +187,7 @@ const PlusOfferCompany: React.FC = () => {
             id="requirements"
             name="requirements"
             label="Wymagania"
-            onKeyDown={(e) => handleListChange(e, 'requirements')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLInputElement>, 'requirements')}
           />
           {renderListItems(formData.requirements)}
           <StyledTextField
@@ -179,7 +196,7 @@ const PlusOfferCompany: React.FC = () => {
             id="offerings"
             name="offerings"
             label="Oferujemy"
-            onKeyDown={(e) => handleListChange(e, 'offerings')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLInputElement>, 'offerings')}
           />
           {renderListItems(formData.offerings)}
           <Grid container justifyContent="center" marginTop={2}>
@@ -193,3 +210,4 @@ const PlusOfferCompany: React.FC = () => {
   );
 };
 
+export default PlusOfferCompany;

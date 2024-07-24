@@ -1,5 +1,5 @@
-import React, { createContext, ReactNode, useContext } from "react";
-import { faculty, schools, traits, universities, science, human } from "./exampleSchoolsData";
+import React, { createContext, ReactNode, useContext, useState, useEffect } from "react";
+import { SchoolsClass } from "./SchoolsClass";
 import { SchoolsDataContextType } from "./types";
 
 const SchoolsDataContext = createContext<SchoolsDataContextType | undefined>(undefined);
@@ -13,13 +13,24 @@ export const useSchoolsData = () => {
 };
 
 export const SchoolsDataProvider = ({ children }: { children: ReactNode }) => {
+  const [schoolsClass, setSchoolsClass] = useState<SchoolsClass | null>(null);
+
+  useEffect(() => {
+    const initialize = async () => {
+      const instance = new SchoolsClass();
+      await instance.init();
+      setSchoolsClass(instance);
+    };
+
+    initialize();
+  }, []);
+
+  if (!schoolsClass) {
+    return <div>Loading...</div>;
+  }
+
   const value: SchoolsDataContextType = {
-    faculty,
-    schools,
-    traits,
-    universities,
-    science,
-    human
+    schoolsClass
   };
 
   return (
