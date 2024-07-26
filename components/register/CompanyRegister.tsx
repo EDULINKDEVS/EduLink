@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, TextField, Button, Typography, Box, Grid, Paper } from '@mui/material';
+import { TextField, Button, Typography, Box, Grid, Paper } from '@mui/material';
 import styled from 'styled-components';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 
@@ -9,6 +9,7 @@ const StyledContainer = styled(Box)`
   display: flex;
   align-items: stretch;
   justify-content: center;
+  overflow: auto;
 `;
 
 const LeftContainer = styled(Box)`
@@ -31,6 +32,7 @@ const RightContainer = styled(Box)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: auto;
 `;
 
 const StyledPaper = styled(Paper)`
@@ -95,6 +97,12 @@ const CompanyRegister: React.FC = () => {
     specialChar: false,
   });
 
+  const [locationData, setLocationData] = useState({
+    city: '',
+    street: '',
+    postalCode: '',
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -115,6 +123,26 @@ const CompanyRegister: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
+  };
+
+  const handleCheckLocation = async () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDu6wZWXYrGz49gKt628sNbzLbwtN7_jQE`
+        );
+        const data = await response.json();
+        if (data.results.length > 0) {
+          const addressComponents = data.results[0].address_components;
+          const city = addressComponents.find((component: any) => component.types.includes("locality"))?.long_name || '';
+          const street = addressComponents.find((component: any) => component.types.includes("route"))?.long_name || '';
+          const postalCode = addressComponents.find((component: any) => component.types.includes("postal_code"))?.long_name || '';
+          
+          setLocationData({ city, street, postalCode });
+        }
+      });
+    }
   };
 
   const isPasswordValid = Object.values(passwordCriteria).every(Boolean);
@@ -218,6 +246,48 @@ const CompanyRegister: React.FC = () => {
                 {passwordCriteria.specialChar ? '✔' : '✘'} Minimum jeden znak specjalny
               </Typography>
             </Box>
+            <Grid container justifyContent="center" marginTop={2}>
+              <StyledButton variant="contained" onClick={handleCheckLocation}>
+                Sprawdź lokalizację
+              </StyledButton>
+            </Grid>
+            {locationData.city && (
+              <Box mt={2}>
+                <CustomTextField
+                  fullWidth
+                  margin="normal"
+                  id="locatedCity"
+                  name="locatedCity"
+                  label="Miasto"
+                  value={locationData.city}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <CustomTextField
+                  fullWidth
+                  margin="normal"
+                  id="locatedStreet"
+                  name="locatedStreet"
+                  label="Ulica"
+                  value={locationData.street}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <CustomTextField
+                  fullWidth
+                  margin="normal"
+                  id="locatedPostalCode"
+                  name="locatedPostalCode"
+                  label="Kod Pocztowy"
+                  value={locationData.postalCode}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </Box>
+            )}
             <Grid container justifyContent="center" marginTop={2}>
               <StyledButton type="submit" variant="contained" disabled={!isPasswordValid || formData.password !== formData.confirmPassword}>
                 Zarejestruj
