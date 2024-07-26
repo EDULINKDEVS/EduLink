@@ -202,7 +202,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
           </>
           }
           {
-            (!duringStudies && duringStudies !== null) &&
+            (currentName && !duringStudies && duringStudies !== null) &&
             <StyledFormControl>
               <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
               <StyledRadioGroup

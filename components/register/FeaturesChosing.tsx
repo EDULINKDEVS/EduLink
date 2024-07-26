@@ -139,7 +139,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
       </Typography>
       <StyledPaper>
         <StyledTextField
-          label="Wpisz cechę..."
+          label="Wpisz umiejętność..."
           variant="outlined"
           value={searchTerm}
           onChange={handleSearchChange}
@@ -230,7 +230,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
             }}
           >
             <Typography variant="h6" color="#A758B5" gutterBottom>
-              Wybrane cechy:
+              Wybrane umiejętności:
             </Typography>
             <List>
               {selectedTraits.map((trait, index) => (
