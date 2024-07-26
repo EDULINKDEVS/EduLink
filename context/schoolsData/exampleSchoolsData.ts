@@ -12,7 +12,7 @@ export type Faculty = {
 
 export type Profile = {
     id: number;
-    profileName: string;
+    name: string;
     features_traits_1: number[];
     features_traits_2: number[];
     features_hard_1: number[];
@@ -23,7 +23,7 @@ export interface School {
     profiles: number[];
     city: City;
     label: string;
-    id:number;
+    id: number;
 }
 
 export interface Trait {
@@ -194,7 +194,4390 @@ export const faculty = [
     { name: "Logopedia", id: 142, features_traits_1: [6, 9, 14, 21, 30, 207], features_traits_2: [7, 10, 15, 22, 31, 208], features_hard_1: [4, 13, 20, 30, 35], features_hard_2: [5, 12, 22, 28, 37] },
     { name: "Matematyka", id: 143, features_traits_1: [3, 11, 17, 24, 33, 209], features_traits_2: [4, 12, 18, 25, 34, 210], features_hard_1: [6, 9, 21, 28, 35], features_hard_2: [5, 10, 22, 30, 37] },
     { name: "Matematyka w finansach", id: 144, features_traits_1: [2, 8, 14, 21, 32, 211], features_traits_2: [3, 9, 15, 22, 33, 212], features_hard_1: [4, 12, 20, 30, 35], features_hard_2: [5, 11, 22, 28, 37] },
-    { name: "Matematyka z informatyką", id: 145, features_traits_1: [5, 10, 19, 23, 31, 213], features_traits_2: [6, 11, 20, 24, 32, 214], features_hard_1: [3, 13, 21, 28, 34], features_hard_2: [4, 9, 22, 30, 35] },  
+    { name: "Matematyka z informatyką", id: 145, features_traits_1: [5, 10, 19, 23, 31, 213], features_traits_2: [6, 11, 20, 24, 32, 214], features_hard_1: [3, 13, 21, 28, 34], features_hard_2: [4, 9, 22, 30, 35] },
+
+    {
+        id: 150,
+        name: "klasa humanistyczna",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            22,
+            28,
+            35
+        ],
+        features_traits_2: [
+            11,
+            24,
+            36,
+            47,
+            56,
+            73,
+            82
+        ],
+        features_hard_1: [
+            101,
+            119
+        ],
+        features_hard_2: [
+            107,
+            108,
+            105
+        ]
+    },
+    {
+        id: 151,
+        name: "klasa biologiczno-chemiczno-matematyczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            42,
+            46
+        ],
+        features_traits_2: [
+            34,
+            38,
+            58,
+            69,
+            87
+        ],
+        features_hard_1: [
+            102,
+            120
+        ],
+        features_hard_2: [
+            106,
+            109,
+            111
+        ]
+    },
+    {
+        id: 152,
+        name: "klasa matematyczno-fizyczna",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            31,
+            38,
+            41
+        ],
+        features_traits_2: [
+            26,
+            57,
+            68
+        ],
+        features_hard_1: [
+            103,
+            121
+        ],
+        features_hard_2: [
+            110,
+            112,
+            113
+        ]
+    },
+    {
+        id: 153,
+        name: "klasa matematyczno-geograficzna",
+        features_traits_1: [
+            21,
+            29,
+            32,
+            45,
+            50
+        ],
+        features_traits_2: [
+            33,
+            47,
+            54,
+            60
+        ],
+        features_hard_1: [
+            104,
+            122
+        ],
+        features_hard_2: [
+            114,
+            115,
+            116
+        ]
+    },
+    {
+        id: 154,
+        name: "ABAKUS mat fiz",
+        features_traits_1: [
+            19,
+            25,
+            30,
+            46
+        ],
+        features_traits_2: [
+            35,
+            48,
+            62
+        ],
+        features_hard_1: [
+            105,
+            123
+        ],
+        features_hard_2: [
+            117,
+            118,
+            119
+        ]
+    },
+    {
+        id: 155,
+        name: "COLUMBUS mat-geo",
+        features_traits_1: [
+            20,
+            34,
+            47
+        ],
+        features_traits_2: [
+            30,
+            52,
+            61,
+            71
+        ],
+        features_hard_1: [
+            106,
+            124
+        ],
+        features_hard_2: [
+            120,
+            121,
+            122
+        ]
+    },
+    {
+        id: 156,
+        name: "LEX gr. 1 human",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            35,
+            44
+        ],
+        features_traits_2: [
+            37,
+            49,
+            65
+        ],
+        features_hard_1: [
+            107,
+            125
+        ],
+        features_hard_2: [
+            123,
+            124,
+            125
+        ]
+    },
+    {
+        id: 157,
+        name: "LEX gr. 2 human",
+        features_traits_1: [
+            17,
+            28,
+            35,
+            43
+        ],
+        features_traits_2: [
+            31,
+            56,
+            64
+        ],
+        features_hard_1: [
+            108,
+            126
+        ],
+        features_hard_2: [
+            126,
+            127,
+            128
+        ]
+    },
+    {
+        id: 158,
+        name: "MEDICUS biol-chem",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            41,
+            46
+        ],
+        features_traits_2: [
+            34,
+            58,
+            70
+        ],
+        features_hard_1: [
+            109,
+            127
+        ],
+        features_hard_2: [
+            129,
+            130,
+            131
+        ]
+    },
+    {
+        id: 159,
+        name: "GALIA gr 1 wstępny humanistyczny",
+        features_traits_1: [
+            13,
+            18,
+            23,
+            28,
+            35,
+            45
+        ],
+        features_traits_2: [
+            36,
+            51,
+            66
+        ],
+        features_hard_1: [
+            110,
+            128
+        ],
+        features_hard_2: [
+            132,
+            133,
+            134
+        ]
+    },
+    {
+        id: 160,
+        name: "GALIA gr 2 wstępny biologiczno - chemiczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            38,
+            47
+        ],
+        features_traits_2: [
+            31,
+            55,
+            67
+        ],
+        features_hard_1: [
+            111,
+            129
+        ],
+        features_hard_2: [
+            135,
+            136,
+            137
+        ]
+    },
+    {
+        id: 161,
+        name: "pre-IB",
+        features_traits_1: [
+            10,
+            14,
+            22,
+            33,
+            42
+        ],
+        features_traits_2: [
+            32,
+            54,
+            63
+        ],
+        features_hard_1: [
+            112,
+            130
+        ],
+        features_hard_2: [
+            138,
+            139,
+            140
+        ]
+    },
+    {
+        id: 162,
+        name: "PRAWNICZA",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            35,
+            38
+        ],
+        features_traits_2: [
+            39,
+            57,
+            68
+        ],
+        features_hard_1: [
+            113,
+            131
+        ],
+        features_hard_2: [
+            141,
+            142,
+            143
+        ]
+    },
+    {
+        id: 163,
+        name: "POLITECHNICZNA AI",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            35,
+            50,
+            62
+        ],
+        features_hard_1: [
+            114,
+            132
+        ],
+        features_hard_2: [
+            144,
+            145,
+            146
+        ]
+    },
+    {
+        id: 164,
+        name: "EKONOMICZNA AI",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            28,
+            44
+        ],
+        features_traits_2: [
+            36,
+            48,
+            61
+        ],
+        features_hard_1: [
+            115,
+            133
+        ],
+        features_hard_2: [
+            147,
+            148,
+            149
+        ]
+    },
+    {
+        id: 165,
+        name: "MEDYCZNA",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            45
+        ],
+        features_traits_2: [
+            33,
+            51,
+            67
+        ],
+        features_hard_1: [
+            116,
+            134
+        ],
+        features_hard_2: [
+            150,
+            151,
+            152
+        ]
+    },
+    {
+        id: 166,
+        name: "VESPUCCI - akademicka",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            27,
+            43
+        ],
+        features_traits_2: [
+            37,
+            56,
+            64
+        ],
+        features_hard_1: [
+            117,
+            135
+        ],
+        features_hard_2: [
+            153,
+            154,
+            155
+        ]
+    },
+    {
+        id: 167,
+        name: "LINUX - akademicka",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            35,
+            52,
+            63
+        ],
+        features_hard_1: [
+            118,
+            136
+        ],
+        features_hard_2: [
+            156,
+            157,
+            158
+        ]
+    },
+    {
+        id: 168,
+        name: "DA VINCI - akademicka",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            38
+        ],
+        features_traits_2: [
+            34,
+            54,
+            69
+        ],
+        features_hard_1: [
+            119,
+            137
+        ],
+        features_hard_2: [
+            159,
+            160,
+            161
+        ]
+    },
+    {
+        id: 169,
+        name: "AVICENNA – akademicka",
+        features_traits_1: [
+            13,
+            15,
+            18,
+            23,
+            28,
+            46
+        ],
+        features_traits_2: [
+            36,
+            57,
+            66
+        ],
+        features_hard_1: [
+            120,
+            138
+        ],
+        features_hard_2: [
+            162,
+            163,
+            164
+        ]
+    },
+    {
+        id: 170,
+        name: "Akademicki-Ekonomiczny",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            44
+        ],
+        features_traits_2: [
+            30,
+            49,
+            62
+        ],
+        features_hard_1: [
+            121,
+            139
+        ],
+        features_hard_2: [
+            165,
+            166,
+            167
+        ]
+    },
+    {
+        id: 171,
+        name: "Medyczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            41,
+            46
+        ],
+        features_traits_2: [
+            39,
+            56,
+            68
+        ],
+        features_hard_1: [
+            122,
+            140
+        ],
+        features_hard_2: [
+            168,
+            169,
+            170
+        ]
+    },
+    {
+        id: 172,
+        name: "Informatyczny",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            45
+        ],
+        features_traits_2: [
+            35,
+            51,
+            67
+        ],
+        features_hard_1: [
+            123,
+            141
+        ],
+        features_hard_2: [
+            171,
+            172,
+            173
+        ]
+    },
+    {
+        id: 173,
+        name: "Psychologiczno-Prawniczy",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            22,
+            42
+        ],
+        features_traits_2: [
+            38,
+            54,
+            61
+        ],
+        features_hard_1: [
+            124,
+            142
+        ],
+        features_hard_2: [
+            174,
+            175,
+            176
+        ]
+    },
+    {
+        id: 174,
+        name: "medyczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            31,
+            44
+        ],
+        features_traits_2: [
+            37,
+            57,
+            69
+        ],
+        features_hard_1: [
+            125,
+            143
+        ],
+        features_hard_2: [
+            177,
+            178,
+            179
+        ]
+    },
+    {
+        id: 175,
+        name: "biologiczno chemiczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            45
+        ],
+        features_traits_2: [
+            33,
+            55,
+            68
+        ],
+        features_hard_1: [
+            126,
+            144
+        ],
+        features_hard_2: [
+            180,
+            181,
+            182
+        ]
+    },
+    {
+        id: 176,
+        name: "dziennikarsko prawna",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            35,
+            47
+        ],
+        features_traits_2: [
+            35,
+            50,
+            66
+        ],
+        features_hard_1: [
+            127,
+            145
+        ],
+        features_hard_2: [
+            183,
+            184,
+            185
+        ]
+    },
+    {
+        id: 177,
+        name: "politechniczna",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            28,
+            44
+        ],
+        features_traits_2: [
+            36,
+            53,
+            63
+        ],
+        features_hard_1: [
+            128,
+            146
+        ],
+        features_hard_2: [
+            186,
+            187,
+            188
+        ]
+    },
+    {
+        id: 178,
+        name: "turystyczno ekonomiczna",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            41
+        ],
+        features_traits_2: [
+            30,
+            49,
+            67
+        ],
+        features_hard_1: [
+            129,
+            147
+        ],
+        features_hard_2: [
+            189,
+            190,
+            191
+        ]
+    },
+    {
+        id: 179,
+        name: "Humanistyczna",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            46
+        ],
+        features_traits_2: [
+            32,
+            57,
+            66
+        ],
+        features_hard_1: [
+            130,
+            148
+        ],
+        features_hard_2: [
+            192,
+            193,
+            194
+        ]
+    },
+    {
+        id: 180,
+        name: "Informatyka z kwantem",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            34,
+            54,
+            64
+        ],
+        features_hard_1: [
+            131,
+            149
+        ],
+        features_hard_2: [
+            195,
+            196,
+            197
+        ]
+    },
+    {
+        id: 181,
+        name: "Matematyczno-geograficzna",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            32,
+            43
+        ],
+        features_traits_2: [
+            36,
+            56,
+            62
+        ],
+        features_hard_1: [
+            132,
+            150
+        ],
+        features_hard_2: [
+            198,
+            199,
+            0
+        ]
+    },
+    {
+        id: 182,
+        name: "Biologiczno-chemiczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            44
+        ],
+        features_traits_2: [
+            35,
+            50,
+            67
+        ],
+        features_hard_1: [
+            133,
+            151
+        ],
+        features_hard_2: [
+            1,
+            2,
+            3
+        ]
+    },
+    {
+        id: 183,
+        name: "Medialny",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            45
+        ],
+        features_traits_2: [
+            37,
+            51,
+            65
+        ],
+        features_hard_1: [
+            134,
+            152
+        ],
+        features_hard_2: [
+            4,
+            5,
+            6
+        ]
+    },
+    {
+        id: 184,
+        name: "Biologiczno-Chemiczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            41,
+            47
+        ],
+        features_traits_2: [
+            38,
+            55,
+            61
+        ],
+        features_hard_1: [
+            135,
+            153
+        ],
+        features_hard_2: [
+            7,
+            8,
+            9
+        ]
+    },
+    {
+        id: 185,
+        name: "Ekonomiczny",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            41
+        ],
+        features_traits_2: [
+            31,
+            54,
+            69
+        ],
+        features_hard_1: [
+            136,
+            154
+        ],
+        features_hard_2: [
+            10,
+            11,
+            12
+        ]
+    },
+    {
+        id: 186,
+        name: "Politechniczny",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            32,
+            50,
+            64
+        ],
+        features_hard_1: [
+            137,
+            155
+        ],
+        features_hard_2: [
+            13,
+            14,
+            15
+        ]
+    },
+    {
+        id: 187,
+        name: "Wstępny",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            28,
+            44
+        ],
+        features_traits_2: [
+            35,
+            57,
+            67
+        ],
+        features_hard_1: [
+            138,
+            156
+        ],
+        features_hard_2: [
+            16,
+            17,
+            18
+        ]
+    },
+    {
+        id: 188,
+        name: "IKA Informatyczna Klasa Akademicka mat.-fiz.-inf.",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            34,
+            49,
+            68
+        ],
+        features_hard_1: [
+            139,
+            157
+        ],
+        features_hard_2: [
+            19,
+            20,
+            21
+        ]
+    },
+    {
+        id: 189,
+        name: "MKA Matematyczna Klasa Akademicka mat.-fiz.-inf.",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            27,
+            43
+        ],
+        features_traits_2: [
+            32,
+            51,
+            64
+        ],
+        features_hard_1: [
+            140,
+            158
+        ],
+        features_hard_2: [
+            22,
+            23,
+            24
+        ]
+    },
+    {
+        id: 190,
+        name: "PKM Patronacka Klasa Medyczna biol.-chem.",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            36,
+            57,
+            66
+        ],
+        features_hard_1: [
+            141,
+            159
+        ],
+        features_hard_2: [
+            25,
+            26,
+            27
+        ]
+    },
+    {
+        id: 191,
+        name: "EKA Ekonomiczna Klasa Akademicka mat.-geo.-językowa",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            37,
+            50,
+            63
+        ],
+        features_hard_1: [
+            142,
+            160
+        ],
+        features_hard_2: [
+            28,
+            29,
+            30
+        ]
+    },
+    {
+        id: 192,
+        name: "prozdrowotna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            31,
+            47
+        ],
+        features_traits_2: [
+            34,
+            55,
+            61
+        ],
+        features_hard_1: [
+            143,
+            161
+        ],
+        features_hard_2: [
+            31,
+            32,
+            33
+        ]
+    },
+    {
+        id: 193,
+        name: "inżynieryjna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            28,
+            45
+        ],
+        features_traits_2: [
+            33,
+            51,
+            65
+        ],
+        features_hard_1: [
+            144,
+            162
+        ],
+        features_hard_2: [
+            34,
+            35,
+            36
+        ]
+    },
+    {
+        id: 194,
+        name: "biznesowa",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            41
+        ],
+        features_traits_2: [
+            32,
+            56,
+            62
+        ],
+        features_hard_1: [
+            145,
+            163
+        ],
+        features_hard_2: [
+            37,
+            38,
+            39
+        ]
+    },
+    {
+        id: 195,
+        name: "europejska",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            30,
+            50,
+            66
+        ],
+        features_hard_1: [
+            146,
+            164
+        ],
+        features_hard_2: [
+            40,
+            41,
+            42
+        ]
+    },
+    {
+        id: 196,
+        name: "LINGWISTYCZNA",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            36,
+            54,
+            67
+        ],
+        features_hard_1: [
+            147,
+            165
+        ],
+        features_hard_2: [
+            43,
+            44,
+            45
+        ]
+    },
+    {
+        id: 197,
+        name: "POLITECHNICZNO-EKONOMICZNA (klasa akademicka Uniwersytetu Ekonomicznego)",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            28,
+            44
+        ],
+        features_traits_2: [
+            35,
+            57,
+            64
+        ],
+        features_hard_1: [
+            148,
+            166
+        ],
+        features_hard_2: [
+            46,
+            47,
+            48
+        ]
+    },
+    {
+        id: 198,
+        name: "MEDIALNA",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            45
+        ],
+        features_traits_2: [
+            34,
+            49,
+            68
+        ],
+        features_hard_1: [
+            149,
+            167
+        ],
+        features_hard_2: [
+            49,
+            50,
+            51
+        ]
+    },
+    {
+        id: 199,
+        name: "PRZYRODNICZA",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            32,
+            55,
+            62
+        ],
+        features_hard_1: [
+            150,
+            168
+        ],
+        features_hard_2: [
+            52,
+            53,
+            54
+        ]
+    },
+    {
+        id: 200,
+        name: "biologiczno - chemiczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            36,
+            56,
+            65
+        ],
+        features_hard_1: [
+            151,
+            169
+        ],
+        features_hard_2: [
+            55,
+            56,
+            57
+        ]
+    },
+    {
+        id: 201,
+        name: "lingwistyczno - geograficzny",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            43
+        ],
+        features_traits_2: [
+            30,
+            54,
+            67
+        ],
+        features_hard_1: [
+            152,
+            170
+        ],
+        features_hard_2: [
+            58,
+            59,
+            60
+        ]
+    },
+    {
+        id: 202,
+        name: "humanistyczno - medialny",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            34,
+            49,
+            64
+        ],
+        features_hard_1: [
+            153,
+            171
+        ],
+        features_hard_2: [
+            61,
+            62,
+            63
+        ]
+    },
+    {
+        id: 203,
+        name: "matematyczno - geograficzny",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            45
+        ],
+        features_traits_2: [
+            37,
+            51,
+            66
+        ],
+        features_hard_1: [
+            154,
+            172
+        ],
+        features_hard_2: [
+            64,
+            65,
+            66
+        ]
+    },
+    {
+        id: 204,
+        name: "klasa ekonomiczna: profil matematyczno-geograficzno-językowy",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            32,
+            55,
+            62
+        ],
+        features_hard_1: [
+            155,
+            173
+        ],
+        features_hard_2: [
+            67,
+            68,
+            69
+        ]
+    },
+    {
+        id: 205,
+        name: "klasa humanistyczna: profil teatrologiczno-filmoznawczy",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            46
+        ],
+        features_traits_2: [
+            35,
+            57,
+            63
+        ],
+        features_hard_1: [
+            156,
+            174
+        ],
+        features_hard_2: [
+            70,
+            71,
+            72
+        ]
+    },
+    {
+        id: 206,
+        name: "klasa humanistyczna: profil prawniczy",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            35,
+            47
+        ],
+        features_traits_2: [
+            34,
+            50,
+            67
+        ],
+        features_hard_1: [
+            157,
+            175
+        ],
+        features_hard_2: [
+            73,
+            74,
+            75
+        ]
+    },
+    {
+        id: 207,
+        name: "klasa o profilu biologiczno-chemicznym",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            31,
+            44
+        ],
+        features_traits_2: [
+            30,
+            54,
+            66
+        ],
+        features_hard_1: [
+            158,
+            176
+        ],
+        features_hard_2: [
+            76,
+            77,
+            78
+        ]
+    },
+    {
+        id: 208,
+        name: "klasa politechniczna: profil matematyczno-informatyczno-językowy",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            37,
+            55,
+            65
+        ],
+        features_hard_1: [
+            159,
+            177
+        ],
+        features_hard_2: [
+            79,
+            80,
+            81
+        ]
+    },
+    {
+        id: 209,
+        name: "architektoniczno-językowa ARCHITEKT",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            32,
+            56,
+            62
+        ],
+        features_hard_1: [
+            160,
+            178
+        ],
+        features_hard_2: [
+            82,
+            83,
+            84
+        ]
+    },
+    {
+        id: 210,
+        name: "psychologiczna SELF-CARE",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            34,
+            50,
+            63
+        ],
+        features_hard_1: [
+            161,
+            179
+        ],
+        features_hard_2: [
+            85,
+            86,
+            87
+        ]
+    },
+    {
+        id: 211,
+        name: "matematyczno-chemiczna ANALITYK",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            30,
+            57,
+            67
+        ],
+        features_hard_1: [
+            162,
+            180
+        ],
+        features_hard_2: [
+            88,
+            89,
+            90
+        ]
+    },
+    {
+        id: 212,
+        name: "dwujęzyczna prawniczo-ekonomiczna PRAWNIK",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            47
+        ],
+        features_traits_2: [
+            32,
+            55,
+            66
+        ],
+        features_hard_1: [
+            163,
+            181
+        ],
+        features_hard_2: [
+            91,
+            92,
+            93
+        ]
+    },
+    {
+        id: 213,
+        name: "humanistyczny z językiem niemieckim",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            33,
+            41
+        ],
+        features_traits_2: [
+            35,
+            51,
+            65
+        ],
+        features_hard_1: [
+            164,
+            182
+        ],
+        features_hard_2: [
+            94,
+            95,
+            96
+        ]
+    },
+    {
+        id: 214,
+        name: "humanistyczny z językiem hiszpańskim",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            46
+        ],
+        features_traits_2: [
+            36,
+            54,
+            67
+        ],
+        features_hard_1: [
+            165,
+            183
+        ],
+        features_hard_2: [
+            97,
+            98,
+            99
+        ]
+    },
+    {
+        id: 215,
+        name: "biologiczno-językowy z językiem niemieckim",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            45
+        ],
+        features_traits_2: [
+            32,
+            55,
+            62
+        ],
+        features_hard_1: [
+            166,
+            184
+        ],
+        features_hard_2: [
+            100,
+            101,
+            102
+        ]
+    },
+    {
+        id: 216,
+        name: "biologiczno-językowy z językiem hiszpańskim",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            34,
+            50,
+            65
+        ],
+        features_hard_1: [
+            167,
+            185
+        ],
+        features_hard_2: [
+            103,
+            104,
+            105
+        ]
+    },
+    {
+        id: 217,
+        name: "matematyczno-geograficzny z językiem niemieckim",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            36,
+            57,
+            63
+        ],
+        features_hard_1: [
+            168,
+            186
+        ],
+        features_hard_2: [
+            106,
+            107,
+            108
+        ]
+    },
+    {
+        id: 218,
+        name: "matematyczno-geograficzny z językiem hiszpańskim",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            35,
+            56,
+            62
+        ],
+        features_hard_1: [
+            169,
+            187
+        ],
+        features_hard_2: [
+            109,
+            110,
+            111
+        ]
+    },
+    {
+        id: 219,
+        name: "biologiczno-chemiczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            45
+        ],
+        features_traits_2: [
+            32,
+            55,
+            67
+        ],
+        features_hard_1: [
+            170,
+            188
+        ],
+        features_hard_2: [
+            112,
+            113,
+            114
+        ]
+    },
+    {
+        id: 220,
+        name: "Dwujęzyczny prawniczo-psychologiczny",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            22,
+            33,
+            44
+        ],
+        features_traits_2: [
+            37,
+            50,
+            65
+        ],
+        features_hard_1: [
+            171,
+            189
+        ],
+        features_hard_2: [
+            115,
+            116,
+            117
+        ]
+    },
+    {
+        id: 221,
+        name: "Dwujęzyczny medyczny",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            42
+        ],
+        features_traits_2: [
+            36,
+            56,
+            64
+        ],
+        features_hard_1: [
+            172,
+            190
+        ],
+        features_hard_2: [
+            118,
+            119,
+            120
+        ]
+    },
+    {
+        id: 222,
+        name: "Dwujęzyczny ekonomiczno-informatyczno-społeczny",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            47
+        ],
+        features_traits_2: [
+            34,
+            51,
+            62
+        ],
+        features_hard_1: [
+            173,
+            191
+        ],
+        features_hard_2: [
+            121,
+            122,
+            123
+        ]
+    },
+    {
+        id: 223,
+        name: "Dwujęzyczny politechniczny",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            28,
+            44
+        ],
+        features_traits_2: [
+            37,
+            54,
+            67
+        ],
+        features_hard_1: [
+            174,
+            192
+        ],
+        features_hard_2: [
+            124,
+            125,
+            126
+        ]
+    },
+    {
+        id: 224,
+        name: "LEX-PRESS",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            42
+        ],
+        features_traits_2: [
+            33,
+            56,
+            61
+        ],
+        features_hard_1: [
+            175,
+            193
+        ],
+        features_hard_2: [
+            127,
+            128,
+            129
+        ]
+    },
+    {
+        id: 225,
+        name: "LEX-CINEMA",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            45
+        ],
+        features_traits_2: [
+            34,
+            55,
+            62
+        ],
+        features_hard_1: [
+            176,
+            194
+        ],
+        features_hard_2: [
+            130,
+            131,
+            132
+        ]
+    },
+    {
+        id: 226,
+        name: "POLITECHNICUS",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            36,
+            57,
+            67
+        ],
+        features_hard_1: [
+            177,
+            195
+        ],
+        features_hard_2: [
+            133,
+            134,
+            135
+        ]
+    },
+    {
+        id: 227,
+        name: "ECONOMICUS",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            32,
+            50,
+            66
+        ],
+        features_hard_1: [
+            178,
+            196
+        ],
+        features_hard_2: [
+            136,
+            137,
+            138
+        ]
+    },
+    {
+        id: 228,
+        name: "MEDICORUM",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            42
+        ],
+        features_traits_2: [
+            34,
+            56,
+            62
+        ],
+        features_hard_1: [
+            179,
+            197
+        ],
+        features_hard_2: [
+            139,
+            140,
+            141
+        ]
+    },
+    {
+        id: 229,
+        name: "PEREGRINUS",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            45
+        ],
+        features_traits_2: [
+            35,
+            54,
+            61
+        ],
+        features_hard_1: [
+            180,
+            198
+        ],
+        features_hard_2: [
+            142,
+            143,
+            144
+        ]
+    },
+    {
+        id: 230,
+        name: "SECCION BILLINGUE - WSTĘPNY",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            46
+        ],
+        features_traits_2: [
+            34,
+            56,
+            67
+        ],
+        features_hard_1: [
+            181,
+            199
+        ],
+        features_hard_2: [
+            145,
+            146,
+            147
+        ]
+    },
+    {
+        id: 231,
+        name: "Liceum Ogólnokształcące - klasa sportowa",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            55,
+            62
+        ],
+        features_hard_1: [
+            182,
+            0
+        ],
+        features_hard_2: [
+            148,
+            149,
+            150
+        ]
+    },
+    {
+        id: 232,
+        name: "Liceum Ogólnokształcące",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            42
+        ],
+        features_traits_2: [
+            36,
+            54,
+            67
+        ],
+        features_hard_1: [
+            183,
+            1
+        ],
+        features_hard_2: [
+            151,
+            152,
+            153
+        ]
+    },
+    {
+        id: 233,
+        name: "językowa z rozszerzonym językiem hiszpańskim i angielskim",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            44
+        ],
+        features_traits_2: [
+            32,
+            50,
+            63
+        ],
+        features_hard_1: [
+            184,
+            2
+        ],
+        features_hard_2: [
+            154,
+            155,
+            156
+        ]
+    },
+    {
+        id: 234,
+        name: "kryminalistyczno - resocjalizacyjna z rozszerzeniem językowym",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            47
+        ],
+        features_traits_2: [
+            34,
+            57,
+            61
+        ],
+        features_hard_1: [
+            185,
+            3
+        ],
+        features_hard_2: [
+            157,
+            158,
+            159
+        ]
+    },
+    {
+        id: 235,
+        name: "psychologiczno - językowa",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            41
+        ],
+        features_traits_2: [
+            35,
+            50,
+            66
+        ],
+        features_hard_1: [
+            186,
+            4
+        ],
+        features_hard_2: [
+            160,
+            161,
+            162
+        ]
+    },
+    {
+        id: 236,
+        name: "sportowa z piłką nożną",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            36,
+            54,
+            62
+        ],
+        features_hard_1: [
+            187,
+            5
+        ],
+        features_hard_2: [
+            163,
+            164,
+            165
+        ]
+    },
+    {
+        id: 237,
+        name: "architektura i design z elementami nauczania outdoorowego",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            30,
+            56,
+            67
+        ],
+        features_hard_1: [
+            188,
+            6
+        ],
+        features_hard_2: [
+            166,
+            167,
+            168
+        ]
+    },
+    {
+        id: 238,
+        name: "projektowanie gier komputerowych z elementami sztucznej inteligencji",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            32,
+            55,
+            61
+        ],
+        features_hard_1: [
+            189,
+            7
+        ],
+        features_hard_2: [
+            169,
+            170,
+            171
+        ]
+    },
+    {
+        id: 239,
+        name: "teatralno-dziennikarska",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            47
+        ],
+        features_traits_2: [
+            35,
+            51,
+            63
+        ],
+        features_hard_1: [
+            190,
+            8
+        ],
+        features_hard_2: [
+            172,
+            173,
+            174
+        ]
+    },
+    {
+        id: 240,
+        name: "psychologiczno-językowa",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            36,
+            54,
+            67
+        ],
+        features_hard_1: [
+            191,
+            9
+        ],
+        features_hard_2: [
+            175,
+            176,
+            177
+        ]
+    },
+    {
+        id: 241,
+        name: "lingwistyczna",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            41
+        ],
+        features_traits_2: [
+            33,
+            50,
+            64
+        ],
+        features_hard_1: [
+            192,
+            10
+        ],
+        features_hard_2: [
+            178,
+            179,
+            180
+        ]
+    },
+    {
+        id: 242,
+        name: "klasa psychologiczna - psychologia i resocjalizacja",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            22,
+            42
+        ],
+        features_traits_2: [
+            34,
+            55,
+            61
+        ],
+        features_hard_1: [
+            193,
+            11
+        ],
+        features_hard_2: [
+            181,
+            182,
+            183
+        ]
+    },
+    {
+        id: 243,
+        name: "klasa prawna - kryminologia i resocjalizacja",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            46
+        ],
+        features_traits_2: [
+            37,
+            57,
+            67
+        ],
+        features_hard_1: [
+            194,
+            12
+        ],
+        features_hard_2: [
+            184,
+            185,
+            186
+        ]
+    },
+    {
+        id: 244,
+        name: "psychologiczno-pedagogiczna angielsko-hiszpańska",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            32,
+            50,
+            65
+        ],
+        features_hard_1: [
+            195,
+            13
+        ],
+        features_hard_2: [
+            187,
+            188,
+            189
+        ]
+    },
+    {
+        id: 245,
+        name: "psychologiczno-pedagogiczna angielsko-niemiecka",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            42
+        ],
+        features_traits_2: [
+            36,
+            54,
+            62
+        ],
+        features_hard_1: [
+            196,
+            14
+        ],
+        features_hard_2: [
+            190,
+            191,
+            192
+        ]
+    },
+    {
+        id: 246,
+        name: "sportowo-obronna",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            47
+        ],
+        features_traits_2: [
+            34,
+            56,
+            67
+        ],
+        features_hard_1: [
+            197,
+            15
+        ],
+        features_hard_2: [
+            193,
+            194,
+            195
+        ]
+    },
+    {
+        id: 247,
+        name: "policyjna",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            35,
+            50,
+            63
+        ],
+        features_hard_1: [
+            198,
+            16
+        ],
+        features_hard_2: [
+            196,
+            197,
+            198
+        ]
+    },
+    {
+        id: 248,
+        name: "Oddział Przygotowania Wojskowego OPW",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            42
+        ],
+        features_traits_2: [
+            32,
+            54,
+            61
+        ],
+        features_hard_1: [
+            199,
+            17
+        ],
+        features_hard_2: [
+            199,
+            0,
+            1
+        ]
+    },
+    {
+        id: 249,
+        name: "klasa kosmetyczna",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            36,
+            55,
+            67
+        ],
+        features_hard_1: [
+            0,
+            18
+        ],
+        features_hard_2: [
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        id: 250,
+        name: "klasa strażacka",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            41
+        ],
+        features_traits_2: [
+            33,
+            50,
+            64
+        ],
+        features_hard_1: [
+            1,
+            19
+        ],
+        features_hard_2: [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        id: 251,
+        name: "terapeutyczny",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            22,
+            44
+        ],
+        features_traits_2: [
+            34,
+            57,
+            62
+        ],
+        features_hard_1: [
+            2,
+            20
+        ],
+        features_hard_2: [
+            8,
+            9,
+            10
+        ]
+    },
+    {
+        id: 252,
+        name: "Dwujęzyczna Akademicka Klasa Ekonomiczno-Językowa",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            43
+        ],
+        features_traits_2: [
+            37,
+            56,
+            65
+        ],
+        features_hard_1: [
+            3,
+            21
+        ],
+        features_hard_2: [
+            11,
+            12,
+            13
+        ]
+    },
+    {
+        id: 253,
+        name: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną historią",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            47
+        ],
+        features_traits_2: [
+            36,
+            54,
+            61
+        ],
+        features_hard_1: [
+            4,
+            22
+        ],
+        features_hard_2: [
+            14,
+            15,
+            16
+        ]
+    },
+    {
+        id: 254,
+        name: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną wiedzą o społeczeństwie",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            42
+        ],
+        features_traits_2: [
+            34,
+            55,
+            67
+        ],
+        features_hard_1: [
+            5,
+            23
+        ],
+        features_hard_2: [
+            17,
+            18,
+            19
+        ]
+    },
+    {
+        id: 255,
+        name: "Dwujęzyczna Patronacka Klasa Medyczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            32,
+            56,
+            62
+        ],
+        features_hard_1: [
+            6,
+            24
+        ],
+        features_hard_2: [
+            20,
+            21,
+            22
+        ]
+    },
+    {
+        id: 256,
+        name: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną chemią",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            35,
+            50,
+            65
+        ],
+        features_hard_1: [
+            7,
+            25
+        ],
+        features_hard_2: [
+            23,
+            24,
+            25
+        ]
+    },
+    {
+        id: 257,
+        name: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną fizyką",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            28,
+            47
+        ],
+        features_traits_2: [
+            34,
+            55,
+            67
+        ],
+        features_hard_1: [
+            8,
+            26
+        ],
+        features_hard_2: [
+            26,
+            27,
+            28
+        ]
+    },
+    {
+        id: 258,
+        name: "sportowy, piłka nożna 'Poznańska 13'",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            56,
+            61
+        ],
+        features_hard_1: [
+            9,
+            27
+        ],
+        features_hard_2: [
+            29,
+            30,
+            31
+        ]
+    },
+    {
+        id: 259,
+        name: "mistrzostwa sportowego, kajaki",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            36,
+            50,
+            64
+        ],
+        features_hard_1: [
+            10,
+            28
+        ],
+        features_hard_2: [
+            32,
+            33,
+            34
+        ]
+    },
+    {
+        id: 260,
+        name: "mistrzostwa sportowego, hokej na trawie, siatkówka dziewcząt",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            34,
+            55,
+            67
+        ],
+        features_hard_1: [
+            11,
+            29
+        ],
+        features_hard_2: [
+            35,
+            36,
+            37
+        ]
+    },
+    {
+        id: 261,
+        name: "sportowy, koszykówka",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            35,
+            54,
+            61
+        ],
+        features_hard_1: [
+            12,
+            30
+        ],
+        features_hard_2: [
+            38,
+            39,
+            40
+        ]
+    },
+    {
+        id: 262,
+        name: "mistrzostwa sportowego, pływanie, pływanie synchroniczne, wioślarstwo, skoki do wody",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            32,
+            50,
+            63
+        ],
+        features_hard_1: [
+            13,
+            31
+        ],
+        features_hard_2: [
+            41,
+            42,
+            43
+        ]
+    },
+    {
+        id: 263,
+        name: "sportowy, sportowy, sztuki walki, piłka nożna dziewcząt 'Warta', piłka nożna 'Przemysław'",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            36,
+            55,
+            64
+        ],
+        features_hard_1: [
+            14,
+            32
+        ],
+        features_hard_2: [
+            44,
+            45,
+            46
+        ]
+    },
+    {
+        id: 264,
+        name: "Mistrzostwa Sportowego",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            50,
+            67
+        ],
+        features_hard_1: [
+            15,
+            33
+        ],
+        features_hard_2: [
+            47,
+            48,
+            49
+        ]
+    },
+    {
+        id: 265,
+        name: "Sportowy",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            34,
+            56,
+            62
+        ],
+        features_hard_1: [
+            16,
+            34
+        ],
+        features_hard_2: [
+            50,
+            51,
+            52
+        ]
+    },
+    {
+        id: 266,
+        name: "oddział przygotowania wojskowego",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            45
+        ],
+        features_traits_2: [
+            35,
+            54,
+            61
+        ],
+        features_hard_1: [
+            17,
+            35
+        ],
+        features_hard_2: [
+            53,
+            54,
+            55
+        ]
+    },
+    {
+        id: 267,
+        name: "policyjna",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            30,
+            46
+        ],
+        features_traits_2: [
+            36,
+            57,
+            64
+        ],
+        features_hard_1: [
+            18,
+            36
+        ],
+        features_hard_2: [
+            56,
+            57,
+            58
+        ]
+    },
+    {
+        id: 268,
+        name: "strażacko-ratownicza",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            34,
+            56,
+            65
+        ],
+        features_hard_1: [
+            19,
+            37
+        ],
+        features_hard_2: [
+            59,
+            60,
+            61
+        ]
+    },
+    {
+        id: 269,
+        name: "ogólnokształcąca",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            33,
+            55,
+            67
+        ],
+        features_hard_1: [
+            20,
+            38
+        ],
+        features_hard_2: [
+            62,
+            63,
+            64
+        ]
+    },
+    {
+        id: 270,
+        name: "Turystyczno - Językowy",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            36,
+            54,
+            62
+        ],
+        features_hard_1: [
+            21,
+            39
+        ],
+        features_hard_2: [
+            65,
+            66,
+            67
+        ]
+    },
+    {
+        id: 271,
+        name: "humanistyczno-lingwistyczna",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            41
+        ],
+        features_traits_2: [
+            34,
+            57,
+            65
+        ],
+        features_hard_1: [
+            22,
+            40
+        ],
+        features_hard_2: [
+            68,
+            69,
+            70
+        ]
+    },
+    {
+        id: 272,
+        name: "policyjna",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            30,
+            45
+        ],
+        features_traits_2: [
+            33,
+            55,
+            64
+        ],
+        features_hard_1: [
+            23,
+            41
+        ],
+        features_hard_2: [
+            71,
+            72,
+            73
+        ]
+    },
+    {
+        id: 273,
+        name: "Profil językowo - prawniczy",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            45
+        ],
+        features_traits_2: [
+            36,
+            56,
+            62
+        ],
+        features_hard_1: [
+            24,
+            42
+        ],
+        features_hard_2: [
+            74,
+            75,
+            76
+        ]
+    },
+    {
+        id: 274,
+        name: "Profil politechniczny",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            34,
+            50,
+            67
+        ],
+        features_hard_1: [
+            25,
+            43
+        ],
+        features_hard_2: [
+            77,
+            78,
+            79
+        ]
+    },
+    {
+        id: 275,
+        name: "Profil medyczno - przyrodniczy",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            35,
+            54,
+            61
+        ],
+        features_hard_1: [
+            26,
+            44
+        ],
+        features_hard_2: [
+            80,
+            81,
+            82
+        ]
+    },
+    {
+        id: 276,
+        name: "HUMANISTYCZNO-DZIENNIKARSKA",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            41
+        ],
+        features_traits_2: [
+            33,
+            55,
+            62
+        ],
+        features_hard_1: [
+            27,
+            45
+        ],
+        features_hard_2: [
+            83,
+            84,
+            85
+        ]
+    },
+    {
+        id: 277,
+        name: "PRZYRODNICZA",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            34,
+            56,
+            65
+        ],
+        features_hard_1: [
+            28,
+            46
+        ],
+        features_hard_2: [
+            86,
+            87,
+            88
+        ]
+    },
+    {
+        id: 278,
+        name: "EKONOMICZNO-TURYSTYCZNA",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            31,
+            42
+        ],
+        features_traits_2: [
+            33,
+            55,
+            67
+        ],
+        features_hard_1: [
+            29,
+            47
+        ],
+        features_hard_2: [
+            89,
+            90,
+            91
+        ]
+    },
+    {
+        id: 279,
+        name: "sportowa",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            36,
+            54,
+            62
+        ],
+        features_hard_1: [
+            30,
+            48
+        ],
+        features_hard_2: [
+            92,
+            93,
+            94
+        ]
+    },
+    {
+        id: 280,
+        name: "grupa ekonomiczna",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            34,
+            56,
+            63
+        ],
+        features_hard_1: [
+            31,
+            49
+        ],
+        features_hard_2: [
+            95,
+            96,
+            97
+        ]
+    },
+    {
+        id: 281,
+        name: "grupa biznesowa",
+        features_traits_1: [
+            13,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            36,
+            55,
+            65
+        ],
+        features_hard_1: [
+            32,
+            50
+        ],
+        features_hard_2: [
+            98,
+            99,
+            100
+        ]
+    },
+    {
+        id: 282,
+        name: "przyrodnicza",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            33,
+            50,
+            67
+        ],
+        features_hard_1: [
+            33,
+            51
+        ],
+        features_hard_2: [
+            101,
+            102,
+            103
+        ]
+    },
+    {
+        id: 283,
+        name: "liceum ogólnokształcące",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            34,
+            56,
+            62
+        ],
+        features_hard_1: [
+            34,
+            52
+        ],
+        features_hard_2: [
+            104,
+            105,
+            106
+        ]
+    },
+    {
+        id: 284,
+        name: "klasa dwujęzyczna z rozszerzonym j.polskim oraz biologią",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            35,
+            55,
+            64
+        ],
+        features_hard_1: [
+            35,
+            53
+        ],
+        features_hard_2: [
+            107,
+            108,
+            109
+        ]
+    },
+    {
+        id: 285,
+        name: "klasa dwujęzyczna z rozszerzoną matematyką i geografią",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            56,
+            65
+        ],
+        features_hard_1: [
+            36,
+            54
+        ],
+        features_hard_2: [
+            110,
+            111,
+            112
+        ]
+    },
+    {
+        id: 286,
+        name: "Oddział Jeżyce",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            46
+        ],
+        features_traits_2: [
+            34,
+            57,
+            67
+        ],
+        features_hard_1: [
+            37,
+            55
+        ],
+        features_hard_2: [
+            113,
+            114,
+            115
+        ]
+    },
+    {
+        id: 287,
+        name: "Oddział Nieszawska",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            42
+        ],
+        features_traits_2: [
+            35,
+            50,
+            61
+        ],
+        features_hard_1: [
+            38,
+            56
+        ],
+        features_hard_2: [
+            116,
+            117,
+            118
+        ]
+    },
+    {
+        id: 288,
+        name: "klasa 1A",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            44
+        ],
+        features_traits_2: [
+            32,
+            54,
+            62
+        ],
+        features_hard_1: [
+            39,
+            57
+        ],
+        features_hard_2: [
+            119,
+            120,
+            121
+        ]
+    },
+    {
+        id: 289,
+        name: "klasa 1B",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            41
+        ],
+        features_traits_2: [
+            34,
+            56,
+            64
+        ],
+        features_hard_1: [
+            40,
+            58
+        ],
+        features_hard_2: [
+            122,
+            123,
+            124
+        ]
+    },
+    {
+        id: 290,
+        name: "klasa humanistyczna",
+        features_traits_1: [
+            10,
+            14,
+            18,
+            28,
+            35,
+            45
+        ],
+        features_traits_2: [
+            36,
+            55,
+            61
+        ],
+        features_hard_1: [
+            41,
+            59
+        ],
+        features_hard_2: [
+            125,
+            126,
+            127
+        ]
+    },
+    {
+        id: 291,
+        name: "politechniczna",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            46
+        ],
+        features_traits_2: [
+            33,
+            57,
+            67
+        ],
+        features_hard_1: [
+            42,
+            60
+        ],
+        features_hard_2: [
+            128,
+            129,
+            130
+        ]
+    },
+    {
+        id: 292,
+        name: "medyczna",
+        features_traits_1: [
+            15,
+            19,
+            25,
+            30,
+            42
+        ],
+        features_traits_2: [
+            35,
+            50,
+            62
+        ],
+        features_hard_1: [
+            43,
+            61
+        ],
+        features_hard_2: [
+            131,
+            132,
+            133
+        ]
+    },
+    {
+        id: 293,
+        name: "mechanik samochodowy",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            44
+        ],
+        features_traits_2: [
+            34,
+            56,
+            61
+        ],
+        features_hard_1: [
+            44,
+            62
+        ],
+        features_hard_2: [
+            134,
+            135,
+            136
+        ]
+    },
+    {
+        id: 294,
+        name: "elektryk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            55,
+            65
+        ],
+        features_hard_1: [
+            45,
+            63
+        ],
+        features_hard_2: [
+            137,
+            138,
+            139
+        ]
+    },
+    {
+        id: 295,
+        name: "technik informatyk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            34,
+            56,
+            62
+        ],
+        features_hard_1: [
+            46,
+            64
+        ],
+        features_hard_2: [
+            140,
+            141,
+            142
+        ]
+    },
+    {
+        id: 296,
+        name: "kucharz",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            35,
+            54,
+            64
+        ],
+        features_hard_1: [
+            47,
+            65
+        ],
+        features_hard_2: [
+            143,
+            144,
+            145
+        ]
+    },
+    {
+        id: 297,
+        name: "technik mechanik",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            44
+        ],
+        features_traits_2: [
+            33,
+            57,
+            67
+        ],
+        features_hard_1: [
+            48,
+            66
+        ],
+        features_hard_2: [
+            146,
+            147,
+            148
+        ]
+    },
+    {
+        id: 298,
+        name: "technik mechatronik",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            36,
+            55,
+            62
+        ],
+        features_hard_1: [
+            49,
+            67
+        ],
+        features_hard_2: [
+            149,
+            150,
+            151
+        ]
+    },
+    {
+        id: 299,
+        name: "technik elektryk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            45
+        ],
+        features_traits_2: [
+            34,
+            56,
+            61
+        ],
+        features_hard_1: [
+            50,
+            68
+        ],
+        features_hard_2: [
+            152,
+            153,
+            154
+        ]
+    },
+    {
+        id: 300,
+        name: "technik energetyk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            33,
+            55,
+            62
+        ],
+        features_hard_1: [
+            51,
+            69
+        ],
+        features_hard_2: [
+            155,
+            156,
+            157
+        ]
+    },
+    {
+        id: 301,
+        name: "technik żywienia i usług gastronomicznych",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            34,
+            57,
+            65
+        ],
+        features_hard_1: [
+            52,
+            70
+        ],
+        features_hard_2: [
+            158,
+            159,
+            160
+        ]
+    },
+    {
+        id: 302,
+        name: "cukiernik",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            33,
+            56,
+            67
+        ],
+        features_hard_1: [
+            53,
+            71
+        ],
+        features_hard_2: [
+            161,
+            162,
+            163
+        ]
+    },
+    {
+        id: 303,
+        name: "kelner",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            41
+        ],
+        features_traits_2: [
+            34,
+            55,
+            62
+        ],
+        features_hard_1: [
+            54,
+            72
+        ],
+        features_hard_2: [
+            164,
+            165,
+            166
+        ]
+    },
+    {
+        id: 304,
+        name: "technik budownictwa",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            36,
+            57,
+            65
+        ],
+        features_hard_1: [
+            55,
+            73
+        ],
+        features_hard_2: [
+            167,
+            168,
+            169
+        ]
+    },
+    {
+        id: 305,
+        name: "technik architektury krajobrazu",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            42
+        ],
+        features_traits_2: [
+            33,
+            54,
+            67
+        ],
+        features_hard_1: [
+            56,
+            74
+        ],
+        features_hard_2: [
+            170,
+            171,
+            172
+        ]
+    },
+    {
+        id: 306,
+        name: "technik geodeta",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            35,
+            56,
+            61
+        ],
+        features_hard_1: [
+            57,
+            75
+        ],
+        features_hard_2: [
+            173,
+            174,
+            175
+        ]
+    },
+    {
+        id: 307,
+        name: "technik robót wykończeniowych w budownictwie",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            45
+        ],
+        features_traits_2: [
+            34,
+            55,
+            66
+        ],
+        features_hard_1: [
+            58,
+            76
+        ],
+        features_hard_2: [
+            176,
+            177,
+            178
+        ]
+    },
+    {
+        id: 308,
+        name: "technik elektronik",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            36,
+            57,
+            65
+        ],
+        features_hard_1: [
+            59,
+            77
+        ],
+        features_hard_2: [
+            179,
+            180,
+            181
+        ]
+    },
+    {
+        id: 309,
+        name: "technik teleinformatyk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            30,
+            44
+        ],
+        features_traits_2: [
+            35,
+            54,
+            62
+        ],
+        features_hard_1: [
+            60,
+            78
+        ],
+        features_hard_2: [
+            182,
+            183,
+            184
+        ]
+    },
+    {
+        id: 310,
+        name: "technik programista",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            33,
+            56,
+            67
+        ],
+        features_hard_1: [
+            61,
+            79
+        ],
+        features_hard_2: [
+            185,
+            186,
+            187
+        ]
+    },
+    {
+        id: 311,
+        name: "technik grafiki i poligrafii cyfrowej",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            36,
+            55,
+            61
+        ],
+        features_hard_1: [
+            62,
+            80
+        ],
+        features_hard_2: [
+            188,
+            189,
+            190
+        ]
+    },
+    {
+        id: 312,
+        name: "krawiec",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            34,
+            57,
+            65
+        ],
+        features_hard_1: [
+            63,
+            81
+        ],
+        features_hard_2: [
+            191,
+            192,
+            193
+        ]
+    },
+    {
+        id: 313,
+        name: "technik przemysłu mody",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            33,
+            54,
+            67
+        ],
+        features_hard_1: [
+            64,
+            82
+        ],
+        features_hard_2: [
+            194,
+            195,
+            196
+        ]
+    },
+    {
+        id: 314,
+        name: "technik technologii odzieży",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            46
+        ],
+        features_traits_2: [
+            36,
+            55,
+            62
+        ],
+        features_hard_1: [
+            65,
+            83
+        ],
+        features_hard_2: [
+            197,
+            198,
+            199
+        ]
+    },
+    {
+        id: 315,
+        name: "technik usług fryzjerskich",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            34,
+            57,
+            64
+        ],
+        features_hard_1: [
+            66,
+            84
+        ],
+        features_hard_2: [
+            0,
+            1,
+            2
+        ]
+    },
+    {
+        id: 316,
+        name: "technik analityk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            33,
+            56,
+            65
+        ],
+        features_hard_1: [
+            67,
+            85
+        ],
+        features_hard_2: [
+            3,
+            4,
+            5
+        ]
+    },
+    {
+        id: 317,
+        name: "technik ochrony środowiska",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            46
+        ],
+        features_traits_2: [
+            36,
+            54,
+            67
+        ],
+        features_hard_1: [
+            68,
+            86
+        ],
+        features_hard_2: [
+            6,
+            7,
+            8
+        ]
+    },
+    {
+        id: 318,
+        name: "technik technologii chemicznej",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            34,
+            56,
+            65
+        ],
+        features_hard_1: [
+            69,
+            87
+        ],
+        features_hard_2: [
+            9,
+            10,
+            11
+        ]
+    },
+    {
+        id: 319,
+        name: "technik laboratoriów chemicznych",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            28,
+            42
+        ],
+        features_traits_2: [
+            33,
+            57,
+            67
+        ],
+        features_hard_1: [
+            70,
+            88
+        ],
+        features_hard_2: [
+            12,
+            13,
+            14
+        ]
+    },
+    {
+        id: 320,
+        name: "technik ekonomista",
+        features_traits_1: [
+            12,
+            13,
+            15,
+            19,
+            25,
+            44
+        ],
+        features_traits_2: [
+            34,
+            54,
+            62
+        ],
+        features_hard_1: [
+            71,
+            89
+        ],
+        features_hard_2: [
+            15,
+            16,
+            17
+        ]
+    },
+    {
+        id: 321,
+        name: "technik rachunkowości",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            41
+        ],
+        features_traits_2: [
+            33,
+            56,
+            65
+        ],
+        features_hard_1: [
+            72,
+            90
+        ],
+        features_hard_2: [
+            18,
+            19,
+            20
+        ]
+    },
+    {
+        id: 322,
+        name: "technik handlowiec",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            29,
+            44
+        ],
+        features_traits_2: [
+            36,
+            54,
+            61
+        ],
+        features_hard_1: [
+            73,
+            91
+        ],
+        features_hard_2: [
+            21,
+            22,
+            23
+        ]
+    },
+    {
+        id: 323,
+        name: "technik logistyk",
+        features_traits_1: [
+            12,
+            15,
+            25,
+            31,
+            43
+        ],
+        features_traits_2: [
+            30,
+            50,
+            65
+        ],
+        features_hard_1: [
+            74,
+            92
+        ],
+        features_hard_2: [
+            24,
+            25,
+            26
+        ]
+    }
+
+
 ]
 export const cities = [
     "Warszawa",
@@ -212,186 +4595,186 @@ export const cities = [
     "Częstochowa",
     "Radom",
     "Toruń"
-  ];
-  export const profiles = [
-    { id: 1, profileName: "klasa humanistyczna", features_traits_1: [10, 14, 18, 22, 28, 35], features_traits_2: [11, 24, 36, 47, 56, 73, 82], features_hard_1: [101, 119], features_hard_2: [107, 108, 105] },
-    { id: 2, profileName: "klasa biologiczno-chemiczno-matematyczna", features_traits_1: [15, 19, 25, 29, 42, 46], features_traits_2: [34, 38, 58, 69, 87], features_hard_1: [102, 120], features_hard_2: [106, 109, 111] },
-    { id: 3, profileName: "klasa matematyczno-fizyczna", features_traits_1: [12, 15, 25, 31, 38, 41], features_traits_2: [26, 57, 68], features_hard_1: [103, 121], features_hard_2: [110, 112, 113] },
-    { id: 4, profileName: "klasa matematyczno-geograficzna", features_traits_1: [21, 29, 32, 45, 50], features_traits_2: [33, 47, 54, 60], features_hard_1: [104, 122], features_hard_2: [114, 115, 116] },
-    { id: 5, profileName: "ABAKUS mat fiz", features_traits_1: [19, 25, 30, 46], features_traits_2: [35, 48, 62], features_hard_1: [105, 123], features_hard_2: [117, 118, 119] },
-    { id: 6, profileName: "COLUMBUS mat-geo", features_traits_1: [20, 34, 47], features_traits_2: [30, 52, 61, 71], features_hard_1: [106, 124], features_hard_2: [120, 121, 122] },
-    { id: 7, profileName: "LEX gr. 1 human", features_traits_1: [10, 14, 18, 35, 44], features_traits_2: [37, 49, 65], features_hard_1: [107, 125], features_hard_2: [123, 124, 125] },
-    { id: 8, profileName: "LEX gr. 2 human", features_traits_1: [17, 28, 35, 43], features_traits_2: [31, 56, 64], features_hard_1: [108, 126], features_hard_2: [126, 127, 128] },
-    { id: 9, profileName: "MEDICUS biol-chem", features_traits_1: [15, 19, 25, 41, 46], features_traits_2: [34, 58, 70], features_hard_1: [109, 127], features_hard_2: [129, 130, 131] },
-    { id: 10, profileName: "GALIA gr 1 wstępny humanistyczny", features_traits_1: [13, 18, 23, 28, 35, 45], features_traits_2: [36, 51, 66], features_hard_1: [110, 128], features_hard_2: [132, 133, 134] },
-    { id: 11, profileName: "GALIA gr 2 wstępny biologiczno - chemiczny", features_traits_1: [15, 19, 25, 38, 47], features_traits_2: [31, 55, 67], features_hard_1: [111, 129], features_hard_2: [135, 136, 137] },
-    { id: 12, profileName: "pre-IB", features_traits_1: [10, 14, 22, 33, 42], features_traits_2: [32, 54, 63], features_hard_1: [112, 130], features_hard_2: [138, 139, 140] },
-    { id: 13, profileName: "PRAWNICZA", features_traits_1: [10, 14, 18, 35, 38], features_traits_2: [39, 57, 68], features_hard_1: [113, 131], features_hard_2: [141, 142, 143] },
-    { id: 14, profileName: "POLITECHNICZNA AI", features_traits_1: [15, 19, 25, 28, 46], features_traits_2: [35, 50, 62], features_hard_1: [114, 132], features_hard_2: [144, 145, 146] },
-    { id: 15, profileName: "EKONOMICZNA AI", features_traits_1: [13, 19, 25, 28, 44], features_traits_2: [36, 48, 61], features_hard_1: [115, 133], features_hard_2: [147, 148, 149] },
-    { id: 16, profileName: "MEDYCZNA", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [33, 51, 67], features_hard_1: [116, 134], features_hard_2: [150, 151, 152] },
-    { id: 17, profileName: "VESPUCCI - akademicka", features_traits_1: [15, 19, 25, 27, 43], features_traits_2: [37, 56, 64], features_hard_1: [117, 135], features_hard_2: [153, 154, 155] },
-    { id: 18, profileName: "LINUX - akademicka", features_traits_1: [15, 19, 25, 28, 42], features_traits_2: [35, 52, 63], features_hard_1: [118, 136], features_hard_2: [156, 157, 158] },
-    { id: 19, profileName: "DA VINCI - akademicka", features_traits_1: [12, 13, 15, 19, 25, 38], features_traits_2: [34, 54, 69], features_hard_1: [119, 137], features_hard_2: [159, 160, 161] },
-    { id: 20, profileName: "AVICENNA – akademicka", features_traits_1: [13, 15, 18, 23, 28, 46], features_traits_2: [36, 57, 66], features_hard_1: [120, 138], features_hard_2: [162, 163, 164] },
-    { id: 21, profileName: "Akademicki-Ekonomiczny", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [30, 49, 62], features_hard_1: [121, 139], features_hard_2: [165, 166, 167] },
-    { id: 22, profileName: "Medyczny", features_traits_1: [15, 19, 25, 41, 46], features_traits_2: [39, 56, 68], features_hard_1: [122, 140], features_hard_2: [168, 169, 170] },
-    { id: 23, profileName: "Informatyczny", features_traits_1: [12, 15, 25, 28, 45], features_traits_2: [35, 51, 67], features_hard_1: [123, 141], features_hard_2: [171, 172, 173] },
-    { id: 24, profileName: "Psychologiczno-Prawniczy", features_traits_1: [10, 14, 18, 22, 42], features_traits_2: [38, 54, 61], features_hard_1: [124, 142], features_hard_2: [174, 175, 176] },
-    { id: 25, profileName: "medyczna", features_traits_1: [15, 19, 25, 31, 44], features_traits_2: [37, 57, 69], features_hard_1: [125, 143], features_hard_2: [177, 178, 179] },
-    { id: 26, profileName: "biologiczno chemiczna", features_traits_1: [15, 19, 25, 29, 45], features_traits_2: [33, 55, 68], features_hard_1: [126, 144], features_hard_2: [180, 181, 182] },
-    { id: 27, profileName: "dziennikarsko prawna", features_traits_1: [10, 14, 18, 35, 47], features_traits_2: [35, 50, 66], features_hard_1: [127, 145], features_hard_2: [183, 184, 185] },
-    { id: 28, profileName: "politechniczna", features_traits_1: [12, 13, 15, 19, 25, 28, 44], features_traits_2: [36, 53, 63], features_hard_1: [128, 146], features_hard_2: [186, 187, 188] },
-    { id: 29, profileName: "turystyczno ekonomiczna", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [30, 49, 67], features_hard_1: [129, 147], features_hard_2: [189, 190, 191] },
-    { id: 30, profileName: "Humanistyczna", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [32, 57, 66], features_hard_1: [130, 148], features_hard_2: [192, 193, 194] },
-    { id: 31, profileName: "Informatyka z kwantem", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 54, 64], features_hard_1: [131, 149], features_hard_2: [195, 196, 197] },
-    { id: 32, profileName: "Matematyczno-geograficzna", features_traits_1: [12, 15, 25, 29, 32, 43], features_traits_2: [36, 56, 62], features_hard_1: [132, 150], features_hard_2: [198, 199, 200] },
-    { id: 33, profileName: "Biologiczno-chemiczna", features_traits_1: [15, 19, 25, 44], features_traits_2: [35, 50, 67], features_hard_1: [133, 151], features_hard_2: [201, 202, 203] },
-    { id: 34, profileName: "Medialny", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [37, 51, 65], features_hard_1: [134, 152], features_hard_2: [204, 205, 206] },
-    { id: 35, profileName: "Biologiczno-Chemiczny", features_traits_1: [15, 19, 25, 41, 47], features_traits_2: [38, 55, 61], features_hard_1: [135, 153], features_hard_2: [207, 208, 209] },
-    { id: 36, profileName: "Ekonomiczny", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [31, 54, 69], features_hard_1: [136, 154], features_hard_2: [210, 211, 212] },
-    { id: 37, profileName: "Politechniczny", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [32, 50, 64], features_hard_1: [137, 155], features_hard_2: [213, 214, 215] },
-    { id: 38, profileName: "Wstępny", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [35, 57, 67], features_hard_1: [138, 156], features_hard_2: [216, 217, 218] },
-    { id: 39, profileName: "IKA Informatyczna Klasa Akademicka mat.-fiz.-inf.", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 49, 68], features_hard_1: [139, 157], features_hard_2: [219, 220, 221] },
-    { id: 40, profileName: "MKA Matematyczna Klasa Akademicka mat.-fiz.-inf.", features_traits_1: [12, 15, 25, 27, 43], features_traits_2: [32, 51, 64], features_hard_1: [140, 158], features_hard_2: [222, 223, 224] },
-    { id: 41, profileName: "PKM Patronacka Klasa Medyczna biol.-chem.", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [36, 57, 66], features_hard_1: [141, 159], features_hard_2: [225, 226, 227] },
-    { id: 42, profileName: "EKA Ekonomiczna Klasa Akademicka mat.-geo.-językowa", features_traits_1: [13, 19, 25, 28, 46], features_traits_2: [37, 50, 63], features_hard_1: [142, 160], features_hard_2: [228, 229, 230] },
-    { id: 43, profileName: "prozdrowotna", features_traits_1: [15, 19, 25, 31, 47], features_traits_2: [34, 55, 61], features_hard_1: [143, 161], features_hard_2: [231, 232, 233] },
-    { id: 44, profileName: "inżynieryjna", features_traits_1: [15, 19, 25, 28, 45], features_traits_2: [33, 51, 65], features_hard_1: [144, 162], features_hard_2: [234, 235, 236] },
-    { id: 45, profileName: "biznesowa", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [32, 56, 62], features_hard_1: [145, 163], features_hard_2: [237, 238, 239] },
-    { id: 46, profileName: "europejska", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [30, 50, 66], features_hard_1: [146, 164], features_hard_2: [240, 241, 242] },
-    { id: 47, profileName: "LINGWISTYCZNA", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 54, 67], features_hard_1: [147, 165], features_hard_2: [243, 244, 245] },
-    { id: 48, profileName: "POLITECHNICZNO-EKONOMICZNA (klasa akademicka Uniwersytetu Ekonomicznego)", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [35, 57, 64], features_hard_1: [148, 166], features_hard_2: [246, 247, 248] },
-    { id: 49, profileName: "MEDIALNA", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [34, 49, 68], features_hard_1: [149, 167], features_hard_2: [249, 250, 251] },
-    { id: 50, profileName: "PRZYRODNICZA", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [32, 55, 62], features_hard_1: [150, 168], features_hard_2: [252, 253, 254] },
-    { id: 51, profileName: "biologiczno - chemiczny", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [36, 56, 65], features_hard_1: [151, 169], features_hard_2: [255, 256, 257] },
-    { id: 52, profileName: "lingwistyczno - geograficzny", features_traits_1: [13, 19, 25, 31, 43], features_traits_2: [30, 54, 67], features_hard_1: [152, 170], features_hard_2: [258, 259, 260] },
-    { id: 53, profileName: "humanistyczno - medialny", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 49, 64], features_hard_1: [153, 171], features_hard_2: [261, 262, 263] },
-    { id: 54, profileName: "matematyczno - geograficzny", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [37, 51, 66], features_hard_1: [154, 172], features_hard_2: [264, 265, 266] },
-    { id: 55, profileName: "klasa ekonomiczna: profil matematyczno-geograficzno-językowy", features_traits_1: [13, 19, 25, 29, 42], features_traits_2: [32, 55, 62], features_hard_1: [155, 173], features_hard_2: [267, 268, 269] },
-    { id: 56, profileName: "klasa humanistyczna: profil teatrologiczno-filmoznawczy", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [35, 57, 63], features_hard_1: [156, 174], features_hard_2: [270, 271, 272] },
-    { id: 57, profileName: "klasa humanistyczna: profil prawniczy", features_traits_1: [10, 14, 18, 35, 47], features_traits_2: [34, 50, 67], features_hard_1: [157, 175], features_hard_2: [273, 274, 275] },
-    { id: 58, profileName: "klasa o profilu biologiczno-chemicznym", features_traits_1: [15, 19, 25, 31, 44], features_traits_2: [30, 54, 66], features_hard_1: [158, 176], features_hard_2: [276, 277, 278] },
-    { id: 59, profileName: "klasa politechniczna: profil matematyczno-informatyczno-językowy", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [37, 55, 65], features_hard_1: [159, 177], features_hard_2: [279, 280, 281] },
-    { id: 60, profileName: "architektoniczno-językowa ARCHITEKT", features_traits_1: [13, 19, 25, 29, 46], features_traits_2: [32, 56, 62], features_hard_1: [160, 178], features_hard_2: [282, 283, 284] },
-    { id: 61, profileName: "psychologiczna SELF-CARE", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 50, 63], features_hard_1: [161, 179], features_hard_2: [285, 286, 287] },
-    { id: 62, profileName: "matematyczno-chemiczna ANALITYK", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [30, 57, 67], features_hard_1: [162, 180], features_hard_2: [288, 289, 290] },
-    { id: 63, profileName: "dwujęzyczna prawniczo-ekonomiczna PRAWNIK", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [32, 55, 66], features_hard_1: [163, 181], features_hard_2: [291, 292, 293] },
-    { id: 64, profileName: "humanistyczny z językiem niemieckim", features_traits_1: [10, 14, 18, 28, 33, 41], features_traits_2: [35, 51, 65], features_hard_1: [164, 182], features_hard_2: [294, 295, 296] },
-    { id: 65, profileName: "humanistyczny z językiem hiszpańskim", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [36, 54, 67], features_hard_1: [165, 183], features_hard_2: [297, 298, 299] },
-    { id: 66, profileName: "biologiczno-językowy z językiem niemieckim", features_traits_1: [15, 19, 25, 29, 45], features_traits_2: [32, 55, 62], features_hard_1: [166, 184], features_hard_2: [300, 301, 302] },
-    { id: 67, profileName: "biologiczno-językowy z językiem hiszpańskim", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [34, 50, 65], features_hard_1: [167, 185], features_hard_2: [303, 304, 305] },
-    { id: 68, profileName: "matematyczno-geograficzny z językiem niemieckim", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 57, 63], features_hard_1: [168, 186], features_hard_2: [306, 307, 308] },
-    { id: 69, profileName: "matematyczno-geograficzny z językiem hiszpańskim", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [35, 56, 62], features_hard_1: [169, 187], features_hard_2: [309, 310, 311] },
-    { id: 70, profileName: "biologiczno-chemiczny", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [32, 55, 67], features_hard_1: [170, 188], features_hard_2: [312, 313, 314] },
-    { id: 71, profileName: "Dwujęzyczny prawniczo-psychologiczny", features_traits_1: [10, 14, 18, 22, 33, 44], features_traits_2: [37, 50, 65], features_hard_1: [171, 189], features_hard_2: [315, 316, 317] },
-    { id: 72, profileName: "Dwujęzyczny medyczny", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [36, 56, 64], features_hard_1: [172, 190], features_hard_2: [318, 319, 320] },
-    { id: 73, profileName: "Dwujęzyczny ekonomiczno-informatyczno-społeczny", features_traits_1: [13, 19, 25, 31, 47], features_traits_2: [34, 51, 62], features_hard_1: [173, 191], features_hard_2: [321, 322, 323] },
-    { id: 74, profileName: "Dwujęzyczny politechniczny", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [37, 54, 67], features_hard_1: [174, 192], features_hard_2: [324, 325, 326] },
-    { id: 75, profileName: "LEX-PRESS", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [33, 56, 61], features_hard_1: [175, 193], features_hard_2: [327, 328, 329] },
-    { id: 76, profileName: "LEX-CINEMA", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [34, 55, 62], features_hard_1: [176, 194], features_hard_2: [330, 331, 332] },
-    { id: 77, profileName: "POLITECHNICUS", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 57, 67], features_hard_1: [177, 195], features_hard_2: [333, 334, 335] },
-    { id: 78, profileName: "ECONOMICUS", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [32, 50, 66], features_hard_1: [178, 196], features_hard_2: [336, 337, 338] },
-    { id: 79, profileName: "MEDICORUM", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [34, 56, 62], features_hard_1: [179, 197], features_hard_2: [339, 340, 341] },
-    { id: 80, profileName: "PEREGRINUS", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [35, 54, 61], features_hard_1: [180, 198], features_hard_2: [342, 343, 344] },
-    { id: 81, profileName: "SECCION BILLINGUE - WSTĘPNY", features_traits_1: [13, 19, 25, 31, 46], features_traits_2: [34, 56, 67], features_hard_1: [181, 199], features_hard_2: [345, 346, 347] },
-    { id: 82, profileName: "Liceum Ogólnokształcące - klasa sportowa", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 55, 62], features_hard_1: [182, 200], features_hard_2: [348, 349, 350] },
-    { id: 83, profileName: "Liceum Ogólnokształcące", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [36, 54, 67], features_hard_1: [183, 201], features_hard_2: [351, 352, 353] },
-    { id: 84, profileName: "językowa z rozszerzonym językiem hiszpańskim i angielskim", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [32, 50, 63], features_hard_1: [184, 202], features_hard_2: [354, 355, 356] },
-    { id: 85, profileName: "kryminalistyczno - resocjalizacyjna z rozszerzeniem językowym", features_traits_1: [13, 19, 25, 31, 47], features_traits_2: [34, 57, 61], features_hard_1: [185, 203], features_hard_2: [357, 358, 359] },
-    { id: 86, profileName: "psychologiczno - językowa", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [35, 50, 66], features_hard_1: [186, 204], features_hard_2: [360, 361, 362] },
-    { id: 87, profileName: "sportowa z piłką nożną", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 54, 62], features_hard_1: [187, 205], features_hard_2: [363, 364, 365] },
-    { id: 88, profileName: "architektura i design z elementami nauczania outdoorowego", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [30, 56, 67], features_hard_1: [188, 206], features_hard_2: [366, 367, 368] },
-    { id: 89, profileName: "projektowanie gier komputerowych z elementami sztucznej inteligencji", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [32, 55, 61], features_hard_1: [189, 207], features_hard_2: [369, 370, 371] },
-    { id: 90, profileName: "teatralno-dziennikarska", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [35, 51, 63], features_hard_1: [190, 208], features_hard_2: [372, 373, 374] },
-    { id: 91, profileName: "psychologiczno-językowa", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [36, 54, 67], features_hard_1: [191, 209], features_hard_2: [375, 376, 377] },
-    { id: 92, profileName: "lingwistyczna", features_traits_1: [12, 13, 15, 19, 25, 41], features_traits_2: [33, 50, 64], features_hard_1: [192, 210], features_hard_2: [378, 379, 380] },
-    { id: 93, profileName: "klasa psychologiczna - psychologia i resocjalizacja", features_traits_1: [10, 14, 18, 22, 42], features_traits_2: [34, 55, 61], features_hard_1: [193, 211], features_hard_2: [381, 382, 383] },
-    { id: 94, profileName: "klasa prawna - kryminologia i resocjalizacja", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [37, 57, 67], features_hard_1: [194, 212], features_hard_2: [384, 385, 386] },
-    { id: 95, profileName: "psychologiczno-pedagogiczna angielsko-hiszpańska", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [32, 50, 65], features_hard_1: [195, 213], features_hard_2: [387, 388, 389] },
-    { id: 96, profileName: "psychologiczno-pedagogiczna angielsko-niemiecka", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [36, 54, 62], features_hard_1: [196, 214], features_hard_2: [390, 391, 392] },
-    { id: 97, profileName: "sportowo-obronna", features_traits_1: [12, 15, 25, 29, 47], features_traits_2: [34, 56, 67], features_hard_1: [197, 215], features_hard_2: [393, 394, 395] },
-    { id: 98, profileName: "policyjna", features_traits_1: [13, 19, 25, 30, 44], features_traits_2: [35, 50, 63], features_hard_1: [198, 216], features_hard_2: [396, 397, 398] },
-    { id: 99, profileName: "Oddział Przygotowania Wojskowego OPW", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [32, 54, 61], features_hard_1: [199, 217], features_hard_2: [399, 400, 401] },
-    { id: 100, profileName: "klasa kosmetyczna", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 55, 67], features_hard_1: [200, 218], features_hard_2: [402, 403, 404] },
-    { id: 101, profileName: "klasa strażacka", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [33, 50, 64], features_hard_1: [201, 219], features_hard_2: [405, 406, 407] },
-    { id: 102, profileName: "terapeutyczny", features_traits_1: [10, 14, 18, 22, 44], features_traits_2: [34, 57, 62], features_hard_1: [202, 220], features_hard_2: [408, 409, 410] },
-    { id: 103, profileName: "Dwujęzyczna Akademicka Klasa Ekonomiczno-Językowa", features_traits_1: [13, 19, 25, 31, 43], features_traits_2: [37, 56, 65], features_hard_1: [203, 221], features_hard_2: [411, 412, 413] },
-    { id: 104, profileName: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną historią", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [36, 54, 61], features_hard_1: [204, 222], features_hard_2: [414, 415, 416] },
-    { id: 105, profileName: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną wiedzą o społeczeństwie", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [34, 55, 67], features_hard_1: [205, 223], features_hard_2: [417, 418, 419] },
-    { id: 106, profileName: "Dwujęzyczna Patronacka Klasa Medyczna", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [32, 56, 62], features_hard_1: [206, 224], features_hard_2: [420, 421, 422] },
-    { id: 107, profileName: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną chemią", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [35, 50, 65], features_hard_1: [207, 225], features_hard_2: [423, 424, 425] },
-    { id: 108, profileName: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną fizyką", features_traits_1: [12, 13, 15, 19, 28, 47], features_traits_2: [34, 55, 67], features_hard_1: [208, 226], features_hard_2: [426, 427, 428] },
-    { id: 109, profileName: "sportowy, piłka nożna 'Poznańska 13'", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 61], features_hard_1: [209, 227], features_hard_2: [429, 430, 431] },
-    { id: 110, profileName: "mistrzostwa sportowego, kajaki", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [36, 50, 64], features_hard_1: [210, 228], features_hard_2: [432, 433, 434] },
-    { id: 111, profileName: "mistrzostwa sportowego, hokej na trawie, siatkówka dziewcząt", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [34, 55, 67], features_hard_1: [211, 229], features_hard_2: [435, 436, 437] },
-    { id: 112, profileName: "sportowy, koszykówka", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [35, 54, 61], features_hard_1: [212, 230], features_hard_2: [438, 439, 440] },
-    { id: 113, profileName: "mistrzostwa sportowego, pływanie, pływanie synchroniczne, wioślarstwo, skoki do wody", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [32, 50, 63], features_hard_1: [213, 231], features_hard_2: [441, 442, 443] },
-    { id: 114, profileName: "sportowy, sportowy, sztuki walki, piłka nożna dziewcząt 'Warta', piłka nożna 'Przemysław'", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 55, 64], features_hard_1: [214, 232], features_hard_2: [444, 445, 446] },
-    { id: 115, profileName: "Mistrzostwa Sportowego", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 50, 67], features_hard_1: [215, 233], features_hard_2: [447, 448, 449] },
-    { id: 116, profileName: "Sportowy", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [34, 56, 62], features_hard_1: [216, 234], features_hard_2: [450, 451, 452] },
-    { id: 117, profileName: "oddział przygotowania wojskowego", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [35, 54, 61], features_hard_1: [217, 235], features_hard_2: [453, 454, 455] },
-    { id: 118, profileName: "policyjna", features_traits_1: [13, 19, 25, 30, 46], features_traits_2: [36, 57, 64], features_hard_1: [218, 236], features_hard_2: [456, 457, 458] },
-    { id: 119, profileName: "strażacko-ratownicza", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [34, 56, 65], features_hard_1: [219, 237], features_hard_2: [459, 460, 461] },
-    { id: 120, profileName: "ogólnokształcąca", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [33, 55, 67], features_hard_1: [220, 238], features_hard_2: [462, 463, 464] },
-    { id: 121, profileName: "Turystyczno - Językowy", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 54, 62], features_hard_1: [221, 239], features_hard_2: [465, 466, 467] },
-    { id: 122, profileName: "humanistyczno-lingwistyczna", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [34, 57, 65], features_hard_1: [222, 240], features_hard_2: [468, 469, 470] },
-    { id: 123, profileName: "policyjna", features_traits_1: [13, 19, 25, 30, 45], features_traits_2: [33, 55, 64], features_hard_1: [223, 241], features_hard_2: [471, 472, 473] },
-    { id: 124, profileName: "Profil językowo - prawniczy", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [36, 56, 62], features_hard_1: [224, 242], features_hard_2: [474, 475, 476] },
-    { id: 125, profileName: "Profil politechniczny", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [34, 50, 67], features_hard_1: [225, 243], features_hard_2: [477, 478, 479] },
-    { id: 126, profileName: "Profil medyczno - przyrodniczy", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [35, 54, 61], features_hard_1: [226, 244], features_hard_2: [480, 481, 482] },
-    { id: 127, profileName: "HUMANISTYCZNO-DZIENNIKARSKA", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [33, 55, 62], features_hard_1: [227, 245], features_hard_2: [483, 484, 485] },
-    { id: 128, profileName: "PRZYRODNICZA", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [34, 56, 65], features_hard_1: [228, 246], features_hard_2: [486, 487, 488] },
-    { id: 129, profileName: "EKONOMICZNO-TURYSTYCZNA", features_traits_1: [13, 19, 25, 31, 42], features_traits_2: [33, 55, 67], features_hard_1: [229, 247], features_hard_2: [489, 490, 491] },
-    { id: 130, profileName: "sportowa", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [36, 54, 62], features_hard_1: [230, 248], features_hard_2: [492, 493, 494] },
-    { id: 131, profileName: "grupa ekonomiczna", features_traits_1: [13, 19, 25, 29, 41], features_traits_2: [34, 56, 63], features_hard_1: [231, 249], features_hard_2: [495, 496, 497] },
-    { id: 132, profileName: "grupa biznesowa", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [36, 55, 65], features_hard_1: [232, 250], features_hard_2: [498, 499, 500] },
-    { id: 133, profileName: "przyrodnicza", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [33, 50, 67], features_hard_1: [233, 251], features_hard_2: [501, 502, 503] },
-    { id: 134, profileName: "liceum ogólnokształcące", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 56, 62], features_hard_1: [234, 252], features_hard_2: [504, 505, 506] },
-    { id: 135, profileName: "klasa dwujęzyczna z rozszerzonym j.polskim oraz biologią", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [35, 55, 64], features_hard_1: [235, 253], features_hard_2: [507, 508, 509] },
-    { id: 136, profileName: "klasa dwujęzyczna z rozszerzoną matematyką i geografią", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 65], features_hard_1: [236, 254], features_hard_2: [510, 511, 512] },
-    { id: 137, profileName: "Oddział Jeżyce", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [34, 57, 67], features_hard_1: [237, 255], features_hard_2: [513, 514, 515] },
-    { id: 138, profileName: "Oddział Nieszawska", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [35, 50, 61], features_hard_1: [238, 256], features_hard_2: [516, 517, 518] },
-    { id: 139, profileName: "klasa 1A", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [32, 54, 62], features_hard_1: [239, 257], features_hard_2: [519, 520, 521] },
-    { id: 140, profileName: "klasa 1B", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [34, 56, 64], features_hard_1: [240, 258], features_hard_2: [522, 523, 524] },
-    { id: 141, profileName: "klasa humanistyczna", features_traits_1: [10, 14, 18, 28, 35, 45], features_traits_2: [36, 55, 61], features_hard_1: [241, 259], features_hard_2: [525, 526, 527] },
-    { id: 142, profileName: "politechniczna", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [33, 57, 67], features_hard_1: [242, 260], features_hard_2: [528, 529, 530] },
-    { id: 143, profileName: "medyczna", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [35, 50, 62], features_hard_1: [243, 261], features_hard_2: [531, 532, 533] },
-    { id: 144, profileName: "mechanik samochodowy", features_traits_1: [12, 15, 25, 28, 44], features_traits_2: [34, 56, 61], features_hard_1: [244, 262], features_hard_2: [534, 535, 536] },
-    { id: 145, profileName: "elektryk", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 55, 65], features_hard_1: [245, 263], features_hard_2: [537, 538, 539] },
-    { id: 146, profileName: "technik informatyk", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [34, 56, 62], features_hard_1: [246, 264], features_hard_2: [540, 541, 542] },
-    { id: 147, profileName: "kucharz", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [35, 54, 64], features_hard_1: [247, 265], features_hard_2: [543, 544, 545] },
-    { id: 148, profileName: "technik mechanik", features_traits_1: [12, 15, 25, 28, 44], features_traits_2: [33, 57, 67], features_hard_1: [248, 266], features_hard_2: [546, 547, 548] },
-    { id: 149, profileName: "technik mechatronik", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 55, 62], features_hard_1: [249, 267], features_hard_2: [549, 550, 551] },
-    { id: 150, profileName: "technik elektryk", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [34, 56, 61], features_hard_1: [250, 268], features_hard_2: [552, 553, 554] },
-    { id: 151, profileName: "technik energetyk", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [33, 55, 62], features_hard_1: [251, 269], features_hard_2: [555, 556, 557] },
-    { id: 152, profileName: "technik żywienia i usług gastronomicznych", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 57, 65], features_hard_1: [252, 270], features_hard_2: [558, 559, 560] },
-    { id: 153, profileName: "cukiernik", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [33, 56, 67], features_hard_1: [253, 271], features_hard_2: [561, 562, 563] },
-    { id: 154, profileName: "kelner", features_traits_1: [12, 15, 25, 28, 41], features_traits_2: [34, 55, 62], features_hard_1: [254, 272], features_hard_2: [564, 565, 566] },
-    { id: 155, profileName: "technik budownictwa", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [36, 57, 65], features_hard_1: [255, 273], features_hard_2: [567, 568, 569] },
-    { id: 156, profileName: "technik architektury krajobrazu", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [33, 54, 67], features_hard_1: [256, 274], features_hard_2: [570, 571, 572] },
-    { id: 157, profileName: "technik geodeta", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [35, 56, 61], features_hard_1: [257, 275], features_hard_2: [573, 574, 575] },
-    { id: 158, profileName: "technik robót wykończeniowych w budownictwie", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [34, 55, 66], features_hard_1: [258, 276], features_hard_2: [576, 577, 578] },
-    { id: 159, profileName: "technik elektronik", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [36, 57, 65], features_hard_1: [259, 277], features_hard_2: [579, 580, 581] },
-    { id: 160, profileName: "technik teleinformatyk", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [35, 54, 62], features_hard_1: [260, 278], features_hard_2: [582, 583, 584] },
-    { id: 161, profileName: "technik programista", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [33, 56, 67], features_hard_1: [261, 279], features_hard_2: [585, 586, 587] },
-    { id: 162, profileName: "technik grafiki i poligrafii cyfrowej", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 55, 61], features_hard_1: [262, 280], features_hard_2: [588, 589, 590] },
-    { id: 163, profileName: "krawiec", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 57, 65], features_hard_1: [263, 281], features_hard_2: [591, 592, 593] },
-    { id: 164, profileName: "technik przemysłu mody", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [33, 54, 67], features_hard_1: [264, 282], features_hard_2: [594, 595, 596] },
-    { id: 165, profileName: "technik technologii odzieży", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [36, 55, 62], features_hard_1: [265, 283], features_hard_2: [597, 598, 599] },
-    { id: 166, profileName: "technik usług fryzjerskich", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [34, 57, 64], features_hard_1: [266, 284], features_hard_2: [600, 601, 602] },
-    { id: 167, profileName: "technik analityk", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [33, 56, 65], features_hard_1: [267, 285], features_hard_2: [603, 604, 605] },
-    { id: 168, profileName: "technik ochrony środowiska", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 54, 67], features_hard_1: [268, 286], features_hard_2: [606, 607, 608] },
-    { id: 169, profileName: "technik technologii chemicznej", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [34, 56, 65], features_hard_1: [269, 287], features_hard_2: [609, 610, 611] },
-    { id: 170, profileName: "technik laboratoriów chemicznych", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [33, 57, 67], features_hard_1: [270, 288], features_hard_2: [612, 613, 614] },
-    { id: 171, profileName: "technik ekonomista", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [34, 54, 62], features_hard_1: [271, 289], features_hard_2: [615, 616, 617] },
-    { id: 172, profileName: "technik rachunkowości", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 65], features_hard_1: [272, 290], features_hard_2: [618, 619, 620] },
-    { id: 173, profileName: "technik handlowiec", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [36, 54, 61], features_hard_1: [273, 291], features_hard_2: [621, 622, 623] },
-    { id: 174, profileName: "technik logistyk", features_traits_1: [12, 15, 25, 31, 43], features_traits_2: [30, 50, 65], features_hard_1: [274, 292], features_hard_2: [624, 625, 626] }
+];
+export const profiles = [
+    { id: 1, name: "klasa humanistyczna", features_traits_1: [10, 14, 18, 22, 28, 35], features_traits_2: [11, 24, 36, 47, 56, 73, 82], features_hard_1: [101, 119], features_hard_2: [107, 108, 105] },
+    { id: 2, name: "klasa biologiczno-chemiczno-matematyczna", features_traits_1: [15, 19, 25, 29, 42, 46], features_traits_2: [34, 38, 58, 69, 87], features_hard_1: [102, 120], features_hard_2: [106, 109, 111] },
+    { id: 3, name: "klasa matematyczno-fizyczna", features_traits_1: [12, 15, 25, 31, 38, 41], features_traits_2: [26, 57, 68], features_hard_1: [103, 121], features_hard_2: [110, 112, 113] },
+    { id: 4, name: "klasa matematyczno-geograficzna", features_traits_1: [21, 29, 32, 45, 50], features_traits_2: [33, 47, 54, 60], features_hard_1: [104, 122], features_hard_2: [114, 115, 116] },
+    { id: 5, name: "ABAKUS mat fiz", features_traits_1: [19, 25, 30, 46], features_traits_2: [35, 48, 62], features_hard_1: [105, 123], features_hard_2: [117, 118, 119] },
+    { id: 6, name: "COLUMBUS mat-geo", features_traits_1: [20, 34, 47], features_traits_2: [30, 52, 61, 71], features_hard_1: [106, 124], features_hard_2: [120, 121, 122] },
+    { id: 7, name: "LEX gr. 1 human", features_traits_1: [10, 14, 18, 35, 44], features_traits_2: [37, 49, 65], features_hard_1: [107, 125], features_hard_2: [123, 124, 125] },
+    { id: 8, name: "LEX gr. 2 human", features_traits_1: [17, 28, 35, 43], features_traits_2: [31, 56, 64], features_hard_1: [108, 126], features_hard_2: [126, 127, 128] },
+    { id: 9, name: "MEDICUS biol-chem", features_traits_1: [15, 19, 25, 41, 46], features_traits_2: [34, 58, 70], features_hard_1: [109, 127], features_hard_2: [129, 130, 131] },
+    { id: 10, name: "GALIA gr 1 wstępny humanistyczny", features_traits_1: [13, 18, 23, 28, 35, 45], features_traits_2: [36, 51, 66], features_hard_1: [110, 128], features_hard_2: [132, 133, 134] },
+    { id: 11, name: "GALIA gr 2 wstępny biologiczno - chemiczny", features_traits_1: [15, 19, 25, 38, 47], features_traits_2: [31, 55, 67], features_hard_1: [111, 129], features_hard_2: [135, 136, 137] },
+    { id: 12, name: "pre-IB", features_traits_1: [10, 14, 22, 33, 42], features_traits_2: [32, 54, 63], features_hard_1: [112, 130], features_hard_2: [138, 139, 140] },
+    { id: 13, name: "PRAWNICZA", features_traits_1: [10, 14, 18, 35, 38], features_traits_2: [39, 57, 68], features_hard_1: [113, 131], features_hard_2: [141, 142, 143] },
+    { id: 14, name: "POLITECHNICZNA AI", features_traits_1: [15, 19, 25, 28, 46], features_traits_2: [35, 50, 62], features_hard_1: [114, 132], features_hard_2: [144, 145, 146] },
+    { id: 15, name: "EKONOMICZNA AI", features_traits_1: [13, 19, 25, 28, 44], features_traits_2: [36, 48, 61], features_hard_1: [115, 133], features_hard_2: [147, 148, 149] },
+    { id: 16, name: "MEDYCZNA", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [33, 51, 67], features_hard_1: [116, 134], features_hard_2: [150, 151, 152] },
+    { id: 17, name: "VESPUCCI - akademicka", features_traits_1: [15, 19, 25, 27, 43], features_traits_2: [37, 56, 64], features_hard_1: [117, 135], features_hard_2: [153, 154, 155] },
+    { id: 18, name: "LINUX - akademicka", features_traits_1: [15, 19, 25, 28, 42], features_traits_2: [35, 52, 63], features_hard_1: [118, 136], features_hard_2: [156, 157, 158] },
+    { id: 19, name: "DA VINCI - akademicka", features_traits_1: [12, 13, 15, 19, 25, 38], features_traits_2: [34, 54, 69], features_hard_1: [119, 137], features_hard_2: [159, 160, 161] },
+    { id: 20, name: "AVICENNA – akademicka", features_traits_1: [13, 15, 18, 23, 28, 46], features_traits_2: [36, 57, 66], features_hard_1: [120, 138], features_hard_2: [162, 163, 164] },
+    { id: 21, name: "Akademicki-Ekonomiczny", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [30, 49, 62], features_hard_1: [121, 139], features_hard_2: [165, 166, 167] },
+    { id: 22, name: "Medyczny", features_traits_1: [15, 19, 25, 41, 46], features_traits_2: [39, 56, 68], features_hard_1: [122, 140], features_hard_2: [168, 169, 170] },
+    { id: 23, name: "Informatyczny", features_traits_1: [12, 15, 25, 28, 45], features_traits_2: [35, 51, 67], features_hard_1: [123, 141], features_hard_2: [171, 172, 173] },
+    { id: 24, name: "Psychologiczno-Prawniczy", features_traits_1: [10, 14, 18, 22, 42], features_traits_2: [38, 54, 61], features_hard_1: [124, 142], features_hard_2: [174, 175, 176] },
+    { id: 25, name: "medyczna", features_traits_1: [15, 19, 25, 31, 44], features_traits_2: [37, 57, 69], features_hard_1: [125, 143], features_hard_2: [177, 178, 179] },
+    { id: 26, name: "biologiczno chemiczna", features_traits_1: [15, 19, 25, 29, 45], features_traits_2: [33, 55, 68], features_hard_1: [126, 144], features_hard_2: [180, 181, 182] },
+    { id: 27, name: "dziennikarsko prawna", features_traits_1: [10, 14, 18, 35, 47], features_traits_2: [35, 50, 66], features_hard_1: [127, 145], features_hard_2: [183, 184, 185] },
+    { id: 28, name: "politechniczna", features_traits_1: [12, 13, 15, 19, 25, 28, 44], features_traits_2: [36, 53, 63], features_hard_1: [128, 146], features_hard_2: [186, 187, 188] },
+    { id: 29, name: "turystyczno ekonomiczna", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [30, 49, 67], features_hard_1: [129, 147], features_hard_2: [189, 190, 191] },
+    { id: 30, name: "Humanistyczna", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [32, 57, 66], features_hard_1: [130, 148], features_hard_2: [192, 193, 194] },
+    { id: 31, name: "Informatyka z kwantem", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 54, 64], features_hard_1: [131, 149], features_hard_2: [195, 196, 197] },
+    { id: 32, name: "Matematyczno-geograficzna", features_traits_1: [12, 15, 25, 29, 32, 43], features_traits_2: [36, 56, 62], features_hard_1: [132, 150], features_hard_2: [198, 199, 200] },
+    { id: 33, name: "Biologiczno-chemiczna", features_traits_1: [15, 19, 25, 44], features_traits_2: [35, 50, 67], features_hard_1: [133, 151], features_hard_2: [201, 202, 203] },
+    { id: 34, name: "Medialny", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [37, 51, 65], features_hard_1: [134, 152], features_hard_2: [204, 205, 206] },
+    { id: 35, name: "Biologiczno-Chemiczny", features_traits_1: [15, 19, 25, 41, 47], features_traits_2: [38, 55, 61], features_hard_1: [135, 153], features_hard_2: [207, 208, 209] },
+    { id: 36, name: "Ekonomiczny", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [31, 54, 69], features_hard_1: [136, 154], features_hard_2: [210, 211, 212] },
+    { id: 37, name: "Politechniczny", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [32, 50, 64], features_hard_1: [137, 155], features_hard_2: [213, 214, 215] },
+    { id: 38, name: "Wstępny", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [35, 57, 67], features_hard_1: [138, 156], features_hard_2: [216, 217, 218] },
+    { id: 39, name: "IKA Informatyczna Klasa Akademicka mat.-fiz.-inf.", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 49, 68], features_hard_1: [139, 157], features_hard_2: [219, 220, 221] },
+    { id: 40, name: "MKA Matematyczna Klasa Akademicka mat.-fiz.-inf.", features_traits_1: [12, 15, 25, 27, 43], features_traits_2: [32, 51, 64], features_hard_1: [140, 158], features_hard_2: [222, 223, 224] },
+    { id: 41, name: "PKM Patronacka Klasa Medyczna biol.-chem.", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [36, 57, 66], features_hard_1: [141, 159], features_hard_2: [225, 226, 227] },
+    { id: 42, name: "EKA Ekonomiczna Klasa Akademicka mat.-geo.-językowa", features_traits_1: [13, 19, 25, 28, 46], features_traits_2: [37, 50, 63], features_hard_1: [142, 160], features_hard_2: [228, 229, 230] },
+    { id: 43, name: "prozdrowotna", features_traits_1: [15, 19, 25, 31, 47], features_traits_2: [34, 55, 61], features_hard_1: [143, 161], features_hard_2: [231, 232, 233] },
+    { id: 44, name: "inżynieryjna", features_traits_1: [15, 19, 25, 28, 45], features_traits_2: [33, 51, 65], features_hard_1: [144, 162], features_hard_2: [234, 235, 236] },
+    { id: 45, name: "biznesowa", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [32, 56, 62], features_hard_1: [145, 163], features_hard_2: [237, 238, 239] },
+    { id: 46, name: "europejska", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [30, 50, 66], features_hard_1: [146, 164], features_hard_2: [240, 241, 242] },
+    { id: 47, name: "LINGWISTYCZNA", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 54, 67], features_hard_1: [147, 165], features_hard_2: [243, 244, 245] },
+    { id: 48, name: "POLITECHNICZNO-EKONOMICZNA (klasa akademicka Uniwersytetu Ekonomicznego)", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [35, 57, 64], features_hard_1: [148, 166], features_hard_2: [246, 247, 248] },
+    { id: 49, name: "MEDIALNA", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [34, 49, 68], features_hard_1: [149, 167], features_hard_2: [249, 250, 251] },
+    { id: 50, name: "PRZYRODNICZA", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [32, 55, 62], features_hard_1: [150, 168], features_hard_2: [252, 253, 254] },
+    { id: 51, name: "biologiczno - chemiczny", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [36, 56, 65], features_hard_1: [151, 169], features_hard_2: [255, 256, 257] },
+    { id: 52, name: "lingwistyczno - geograficzny", features_traits_1: [13, 19, 25, 31, 43], features_traits_2: [30, 54, 67], features_hard_1: [152, 170], features_hard_2: [258, 259, 260] },
+    { id: 53, name: "humanistyczno - medialny", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 49, 64], features_hard_1: [153, 171], features_hard_2: [261, 262, 263] },
+    { id: 54, name: "matematyczno - geograficzny", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [37, 51, 66], features_hard_1: [154, 172], features_hard_2: [264, 265, 266] },
+    { id: 55, name: "klasa ekonomiczna: profil matematyczno-geograficzno-językowy", features_traits_1: [13, 19, 25, 29, 42], features_traits_2: [32, 55, 62], features_hard_1: [155, 173], features_hard_2: [267, 268, 269] },
+    { id: 56, name: "klasa humanistyczna: profil teatrologiczno-filmoznawczy", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [35, 57, 63], features_hard_1: [156, 174], features_hard_2: [270, 271, 272] },
+    { id: 57, name: "klasa humanistyczna: profil prawniczy", features_traits_1: [10, 14, 18, 35, 47], features_traits_2: [34, 50, 67], features_hard_1: [157, 175], features_hard_2: [273, 274, 275] },
+    { id: 58, name: "klasa o profilu biologiczno-chemicznym", features_traits_1: [15, 19, 25, 31, 44], features_traits_2: [30, 54, 66], features_hard_1: [158, 176], features_hard_2: [276, 277, 278] },
+    { id: 59, name: "klasa politechniczna: profil matematyczno-informatyczno-językowy", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [37, 55, 65], features_hard_1: [159, 177], features_hard_2: [279, 280, 281] },
+    { id: 60, name: "architektoniczno-językowa ARCHITEKT", features_traits_1: [13, 19, 25, 29, 46], features_traits_2: [32, 56, 62], features_hard_1: [160, 178], features_hard_2: [282, 283, 284] },
+    { id: 61, name: "psychologiczna SELF-CARE", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 50, 63], features_hard_1: [161, 179], features_hard_2: [285, 286, 287] },
+    { id: 62, name: "matematyczno-chemiczna ANALITYK", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [30, 57, 67], features_hard_1: [162, 180], features_hard_2: [288, 289, 290] },
+    { id: 63, name: "dwujęzyczna prawniczo-ekonomiczna PRAWNIK", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [32, 55, 66], features_hard_1: [163, 181], features_hard_2: [291, 292, 293] },
+    { id: 64, name: "humanistyczny z językiem niemieckim", features_traits_1: [10, 14, 18, 28, 33, 41], features_traits_2: [35, 51, 65], features_hard_1: [164, 182], features_hard_2: [294, 295, 296] },
+    { id: 65, name: "humanistyczny z językiem hiszpańskim", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [36, 54, 67], features_hard_1: [165, 183], features_hard_2: [297, 298, 299] },
+    { id: 66, name: "biologiczno-językowy z językiem niemieckim", features_traits_1: [15, 19, 25, 29, 45], features_traits_2: [32, 55, 62], features_hard_1: [166, 184], features_hard_2: [300, 301, 302] },
+    { id: 67, name: "biologiczno-językowy z językiem hiszpańskim", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [34, 50, 65], features_hard_1: [167, 185], features_hard_2: [303, 304, 305] },
+    { id: 68, name: "matematyczno-geograficzny z językiem niemieckim", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 57, 63], features_hard_1: [168, 186], features_hard_2: [306, 307, 308] },
+    { id: 69, name: "matematyczno-geograficzny z językiem hiszpańskim", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [35, 56, 62], features_hard_1: [169, 187], features_hard_2: [309, 310, 311] },
+    { id: 70, name: "biologiczno-chemiczny", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [32, 55, 67], features_hard_1: [170, 188], features_hard_2: [312, 313, 314] },
+    { id: 71, name: "Dwujęzyczny prawniczo-psychologiczny", features_traits_1: [10, 14, 18, 22, 33, 44], features_traits_2: [37, 50, 65], features_hard_1: [171, 189], features_hard_2: [315, 316, 317] },
+    { id: 72, name: "Dwujęzyczny medyczny", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [36, 56, 64], features_hard_1: [172, 190], features_hard_2: [318, 319, 320] },
+    { id: 73, name: "Dwujęzyczny ekonomiczno-informatyczno-społeczny", features_traits_1: [13, 19, 25, 31, 47], features_traits_2: [34, 51, 62], features_hard_1: [173, 191], features_hard_2: [321, 322, 323] },
+    { id: 74, name: "Dwujęzyczny politechniczny", features_traits_1: [12, 13, 15, 19, 28, 44], features_traits_2: [37, 54, 67], features_hard_1: [174, 192], features_hard_2: [324, 325, 326] },
+    { id: 75, name: "LEX-PRESS", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [33, 56, 61], features_hard_1: [175, 193], features_hard_2: [327, 328, 329] },
+    { id: 76, name: "LEX-CINEMA", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [34, 55, 62], features_hard_1: [176, 194], features_hard_2: [330, 331, 332] },
+    { id: 77, name: "POLITECHNICUS", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 57, 67], features_hard_1: [177, 195], features_hard_2: [333, 334, 335] },
+    { id: 78, name: "ECONOMICUS", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [32, 50, 66], features_hard_1: [178, 196], features_hard_2: [336, 337, 338] },
+    { id: 79, name: "MEDICORUM", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [34, 56, 62], features_hard_1: [179, 197], features_hard_2: [339, 340, 341] },
+    { id: 80, name: "PEREGRINUS", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [35, 54, 61], features_hard_1: [180, 198], features_hard_2: [342, 343, 344] },
+    { id: 81, name: "SECCION BILLINGUE - WSTĘPNY", features_traits_1: [13, 19, 25, 31, 46], features_traits_2: [34, 56, 67], features_hard_1: [181, 199], features_hard_2: [345, 346, 347] },
+    { id: 82, name: "Liceum Ogólnokształcące - klasa sportowa", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 55, 62], features_hard_1: [182, 200], features_hard_2: [348, 349, 350] },
+    { id: 83, name: "Liceum Ogólnokształcące", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [36, 54, 67], features_hard_1: [183, 201], features_hard_2: [351, 352, 353] },
+    { id: 84, name: "językowa z rozszerzonym językiem hiszpańskim i angielskim", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [32, 50, 63], features_hard_1: [184, 202], features_hard_2: [354, 355, 356] },
+    { id: 85, name: "kryminalistyczno - resocjalizacyjna z rozszerzeniem językowym", features_traits_1: [13, 19, 25, 31, 47], features_traits_2: [34, 57, 61], features_hard_1: [185, 203], features_hard_2: [357, 358, 359] },
+    { id: 86, name: "psychologiczno - językowa", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [35, 50, 66], features_hard_1: [186, 204], features_hard_2: [360, 361, 362] },
+    { id: 87, name: "sportowa z piłką nożną", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 54, 62], features_hard_1: [187, 205], features_hard_2: [363, 364, 365] },
+    { id: 88, name: "architektura i design z elementami nauczania outdoorowego", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [30, 56, 67], features_hard_1: [188, 206], features_hard_2: [366, 367, 368] },
+    { id: 89, name: "projektowanie gier komputerowych z elementami sztucznej inteligencji", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [32, 55, 61], features_hard_1: [189, 207], features_hard_2: [369, 370, 371] },
+    { id: 90, name: "teatralno-dziennikarska", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [35, 51, 63], features_hard_1: [190, 208], features_hard_2: [372, 373, 374] },
+    { id: 91, name: "psychologiczno-językowa", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [36, 54, 67], features_hard_1: [191, 209], features_hard_2: [375, 376, 377] },
+    { id: 92, name: "lingwistyczna", features_traits_1: [12, 13, 15, 19, 25, 41], features_traits_2: [33, 50, 64], features_hard_1: [192, 210], features_hard_2: [378, 379, 380] },
+    { id: 93, name: "klasa psychologiczna - psychologia i resocjalizacja", features_traits_1: [10, 14, 18, 22, 42], features_traits_2: [34, 55, 61], features_hard_1: [193, 211], features_hard_2: [381, 382, 383] },
+    { id: 94, name: "klasa prawna - kryminologia i resocjalizacja", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [37, 57, 67], features_hard_1: [194, 212], features_hard_2: [384, 385, 386] },
+    { id: 95, name: "psychologiczno-pedagogiczna angielsko-hiszpańska", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [32, 50, 65], features_hard_1: [195, 213], features_hard_2: [387, 388, 389] },
+    { id: 96, name: "psychologiczno-pedagogiczna angielsko-niemiecka", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [36, 54, 62], features_hard_1: [196, 214], features_hard_2: [390, 391, 392] },
+    { id: 97, name: "sportowo-obronna", features_traits_1: [12, 15, 25, 29, 47], features_traits_2: [34, 56, 67], features_hard_1: [197, 215], features_hard_2: [393, 394, 395] },
+    { id: 98, name: "policyjna", features_traits_1: [13, 19, 25, 30, 44], features_traits_2: [35, 50, 63], features_hard_1: [198, 216], features_hard_2: [396, 397, 398] },
+    { id: 99, name: "Oddział Przygotowania Wojskowego OPW", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [32, 54, 61], features_hard_1: [199, 217], features_hard_2: [399, 400, 401] },
+    { id: 100, name: "klasa kosmetyczna", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 55, 67], features_hard_1: [200, 218], features_hard_2: [402, 403, 404] },
+    { id: 101, name: "klasa strażacka", features_traits_1: [13, 19, 25, 31, 41], features_traits_2: [33, 50, 64], features_hard_1: [201, 219], features_hard_2: [405, 406, 407] },
+    { id: 102, name: "terapeutyczny", features_traits_1: [10, 14, 18, 22, 44], features_traits_2: [34, 57, 62], features_hard_1: [202, 220], features_hard_2: [408, 409, 410] },
+    { id: 103, name: "Dwujęzyczna Akademicka Klasa Ekonomiczno-Językowa", features_traits_1: [13, 19, 25, 31, 43], features_traits_2: [37, 56, 65], features_hard_1: [203, 221], features_hard_2: [411, 412, 413] },
+    { id: 104, name: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną historią", features_traits_1: [10, 14, 18, 28, 47], features_traits_2: [36, 54, 61], features_hard_1: [204, 222], features_hard_2: [414, 415, 416] },
+    { id: 105, name: "Dwujęzyczna Patronacka Klasa Prawniczo-Psychologiczna z rozszerzoną wiedzą o społeczeństwie", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [34, 55, 67], features_hard_1: [205, 223], features_hard_2: [417, 418, 419] },
+    { id: 106, name: "Dwujęzyczna Patronacka Klasa Medyczna", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [32, 56, 62], features_hard_1: [206, 224], features_hard_2: [420, 421, 422] },
+    { id: 107, name: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną chemią", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [35, 50, 65], features_hard_1: [207, 225], features_hard_2: [423, 424, 425] },
+    { id: 108, name: "Dwujęzyczna Patronacka Klasa Politechniczna z rozszerzoną fizyką", features_traits_1: [12, 13, 15, 19, 28, 47], features_traits_2: [34, 55, 67], features_hard_1: [208, 226], features_hard_2: [426, 427, 428] },
+    { id: 109, name: "sportowy, piłka nożna 'Poznańska 13'", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 61], features_hard_1: [209, 227], features_hard_2: [429, 430, 431] },
+    { id: 110, name: "mistrzostwa sportowego, kajaki", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [36, 50, 64], features_hard_1: [210, 228], features_hard_2: [432, 433, 434] },
+    { id: 111, name: "mistrzostwa sportowego, hokej na trawie, siatkówka dziewcząt", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [34, 55, 67], features_hard_1: [211, 229], features_hard_2: [435, 436, 437] },
+    { id: 112, name: "sportowy, koszykówka", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [35, 54, 61], features_hard_1: [212, 230], features_hard_2: [438, 439, 440] },
+    { id: 113, name: "mistrzostwa sportowego, pływanie, pływanie synchroniczne, wioślarstwo, skoki do wody", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [32, 50, 63], features_hard_1: [213, 231], features_hard_2: [441, 442, 443] },
+    { id: 114, name: "sportowy, sportowy, sztuki walki, piłka nożna dziewcząt 'Warta', piłka nożna 'Przemysław'", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 55, 64], features_hard_1: [214, 232], features_hard_2: [444, 445, 446] },
+    { id: 115, name: "Mistrzostwa Sportowego", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 50, 67], features_hard_1: [215, 233], features_hard_2: [447, 448, 449] },
+    { id: 116, name: "Sportowy", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [34, 56, 62], features_hard_1: [216, 234], features_hard_2: [450, 451, 452] },
+    { id: 117, name: "oddział przygotowania wojskowego", features_traits_1: [15, 19, 25, 30, 45], features_traits_2: [35, 54, 61], features_hard_1: [217, 235], features_hard_2: [453, 454, 455] },
+    { id: 118, name: "policyjna", features_traits_1: [13, 19, 25, 30, 46], features_traits_2: [36, 57, 64], features_hard_1: [218, 236], features_hard_2: [456, 457, 458] },
+    { id: 119, name: "strażacko-ratownicza", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [34, 56, 65], features_hard_1: [219, 237], features_hard_2: [459, 460, 461] },
+    { id: 120, name: "ogólnokształcąca", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [33, 55, 67], features_hard_1: [220, 238], features_hard_2: [462, 463, 464] },
+    { id: 121, name: "Turystyczno - Językowy", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [36, 54, 62], features_hard_1: [221, 239], features_hard_2: [465, 466, 467] },
+    { id: 122, name: "humanistyczno-lingwistyczna", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [34, 57, 65], features_hard_1: [222, 240], features_hard_2: [468, 469, 470] },
+    { id: 123, name: "policyjna", features_traits_1: [13, 19, 25, 30, 45], features_traits_2: [33, 55, 64], features_hard_1: [223, 241], features_hard_2: [471, 472, 473] },
+    { id: 124, name: "Profil językowo - prawniczy", features_traits_1: [10, 14, 18, 28, 45], features_traits_2: [36, 56, 62], features_hard_1: [224, 242], features_hard_2: [474, 475, 476] },
+    { id: 125, name: "Profil politechniczny", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [34, 50, 67], features_hard_1: [225, 243], features_hard_2: [477, 478, 479] },
+    { id: 126, name: "Profil medyczno - przyrodniczy", features_traits_1: [15, 19, 25, 30, 44], features_traits_2: [35, 54, 61], features_hard_1: [226, 244], features_hard_2: [480, 481, 482] },
+    { id: 127, name: "HUMANISTYCZNO-DZIENNIKARSKA", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [33, 55, 62], features_hard_1: [227, 245], features_hard_2: [483, 484, 485] },
+    { id: 128, name: "PRZYRODNICZA", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [34, 56, 65], features_hard_1: [228, 246], features_hard_2: [486, 487, 488] },
+    { id: 129, name: "EKONOMICZNO-TURYSTYCZNA", features_traits_1: [13, 19, 25, 31, 42], features_traits_2: [33, 55, 67], features_hard_1: [229, 247], features_hard_2: [489, 490, 491] },
+    { id: 130, name: "sportowa", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [36, 54, 62], features_hard_1: [230, 248], features_hard_2: [492, 493, 494] },
+    { id: 131, name: "grupa ekonomiczna", features_traits_1: [13, 19, 25, 29, 41], features_traits_2: [34, 56, 63], features_hard_1: [231, 249], features_hard_2: [495, 496, 497] },
+    { id: 132, name: "grupa biznesowa", features_traits_1: [13, 19, 25, 29, 44], features_traits_2: [36, 55, 65], features_hard_1: [232, 250], features_hard_2: [498, 499, 500] },
+    { id: 133, name: "przyrodnicza", features_traits_1: [15, 19, 25, 29, 42], features_traits_2: [33, 50, 67], features_hard_1: [233, 251], features_hard_2: [501, 502, 503] },
+    { id: 134, name: "liceum ogólnokształcące", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [34, 56, 62], features_hard_1: [234, 252], features_hard_2: [504, 505, 506] },
+    { id: 135, name: "klasa dwujęzyczna z rozszerzonym j.polskim oraz biologią", features_traits_1: [15, 19, 25, 29, 44], features_traits_2: [35, 55, 64], features_hard_1: [235, 253], features_hard_2: [507, 508, 509] },
+    { id: 136, name: "klasa dwujęzyczna z rozszerzoną matematyką i geografią", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 65], features_hard_1: [236, 254], features_hard_2: [510, 511, 512] },
+    { id: 137, name: "Oddział Jeżyce", features_traits_1: [10, 14, 18, 28, 46], features_traits_2: [34, 57, 67], features_hard_1: [237, 255], features_hard_2: [513, 514, 515] },
+    { id: 138, name: "Oddział Nieszawska", features_traits_1: [10, 14, 18, 28, 42], features_traits_2: [35, 50, 61], features_hard_1: [238, 256], features_hard_2: [516, 517, 518] },
+    { id: 139, name: "klasa 1A", features_traits_1: [10, 14, 18, 28, 44], features_traits_2: [32, 54, 62], features_hard_1: [239, 257], features_hard_2: [519, 520, 521] },
+    { id: 140, name: "klasa 1B", features_traits_1: [10, 14, 18, 28, 41], features_traits_2: [34, 56, 64], features_hard_1: [240, 258], features_hard_2: [522, 523, 524] },
+    { id: 141, name: "klasa humanistyczna", features_traits_1: [10, 14, 18, 28, 35, 45], features_traits_2: [36, 55, 61], features_hard_1: [241, 259], features_hard_2: [525, 526, 527] },
+    { id: 142, name: "politechniczna", features_traits_1: [12, 13, 15, 19, 25, 46], features_traits_2: [33, 57, 67], features_hard_1: [242, 260], features_hard_2: [528, 529, 530] },
+    { id: 143, name: "medyczna", features_traits_1: [15, 19, 25, 30, 42], features_traits_2: [35, 50, 62], features_hard_1: [243, 261], features_hard_2: [531, 532, 533] },
+    { id: 144, name: "mechanik samochodowy", features_traits_1: [12, 15, 25, 28, 44], features_traits_2: [34, 56, 61], features_hard_1: [244, 262], features_hard_2: [534, 535, 536] },
+    { id: 145, name: "elektryk", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 55, 65], features_hard_1: [245, 263], features_hard_2: [537, 538, 539] },
+    { id: 146, name: "technik informatyk", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [34, 56, 62], features_hard_1: [246, 264], features_hard_2: [540, 541, 542] },
+    { id: 147, name: "kucharz", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [35, 54, 64], features_hard_1: [247, 265], features_hard_2: [543, 544, 545] },
+    { id: 148, name: "technik mechanik", features_traits_1: [12, 15, 25, 28, 44], features_traits_2: [33, 57, 67], features_hard_1: [248, 266], features_hard_2: [546, 547, 548] },
+    { id: 149, name: "technik mechatronik", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 55, 62], features_hard_1: [249, 267], features_hard_2: [549, 550, 551] },
+    { id: 150, name: "technik elektryk", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [34, 56, 61], features_hard_1: [250, 268], features_hard_2: [552, 553, 554] },
+    { id: 151, name: "technik energetyk", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [33, 55, 62], features_hard_1: [251, 269], features_hard_2: [555, 556, 557] },
+    { id: 152, name: "technik żywienia i usług gastronomicznych", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 57, 65], features_hard_1: [252, 270], features_hard_2: [558, 559, 560] },
+    { id: 153, name: "cukiernik", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [33, 56, 67], features_hard_1: [253, 271], features_hard_2: [561, 562, 563] },
+    { id: 154, name: "kelner", features_traits_1: [12, 15, 25, 28, 41], features_traits_2: [34, 55, 62], features_hard_1: [254, 272], features_hard_2: [564, 565, 566] },
+    { id: 155, name: "technik budownictwa", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [36, 57, 65], features_hard_1: [255, 273], features_hard_2: [567, 568, 569] },
+    { id: 156, name: "technik architektury krajobrazu", features_traits_1: [12, 15, 25, 29, 42], features_traits_2: [33, 54, 67], features_hard_1: [256, 274], features_hard_2: [570, 571, 572] },
+    { id: 157, name: "technik geodeta", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [35, 56, 61], features_hard_1: [257, 275], features_hard_2: [573, 574, 575] },
+    { id: 158, name: "technik robót wykończeniowych w budownictwie", features_traits_1: [12, 15, 25, 29, 45], features_traits_2: [34, 55, 66], features_hard_1: [258, 276], features_hard_2: [576, 577, 578] },
+    { id: 159, name: "technik elektronik", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [36, 57, 65], features_hard_1: [259, 277], features_hard_2: [579, 580, 581] },
+    { id: 160, name: "technik teleinformatyk", features_traits_1: [12, 15, 25, 30, 44], features_traits_2: [35, 54, 62], features_hard_1: [260, 278], features_hard_2: [582, 583, 584] },
+    { id: 161, name: "technik programista", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [33, 56, 67], features_hard_1: [261, 279], features_hard_2: [585, 586, 587] },
+    { id: 162, name: "technik grafiki i poligrafii cyfrowej", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [36, 55, 61], features_hard_1: [262, 280], features_hard_2: [588, 589, 590] },
+    { id: 163, name: "krawiec", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [34, 57, 65], features_hard_1: [263, 281], features_hard_2: [591, 592, 593] },
+    { id: 164, name: "technik przemysłu mody", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [33, 54, 67], features_hard_1: [264, 282], features_hard_2: [594, 595, 596] },
+    { id: 165, name: "technik technologii odzieży", features_traits_1: [12, 15, 25, 28, 46], features_traits_2: [36, 55, 62], features_hard_1: [265, 283], features_hard_2: [597, 598, 599] },
+    { id: 166, name: "technik usług fryzjerskich", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [34, 57, 64], features_hard_1: [266, 284], features_hard_2: [600, 601, 602] },
+    { id: 167, name: "technik analityk", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [33, 56, 65], features_hard_1: [267, 285], features_hard_2: [603, 604, 605] },
+    { id: 168, name: "technik ochrony środowiska", features_traits_1: [12, 15, 25, 29, 46], features_traits_2: [36, 54, 67], features_hard_1: [268, 286], features_hard_2: [606, 607, 608] },
+    { id: 169, name: "technik technologii chemicznej", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [34, 56, 65], features_hard_1: [269, 287], features_hard_2: [609, 610, 611] },
+    { id: 170, name: "technik laboratoriów chemicznych", features_traits_1: [12, 15, 25, 28, 42], features_traits_2: [33, 57, 67], features_hard_1: [270, 288], features_hard_2: [612, 613, 614] },
+    { id: 171, name: "technik ekonomista", features_traits_1: [12, 13, 15, 19, 25, 44], features_traits_2: [34, 54, 62], features_hard_1: [271, 289], features_hard_2: [615, 616, 617] },
+    { id: 172, name: "technik rachunkowości", features_traits_1: [12, 15, 25, 29, 41], features_traits_2: [33, 56, 65], features_hard_1: [272, 290], features_hard_2: [618, 619, 620] },
+    { id: 173, name: "technik handlowiec", features_traits_1: [12, 15, 25, 29, 44], features_traits_2: [36, 54, 61], features_hard_1: [273, 291], features_hard_2: [621, 622, 623] },
+    { id: 174, name: "technik logistyk", features_traits_1: [12, 15, 25, 31, 43], features_traits_2: [30, 50, 65], features_hard_1: [274, 292], features_hard_2: [624, 625, 626] }
 ]
 
 
-  
+
 export const schools = [
     {
         id: 1,
@@ -1236,7 +5619,7 @@ export const univercities = [
             2, 9, 13, 18, 22, 27, 30, 34, 37, 42, 46, 50, 54, 58, 63, 67, 71, 75, 78, 84
         ],
         city: 'Lublin'
-    },{
+    }, {
         name: 'Uniwersytet Przyrodniczy w Poznaniu',
         faculties: [
             5, 14, 18, 27, 31, 34, 39, 43, 48, 51, 55, 60, 63, 68, 72, 76, 80, 85, 89, 94
@@ -1286,7 +5669,7 @@ export const univercities = [
         city: 'Poznań'
     }
 
-] 
+]
 
 export const science = [
     "matematyka", "fizyka", "chemia", "biologia", "informatyka", "astronomia", "geologia", "mechanika", "elektronika", "robotyka",

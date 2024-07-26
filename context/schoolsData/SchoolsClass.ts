@@ -54,11 +54,59 @@ export class SchoolsClass {
                 label = "";
                 break;
         }
-    
+
         return schools
             .filter(school => school.city === city && school.label === label)
             .map(school => school.schoolName);
     }
+
+
+    getSortedAttributes(facultyName: string, type: 'traits' | 'hard'): string[] {
+        const facultyItem = faculty.find(f => f.name === facultyName);
+        console.log(facultyName)
+        if (!facultyItem) {
+            return [];
+        }
+
+        let primaryFeatures: number[] = [];
+        let secondaryFeatures: number[] = [];
+        let data: (Trait | HardSkill)[] = [];
+        console.log('inin')
+
+        if (type === 'traits') {
+            primaryFeatures = facultyItem.features_traits_1;
+            secondaryFeatures = facultyItem.features_traits_2;
+            data = traits;
+
+        } else if (type === 'hard') {
+            primaryFeatures = facultyItem.features_hard_1;
+            secondaryFeatures = facultyItem.features_hard_2;
+            data = hardSkills;
+        }
+
+        const allFeatureIds = new Set([...primaryFeatures, ...secondaryFeatures]);
+
+        const getFeatureById = (id: number) => data.find(item => item.id === id);
+
+        const primaryFeaturesDetails = primaryFeatures.map(id => getFeatureById(id)!);
+        const secondaryFeaturesDetails = secondaryFeatures.map(id => getFeatureById(id)!);
+        const otherFeaturesDetails = data.filter(item => !allFeatureIds.has(item.id));
+
+        const sortByPopularity = (a: Trait | HardSkill, b: Trait | HardSkill) => b.popularity - a.popularity;
+
+        primaryFeaturesDetails.sort(sortByPopularity);
+        secondaryFeaturesDetails.sort(sortByPopularity);
+        otherFeaturesDetails.sort(sortByPopularity);
+
+        const sortedFeatures = [
+            ...primaryFeaturesDetails,
+            ...secondaryFeaturesDetails,
+            ...otherFeaturesDetails
+        ];
+
+        return sortedFeatures.map(item => item.name);
+    }
+
     getProfilesBySchools(schoolName: string) {
         const school = schools.find(s => s.schoolName === schoolName);
 
@@ -68,7 +116,7 @@ export class SchoolsClass {
 
         const profileNames = profileIds.map(id => {
             const profile = profiles.find(p => p.id === id);
-            return profile ? profile.profileName : null;
+            return profile ? profile.name : null;
         }).filter(name => name !== null);
         return profileNames;
     }

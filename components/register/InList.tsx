@@ -1,11 +1,37 @@
 import { Box, Grid, Paper, Typography, IconButton } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { degreeEnum } from '@/context/register/types';
 
 const InList = ({ id, name, degree, city, deleteFunction, editFunction }: { id: string, name: string, degree: string, city: string, deleteFunction: (id: string) => void, editFunction: (id: boolean) => void }) => {
 
     const [hover, setHover] = useState(false);
+    const [degreeName, setDegreeName] = useState('');
+
+    useEffect(()=>{
+        switch(degree){
+            case degreeEnum.DOCTOR:
+                setDegreeName('DOKTOR');
+                break;
+            case degreeEnum.ENGINEER:
+                setDegreeName('INŻYNIER');
+                break;
+            case degreeEnum.DURING:
+                setDegreeName('W TRAKCIE');
+                break;
+            case degreeEnum.MASTER:
+                setDegreeName('MAGISTER');
+                break;
+            case degreeEnum.BACHELOR:
+                setDegreeName('LICENCJAT');
+                break;
+            default:
+                setDegreeName('loading error...');
+
+        }
+    },[degreeEnum])
+
 
     return (
         <Paper
@@ -50,7 +76,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction }: { id: 
                     align="center"
                     fontWeight={'bold'}
                 >
-                    {degree}
+                    {degreeName}
                 </Typography>
             </Box>
             {hover && (

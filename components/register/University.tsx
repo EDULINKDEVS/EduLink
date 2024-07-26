@@ -56,19 +56,11 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
     } else {
       setAddable(false);
     }
-  }, [currentDegree, currentName, duringStudies]);
+  }, [currentDegree, currentName, duringStudies, facultyName]);
 
-
- 
-  const suggestions = [
-    'Techniku asdmoipms',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-  ];
 
   const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setFacultyName('');
     setCurrentName(value);
   }, []);
 
@@ -77,6 +69,9 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   }, []);
 
   const handleCityInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setCurrentName('');
+    setFacultyName('');
+
     setCityName(value);
   }, []);
 
@@ -86,17 +81,17 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
       if (duringStudies) {
         setCurrentDegree(degreeEnum.DURING);
         currentDegree &&
-        registerContext?.handleEditSchool(cityName, facultyName, currentName, currentDegree, id);
+        registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id);
       } else {
         currentDegree &&
-        registerContext?.handleEditSchool(cityName, facultyName, currentName, currentDegree, id);
+        registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id);
       }
     } else {
       if (duringStudies) {
-        registerContext?.handleAddSchool(cityName, facultyName, currentName, degreeEnum.DURING);
+        registerContext?.handleAddSchool(currentName, cityName, facultyName, degreeEnum.DURING);
       } else {
         currentDegree &&
-        registerContext?.handleAddSchool(cityName, facultyName, currentName, currentDegree);
+        registerContext?.handleAddSchool(currentName, cityName, facultyName, currentDegree);
       }
       setCurrentDegree(null);
       setCurrentName('');
@@ -224,7 +219,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
             </StyledFormControl>
           }
           {
-                 addable && <Button color="secondary" onClick={handleAdd}>
+              addable && <Button color="secondary" onClick={handleAdd}>
                 Dodaj <AddIcon />
               </Button>
 }

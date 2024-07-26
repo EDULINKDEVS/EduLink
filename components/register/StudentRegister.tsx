@@ -13,7 +13,9 @@ const StudentRegister = () => {
   const stepsComponentsTab = [
     <StudentPersonal setStep={setStep} />,
     <StudentStatus setStep={setStep} />,
-    <TraitSelector setStep={setStep} />
+    <TraitSelector setStep={setStep} type='traits' />,
+    <TraitSelector setStep={setStep} type='hard' />,
+
   ];
 
   const StyledContainer = styled(Box)`

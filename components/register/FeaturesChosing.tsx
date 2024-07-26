@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useSchoolsData } from "@/context/schoolsData/SchoolsDataProvider";
+import { RegisterContext } from "@/context/register/RegisterContext";
 
 const StyledPaper = styled(Paper)({
   width: "100%",
@@ -51,10 +53,38 @@ const StyledButton = styled(Button)({
   },
 });
 
-const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
+const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, type: 'traits' | 'hard' }) => {
+  const dataContext = useSchoolsData();
+  const registerContext = useContext(RegisterContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
   const [amountOfTraits, setAmountOfTraits] = useState(12);
+  const [allTraits, setAllTraits] = useState<string[]>([]);
+  useEffect(()=>{ 
+    // if(type === 'traits'){
+
+    //   if(registerContext?.registerData.status === 'school'){
+    //     registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'traits') ): 'nic';
+    //   }else{
+    //     registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'traits'));
+    //   }
+    // }
+    // else{
+    //   if(registerContext?.registerData.status === 'school'){
+    //     registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'hard') ): 'nic';
+    //   }else{
+    //     registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'hard'));
+    //   }
+    // }
+    if(registerContext?.registerData.status === 'school'){
+      registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'hard') ): 'nic';
+    }else{
+      registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'hard'));
+    }
+
+    console.log(allTraits)
+  },[registerContext, dataContext]);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 599) {
@@ -105,7 +135,7 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
         gutterBottom
         fontWeight={"bold"}
       >
-        Wybierz swoje cechy
+        Wybierz swoje umiejętności {type === 'traits' ? 'miękkie' : 'twarde'}
       </Typography>
       <StyledPaper>
         <StyledTextField
@@ -217,7 +247,17 @@ const TraitSelector = ({ setStep }: { setStep: (value: number) => void }) => {
             </List>
           </Box>
         </Box>
-        <StyledButton>Zarejestruj</StyledButton>
+        {
+          type === 'traits' ?
+          <StyledButton onClick={()=>{
+            setStep(3)
+          }}>Dalej</StyledButton>
+          :
+          <StyledButton onClick={()=>{
+            setStep(4)
+          }}>Dalej</StyledButton>
+
+        }
       </StyledPaper>
     </Box>
   );
