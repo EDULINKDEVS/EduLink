@@ -61,25 +61,10 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
   const [amountOfTraits, setAmountOfTraits] = useState(12);
   const [allTraits, setAllTraits] = useState<string[]>([]);
   useEffect(()=>{ 
-    // if(type === 'traits'){
-
-    //   if(registerContext?.registerData.status === 'school'){
-    //     registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'traits') ): 'nic';
-    //   }else{
-    //     registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'traits'));
-    //   }
-    // }
-    // else{
-    //   if(registerContext?.registerData.status === 'school'){
-    //     registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'hard') ): 'nic';
-    //   }else{
-    //     registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'hard'));
-    //   }
-    // }
     if(registerContext?.registerData.status === 'school'){
-      registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, 'hard') ): 'nic';
+      registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, type) ): 'nic';
     }else{
-      registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, 'hard'));
+      registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, type));
     }
 
     console.log(allTraits)
