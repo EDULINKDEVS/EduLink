@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TraitSelector from './FeaturesChosing';
+import RegisterLocation from './RegisterLocation';
 const StudentRegister = () => {
   const [step, setStep] = useState(0);
   const router = useRouter();
@@ -15,7 +16,7 @@ const StudentRegister = () => {
     <StudentStatus setStep={setStep} />,
     <TraitSelector setStep={setStep} type='traits' />,
     <TraitSelector setStep={setStep} type='hard' />,
-
+    <RegisterLocation />
   ];
 
   const StyledContainer = styled(Box)`
