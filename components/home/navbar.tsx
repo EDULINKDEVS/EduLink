@@ -12,6 +12,7 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import SchoolIcon from "@mui/icons-material/School";
 import Link from "next/link";
+import { useRouter } from "next/router";
  
 const logoStyle = {
   width: "140px",
@@ -24,32 +25,15 @@ interface AppAppBarProps {
   toggleColorMode: () => void;
 }
 
-// Definicja komponentu funkcyjnego AppAppBar przyjmującego propsy mode i toggleColorMode
 function AppAppBar() {
-  // Deklaracja stanu open, który będzie informował czy panel boczny jest otwarty
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
-  // Funkcja toggleDrawer służąca do otwierania/zamykania panelu bocznego
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
-  // Funkcja scrollToSection służąca do przewijania do danej sekcji
-  const scrollToSection = (sectionId: string) => {
-    const sectionElement = document.getElementById(sectionId);
-    const offset = 128;
-    if (sectionElement) {
-      const targetScroll = sectionElement.offsetTop - offset;
-      sectionElement.scrollIntoView({ behavior: "smooth" });
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
-      setOpen(false);
-    }
-  };
 
-  // Renderowanie komponentu AppBar z użyciem elementów Material-UI
   return (
     <div>
       <AppBar
@@ -93,34 +77,25 @@ function AppAppBar() {
                 px: 0,
               }}
             >
-              {/* Renderowanie logo */}
-              {/* <img
-                src={
-                  "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e6faf73568658154dae_SitemarkDefault.svg"
-                }
-                style={logoStyle}
-                alt="logo of sitemark"
-              /> */}
 
-             <Button>
+             <Link href='#top'>
               <Box
                 component={SchoolIcon}
                 sx={{
-                  //   ...logoStyle, // Zachowaj pozostałe style z logoStyle
-                  color: "black", // Zmień kolor ikony na czerwony
-                  fontSize: 58, // Zmień rozmiar ikony na 48 pikseli
+                  color: "black", 
+                  fontSize: 58, 
                   
                 }}
-                onClick={() => scrollToSection("page")}
+                
               />
-              </Button>
+              </Link>
 
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                {/* Renderowanie opcji menu */}
                 <MenuItem
-                  onClick={() => scrollToSection("features")}
                   sx={{ py: "6px", px: "12px" }}
+                  href="#"
                 >
+                
                   
                   <Typography
                     variant="body2"
@@ -131,8 +106,8 @@ function AppAppBar() {
                   </Typography>
                 </MenuItem>
                 <MenuItem
-                  onClick={() => scrollToSection("testimonials")}
                   sx={{ py: "6px", px: "12px" }}
+                  href="#"
                 >
                   <Typography
                     variant="body2"
@@ -142,19 +117,9 @@ function AppAppBar() {
                     Współpraca
                   </Typography>
                 </MenuItem>
-                {/* <MenuItem
-                  onClick={() => scrollToSection('highlights')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    Highlights
-                  </Typography>
-                </MenuItem> */}
                 <MenuItem
-                  onClick={() => scrollToSection("pricing")}
-                  
+                  href="#pricing"
                 >
-                <Link href={'#pricing'} scroll={false}>
                   <Typography
                     variant="body2"
                     color="text.primary"
@@ -162,19 +127,9 @@ function AppAppBar() {
                   >
                     Abonamenty
                   </Typography>
-                  </Link>
                 </MenuItem>
-                {/* <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
-                  </Typography>
-                </MenuItem> */}
               </Box>
             </Box>
-            {/* Renderowanie przycisków zaloguj i zarejestruj */}
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
@@ -184,18 +139,15 @@ function AppAppBar() {
             >
 
               <Button
-                color="primary" // Kolor tekstu zostaje zmieniony na fioletowy (domyślnie)
-                variant="text" // Ustawienie wariantu na "text"
-                size="small" // Rozmiar przycisku
-                component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
-                // href="/material-ui/getting-started/templates/sign-in/" // Adres URL, do którego prowadzi odnośnik
-                // href= "#CardFlip"
-                target="_blank" // Otwiera link w nowej karcie przeglądarki
+                color="primary" 
+                variant="text" 
+                size="small"
+                component="a"
+                href="/register"
                 sx={{
-                  color: "black", // Ustawienie koloru tekstu na czarny
+                  color: "black",
                 }}
-                onClick={() => scrollToSection("cardflip")}
-                
+
               >
                 Rejestracja
               </Button>
@@ -208,8 +160,6 @@ function AppAppBar() {
                 variant="contained" // Ustawienie wariantu na "contained"
                 size="small" // Rozmiar przycisku
                 component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
-                // href="/material-ui/getting-started/templates/sign-up/" // Adres URL, do którego prowadzi odnośnik
-                target="_blank" // Otwiera link w nowej karcie przeglądarki
                 sx={{
                   backgroundColor: "#9B30FF", // Ustawienie tła jako gradientu liniowego
                   color: "white", // Ustawienie koloru tekstu na biały
@@ -219,13 +169,11 @@ function AppAppBar() {
                     color: 'black'
                   }
                 }}
-                onClick={() => scrollToSection("cardflip")}
-                
+                href="/login"                  
               >
                 Logowanie
               </Button>
             </Box>
-            {/* Renderowanie ikony menu na mniejszych ekranach */}
             <Box sx={{ display: { sm: "", md: "none" } }}>
               <Button
                 variant="text"
@@ -236,7 +184,6 @@ function AppAppBar() {
               >
                 <MenuIcon />
               </Button>
-              {/* Renderowanie panelu bocznego na mniejszych ekranach */}
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
                   sx={{
@@ -254,31 +201,22 @@ function AppAppBar() {
                       flexGrow: 1,
                     }}
                   ></Box>
-                  <MenuItem onClick={() => scrollToSection("features")}>
-                    Features
+                  <MenuItem >
+                    O nas 
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("testimonials")}>
-                    Testimonials
+                  <MenuItem >
+                    Współpraca
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("highlights")}>
-                    Highlights
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("pricing")}>
-                    Pricing
-                  </MenuItem>
-                  <MenuItem onClick={() => scrollToSection("faq")}>
-                    FAQ
+                  <MenuItem href="/offer">
+                    Abonamenty
                   </MenuItem>
               
-                  {/* Linia podziału w panelu bocznym */}
                   <Divider />
-                  {/* Przycisk zarejestruj w panelu bocznym */}
                   <MenuItem>
                     <Button
                       variant="contained"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
+                      href="/register"
                       sx={{
                         width: "100%",
                         backgroundColor:
@@ -286,20 +224,18 @@ function AppAppBar() {
                         color: "black",
                       }}
                     >
-                      Sign up
+                      Rejestracja
                     </Button>
                   </MenuItem>
-                  {/* Przycisk zaloguj w panelu bocznym */}
                   <MenuItem>
                     <Button
                       color="primary"
                       variant="outlined"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
+                      href="/login"
                       sx={{ width: "100%" }}
-                    >
-                      Sign in
+                      >
+                      Logowanie
                     </Button>
                   </MenuItem>
                 </Box>
@@ -312,5 +248,4 @@ function AppAppBar() {
   );
 }
 
-// Eksportowanie komponentu AppAppBar
 export default AppAppBar;

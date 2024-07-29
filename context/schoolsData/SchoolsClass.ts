@@ -1,5 +1,5 @@
 import { degreeEnum } from '../register/types';
-import { cities, City, Faculty, faculty, HardSkill, hardSkills, human, Keywords, Profile, profiles, School, schools, science, Trait, traits, univercities, University } from './exampleSchoolsData'
+import { cities, City, Faculty, faculty, HardSkill, hardSkills, human, Keywords, Profile, School, schools, science, Trait, traits, univercities, University } from './exampleSchoolsData'
 
 export class SchoolsClass {
     schools: School[] = [];
@@ -21,7 +21,6 @@ export class SchoolsClass {
         this.hardSkills = hardSkills;
         this.science = science;
         this.human = human;
-        this.profiles = profiles;
     }
 
     generateFaculties = (universityName: string): string[] => {
@@ -63,7 +62,6 @@ export class SchoolsClass {
 
     getSortedAttributes(facultyName: string, type: 'traits' | 'hard'): string[] {
         const facultyItem = faculty.find(f => f.name === facultyName);
-        console.log(facultyName)
         if (!facultyItem) {
             return [];
         }
@@ -115,7 +113,7 @@ export class SchoolsClass {
         const profileIds = school.profiles;
 
         const profileNames = profileIds.map(id => {
-            const profile = profiles.find(p => p.id === id);
+            const profile = faculty.find(p => p.id === id);
             return profile ? profile.name : null;
         }).filter(name => name !== null);
         return profileNames;
