@@ -43,15 +43,19 @@ enum userBackInfo {
   NIEPRAWIDLOWE_DANE = "nieprawidłowe dane",
 }
 
+type user = {
+  label: 'employee' | 'employer'
+}
+
 type AuthContextType = {
-  user: UserEmployee | UserEmployer | null;
+  user: user | null;
   // Login: (email: string, password: string) => Promise<userBackInfo>;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UserEmployee | UserEmployer | null>(null);
+  const [user, setUser] = useState<user| null>(null);
 
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
