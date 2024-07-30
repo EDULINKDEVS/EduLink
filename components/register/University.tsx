@@ -48,15 +48,22 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
     }else{
       setEdit(true);
     }
-  }, [name, degree]);
+  }, [name, degree, city, faculty, id]);
 
   useEffect(() => {
+    const validate = () => {
+      if (duringStudies) {
+        return currentName.length > 0 && facultyName.length > 0 && cityName.length > 0;
+      }
+      return currentName.length > 0 && currentDegree && facultyName.length > 0 && cityName.length;
+    }
+  
     if (validate()) {
       setAddable(true);
     } else {
       setAddable(false);
     }
-  }, [currentDegree, currentName, duringStudies, facultyName]);
+  }, [currentDegree, currentName, cityName.length, duringStudies, facultyName]);
 
 
   const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
@@ -107,12 +114,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
     }
   }, [id, registerContext]);
   const [faculties, setFaculties] = useState<string[]>([]);
-  const validate = () => {
-    if (duringStudies) {
-      return currentName.length > 0 && facultyName.length > 0 && cityName.length > 0;
-    }
-    return currentName.length > 0 && currentDegree && facultyName.length > 0 && cityName.length;
-  }
+
   return (
     <React.Fragment>
  

@@ -12,11 +12,11 @@ const StudentRegister = () => {
   const [step, setStep] = useState(0);
   const router = useRouter();
   const stepsComponentsTab = [
-    <StudentPersonal setStep={setStep} />,
-    <StudentStatus setStep={setStep} />,
-    <TraitSelector setStep={setStep} type='traits' />,
-    <TraitSelector setStep={setStep} type='hard' />,
-    <RegisterLocation />
+    <StudentPersonal key={1} setStep={setStep} />,
+    <StudentStatus key={2} setStep={setStep} />,
+    <TraitSelector key={3} setStep={setStep} type='traits' />,
+    <TraitSelector key={4} setStep={setStep} type='hard' />,
+    <RegisterLocation  key={5}/>
   ];
 
   const StyledContainer = styled(Box)`

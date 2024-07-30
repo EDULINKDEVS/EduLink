@@ -30,7 +30,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction }: { id: 
                 setDegreeName('loading error...');
 
         }
-    },[degreeEnum])
+    },[degree])
 
 
     return (

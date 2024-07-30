@@ -68,7 +68,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
     }
 
     console.log(allTraits)
-  },[registerContext, dataContext]);
+  },[registerContext, dataContext, allTraits, type]);
 
   useEffect(() => {
     const handleResize = () => {

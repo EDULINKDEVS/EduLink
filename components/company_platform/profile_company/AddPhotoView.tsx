@@ -3,6 +3,7 @@ import { Container, Typography, Box, Button, IconButton } from '@mui/material';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShowAnim from '../helpers_company/ShowAnim';
+import Image from 'next/image';
 
 const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
   const [image, setImage] = useState<string | null>(null);
@@ -51,7 +52,7 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
             </>
           ) : (
             <Box position="relative">
-              <img src={image} alt="Profile" style={{ width: '100%', height: 'auto', maxWidth: 200, borderRadius: '50%' }} />
+              <Image src={image} alt="Profile" style={{ width: '100%', height: 'auto', maxWidth: 200, borderRadius: '50%' }} />
               <IconButton
                 style={{ position: 'absolute', top: -10, right: -10 }}
                 aria-label="delete picture"
