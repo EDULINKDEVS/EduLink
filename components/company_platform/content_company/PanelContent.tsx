@@ -1,4 +1,4 @@
-import { optionsEnum } from "@/pages/userpanel_company";
+
 import { Box } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import Calendar from "../calendar_company/Calendar";
@@ -8,6 +8,7 @@ import Search from "../search_company/Search";
 import Settings from "../settings_company/Settings";
 import PlusOfferCompany from "../plus_offer_company/plus_offer";
 import WatchOffer from "@/components/company_platform/watch_offer_company/WatchOffer";
+import { optionsEnum } from "@/components/userpanel/Employer";
 
 const PanelContent = ({ id }: { id: string }) => {
     const [acContent, setAcContent] = useState<ReactNode | null>(null);
