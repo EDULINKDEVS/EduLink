@@ -28,9 +28,17 @@ export const optionsEnum = {
     ROW = 'row'
   }
 const Employer = () => {
-
+  const [optionsFD, setOptionFD] = useState<optionsFBEnum>(optionsFBEnum.ROW);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
       
-  
+  const handleIconClick = (id: string) => {
+    console.log('asdsa');
+    const option = options.find(opt => opt.id === id);
+    if (option) {
+      setSelectedOption(option.id);
+      option?.label ? setOptionFD(optionsFBEnum.COLUMN) : setOptionFD(optionsFBEnum.ROW);
+    }
+  };
 
   return (
     <Box display="flex" height="100vh">

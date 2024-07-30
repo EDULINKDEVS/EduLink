@@ -16,8 +16,10 @@ type RegisterDataType = {
   school_name: string;
   school_city: string;
   school_profile: string;
-  dateOfBirth: Date;
+  dateOfBirth: Date | null;
 };
+
+
 
 export type RegisterContextType = {
   schools: School[];
@@ -45,7 +47,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     school_name: '',
     school_city: '',
     school_profile: '',
-    dateOfBirth: new Date()
+    dateOfBirth: null
   });
 
   const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum) => {
@@ -78,7 +80,9 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   const handleRemoveSchool = (id: string) => {
     dispatch({ type: registerSchoolsActions.REMOVE_SCHOOL, payload: id });
   };
-
+  const register = () => {
+    
+  }
   const value: RegisterContextType = {
     schools,
     handleAddSchool,
