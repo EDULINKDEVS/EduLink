@@ -1,4 +1,3 @@
-
 import { Box } from "@mui/material";
 import React, { ReactNode, useEffect, useState } from "react";
 import Calendar from "../calendar_company/Calendar";

@@ -30,26 +30,41 @@ const Slider = () => {
     return () => clearInterval(interval);
   }, [nextImage]);
   return (
+    
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
+        justifyContent: 'center'
+       
       }}
     >
-      <IconButton onClick={prevImage}>
+      <IconButton onClick={prevImage} sx={{
+        flex: 1
+      }}>
         <ArrowBackIosNewIcon />
       </IconButton>
 
+      <Box sx={{
+        flex: 10
+      }}>
       <Image
         src={images[currentImageIndex]}
         style={{
           opacity: "1",
           animation: "2s showanim forwards",
+          height: 'auto',
+          width: '100%'
+         
         }}
         alt={`Slide ${currentImageIndex + 1}`}
-        width={1200} 
+        
+       
         />
-      <IconButton onClick={nextImage}>
+        </Box>
+      <IconButton onClick={nextImage} sx={{
+        flex: 1
+      }}>
         <ArrowForwardIosIcon />
       </IconButton>
     </Box>

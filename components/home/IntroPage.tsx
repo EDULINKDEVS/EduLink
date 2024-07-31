@@ -55,121 +55,149 @@ const IntroPage = () => {
         
         
         <Box>
-          <Grid container justifyContent={'center'}  sx={{
-          minHeight:'70vh',
-        }}>
-          
-          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
-            <CardFlip
-              frontIcon= {<SchoolIcon sx={{
-                fontSize:'150px',
+        <Grid container justifyContent="center" sx={{ minHeight: '70vh' }}>
+      <Grid item xs={12} md={6} padding={2} display="flex" justifyContent="center">
+        <CardFlip
+          frontIcon={
+            <SchoolIcon
+              sx={{
+                fontSize: '150px',
                 transition: '.4s',
                 cursor: 'pointer',
                 position: 'absolute',
                 top: 45,
-                  '&:hover': {
+                '&:hover': {
                   transform: 'rotateZ(5deg) scale(1.3)',
-                
                 },
-
               }}
-              />}
-              frontText={<div style={{
+            />
+          }
+          frontText={
+            <Box
+              sx={{
                 top: 95,
                 fontSize: 25,
                 position: 'relative',
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
-                fontStyle: 'normal',                  
-                
-              }}>JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY</div>}
-              backText={<div style={{
+                fontStyle: 'normal',
+              }}
+            >
+              JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY
+            </Box>
+          }
+          backText={
+            <Box
+              sx={{
                 position: 'relative',
                 fontSize: 25,
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
                 fontStyle: 'normal',
-                height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
+                height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}>
-                <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
-                <Button variant="contained" sx={{
+              }}
+            >
+              <Box sx={{ marginBottom: 'auto', marginTop: '-100px' }}>
+                ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!
+              </Box>
+              <Button
+                variant="contained"
+                sx={{
                   position: 'absolute',
-                  bottom: -120, // Odstęp od dolnej krawędzi
+                  bottom: -120,
                   fontSize: 20,
                   backgroundColor: 'white',
                   color: 'black',
-                  '&:hover' : {
+                  '&:hover': {
                     backgroundColor: '#A758B5',
-                    color: 'white'
-                  }
-                 
-
+                    color: 'white',
+                  },
                 }}
                 href="/register/student"
-                >Rejestracja</Button>
-              </div>}
-            
+              >
+                Rejestracja
+              </Button>
+            </Box>
+          }
+        />
+      </Grid>
+
+      <Grid item xs={12} md={6} padding={2} display="flex" justifyContent="center">
+        <CardFlip
+          frontIcon={
+            <HandshakeIcon
+              sx={{
+                fontSize: '150px',
+                transition: '.4s',
+                cursor: 'pointer',
+                position: 'absolute',
+                userSelect: 'none',
+                top: 45,
+                '&:hover': {
+                  transform: 'rotateZ(5deg) scale(1.3)',
+                },
+              }}
             />
-          </Grid>
-
-          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
-            <CardFlip
-                frontIcon={<HandshakeIcon sx={{
-                  fontSize: '150px',
-                  transition: '.4s',
-                  cursor: 'pointer',
+          }
+          frontText={
+            <Box
+              sx={{
+                top: 95,
+                fontSize: 25,
+                position: 'relative',
+                fontFamily: 'playfair-display, sans-serif',
+                fontWeight: '700',
+                fontStyle: 'normal',
+                userSelect: 'none',
+              }}
+            >
+              JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA
+            </Box>
+          }
+          backText={
+            <Box
+              sx={{
+                position: 'relative',
+                fontSize: 25,
+                fontFamily: 'playfair-display, sans-serif',
+                fontWeight: '700',
+                fontStyle: 'normal',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Box sx={{ marginBottom: 'auto', marginTop: '-100px' }}>
+                ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!
+              </Box>
+              <Button
+                variant="contained"
+                sx={{
                   position: 'absolute',
-                  userSelect: 'none',
-                  top: 45,
+                  bottom: -120,
+                  fontSize: 20,
+                  backgroundColor: 'white',
+                  color: 'black',
                   '&:hover': {
-                    transform: 'rotateZ(5deg) scale(1.3)',
-                  }
-                }} />}
-                frontText={<div style={{
-                  top: 95,
-                  fontSize: 25,
-                  position: 'relative',
-                  fontFamily: 'playfair-display, sans-serif',
-                  fontWeight: '700',
-                  fontStyle: 'normal',
-                  userSelect: 'none'
-                }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
-                backText={<div style={{
-                  position: 'relative',
-                  fontSize: 25,
-                  fontFamily: 'playfair-display, sans-serif',
-                  fontWeight: '700',
-                  fontStyle: 'normal',
-                  height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                  <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
-                  <Button variant="contained" sx={{
-                    position: 'absolute',
-                    bottom: -120, // Odstęp od dolnej krawędzi
-                    fontSize: 20,
-                    backgroundColor: 'white',
-                    color: 'black',
-                    '&:hover' : {
-                      backgroundColor: '#A758B5',
-                      color: 'white'
-                    }
-
-                  }}
-                  href="/register/company"
-                  >Rejestracja</Button>
-                </div>}
-              />
-            </Grid>
-
-          </Grid>
+                    backgroundColor: '#A758B5',
+                    color: 'white',
+                  },
+                }}
+                href="/register/company"
+              >
+                Rejestracja
+              </Button>
+            </Box>
+          }
+        />
+      </Grid>
+    </Grid>
         </Box>
 
         <Box>
@@ -183,7 +211,7 @@ const IntroPage = () => {
             <Pricing1 />
           </Grid>
          </Box>
-
+{/* 
          <Box>
           <Grid
             item
@@ -194,7 +222,7 @@ const IntroPage = () => {
           >
             <Pricing />
           </Grid>
-         </Box>
+         </Box> */}
 
         <Box>
           <Grid 
