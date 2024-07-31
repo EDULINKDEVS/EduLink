@@ -51,11 +51,8 @@ const Slider = () => {
       <Image
         src={images[currentImageIndex]}
         style={{
-          opacity: "1",
-          animation: "2s showanim forwards",
           height: 'auto',
-          width: '100%'
-         
+          width: '100%'         
         }}
         alt={`Slide ${currentImageIndex + 1}`}
         

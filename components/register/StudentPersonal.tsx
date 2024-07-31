@@ -58,14 +58,23 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const registerContext = useContext(RegisterContext) as RegisterContextType;
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [generalError, setGeneralError] = useState<string>('');
+  // const [birthDay, setBirthDay] = useState<string>(
+  //   registerContext.registerData.dateOfBirth.getDate().toString()
+  // );
+  // const [birthMonth, setBirthMonth] = useState<string>(
+  //   (registerContext.registerData.dateOfBirth.getMonth() + 1).toString()
+  // );
+  // const [birthYear, setBirthYear] = useState<string>(
+  //   registerContext.registerData.dateOfBirth.getFullYear().toString()
+  // );
   const [birthDay, setBirthDay] = useState<string>(
-    registerContext.registerData.dateOfBirth.getDate().toString()
+    '10'
   );
   const [birthMonth, setBirthMonth] = useState<string>(
-    (registerContext.registerData.dateOfBirth.getMonth() + 1).toString()
+    '10'
   );
   const [birthYear, setBirthYear] = useState<string>(
-    registerContext.registerData.dateOfBirth.getFullYear().toString()
+    '1998'
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

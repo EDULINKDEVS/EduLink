@@ -9,7 +9,7 @@ const StudiesTabCreator = () => {
   const [schoolTab, setSchoolTab] = useState<School[]>([])
   useEffect(() => {
     registerContext && setSchoolTab(registerContext?.schools);
-  }, [registerContext?.schools]);
+  }, [registerContext?.schools, registerContext]);
 
   return (
     <Box sx={{ width: '100%' }}>

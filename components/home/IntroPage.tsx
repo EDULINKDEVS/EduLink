@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react';
 import Box from "@mui/material/Box";
 import AppAppBar from "@/components/home/navbar";
 import Page from "@/components/home/Page";
@@ -11,24 +11,20 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import PricingCom from "@/components/home/PricingCom";
 import Pricing1 from "@/components/home/Pricing1";
 
+type IntroPageProps = {
+  registerRef: RefObject<HTMLDivElement>;
+};
 
-const IntroPage = () => {
+const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
   return (
-    <Box
-    sx={{
-      minHeight: "100vh",
-      minWidth: "200px",
-      maxWidth: "1200px",
-      width: "80%",
-      mx: "auto",
-    }}
-  >
-    <AppAppBar />
-
-      <Box>
-        <Grid container justifyContent={"center"} alignItems={"center"}>
-          <Grid
-            item
+    <Grid container justifyContent={"center"} alignItems={"center"}>
+      
+    <Grid item>
+      <AppAppBar />
+      </Grid>
+     
+      
+          <Grid item
             xs={12}
             display={"flex"}
             justifyContent={"center"}
@@ -36,59 +32,48 @@ const IntroPage = () => {
           >
             <Page />
           </Grid>
-          </Grid>
 
-      </Box>
-         
-         
-        <Box>
-          <Grid
-            item
-            xs={12}
-            display={"flex"}
-            justifyContent={"center"}
-            marginTop={"90px"}
-          >
-            <Slider />
-          </Grid>
-         </Box> 
-        
-        
-        <Box>
-        <Grid container justifyContent="center" sx={{ minHeight: '70vh' }}>
-      <Grid item xs={12} md={6} padding={2} display="flex" justifyContent="center">
-        <CardFlip
-          frontIcon={
-            <SchoolIcon
-              sx={{
+     
+
+      
+    
+        <Grid item  justifyContent={"center"} alignItems={"center"} sx={{
+          minHeight: '100vh'
+        }}
+          xs={12}
+          display={"flex"}
+          marginTop={"90px"}
+        >
+          <Slider />
+        </Grid>
+
+      
+
+      
+
+
+          <Grid item xs={12} padding={2} display={'flex'} id="register" ref={registerRef} justifyContent={'center'} minHeight={'100vh'}>
+            <Grid container>
+              <Grid item xs={12}>
+            <CardFlip
+              frontIcon={<SchoolIcon sx={{
                 fontSize: '150px',
                 transition: '.4s',
                 cursor: 'pointer',
-                position: 'absolute',
                 top: 45,
                 '&:hover': {
                   transform: 'rotateZ(5deg) scale(1.3)',
                 },
-              }}
-            />
-          }
-          frontText={
-            <Box
-              sx={{
+              }} />}
+              frontText={<div style={{
                 top: 95,
                 fontSize: 25,
                 position: 'relative',
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
                 fontStyle: 'normal',
-              }}
-            >
-              JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY
-            </Box>
-          }
-          backText={
-            <Box
-              sx={{
+              }}>JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY</div>}
+              backText={<div style={{
                 position: 'relative',
                 fontSize: 25,
                 fontFamily: 'playfair-display, sans-serif',
@@ -107,30 +92,23 @@ const IntroPage = () => {
               <Button
                 variant="contained"
                 sx={{
-                  position: 'absolute',
-                  bottom: -120,
                   fontSize: 20,
                   backgroundColor: 'white',
                   color: 'black',
                   '&:hover': {
                     backgroundColor: '#A758B5',
-                    color: 'white',
-                  },
+                    color: 'white'
+                  }
                 }}
-                href="/register/student"
-              >
-                Rejestracja
-              </Button>
-            </Box>
-          }
-        />
-      </Grid>
+                  href="/register/student"
+                >Rejestracja</Button>
+              </div>}
+            />
+         </Grid>
 
-      <Grid item xs={12} md={6} padding={2} display="flex" justifyContent="center">
-        <CardFlip
-          frontIcon={
-            <HandshakeIcon
-              sx={{
+         <Grid item xs={12}>
+            <CardFlip
+              frontIcon={<HandshakeIcon sx={{
                 fontSize: '150px',
                 transition: '.4s',
                 cursor: 'pointer',
@@ -139,106 +117,84 @@ const IntroPage = () => {
                 top: 45,
                 '&:hover': {
                   transform: 'rotateZ(5deg) scale(1.3)',
-                },
-              }}
-            />
-          }
-          frontText={
-            <Box
-              sx={{
+                }
+              }} />}
+              frontText={<div style={{
                 top: 95,
                 fontSize: 25,
                 position: 'relative',
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
                 fontStyle: 'normal',
-                userSelect: 'none',
-              }}
-            >
-              JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA
-            </Box>
-          }
-          backText={
-            <Box
-              sx={{
+                userSelect: 'none'
+              }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
+              backText={<div style={{
                 position: 'relative',
                 fontSize: 25,
                 fontFamily: 'playfair-display, sans-serif',
                 fontWeight: '700',
                 fontStyle: 'normal',
-                height: '100%',
+                height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}
-            >
-              <Box sx={{ marginBottom: 'auto', marginTop: '-100px' }}>
-                ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!
-              </Box>
-              <Button
-                variant="contained"
-                sx={{
+              }}>
+                <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
+                <Button variant="contained" sx={{
                   position: 'absolute',
-                  bottom: -120,
                   fontSize: 20,
                   backgroundColor: 'white',
                   color: 'black',
                   '&:hover': {
                     backgroundColor: '#A758B5',
-                    color: 'white',
-                  },
+                    color: 'white'
+                  }
                 }}
-                href="/register/company"
-              >
-                Rejestracja
-              </Button>
-            </Box>
-          }
-        />
+                  href="/register/company"
+                >Rejestracja</Button>
+              </div>}
+            />
+            </Grid>
+            </Grid>
+          </Grid>
+
+
+      
+
+      
+        <Grid item sx={{ minHeight: '10vh'}}
+          xs={12}
+          display={"flex"}
+          justifyContent={"center"}
+          marginTop={"90px"}
+        >
+          <Pricing1 />
+        </Grid>
+      
+
+        <Grid  item
+          xs={12}
+          display={"flex"}
+          justifyContent={"center"}
+          marginTop={"90px"}
+        >
+          <Pricing />
+        </Grid>
+     
+
+      
+        <Grid item
+          xs={12}
+          display={"flex"}
+          justifyContent={"center"}
+          marginTop={"90px"}
+        >
+          <PricingCom />
+        </Grid>
+      
       </Grid>
-    </Grid>
-        </Box>
-
-        <Box>
-          <Grid
-            item
-            xs={12}
-            display={"flex"}
-            justifyContent={"center"}
-            marginTop={"90px"}
-          >
-            <Pricing1 />
-          </Grid>
-         </Box>
-{/* 
-         <Box>
-          <Grid
-            item
-            xs={12}
-            display={"flex"}
-            justifyContent={"center"}
-            marginTop={"90px"}
-          >
-            <Pricing />
-          </Grid>
-         </Box> */}
-
-        <Box>
-          <Grid 
-           item
-           xs={12}
-           display={"flex"}
-           justifyContent={"center"}
-           marginTop={"90px"}
-           >
-            <PricingCom/>
-           </Grid>
-        </Box>
-
-
-       </Box>
-  )
+  );
 }
 
-export default IntroPage
+export default IntroPage;

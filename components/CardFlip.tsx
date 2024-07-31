@@ -59,7 +59,7 @@ const CardFlip: React.FC<CardFlipProps> = ({
   };
 
   return (
-    <Container id="cardflip">
+    <Container id="cardflip" >
       <FlipCard onClick={handleClick}>
         <FlipCardInner
           className="Card"
@@ -84,7 +84,7 @@ const CardFlip: React.FC<CardFlipProps> = ({
               height: "400px",
             }}
           >
-            <div>{backText}</div>
+            {backText}
         
           </CardFace>
         </FlipCardInner>

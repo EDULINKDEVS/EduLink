@@ -48,14 +48,15 @@ type user = {
 }
 
 type AuthContextType = {
-  user: user | null;
+  user: string | null;
+  setUser: (value: string | null) => void
   // Login: (email: string, password: string) => Promise<userBackInfo>;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<user| null>(null);
+  const [user, setUser] = useState<string| null>(null);
 
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -88,6 +89,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   const value = {
     user,
+    setUser
     // Login,
   };
 

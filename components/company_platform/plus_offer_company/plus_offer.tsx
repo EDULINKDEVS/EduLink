@@ -76,11 +76,14 @@ const PlusOfferCompany: React.FC = () => {
     });
   };
 
-  const handleListChange = (e: React.KeyboardEvent<HTMLInputElement>, listName: keyof typeof formData) => {
+  const handleListChange = (e: React.KeyboardEvent<HTMLDivElement>, listName: keyof typeof formData) => {
     if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim() !== '') {
       setFormData(prevState => ({
         ...prevState,
-        [listName]: [...prevState[listName], (e.target as HTMLInputElement).value.trim()]
+        [listName]: [
+          ...(Array.isArray(prevState[listName]) ? prevState[listName] : []),
+          (e.target as HTMLInputElement).value.trim()
+        ]
       }));
       (e.target as HTMLInputElement).value = '';
       e.preventDefault();
@@ -179,7 +182,7 @@ const PlusOfferCompany: React.FC = () => {
             id="responsibilities"
             name="responsibilities"
             label="Twój zakres obowiązków"
-            onKeyDown={(e) => handleListChange(e, 'responsibilities')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLDivElement>, 'responsibilities')}
           />
           {renderListItems(formData.responsibilities)}
           <StyledTextField
@@ -188,7 +191,7 @@ const PlusOfferCompany: React.FC = () => {
             id="requirements"
             name="requirements"
             label="Wymagania"
-            onKeyDown={(e) => handleListChange(e, 'requirements')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLDivElement>, 'requirements')}
           />
           {renderListItems(formData.requirements)}
           <StyledTextField
@@ -197,7 +200,7 @@ const PlusOfferCompany: React.FC = () => {
             id="offerings"
             name="offerings"
             label="Oferujemy"
-            onKeyDown={(e) => handleListChange(e, 'offerings')}
+            onKeyDown={(e) => handleListChange(e as React.KeyboardEvent<HTMLDivElement>, 'offerings')}
           />
           {renderListItems(formData.offerings)}
           <Grid container justifyContent="center" marginTop={2}>
