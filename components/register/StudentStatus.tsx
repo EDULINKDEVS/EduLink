@@ -17,6 +17,7 @@ import { RegisterContext } from '@/context/register/RegisterContext';
 import StudiesTabCreator from './StudiesTabCreator';
 import { School } from '@/context/schoolsData/exampleSchoolsData';
 import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
+import { degreeLabelEnum } from '@/context/register/types';
 
 const StyledPaper = styled(Paper)({
   width: '400px',
@@ -97,6 +98,8 @@ const suggestions = [
 ];
 
 const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
+  const [currentDegreeLabel, setCurrentDegreeLabel] = useState<degreeLabelEnum | null>(null);
+
   const registerContext = useContext(RegisterContext);
   const dataContext = useSchoolsData();
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -127,12 +130,15 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
     registerContext?.setRegisterData({
       ...registerContext.registerData,
       school_city: value,
+      school_name: '',
+      school_profile: ''
     });
   };
   const handleInputChangeName = (event: React.SyntheticEvent, value: string) => {
     registerContext?.setRegisterData({
       ...registerContext.registerData,
       school_name: value,
+      school_profile: ''
     });
   };
   const handleInputChangeProfil = (event: React.SyntheticEvent, value: string) => {
@@ -148,7 +154,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
       }
     }
     else if (registerContext?.registerData.status === 'school') {
-      if (registerContext.registerData.school_level && registerContext.registerData.school_name) {
+      if (registerContext.registerData.school_level && registerContext.registerData.school_name && registerContext.registerData.degreeLabel && registerContext.registerData.school_profile) {
         return true;
       }
     }
@@ -244,6 +250,21 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                   />
                 </StyledPaper>
                 }
+                    <StyledFormControl>
+            <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
+            <StyledRadioGroup
+              value={registerContext.registerData.degreeLabel === null ? '' : (registerContext.registerData.degreeLabel)}
+              onChange={(event) => {
+                registerContext?.setRegisterData({
+                  ...registerContext.registerData,
+                  degreeLabel: event.target.value as degreeLabelEnum,
+                });
+              }}
+              >
+              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
+              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
+            </StyledRadioGroup>
+          </StyledFormControl>
 
               </>
             }

@@ -3,9 +3,11 @@ export enum registerSchoolsActions {
     REMOVE_SCHOOL = "REMOVE_SCHOOL",
     EDIT_SCHOOL = "EDIT_SCHOOL"
   }
-  
-  export enum degreeEnum {
+  export enum degreeLabelEnum {
     DURING = "DURING",
+    GRADUATE = "GRADUATE"
+  }
+  export enum degreeEnum {
     BACHELOR = "BACHELOR",
     ENGINEER = "ENGINEER",
     MASTER = "MASTER",
@@ -18,6 +20,7 @@ export enum registerSchoolsActions {
     degree: degreeEnum;
     city:string;
     faculty:string;
+    degreeLabel: degreeLabelEnum;
   }
   
   export type Action =

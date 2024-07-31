@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import AddIcon from '@mui/icons-material/Add';
-import { degreeEnum } from '@/context/register/types';
+import { degreeEnum, degreeLabelEnum } from '@/context/register/types';
 import { RegisterContext } from '@/context/register/RegisterContext';
 import InList from './InList';
 import { StyledFormControl, StyledFormControlLabel, StyledPaper, StyledRadioGroup, StyledTextField, UniversityType } from './UniversityTypesAndFunctions';
@@ -19,43 +19,40 @@ import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 
 
 
-const University = ({ city,faculty, name, degree, id }: UniversityType) => {
+const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityType) => {
   const dataContext = useSchoolsData();
   const registerContext = useContext(RegisterContext);
   const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
   const [currentName, setCurrentName] = useState('');
-  const [duringStudies, setDuringStudies] = useState<boolean | null>(null);
+  const [currentDegreeLabel, setCurrentDegreeLabel] = useState<degreeLabelEnum | null>(null);
   const [edit, setEdit] = useState(true);
   const [addable, setAddable] = useState(false);
   const [facultyName, setFacultyName] = useState('');
   const [cityName, setCityName] = useState('');
   const [citiesState, setCitiesState] = useState<string[]>([]);
   const [universities, setUniversities] = useState<string[]>([]); 
+  const [edited, setEdited] = useState(false);
    useEffect(()=>{
     setCitiesState(dataContext.schoolsClass.cities);
   }, [dataContext.schoolsClass.cities])
-
   
 
   useEffect(() => {
-    if (id && name && degree && city && faculty) {
+    if (id && name && degree && city && faculty && degreeLabel) {
       setCurrentName(name);
       setCurrentDegree(degree);
-      setDuringStudies(degree === degreeEnum.DURING);
+      setCurrentDegreeLabel(degreeLabel);
       setCityName(city);
       setFacultyName(faculty);
       setEdit(false);
     }else{
       setEdit(true);
     }
-  }, [name, degree, city, faculty, id]);
+  }, [name, degree, city, faculty, id, degreeLabel]);
 
   useEffect(() => {
     const validate = () => {
-      if (duringStudies) {
-        return currentName.length > 0 && facultyName.length > 0 && cityName.length > 0;
-      }
-      return currentName.length > 0 && currentDegree && facultyName.length > 0 && cityName.length;
+      return  currentName.length > 0 && facultyName.length > 0 && cityName.length > 0 && currentDegreeLabel !== null && currentDegree !== null;
     }
   
     if (validate()) {
@@ -63,7 +60,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
     } else {
       setAddable(false);
     }
-  }, [currentDegree, currentName, cityName.length, duringStudies, facultyName]);
+  }, [currentDegree, currentName, cityName.length, currentDegreeLabel, facultyName]);
 
 
   const handleInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
@@ -72,6 +69,8 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   }, []);
 
   const handleFacultyInputChange = useCallback((event: React.SyntheticEvent, value: string) => {
+    setEdited(true);
+
     setFacultyName(value);
   }, []);
 
@@ -83,30 +82,19 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
   }, []);
 
   const handleAdd = useCallback(() => {
-
-    if (id) {
-      if (duringStudies) {
-        setCurrentDegree(degreeEnum.DURING);
-        currentDegree &&
-        registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id);
-      } else {
-        currentDegree &&
-        registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id);
-      }
-    } else {
-      if (duringStudies) {
-        registerContext?.handleAddSchool(currentName, cityName, facultyName, degreeEnum.DURING);
-      } else {
-        currentDegree &&
-        registerContext?.handleAddSchool(currentName, cityName, facultyName, currentDegree);
-      }
-      setCurrentDegree(null);
+    if(id && currentDegree && currentDegreeLabel){
+      registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id, currentDegreeLabel);
+      setEdit(false);
+    }
+    else{
+      (currentDegree && currentDegreeLabel)&& registerContext?.handleAddSchool(currentName, cityName, facultyName, currentDegree, currentDegreeLabel);
+         setCurrentDegree(null);
       setCurrentName('');
-      setDuringStudies(null);
+      setCurrentDegreeLabel(null);
       setFacultyName('');
       setCityName('');      
     }
-  }, [currentName, currentDegree, id, duringStudies, registerContext, facultyName, cityName]);
+  }, [currentName, currentDegree, id, currentDegreeLabel, registerContext, facultyName, cityName]);
 
   const handleDelete = useCallback(() => {
     if (id) {
@@ -192,19 +180,18 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
           <StyledFormControl>
             <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
             <StyledRadioGroup
-              value={duringStudies === null ? '' : (duringStudies ? 'during' : 'absolwent')}
+              value={currentDegreeLabel === null ? '' : (currentDegreeLabel)}
               onChange={(event) => {
-                setDuringStudies(event.target.value === 'during');
+                setCurrentDegreeLabel(event.target.value as degreeLabelEnum);
               }}
               >
-              <StyledFormControlLabel value="during" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
-              <StyledFormControlLabel value="absolwent" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
+              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
+              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
             </StyledRadioGroup>
           </StyledFormControl>
           </>
           }
-          {
-            (currentName && !duringStudies && duringStudies !== null) &&
+          {currentDegreeLabel !== null &&
             <StyledFormControl>
               <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
               <StyledRadioGroup
@@ -227,7 +214,7 @@ const University = ({ city,faculty, name, degree, id }: UniversityType) => {
 }
       </Box>
       :
-      (id && currentDegree )?<InList id={id} name={currentName} city={cityName} degree={currentDegree} deleteFunction={handleDelete} editFunction={(value: boolean) => {setEdit(value)}}/> : `id: ${id} town: ${currentName}`
+      currentDegreeLabel && (id && currentDegree )?<InList id={id} name={currentName} city={cityName} degree={currentDegree} deleteFunction={handleDelete} editFunction={(value: boolean) => {setEdit(value)}} degreeLabel={currentDegreeLabel}/> : `id: ${id} town: ${currentName}`
     }
     
     </React.Fragment>

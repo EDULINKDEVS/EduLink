@@ -59,7 +59,7 @@ const StudentRegister = () => {
       
       <BackButton onClick={()=>{
         if(step === 0){
-          router.push('/');
+          router.push('/register');
         }
         else{
           setStep(prev => prev - 1);

@@ -26,6 +26,7 @@ const StudiesTabCreator = () => {
               name={element.name} 
               degree={element.degree} 
               id={element.id} 
+              degreeLabel={element.degreeLabel}
               key={element.id} 
             />
           );

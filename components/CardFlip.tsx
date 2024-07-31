@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { styled } from "@mui/system";
-import { Container } from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 
-// Interfejs props dla komponentu CardFlip
 interface CardFlipProps {
-  frontIcon: React.ReactNode; // Ikona przedniej strony karty
-  frontText: React.ReactNode; // Tekst przedniej strony karty
-  backText: React.ReactNode; // Tekst tylnej strony karty
+  frontIcon: React.ReactNode; 
+  frontText: React.ReactNode;
+  path: string;
 }
 
-// Styled components dla komponentu CardFlip
 const FlipCard = styled("div")({
   perspective: "1000px",
   overflow: "visible",
@@ -45,12 +43,10 @@ const CardFace = styled("div")({
   textAlign: "center",
 });
 
-// Komponent CardFlip
 const CardFlip: React.FC<CardFlipProps> = ({
   frontIcon,
   frontText,
-  backText,
-
+  path,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -69,12 +65,18 @@ const CardFlip: React.FC<CardFlipProps> = ({
               : { transform: "rotateY(180deg)" }
           }
         >
-          {/* Przednia strona karty */}
           <CardFace sx={{ width: "300px", height: "400px" }}>
             {frontIcon}
-            <div>{frontText}</div>
+            <div style={{
+                top: 95,
+                fontSize: 25,
+                position: 'relative',
+                fontFamily: 'playfair-display, sans-serif',
+                fontWeight: '700',
+                fontStyle: 'normal',
+                userSelect: 'none'
+              }}>{frontText}</div>
           </CardFace>
-          {/* Tylna strona karty */}
           <CardFace
             style={{
               justifyContent: 'center',
@@ -84,8 +86,17 @@ const CardFlip: React.FC<CardFlipProps> = ({
               height: "400px",
             }}
           >
-            <div>{backText}</div>
-        
+            <Box>
+              <div>
+              <Typography variant="body2" gutterBottom> 
+                Zarejestruj się używając klawisza poniżej
+                </Typography>
+                <Button variant="contained" href={path}>
+                  Zarejestruj
+                </Button>
+                </div>
+            </Box>
+            
           </CardFace>
         </FlipCardInner>
       </FlipCard>

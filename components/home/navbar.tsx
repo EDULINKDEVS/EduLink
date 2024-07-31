@@ -143,7 +143,7 @@ function AppAppBar() {
                 variant="text" 
                 size="small"
                 component="a"
-                href="/register"
+                href="#register"
                 sx={{
                   color: "black",
                 }}

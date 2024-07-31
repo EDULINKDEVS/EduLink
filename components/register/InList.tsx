@@ -2,35 +2,36 @@ import { Box, Grid, Paper, Typography, IconButton } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { degreeEnum } from '@/context/register/types';
+import { degreeEnum, degreeLabelEnum } from '@/context/register/types';
 
-const InList = ({ id, name, degree, city, deleteFunction, editFunction }: { id: string, name: string, degree: string, city: string, deleteFunction: (id: string) => void, editFunction: (id: boolean) => void }) => {
+const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLabel }: { id: string, name: string, degree: string, city: string, deleteFunction: (id: string) => void, editFunction: (id: boolean) => void, degreeLabel: degreeLabelEnum }) => {
 
     const [hover, setHover] = useState(false);
     const [degreeName, setDegreeName] = useState('');
+    const [text, setText] = useState('');
 
-    useEffect(()=>{
-        switch(degree){
-            case degreeEnum.DOCTOR:
-                setDegreeName('DOKTOR');
-                break;
-            case degreeEnum.ENGINEER:
-                setDegreeName('INŻYNIER');
-                break;
-            case degreeEnum.DURING:
-                setDegreeName('W TRAKCIE');
-                break;
-            case degreeEnum.MASTER:
-                setDegreeName('MAGISTER');
-                break;
-            case degreeEnum.BACHELOR:
-                setDegreeName('LICENCJAT');
-                break;
-            default:
-                setDegreeName('loading error...');
+    useEffect(() => {
+        if (degreeLabel) {
 
+            switch (degree) {
+                case degreeEnum.DOCTOR:
+                    setText((degreeLabel === degreeLabelEnum.DURING) ? 'DOKTORSKICH' : 'DOKTOR');
+                    break;
+                case degreeEnum.ENGINEER:
+                    setText((degreeLabel === degreeLabelEnum.DURING) ? 'INŻYNIERSKICH' : 'INŻYNIER');
+                    break;
+                case degreeEnum.MASTER:
+                    setText((degreeLabel === degreeLabelEnum.DURING) ? 'MAGISTERSKICH' : 'MAGISTER');
+                    break;
+                case degreeEnum.BACHELOR:
+                    setText((degreeLabel === degreeLabelEnum.DURING) ? 'LICENCJACKICH' : 'LICENCJAT');
+                    break;
+                default:
+                    setText('loading error...');
+
+            }
         }
-    },[degree])
+    }, [degree])
 
 
     return (
@@ -74,10 +75,20 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction }: { id: 
                     variant="body1"
                     color="#A758B5"
                     align="center"
+                    fontStyle={'oblique'}
                     fontWeight={'bold'}
                 >
-                    {degreeName}
+                    {degreeLabel === degreeLabelEnum.DURING ? 'w trakcie studiów' : 'ukończono'}
                 </Typography>
+                <Typography
+                    variant="body1"
+                    color="#A758B5"
+                    align="center"
+                    fontWeight={'bold'}
+                >
+                    {text}
+                </Typography>
+
             </Box>
             {hover && (
                 <Box

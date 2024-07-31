@@ -1,4 +1,4 @@
-import { degreeEnum } from "@/context/register/types";
+import { degreeEnum, degreeLabelEnum } from "@/context/register/types";
 import { FormControl, FormControlLabel, Paper, RadioGroup, TextField } from "@mui/material";
 import styled from "styled-components";
 
@@ -8,6 +8,7 @@ export type UniversityType = {
     id?: string;
     faculty?:string;
     city?: string;
+    degreeLabel? :degreeLabelEnum ;
   }
   
   export const StyledFormControl = styled(FormControl)({
