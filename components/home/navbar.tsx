@@ -182,7 +182,9 @@ function AppAppBar() {
                 onClick={toggleDrawer(true)}
                 sx={{ minWidth: "30px", p: "4px" }}
               >
-                <MenuIcon />
+                <MenuIcon sx={{
+                  color: "black",
+                }} />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
@@ -219,9 +221,11 @@ function AppAppBar() {
                       href="/register"
                       sx={{
                         width: "100%",
-                        backgroundColor:
-                          "linear-gradient(380deg, #6B1B9A, #9B30FF)",
-                        color: "black",
+                        color: "white",
+                        fontWeight: 'bold',
+                        backgroundColor: "#A758B5",
+                        border: '0px solid',
+                        boxShadow: 'none'
                       }}
                     >
                       Rejestracja
@@ -229,11 +233,17 @@ function AppAppBar() {
                   </MenuItem>
                   <MenuItem>
                     <Button
-                      color="primary"
+                      
                       variant="outlined"
                       component="a"
                       href="/login"
-                      sx={{ width: "100%" }}
+                      sx={{ width: "100%",
+                        color: "white",
+                        fontWeight: 'bold',
+                        backgroundColor: "#A758B5",
+                        border: '1px solid',
+                        boxShadow: 'none'
+                       }}
                       >
                       Logowanie
                     </Button>
