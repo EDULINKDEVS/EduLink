@@ -64,6 +64,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
                 fontSize: '150px',
                 transition: '.4s',
                 cursor: 'pointer',
+                position: 'absolute',
                 top: 45,
                 '&:hover': {
                   transform: 'rotateZ(5deg) scale(1.3)',
@@ -73,9 +74,9 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
               path='/register/student'
 
             />
-         </Grid>
+          </Grid>
 
-         <Grid item xs={12}>
+          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
             <CardFlip
               frontIcon={<HandshakeIcon sx={{
                 fontSize: '150px',
