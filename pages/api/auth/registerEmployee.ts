@@ -35,7 +35,8 @@ type Data = {
     status: Status;
     school_name: null | string;
     school_level: "voc" | "high" | "tech" | null;
-    school_city: string;
+
+    school_city: string | null;
     school_profile: string | null;
     dateOfBirth: Date;
     schools: [{
@@ -119,7 +120,8 @@ const handler = async (
       const userId = resultUser.insertId;
 
       const [resultUserData] = await connection.execute<ResultSetHeader>(
-        'INSERT INTO userData (user_id, f_name, l_name, email, dateOfBirth,school, status) VALUES (?, ?, ?, ?)',
+
+        'INSERT INTO userData (user_id, f_name, l_name, email, dateOfBirth,school, status, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
         [userId, data.user.f_name, data.user.l_name, data.user.email, data.user.dateOfBirth, data.user.school_name, data.user.label]
       );
 
@@ -127,7 +129,7 @@ const handler = async (
         throw new Error('Insert into userData failed');
       }
 
-      if (data.user.schools && data.user.schools.length > 0) {
+      if (data.user.schools && data.user.schools.length > 0) {  
         for (const school of data.user.schools) {
           const [resultSchool] = await connection.execute<ResultSetHeader>(
             'INSERT INTO schools (user_id, school_name, degreeStatus, degreeLev, city, faculty) VALUES (?, ?, ?, ?, ?, ?)',

@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { degreeEnum, registerSchoolsActions, School, Action } from "./types";
+import { degreeEnum, registerSchoolsActions, School, Action, degreeLabelEnum } from "./types";
 import { schoolReducer } from "./reducer";
 
 type RegisterDataType = {
@@ -16,6 +16,7 @@ type RegisterDataType = {
   school_name: string;
   school_city: string;
   school_profile: string;
+  degreeLabel: degreeLabelEnum | null;
   dateOfBirth: Date | null;
 };
 
@@ -23,8 +24,8 @@ type RegisterDataType = {
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string,city:string, faculty:string, degree: degreeEnum) => void;
-  handleEditSchool: (name: string, city:string, faculty:string, degree: degreeEnum, id: string) => void;
+  handleAddSchool: (name: string,city:string, faculty:string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => void;
+  handleEditSchool: (name: string, city:string, faculty:string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
   setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
@@ -47,15 +48,17 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     school_name: '',
     school_city: '',
     school_profile: '',
+    degreeLabel: null,
     dateOfBirth: null
   });
 
-  const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum) => {
+  const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => {
     if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
         name,
         degree,
+        degreeLabel,
         city,
         faculty
       };
@@ -63,13 +66,14 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleEditSchool = (name: string,city:string, faculty:string, degree: degreeEnum, id: string) => {
+  const handleEditSchool = (name: string,city:string, faculty:string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => {
     const updatedSchool: School = {
       id,
       name,
       city,
       faculty,
       degree,
+      degreeLabel
     };
     dispatch({
       type: registerSchoolsActions.EDIT_SCHOOL,

@@ -17,14 +17,21 @@ type IntroPageProps = {
 
 const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
   return (
-    <Grid container justifyContent={"center"} alignItems={"center"}>
-      
-    <Grid item>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        minWidth: "200px",
+        maxWidth: "1200px",
+        width: "80%",
+        mx: "auto",
+      }}
+    >
       <AppAppBar />
-      </Grid>
-     
-      
-          <Grid item
+
+      <Box>
+        <Grid container justifyContent={"center"} alignItems={"center"}>
+          <Grid
+            item
             xs={12}
             display={"flex"}
             justifyContent={"center"}
@@ -32,30 +39,27 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
           >
             <Page />
           </Grid>
+        </Grid>
+      </Box>
 
-     
-
-      
-    
-        <Grid item  justifyContent={"center"} alignItems={"center"} sx={{
-          minHeight: '100vh'
-        }}
+      <Box>
+        <Grid
+          item
           xs={12}
           display={"flex"}
+          justifyContent={"center"}
           marginTop={"90px"}
         >
           <Slider />
         </Grid>
+      </Box>
 
-      
-
-      
-
-
-          <Grid item xs={12} padding={2} display={'flex'} id="register" ref={registerRef} justifyContent={'center'} minHeight={'100vh'}>
-            <Grid container>
-              <Grid item xs={12}>
-            <CardFlip
+      <Box>
+        <Grid container justifyContent={'center'} sx={{
+          minHeight: '70vh',
+        }}>
+          <Grid item xs={6} padding={2} display={'flex'} id="register" ref={registerRef} justifyContent={'center'}>
+              <CardFlip
               frontIcon={<SchoolIcon sx={{
                 fontSize: '150px',
                 transition: '.4s',
@@ -65,44 +69,9 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
                   transform: 'rotateZ(5deg) scale(1.3)',
                 },
               }} />}
-              frontText={<div style={{
-                top: 95,
-                fontSize: 25,
-                position: 'relative',
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-              }}>JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY</div>}
-              backText={<div style={{
-                position: 'relative',
-                fontSize: 25,
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Box sx={{ marginBottom: 'auto', marginTop: '-100px' }}>
-                ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!
-              </Box>
-              <Button
-                variant="contained"
-                sx={{
-                  fontSize: 20,
-                  backgroundColor: 'white',
-                  color: 'black',
-                  '&:hover': {
-                    backgroundColor: '#A758B5',
-                    color: 'white'
-                  }
-                }}
-                  href="/register/student"
-                >Rejestracja</Button>
-              </div>}
+              frontText={"JESTEM STUDENTEM SZUKAJĄCYM PRACODAWCY"}
+              path='/register/student'
+
             />
          </Grid>
 
@@ -119,51 +88,18 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
                   transform: 'rotateZ(5deg) scale(1.3)',
                 }
               }} />}
-              frontText={<div style={{
-                top: 95,
-                fontSize: 25,
-                position: 'relative',
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-                userSelect: 'none'
-              }}>JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA</div>}
-              backText={<div style={{
-                position: 'relative',
-                fontSize: 25,
-                fontFamily: 'playfair-display, sans-serif',
-                fontWeight: '700',
-                fontStyle: 'normal',
-                height: '100%', // Sprawia, że kontener zajmuje całą wysokość karty
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-                <div style={{ marginBottom: 'auto', marginTop: '-100px' }}>ZAREJESTRUJ SIĘ UŻYWAJĄC KLAWISZA PONIŻEJ!</div>
-                <Button variant="contained" sx={{
-                  position: 'absolute',
-                  fontSize: 20,
-                  backgroundColor: 'white',
-                  color: 'black',
-                  '&:hover': {
-                    backgroundColor: '#A758B5',
-                    color: 'white'
-                  }
-                }}
-                  href="/register/company"
-                >Rejestracja</Button>
-              </div>}
+              frontText={"JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA"}
+              path='/register/company'
+
             />
-            </Grid>
-            </Grid>
           </Grid>
 
+        </Grid>
+      </Box>
 
-      
-
-      
-        <Grid item sx={{ minHeight: '10vh'}}
+      <Box>
+        <Grid
+          item
           xs={12}
           display={"flex"}
           justifyContent={"center"}
@@ -171,9 +107,11 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         >
           <Pricing1 />
         </Grid>
-      
+      </Box>
 
-        <Grid  item
+      <Box>
+        <Grid
+          item
           xs={12}
           display={"flex"}
           justifyContent={"center"}
@@ -181,10 +119,11 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         >
           <Pricing />
         </Grid>
-     
+      </Box>
 
-      
-        <Grid item
+      <Box>
+        <Grid
+          item
           xs={12}
           display={"flex"}
           justifyContent={"center"}
@@ -192,8 +131,8 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         >
           <PricingCom />
         </Grid>
-      
-      </Grid>
+      </Box>
+    </Box>
   );
 }
 
