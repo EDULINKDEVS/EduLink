@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthContextProvider>
         <RegisterContextProvider>
           <ThemeProvider theme={maintheme}> {/* Dodano theme jako atrybut */}
-            <Box sx={{ backgroundColor: 'black', scrollBehavior: "smooth" }}>
+            <Box sx={{ backgroundColor: 'primary', scrollBehavior: "smooth" }}>
               <Component {...pageProps} />
               <Swither />
             </Box>

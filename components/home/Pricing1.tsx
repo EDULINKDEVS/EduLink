@@ -17,10 +17,13 @@ const tiers = [
     title: 'Pakiet Podstawowy',
     price: '3,99',
     description: [
-      'Mapowanie umiejętności',
-      // '2 GB of storage',
-      // 'Help center access',
-      // 'Email support',
+      'Zdjęcie profilowe',
+      'Limit umiejętności do przypisania : 5',
+      'Podstawowy widok profilu',
+      'Limit wiadomości do firm : 1 ',
+      'Dostęp do podstawowych informacji na temat przedsiębiorstwa',
+      'Limit branż do wyszukiwania : 1',
+      'Limit wyboru lokalizacji: 1 ' 
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
@@ -30,9 +33,15 @@ const tiers = [
     title: 'Premium ',
     price: '4,99',
     description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
+      'Zdjęcie profilowe',
+      'Limit umiejętności do przypisania : 10',
+      'Rozbudowany widok profilu',
+      'Limit wiadomości do firm : 5 ',
+      'Rozszerzeony dostęp do informacji na temat przedsiębiorstwa',
+      'Limit branż do wyszukiwania : 5',
+      'Limit wyboru lokalizacji: 1 ' ,
+      'Limit funkcji "zaczepki": 2',
+      'Rozbudowana funkcja wyszukiwania'
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
@@ -44,12 +53,18 @@ const tiers = [
     subheader: 'Polecane',
     price: '6,99',
     description: [
-      'Mapowanie umiejętności',
-      'Możliwość kontaktu z potencjalnym pracodawcą',
-      'Zaczepki bez limitu',
+      'Zdjęcie profilowe',
+      'Limit umiejętności do przypisania : 20',
+      '"PRO" widok profilu',
+      'Limit wiadomości do firm : 10 ',
+      'Rozszerzeony dostęp do informacji na temat przedsiębiorstwa',
+      'Limit branż do wyszukiwania : 6',
+      'Limit wyboru lokalizacji: 2 ' ,
+      'Limit funkcji "zaczepki": 5',
+      'Rozbudowana funkcja wyszukiwania',
       'Możliwość dodania portfolio',
-      'Podgląd firm w obszarze do 25 km',
-      'Dostęp do kalendarza eventów i targów branżowych',
+      'Promowanie profilu',
+      'Dostęp do kalendarza eventów, targów i spotkań branżowych'
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'contained',
@@ -59,11 +74,20 @@ const tiers = [
     
   {
     title: 'Premium +',
-    price: '23,49',
+    price: '19,99',
     description: [
-      'Mapowanie umiejętności',
-      'Podgląd firm w obszarze do 5 km',
-      'Zaczepki limit: 3',
+      'Zdjęcie profilowe',
+      'Limit umiejętności do przypisania :nolimit ',
+      '"PRO" widok profilu',
+      'Limit wiadomości do firm : nolimit ',
+      'Rozszerzeony dostęp do informacji na temat przedsiębiorstwa',
+      'Limit branż do wyszukiwania : nolimit',
+      'Limit wyboru lokalizacji: nolimit ' ,
+      'Limit funkcji "zaczepki": nolimit',
+      'Rozbudowana funkcja wyszukiwania',
+      'Możliwość dodania portfolio',
+      'Promowanie profilu',
+      'Dostęp do kalendarza eventów, targów i spotkań branżowych'
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
@@ -74,6 +98,7 @@ const tiers = [
 
 export default function Pricing1() {
   return (
+     
     <Container
       id="pricing"
       sx={{
@@ -92,7 +117,7 @@ export default function Pricing1() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="#A758B5" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
+        <Typography component="h2" variant="h4" color="primary" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
           ABONAMENT DLA STUDENTÓW
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -119,10 +144,10 @@ export default function Pricing1() {
                 gap: 4,
                 border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
                 borderColor:
-                  tier.title === 'Pakiet Profesionalny' ? '3A758B5' : 'undefined',
+                  tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
                 background:
                   tier.title === 'Pakiet Profesionalny'
-                    ? '#A758B5'
+                    ? 'primary'
                     : undefined,
               }}
             >
@@ -176,7 +201,7 @@ export default function Pricing1() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'black',
+                    borderColor: 'custom',
                   }}
                 />
                 {tier.description.map((line) => (
@@ -195,8 +220,8 @@ export default function Pricing1() {
                         width: 20,
                         color:
                           tier.title === 'Pakiet Profesionalny'
-                            ? 'white'
-                            : '#A758B5',
+                            ? 'secondary'
+                            : 'primary',
                       }}
                     />
                     <Typography
@@ -217,20 +242,20 @@ export default function Pricing1() {
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Pakiet Profesionalny'
-                      ? 'white'
-                      : '#A758B5',
+                      ? 'secondary'
+                      : 'primary',
 
                       color:
                       tier.title === 'Pakiet Profesionalny'
-                      ? 'black'
-                      : 'white',
+                      ? 'custom'
+                      : 'secondary',
 
 
                       
                      ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
-                        backgroundColor: '#A758B5', color:'white',
+                        backgroundColor: 'primary', color:'secondary',
                      } : {
-                        backgroundColor: "white", color: 'black'
+                        backgroundColor: "secondary", color: 'custom'
                      }
                       
                       
