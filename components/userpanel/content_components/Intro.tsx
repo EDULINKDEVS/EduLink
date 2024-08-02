@@ -28,8 +28,8 @@ function Intro() {
             variant="contained"
             startIcon={<UpgradeIcon />}
             sx={{
-              backgroundColor: '#A758B5',
-              borderColor: 'black',
+              backgroundColor: 'primary',
+              borderColor: 'custom',
               border: 'solid',
               '&:hover': {
                 backgroundColor: '#ffffff',

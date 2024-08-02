@@ -61,7 +61,7 @@ const UserOptionWraper = ({
             }}
           >
             <Useroption
-              icon={<span style={{ color: "white" }}>{option.icon}</span>}
+              icon={<span style={{ color: "secondary" }}>{option.icon}</span>}
               text={option.label}
             />
           </Box>

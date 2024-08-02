@@ -48,7 +48,7 @@ export default function SignInSide() {
           item
           xs={12}
           sx={{
-            backgroundColor: '#A758B5',
+            backgroundColor: 'primary',
             height: '12.5vh' // 12.5% wysokości ekranu
           }}
         />
@@ -60,7 +60,7 @@ export default function SignInSide() {
             sm={false}
             md={4.5}
             sx={{
-              backgroundColor: '#A758B5'
+              backgroundColor: 'primary'
             }}
           />
           {/* Sekcja logowania */}
@@ -94,19 +94,19 @@ export default function SignInSide() {
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
-                        borderColor: '#A758B5', // fioletowy kolor obramówki
+                        borderColor: 'primary', // fioletowy kolor obramówki
                       },
                       '&:hover fieldset': {
-                        borderColor: '#A758B5',
+                        borderColor: 'primary',
                       },
                       '&.Mui-focused fieldset': {
-                        borderColor: '#A758B5',
+                        borderColor: 'primary',
                       },
                     },
                     '& .MuiInputLabel-root': {
-                      color: '#A758B5', // fioletowy kolor etykiety
+                      color: 'primary', // fioletowy kolor etykiety
                       '&.Mui-focused': {
-                        color: '#A758B5',
+                        color: 'primary',
                       },
                     },
                   }}
@@ -123,19 +123,19 @@ export default function SignInSide() {
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
-                        borderColor: '#A758B5', // fioletowy kolor obramówki
+                        borderColor: 'primary', // fioletowy kolor obramówki
                       },
                       '&:hover fieldset': {
-                        borderColor: '#A758B5',
+                        borderColor: 'primary',
                       },
                       '&.Mui-focused fieldset': {
-                        borderColor: '#A758B5',
+                        borderColor: 'primary',
                       },
                     },
                     '& .MuiInputLabel-root': {
-                      color: '#A758B5', // fioletowy kolor etykiety
+                      color: 'primary', // fioletowy kolor etykiety
                       '&.Mui-focused': {
-                        color: '#A758B5',
+                        color: 'primary',
                       },
                     },
                   }}
@@ -145,7 +145,7 @@ export default function SignInSide() {
                   label="Zapamiętaj mnie"
                   sx={{
                     '& .MuiFormControlLabel-label': {
-                      color: '#A758B5', // fioletowy kolor tekstu
+                      color: 'primary', // fioletowy kolor tekstu
                     },
                   }}
                 />
@@ -158,7 +158,7 @@ export default function SignInSide() {
                     mb: 2, 
                     backgroundColor: '#9C27B0',
                     '&:hover': {
-                      backgroundColor: 'white',
+                      backgroundColor: 'secondary',
                       color: '#9C27B0',
                     },
                   }}
@@ -167,12 +167,12 @@ export default function SignInSide() {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2" sx={{ color: '#A758B5', textDecoration: 'none' }}>
+                    <Link href="#" variant="body2" sx={{ color: 'primary', textDecoration: 'none' }}>
                       Zapomniałeś hasła?
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2" sx={{ color: '#A758B5', textDecoration: 'none' }}>
+                    <Link href="#" variant="body2" sx={{ color: 'primary', textDecoration: 'none' }}>
                       {'Nie masz jeszcze konta? Zarejestruj się'}
                     </Link>
                   </Grid>
@@ -188,7 +188,7 @@ export default function SignInSide() {
             sm={false}
             md={4.5}
             sx={{
-              backgroundColor: '#A758B5'
+              backgroundColor: 'primary'
             }}
           />
         </Grid>
@@ -197,7 +197,7 @@ export default function SignInSide() {
           item
           xs={12}
           sx={{
-            backgroundColor: '#A758B5',
+            backgroundColor: 'primary',
             height: '12.5vh' // 12.5% wysokości ekranu
           }}
         />

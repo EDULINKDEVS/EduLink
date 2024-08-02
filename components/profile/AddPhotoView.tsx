@@ -24,10 +24,10 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
 
     <Container className='ubuntu-medium' maxWidth="sm">
       <Box textAlign="center" mt={5}>
-        <Typography variant="h4" component="h1" gutterBottom color='white'>
+        <Typography variant="h4" component="h1" gutterBottom color='secondary'>
           Dodaj swoje zdjęcie profilowe
         </Typography>
-        <Typography variant="subtitle1" component="p" gutterBottom color='white'>
+        <Typography variant="subtitle1" component="p" gutterBottom color='secondary'>
           Uśmiech tworzy dobre pierwsze wrażenie
         </Typography>
         <Box
@@ -41,12 +41,12 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
           {!image ? (
             <>
               <IconButton  aria-label="upload picture" component="label" sx={{
-                color:"white"
+                color:"secondary"
               }}>
                 <input hidden accept="image/*" type="file" onChange={handleImageUpload} />
                 <PhotoCamera style={{ fontSize: 40 }} />
               </IconButton>
-              <Typography variant="body2" color="white">
+              <Typography variant="body2" color="secondary">
                 Kliknij, aby dodać zdjęcie profilowe
               </Typography>
             </>
@@ -65,11 +65,11 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
           )}
         </Box>
         <Button sx={{
-          color: 'black',
-          backgroundColor: 'white',
+          color: 'custom',
+          backgroundColor: 'secondary',
           '&:hover' : {
-                    backgroundColor: '#A758B5',
-                    color: 'white'
+                    backgroundColor: 'primary',
+                    color: 'secondary'
                   }
         }} variant="contained"  onClick={()=>{setSteps(1)}}>
           {image ? 'Dodaj zdjęcie' : 'Dalej'}

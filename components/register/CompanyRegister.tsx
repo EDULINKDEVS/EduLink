@@ -14,7 +14,7 @@ const StyledContainer = styled(Box)`
 
 const LeftContainer = styled(Box)`
   flex: 1;
-  background-color: #A758B5;
+  background-color: primary;
   display: none;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ const LeftContainer = styled(Box)`
 
 const RightContainer = styled(Box)`
   flex: 1.5;
-  background-color: white;
+  background-color: secondary;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ const StyledPaper = styled(Paper)`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #A758B5;
+  background-color: primary;
   color: #fff;
   &:hover {
     background-color: #9342a0;
@@ -52,30 +52,30 @@ const StyledButton = styled(Button)`
 
 const CustomTextField = styled(TextField)({
   '& label.Mui-focused': {
-    color: '#A758B5',
+    color: 'primary',
   },
   '& label': {
-    color: '#A758B5', // Kolor etykiety
+    color: 'primary', // Kolor etykiety
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: '#A758B5',
+    borderBottomColor: 'primary',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&:hover fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '& input': {
-      color: '#A758B5',
+      color: 'primary',
     }
   },
   '& .MuiInputBase-input': {
-    color: '#A758B5',
+    color: 'primary',
   },
 });
 
@@ -150,13 +150,13 @@ const CompanyRegister: React.FC = () => {
   return (
     <StyledContainer>
       <LeftContainer>
-        <Typography variant="h1" style={{ color: 'white' }}>
+        <Typography variant="h1" style={{ color: 'secondary' }}>
           <HandshakeIcon sx={{ fontSize: '300px' }} />
         </Typography>
       </LeftContainer>
       <RightContainer>
         <StyledPaper>
-          <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
+          <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
             REJESTRACJA
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate>

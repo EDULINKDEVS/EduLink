@@ -9,8 +9,8 @@ function test() {
     <Box sx={{
         width: "25vw",
         height:"100svh",
-        backgroundColor: "#A758B5",
-        color: "white"
+        backgroundColor: "primary",
+        color: "secondary"
     }}>
       <RegisterLocation />
     </Box>

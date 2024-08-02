@@ -71,7 +71,7 @@ export default function PricingCom() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="#A758B5" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
+        <Typography component="h2" variant="h4" color="primary" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
           ABONAMENT DLA FIRM
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -101,7 +101,7 @@ export default function PricingCom() {
                   tier.title === 'Profesionalne' ? '3A758B5' : 'undefined',
                 background:
                   tier.title === 'Profesionalne'
-                    ? '#A758B5'
+                    ? 'primary'
                     : undefined,
               }}
             >
@@ -155,7 +155,7 @@ export default function PricingCom() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'black',
+                    borderColor: 'custom',
                   }}
                 />
                 {tier.description.map((line) => (
@@ -174,8 +174,8 @@ export default function PricingCom() {
                         width: 20,
                         color:
                           tier.title === 'Profesionalne'
-                            ? 'white'
-                            : '#A758B5',
+                            ? 'secondary'
+                            : 'primary',
                       }}
                     />
                     <Typography
@@ -196,20 +196,20 @@ export default function PricingCom() {
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Profesionalne'
-                      ? 'white'
-                      : '#A758B5',
+                      ? 'secondary'
+                      : 'primary',
 
                       color:
                       tier.title === 'Profesionalne'
-                      ? 'black'
-                      : 'white',
+                      ? 'custom'
+                      : 'secondary',
 
 
                       
                      ' &:hover' : tier.title === 'Profesionalne' ? {
-                        backgroundColor: '#A758B5', color:'white',
+                        backgroundColor: 'primary', color:'secondary',
                      } : {
-                        backgroundColor: "white", color: 'black'
+                        backgroundColor: "secondary", color: 'custom'
                      }
                       
                       

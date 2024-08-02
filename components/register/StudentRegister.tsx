@@ -29,7 +29,7 @@ const StudentRegister = () => {
 
   const LeftContainer = styled(Box)`
     flex: 1;
-    background-color: #A758B5;
+    background-color: primary;
     display: none;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ const StudentRegister = () => {
 
   const RightContainer = styled(Box)`
     flex: 1.5;
-    background-color: white;
+    background-color: secondary;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,13 +68,13 @@ const StudentRegister = () => {
       <ArrowBackIcon sx={{
       fontSize: '2em',
       color:{
-        sm: 'black',
-        lg: 'white'
+        sm: 'custom',
+        lg: 'secondary'
       }
     }}/>
       </BackButton>
       <LeftContainer>
-        <SchoolIcon style={{ fontSize: 300, color: 'white' }} />
+        <SchoolIcon style={{ fontSize: 300, color: 'secondary' }} />
       </LeftContainer>
       <RightContainer>
         <Box sx={{

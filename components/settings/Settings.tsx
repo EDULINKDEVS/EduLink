@@ -4,13 +4,13 @@ import { styled } from '@mui/system';
 
 const PurpleSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase.Mui-checked': {
-    color: '#A758B5',
+    color: 'primary',
     '&:hover': {
       backgroundColor: 'rgba(167, 88, 181, 0.08)',
     },
   },
   '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-    backgroundColor: '#A758B5',
+    backgroundColor: 'primary',
   },
 }));
 
@@ -107,7 +107,7 @@ const Settings = () => {
           style={{ cursor: 'pointer' }}
           sx={{
             '&:hover': {
-              color: '#A758B5',
+              color: 'primary',
             },
           }}
         >
@@ -124,23 +124,23 @@ const Settings = () => {
                 onChange={handlePasswordChange}
                 InputProps={{
                   sx: {
-                    color: 'black', // Kolor wpisywanego tekstu
+                    color: 'custom', // Kolor wpisywanego tekstu
                     '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania
+                      borderColor: 'primary', // Kolor obramowania
                     },
                     '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania podczas hover
+                      borderColor: 'primary', // Kolor obramowania podczas hover
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania podczas focus
+                      borderColor: 'primary', // Kolor obramowania podczas focus
                     },
                   },
                 }}
                 InputLabelProps={{
                   sx: {
-                    color: '#A758B5', // Kolor tekstu etykiety
+                    color: 'primary', // Kolor tekstu etykiety
                     '&.Mui-focused': {
-                      color: '#A758B5', // Kolor tekstu etykiety podczas focus
+                      color: 'primary', // Kolor tekstu etykiety podczas focus
                     },
                   },
                 }}
@@ -171,23 +171,23 @@ const Settings = () => {
                 helperText={passwordError}
                 InputProps={{
                   sx: {
-                    color: 'black', // Kolor wpisywanego tekstu
+                    color: 'custom', // Kolor wpisywanego tekstu
                     '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania
+                      borderColor: 'primary', // Kolor obramowania
                     },
                     '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania podczas hover
+                      borderColor: 'primary', // Kolor obramowania podczas hover
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: '#A758B5', // Kolor obramowania podczas focus
+                      borderColor: 'primary', // Kolor obramowania podczas focus
                     },
                   },
                 }}
                 InputLabelProps={{
                   sx: {
-                    color: '#A758B5', // Kolor tekstu etykiety
+                    color: 'primary', // Kolor tekstu etykiety
                     '&.Mui-focused': {
-                      color: '#A758B5', // Kolor tekstu etykiety podczas focus
+                      color: 'primary', // Kolor tekstu etykiety podczas focus
                     },
                   },
                 }}
@@ -196,11 +196,11 @@ const Settings = () => {
             <Grid item xs={12}>
               <Button
                 sx={{
-                  color: 'white',
-                  backgroundColor: '#A758B5',
+                  color: 'secondary',
+                  backgroundColor: 'primary',
                   '&:hover': {
-              color: '#A758B5',
-              backgroundColor:'white'}
+              color: 'primary',
+              backgroundColor:'secondary'}
                 }}
                 variant="contained"
                 onClick={handlePasswordSave}
@@ -213,7 +213,7 @@ const Settings = () => {
         )}
         <Typography sx={{
             '&:hover': {
-              color: '#A758B5',
+              color: 'primary',
             },
           }}
           variant="h6"
@@ -227,7 +227,7 @@ const Settings = () => {
           <Grid container spacing={2} style={{ marginTop: '1em' }}>
             <Grid item xs={12}>
               <FormControlLabel
-                sx={{ color: 'black' }}
+                sx={{ color: 'custom' }}
                 control={<PurpleSwitch checked={notifications.appStatus} onChange={handleNotificationChange} name="appStatus" />}
                 label="Chcę otrzymywać powiadomienia o statusie swoich aplikacji."
               />
@@ -258,11 +258,11 @@ const Settings = () => {
             </Grid>
             <Grid item xs={12}>
               <Button sx={{
-                backgroundColor:'#A758B5',
-                color:'white',
+                backgroundColor:'primary',
+                color:'secondary',
                 '&:hover': {
-              color: '#A758B5',
-              backgroundColor:'white'
+              color: 'primary',
+              backgroundColor:'secondary'
                 }
               }} variant="contained" onClick={handleNotificationsSave}>
                 Zapisz

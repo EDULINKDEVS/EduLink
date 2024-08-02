@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const RegisterLocation: React.FC = () => {
   const StyledButton = styled(Button)({
-    backgroundColor: '#A758B5',
+    backgroundColor: 'primary',
     color: '#fff',
     marginTop: '15px',
     '&:hover': {

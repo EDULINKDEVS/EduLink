@@ -87,7 +87,7 @@ export default function Pricing() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="#A758B5" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
+        <Typography component="h2" variant="h4" color="primary" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
           ABONAMENT DLA STUDENTÓW
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -115,7 +115,7 @@ export default function Pricing() {
                 justifyContent: 'space-between',
                 border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
                 borderColor: tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
-                background: tier.title === 'Pakiet Profesionalny' ? '#A758B5' : undefined,
+                background: tier.title === 'Pakiet Profesionalny' ? 'primary' : undefined,
               }}
             >
               <CardContent>
@@ -166,7 +166,7 @@ export default function Pricing() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'black',
+                    borderColor: 'custom',
                   }}
                 />
                 {tier.description.slice(0, 1).map((line) => (
@@ -182,7 +182,7 @@ export default function Pricing() {
                     <CheckCircleRoundedIcon
                       sx={{
                         width: 20,
-                        color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                        color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
                       }}
                     />
                     <Typography
@@ -211,7 +211,7 @@ export default function Pricing() {
                       <CheckCircleRoundedIcon
                         sx={{
                           width: 20,
-                          color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                          color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
                         }}
                       />
                       <Typography
@@ -237,7 +237,7 @@ export default function Pricing() {
                 <Button className='ubuntu-medium'
                   sx={{
                     textAlign: 'center',
-                    color: tier.title === 'Pakiet Profesionalny' ? 'white' : '#A758B5',
+                    color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
                   }}
                   onClick={() => handleExpandClick(index)}
                   endIcon={expanded[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}

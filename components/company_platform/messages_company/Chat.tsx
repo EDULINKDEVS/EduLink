@@ -36,8 +36,8 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
             <ListItemText
               primary={msg.content}
               sx={{
-                backgroundColor: msg.sender === 'User' ? '#A758B5' : 'white',
-                color: msg.sender === 'User' ? 'white' : '#A758B5',
+                backgroundColor: msg.sender === 'User' ? 'primary' : 'secondary',
+                color: msg.sender === 'User' ? 'secondary' : 'primary',
                 borderRadius: 2,
                 padding: 1,
                 maxWidth: '75%',
@@ -50,23 +50,23 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
         <TextField
          InputProps={{
           sx: {
-            color: 'black', // Kolor wpisywanego tekstu
+            color: 'custom', // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#A758B5', // Kolor obramowania
+              borderColor: 'primary', // Kolor obramowania
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#A758B5', // Kolor obramowania podczas hover
+              borderColor: 'primary', // Kolor obramowania podczas hover
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#A758B5', // Kolor obramowania podczas focus
+              borderColor: 'primary', // Kolor obramowania podczas focus
             },
           },
         }}
         InputLabelProps={{
           sx: {
-            color: 'black', // Kolor tekstu etykiety
+            color: 'custom', // Kolor tekstu etykiety
             '&.Mui-focused': {
-              color: '#A758B5', // Kolor tekstu etykiety podczas focus
+              color: 'primary', // Kolor tekstu etykiety podczas focus
             },
           },
         }}
@@ -78,12 +78,12 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
           placeholder="Wpisz wiadomość..."
         />
         <Button sx={{
-          backgroundColor: '#A758B5',
+          backgroundColor: 'primary',
           marginLeft: 1,
 
         '&:hover' : {
-                    backgroundColor: '#A758B5',
-                    color: 'white' }
+                    backgroundColor: 'primary',
+                    color: 'secondary' }
 
         }} variant="contained"  onClick={handleSend} >
           Wyślij

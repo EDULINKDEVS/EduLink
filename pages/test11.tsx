@@ -105,10 +105,10 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
                                   
                   fontSize: 20,
 
-                  color: 'black',
+                  color: 'custom',
                   '&:hover': {
-                    backgroundColor: '#A758B5',
-                    color: 'white'
+                    backgroundColor: 'primary',
+                    color: 'secondary'
                   }
                 }}
                 href="/register/student"

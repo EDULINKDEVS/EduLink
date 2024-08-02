@@ -26,7 +26,7 @@ const JobList: React.FC<JobListProps> = ({ jobs }) => {
               <Avatar src={job.avatar} sx={{ width: 106, height: 106 }} />
             </Grid>
             <Grid item xs={12} sm={7}>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#A758B5' }}>{job.title}</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary' }}>{job.title}</Typography>
               <Typography variant="body1" sx={{ color: '#555555' }}>{job.company}</Typography>
               <Typography variant="body1" sx={{ color: '#555555', fontStyle: 'italic' }}>{job.direction}</Typography>
               <Typography variant="body2" sx={{ color: '#777777', mb: 2 }}>{job.location}</Typography>
@@ -37,11 +37,11 @@ const JobList: React.FC<JobListProps> = ({ jobs }) => {
             </Grid>
             <Grid item xs={12} sm={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Button sx={{
-                color: 'white',
-                backgroundColor: '#A758B5',
+                color: 'secondary',
+                backgroundColor: 'primary',
                 '&:hover': {
                   backgroundColor: '#9342a0',
-                  color: 'white'
+                  color: 'secondary'
                 }
               }} variant="contained" href={job.link} target="_blank">
                 Zobacz więcej

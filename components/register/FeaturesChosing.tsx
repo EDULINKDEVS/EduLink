@@ -26,26 +26,26 @@ const StyledPaper = styled(Paper)({
 const StyledTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#A758B5",
+      borderColor: "primary",
     },
     "&:hover fieldset": {
-      borderColor: "#A758B5",
+      borderColor: "primary",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#A758B5",
+      borderColor: "primary",
     },
   },
   "& .MuiInputBase-input": {
-    color: "#A758B5",
+    color: "primary",
   },
   "& .MuiInputLabel-root": {
-    color: "#A758B5",
+    color: "primary",
   },
   width: "100%",
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: "#A758B5",
+  backgroundColor: "primary",
   color: "#fff",
   marginTop: 20,
   "&:hover": {
@@ -115,7 +115,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
     <Box sx={{ animation: ".7s showAnim forwards", width: "clamp(250px, 95%, 700px"}}>
       <Typography
         variant="h4"
-        color="#A758B5"
+        color="primary"
         align="center"
         gutterBottom
         fontWeight={"bold"}
@@ -179,9 +179,9 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
                     fontSize: ".9em",
                     cursor: "pointer",
                     backgroundColor: selectedTraits.includes(trait)
-                      ? "#A758B5"
+                      ? "primary"
                       : "#fff",
-                    color: selectedTraits.includes(trait) ? "#fff" : "#A758B5",
+                    color: selectedTraits.includes(trait) ? "#fff" : "primary",
                     "&:hover": {
                       backgroundColor: selectedTraits.includes(trait)
                         ? "#9342a0"
@@ -198,7 +198,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
             sx={{
               order: { xs: 1, sm: 2 },
               flex: 1,
-              border: "1px solid #A758B5",
+              border: "1px solid primary",
               padding: 2,         
               height: "400px",
               overflow: 'auto',
@@ -214,7 +214,7 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
               }, 
             }}
           >
-            <Typography variant="h6" color="#A758B5" gutterBottom>
+            <Typography variant="h6" color="primary" gutterBottom>
               Wybrane umiejętności:
             </Typography>
             <List>

@@ -27,10 +27,10 @@ export type UniversityType = {
   });
   
   export const StyledFormControlLabel = styled(FormControlLabel)({
-    color: '#A758B5',
+    color: 'primary',
     fontWeight: 'bold',
     '& .MuiTypography-root': {
-      color: '#A758B5',
+      color: 'primary',
       fontWeight: 'bold',
     },
   });
@@ -38,20 +38,20 @@ export type UniversityType = {
   export const StyledTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: '#A758B5',
+        borderColor: 'primary',
       },
       '&:hover fieldset': {
-        borderColor: '#A758B5',
+        borderColor: 'primary',
       },
       '&.Mui-focused fieldset': {
-        borderColor: '#A758B5',
+        borderColor: 'primary',
       },
     },
     '& .MuiInputBase-input': {
-      color: '#A758B5',
+      color: 'primary',
     },
     '& .MuiInputLabel-root': {
-      color: '#A758B5',
+      color: 'primary',
     },
     width: '100%',
   });

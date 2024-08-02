@@ -10,7 +10,7 @@ const Custom404 = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'black'
+        color: 'custom'
     }}>
       Spierdalaj
     </Box>

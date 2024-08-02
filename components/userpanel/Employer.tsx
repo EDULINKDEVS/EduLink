@@ -42,12 +42,12 @@ const Employer = () => {
 
   return (
     <Box display="flex" height="100vh">
-    <Box width={selectedOption ? '89%' : '25%'} bgcolor="#A758B5" sx={{ transition: 'width 0.3s' }}>
+    <Box width={selectedOption ? '89%' : '25%'} bgcolor="primary" sx={{ transition: 'width 0.3s' }}>
       {selectedOption && <PanelContent id={selectedOption} />}
     </Box>
     <Box
       width={selectedOption ? '11%' : '75%'}
-      bgcolor="white"
+      bgcolor="secondary"
       sx={{
         transition: 'width 0.3s',
         display: 'flex',

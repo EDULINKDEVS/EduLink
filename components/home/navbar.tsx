@@ -82,7 +82,7 @@ function AppAppBar() {
               <Box
                 component={SchoolIcon}
                 sx={{
-                  color: "black", 
+                  color: "custom", 
                   fontSize: 58, 
                   
                 }}
@@ -145,7 +145,7 @@ function AppAppBar() {
                 component="a"
                 href="#register"
                 sx={{
-                  color: "black",
+                  color: "custom",
                 }}
 
               >
@@ -162,11 +162,11 @@ function AppAppBar() {
                 component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
                 sx={{
                   backgroundColor: "#9B30FF", // Ustawienie tła jako gradientu liniowego
-                  color: "white", // Ustawienie koloru tekstu na biały
+                  color: "secondary", // Ustawienie koloru tekstu na biały
                   '&: hover' : {
                     opacity: "0.5",
-                    backgroundColor: 'white',
-                    color: 'black'
+                    backgroundColor: 'secondary',
+                    color: 'custom'
                   }
                 }}
                 href="/login"                  
@@ -183,7 +183,7 @@ function AppAppBar() {
                 sx={{ minWidth: "30px", p: "4px" }}
               >
                 <MenuIcon sx={{
-                  color: "black",
+                  color: "custom",
                 }} />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
@@ -221,9 +221,9 @@ function AppAppBar() {
                       href="/register"
                       sx={{
                         width: "100%",
-                        color: "white",
+                        color: "secondary",
                         fontWeight: 'bold',
-                        backgroundColor: "#A758B5",
+                        backgroundColor: "primary",
                         border: '0px solid',
                         boxShadow: 'none'
                       }}
@@ -238,9 +238,9 @@ function AppAppBar() {
                       component="a"
                       href="/login"
                       sx={{ width: "100%",
-                        color: "white",
+                        color: "secondary",
                         fontWeight: 'bold',
-                        backgroundColor: "#A758B5",
+                        backgroundColor: "primary",
                         border: '1px solid',
                         boxShadow: 'none'
                        }}

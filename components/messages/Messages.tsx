@@ -12,7 +12,7 @@ const Messages = () => {
     };
   
     return (
-      <Container sx={{ display: 'flex', height: '90vh', padding: '18px', backgroundColor: 'white', borderRadius: '25px', opacity: 0, animation: '1s showAnimLev1 forwards' }}>
+      <Container sx={{ display: 'flex', height: '90vh', padding: '18px', backgroundColor: 'secondary', borderRadius: '25px', opacity: 0, animation: '1s showAnimLev1 forwards' }}>
         <Paper sx={{ width: 300, marginRight: 2 }}>
           <UserList onSelectUser={handleSelectUser} />
         </Paper>

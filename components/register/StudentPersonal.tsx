@@ -21,7 +21,7 @@ const StyledPaper = styled(Paper)({
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: '#A758B5',
+  backgroundColor: 'primary',
   color: '#fff',
   '&:hover': {
     backgroundColor: '#9342a0'
@@ -31,20 +31,20 @@ const StyledButton = styled(Button)({
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&:hover fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
   },
   '& .MuiInputBase-input': {
-    color: '#A758B5',
+    color: 'primary',
   },
   '& .MuiInputLabel-root': {
-    color: '#A758B5',
+    color: 'primary',
   },
 });
 
@@ -186,7 +186,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   return (
     <Box sx={{ animation: '.7s showAnimLev1 forwards' }}>
       <Box>
-        <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
+        <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
           REJESTRACJA
         </Typography>
         <StyledPaper>

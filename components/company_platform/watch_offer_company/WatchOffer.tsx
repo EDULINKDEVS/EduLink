@@ -44,11 +44,11 @@ const WatchOffer: React.FC = () => {
 
   return (
     <Paper elevation={3} sx={{ p: 3, maxWidth: 800, mx: 'auto', mt: 5, borderRadius: 2, bgcolor: '#f5f5f5' }}>
-      <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
+      <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
         Twoje oferty
       </Typography>
       <Box sx={{ mt: 2 }}>
-        <Typography variant="h6" sx={{ color: '#A758B5' }}>Stanowisko: {currentOffer.position}</Typography>
+        <Typography variant="h6" sx={{ color: 'primary' }}>Stanowisko: {currentOffer.position}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Lokalizacja: {currentOffer.location}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności twarde: {currentOffer.hardSkills.join(', ')}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności miękkie: {currentOffer.softSkills.join(', ')}</Typography>
@@ -59,11 +59,11 @@ const WatchOffer: React.FC = () => {
       <Grid container justifyContent="space-between" mt={2}>
         <Button 
           sx={{ 
-            backgroundColor: '#A758B5', 
-            color: 'white', 
+            backgroundColor: 'primary', 
+            color: 'secondary', 
             '&:hover': { 
-              backgroundColor: '#A758B5', 
-              color: 'white' 
+              backgroundColor: 'primary', 
+              color: 'secondary' 
             } 
           }} 
           variant="contained" 
@@ -73,11 +73,11 @@ const WatchOffer: React.FC = () => {
         </Button>
         <Button 
           sx={{ 
-            backgroundColor: '#A758B5', 
-            color: 'white', 
+            backgroundColor: 'primary', 
+            color: 'secondary', 
             '&:hover': { 
-              backgroundColor: '#A758B5', 
-              color: 'white' 
+              backgroundColor: 'primary', 
+              color: 'secondary' 
             } 
           }} 
           variant="contained" 
@@ -90,7 +90,7 @@ const WatchOffer: React.FC = () => {
         <IconButton onClick={handleDelete}>
           <DeleteIcon sx={{
             fontSize: '40px',
-            color: '#A758B5'
+            color: 'primary'
           }}/>
         </IconButton>
       </Grid>

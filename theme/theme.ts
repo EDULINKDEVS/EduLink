@@ -18,10 +18,10 @@ declare module '@mui/material/styles/createPalette' {
 const maintheme = createTheme({
   palette: {
     primary: {
-      main: '#A758B5',
+      main: '#0f0f43',
     },
     secondary: {
-      main: '#FFFFFF',
+      main: '#FFEF00',
     },
     
     custom: {

@@ -25,7 +25,7 @@ const Search: React.FC = () => {
   return (
     <Container sx={{animation: '1s showAnimLev1 forwards', opacity: 0, height:'100vh' , overflow: 'auto'}}>
       <Box sx={{ mt: 5, textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, color: 'white' }}>
+        <Typography variant="h3" sx={{ fontWeight: 700, color: 'secondary' }}>
           Oferty wybrane dla Ciebie
         </Typography>
       </Box>
@@ -33,24 +33,24 @@ const Search: React.FC = () => {
       <Grid container spacing={2} justifyContent="center" sx={{ mt: 3 }}>
         <Grid item>
           <Button sx={{
-            backgroundColor:'white' , 
-            color: '#A758B5', 
+            backgroundColor:'secondary' , 
+            color: 'primary', 
             fontWeight:"600",
             '&:hover': {
                 backgroundColor: '#9342a0',
-                color: 'white'
+                color: 'secondary'
             }}} variant="contained" onClick={handlePrev} disabled={page === 0}>
             Wróć
           </Button>
         </Grid>
         <Grid item>
           <Button sx={{
-            backgroundColor:'white' , 
-            color: '#A758B5', 
+            backgroundColor:'secondary' , 
+            color: 'primary', 
             fontWeight:"600",
             '&:hover': {
                 backgroundColor: '#9342a0',
-                color: 'white'
+                color: 'secondary'
               }}} variant="contained"  onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
             Dalej
           </Button>

@@ -8,16 +8,16 @@ const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void })
 
     <Container maxWidth="sm">
       <Box textAlign="center" mt={5}>
-        <Typography sx={{color:'white'}} variant="h4" component="h1" gutterBottom>
+        <Typography sx={{color:'secondary'}} variant="h4" component="h1" gutterBottom>
           Dodaj opis
         </Typography>
-        <Typography sx={{color:'white'}} variant="subtitle1" component="p" gutterBottom>
+        <Typography sx={{color:'secondary'}} variant="subtitle1" component="p" gutterBottom>
           Napisz coś o swojej firmie i branży. Zachęć młodych ludzi do pracy w twojej firmie!
         </Typography>
         <Box 
       sx={{
-        color: 'white',
-        borderColor: "white",
+        color: 'secondary',
+        borderColor: "secondary",
       }}
       mt={4}
       mb={4}
@@ -34,23 +34,23 @@ const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void })
         fullWidth
         InputProps={{
           sx: {
-            color: 'white', // Kolor wpisywanego tekstu
+            color: 'secondary', // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'white', // Kolor obramowania
+              borderColor: 'secondary', // Kolor obramowania
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'white', // Kolor obramowania podczas hover
+              borderColor: 'secondary', // Kolor obramowania podczas hover
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'white', // Kolor obramowania podczas focus
+              borderColor: 'secondary', // Kolor obramowania podczas focus
             },
           },
         }}
         InputLabelProps={{
           sx: {
-            color: 'white', // Kolor tekstu etykiety
+            color: 'secondary', // Kolor tekstu etykiety
             '&.Mui-focused': {
-              color: 'white', // Kolor tekstu etykiety podczas focus
+              color: 'secondary', // Kolor tekstu etykiety podczas focus
             },
           },
         }}
@@ -58,24 +58,24 @@ const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void })
     </Box>
         <Box display="flex" justifyContent="space-between" width="100%">
           <Button sx={{
-            backgroundColor:'white', 
-            color: '#A758B5', 
+            backgroundColor:'secondary', 
+            color: 'primary', 
             fontWeight:"600",
             '&:hover' : {
-                    backgroundColor: '#A758B5',
-                    color: 'white' }
+                    backgroundColor: 'primary',
+                    color: 'secondary' }
             
            }} variant="contained" onClick={() => setSteps(0)}>
             Wróć
           </Button>
           <Button
           sx={{
-            backgroundColor:'white', 
-            color: '#A758B5', 
+            backgroundColor:'secondary', 
+            color: 'primary', 
             fontWeight:"600",
             '&:hover' : {
-                    backgroundColor: '#A758B5',
-                    color: 'white' }
+                    backgroundColor: 'primary',
+                    color: 'secondary' }
             
            }} variant="contained" color="primary">
             Zapisz opis

@@ -38,16 +38,16 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const StyledFormControlLabel = styled(FormControlLabel)({
-  color: '#A758B5',
+  color: 'primary',
   fontWeight: 'bold',
   '& .MuiTypography-root': {
-    color: '#A758B5',
+    color: 'primary',
     fontWeight: 'bold',
   },
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: '#A758B5',
+  backgroundColor: 'primary',
   color: '#fff',
   marginTop: 20,
   '&:hover': {
@@ -58,20 +58,20 @@ const StyledButton = styled(Button)({
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&:hover fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#A758B5',
+      borderColor: 'primary',
     },
   },
   '& .MuiInputBase-input': {
-    color: '#A758B5',
+    color: 'primary',
   },
   '& .MuiInputLabel-root': {
-    color: '#A758B5',
+    color: 'primary',
   },
   width: '100%',
 });
@@ -165,26 +165,26 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
   const [profiles, setProfiles] = useState<String[]>([]);
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
-      <Typography variant="h4" color="#A758B5" align="center" gutterBottom fontWeight={'bold'}>
+      <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
         Wybierz swój status
       </Typography>
       <StyledPaper>
         <FormControl component="fieldset">
-          <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Status</FormLabel>
+          <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Status</FormLabel>
           <StyledRadioGroup value={registerContext?.registerData.status} onChange={handleStatusChange}>
-            <StyledFormControlLabel value="school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Uczeń" />
-            <StyledFormControlLabel value="study" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Student" />
+            <StyledFormControlLabel value="school" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Uczeń" />
+            <StyledFormControlLabel value="study" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Student" />
           </StyledRadioGroup>
         </FormControl>
 
         {registerContext?.registerData.status === 'school' && (
           <>
             <StyledFormControl>
-              <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
+              <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
               <StyledRadioGroup value={registerContext.registerData.school_level} onChange={handleSchoolTypeChange}>
-                <StyledFormControlLabel value="vocational" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="vocational" />
-                <StyledFormControlLabel value="technical" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="technical" />
-                <StyledFormControlLabel value="high_school" control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="high school" />
+                <StyledFormControlLabel value="vocational" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="vocational" />
+                <StyledFormControlLabel value="technical" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="technical" />
+                <StyledFormControlLabel value="high_school" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="high school" />
               </StyledRadioGroup>
             </StyledFormControl>
             {
@@ -251,7 +251,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                 </StyledPaper>
                 }
                     <StyledFormControl>
-            <FormLabel component="legend" style={{ color: '#A758B5', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
+            <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
             <StyledRadioGroup
               value={registerContext.registerData.degreeLabel === null ? '' : (registerContext.registerData.degreeLabel)}
               onChange={(event) => {
@@ -261,8 +261,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                 });
               }}
               >
-              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="W trakcie" />
-              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: '#A758B5', '&.Mui-checked': { color: '#A758B5' } }} />} label="Absolwent" />
+              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="W trakcie" />
+              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Absolwent" />
             </StyledRadioGroup>
           </StyledFormControl>
 

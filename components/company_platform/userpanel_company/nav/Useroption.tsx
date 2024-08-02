@@ -23,7 +23,7 @@ const Useroption = ({ icon, text }: userOptionType) => {
         sx={{
           borderRadius: "50%",
           border: "2px solid white",
-          backgroundColor: "#A758B5",
+          backgroundColor: "primary",
           width: "95px",
           height: "95px",
           transition: "all .9s",
@@ -45,7 +45,7 @@ const Useroption = ({ icon, text }: userOptionType) => {
             left: "50%",
             transform: "translateX(-50%)",
             backgroundColor: "white",
-            color: "#A758B5",
+            color: "primary",
             padding: "5px 10px",
             borderRadius: "5px",
             marginTop: "5px",

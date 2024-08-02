@@ -43,7 +43,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLa
                 padding: '16px',
                 overflow: 'hidden',
                 cursor: 'pointer',
-                border: '1px solid #A758B5',
+                border: '1px solid primary',
                 borderRadius: '8px',
                 my: '12px'
             }}
@@ -56,7 +56,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLa
             >
                 <Typography
                     variant="h4"
-                    color="#A758B5"
+                    color="primary"
                     align="center"
                     gutterBottom
                     fontWeight={'bold'}
@@ -65,7 +65,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLa
                 </Typography>
                 <Typography
                     variant="subtitle1"
-                    color="#A758B5"
+                    color="primary"
                     align="center"
                     fontWeight={'bold'}
                 >
@@ -73,7 +73,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLa
                 </Typography>
                 <Typography
                     variant="body1"
-                    color="#A758B5"
+                    color="primary"
                     align="center"
                     fontStyle={'oblique'}
                     fontWeight={'bold'}
@@ -82,7 +82,7 @@ const InList = ({ id, name, degree, city, deleteFunction, editFunction, degreeLa
                 </Typography>
                 <Typography
                     variant="body1"
-                    color="#A758B5"
+                    color="primary"
                     align="center"
                     fontWeight={'bold'}
                 >
