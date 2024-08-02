@@ -149,7 +149,7 @@ export default function Pricing1() {
                   tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
                 background:
                   tier.title === 'Pakiet Profesionalny'
-                    ? theme.palette.primary.light
+                    ? theme.palette.primary.main
                     : undefined,
               }}
             >
@@ -176,10 +176,10 @@ export default function Pricing1() {
                           theme.palette.mode === 'light' ? '' : 'none',
                         backgroundColor: 'primary.contrastText',
                         '& .MuiChip-label': {
-                          color: 'primary.dark',
+                          color: 'primary.main',
                         },
                         '& .MuiChip-icon': {
-                          color: 'primary.dark',
+                          color: 'primary.main',
                         },
                       }}
                     />
