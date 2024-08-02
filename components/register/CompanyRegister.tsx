@@ -1,83 +1,9 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box, Grid, Paper } from '@mui/material';
+import { TextField, Button, Typography, Box, Grid, Paper, useTheme } from '@mui/material';
 import styled from 'styled-components';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 
-const StyledContainer = styled(Box)`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  overflow: auto;
-`;
 
-const LeftContainer = styled(Box)`
-  flex: 1;
-  background-color: primary;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  @media (min-width: 1200px) {
-    display: flex;
-  }
-`;
-
-const RightContainer = styled(Box)`
-  flex: 1.5;
-  background-color: secondary;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: auto;
-`;
-
-const StyledPaper = styled(Paper)`
-  padding: 20px;
-  width: 500px;
-  background-color: #fff;
-  box-shadow: none;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: primary;
-  color: #fff;
-  &:hover {
-    background-color: #9342a0;
-  }
-`;
-
-const CustomTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'primary',
-  },
-  '& label': {
-    color: 'primary', // Kolor etykiety
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'primary',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'primary',
-    },
-    '&:hover fieldset': {
-      borderColor: 'primary',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'primary',
-    },
-    '& input': {
-      color: 'primary',
-    }
-  },
-  '& .MuiInputBase-input': {
-    color: 'primary',
-  },
-});
 
 const CompanyRegister: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -146,11 +72,86 @@ const CompanyRegister: React.FC = () => {
   };
 
   const isPasswordValid = Object.values(passwordCriteria).every(Boolean);
+  const theme = useTheme();
+  const StyledContainer = styled(Box)`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: auto;
+`;
 
+const LeftContainer = styled(Box)`
+  flex: 1;
+  background-color: primary;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @media (min-width: 1200px) {
+    display: flex;
+  }
+`;
+
+const RightContainer = styled(Box)`
+  flex: 1.5;
+  background-color: secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+`;
+
+const StyledPaper = styled(Paper)`
+  padding: 20px;
+  width: 500px;
+  background-color: #fff;
+  box-shadow: none;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: primary;
+  color: #fff;
+  &:hover {
+    background-color: #9342a0;
+  }
+`;
+
+const CustomTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: theme.palette.primary.main,
+  },
+  '& label': {
+    color: theme.palette.primary.main, // Kolor etykiety
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: theme.palette.primary.main,
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&:hover fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '& input': {
+      color: theme.palette.primary.main,
+    }
+  },
+  '& .MuiInputBase-input': {
+    color: theme.palette.primary.main,
+  },
+});
   return (
     <StyledContainer>
       <LeftContainer>
-        <Typography variant="h1" style={{ color: 'secondary' }}>
+        <Typography variant="h1" style={{ color: theme.palette.primary.light }}>
           <HandshakeIcon sx={{ fontSize: '300px' }} />
         </Typography>
       </LeftContainer>

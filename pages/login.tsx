@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 
 function Copyright(props: any) {
   return (
@@ -38,9 +38,8 @@ export default function SignInSide() {
       password: data.get('password'),
     });
   };
-
+  const theme = useTheme();
   return (
-    <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         {/* Górna fioletowa sekcja */}
@@ -48,7 +47,7 @@ export default function SignInSide() {
           item
           xs={12}
           sx={{
-            backgroundColor: 'primary',
+            backgroundColor: theme.palette.primary.main,
             height: '12.5vh' // 12.5% wysokości ekranu
           }}
         />
@@ -60,7 +59,7 @@ export default function SignInSide() {
             sm={false}
             md={4.5}
             sx={{
-              backgroundColor: 'primary'
+              backgroundColor: theme.palette.primary.main
             }}
           />
           {/* Sekcja logowania */}
@@ -94,19 +93,19 @@ export default function SignInSide() {
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
-                        borderColor: 'primary', // fioletowy kolor obramówki
+                        borderColor: theme.palette.primary.main, // fioletowy kolor obramówki
                       },
                       '&:hover fieldset': {
-                        borderColor: 'primary',
+                        borderColor: theme.palette.primary.main,
                       },
                       '&.Mui-focused fieldset': {
-                        borderColor: 'primary',
+                        borderColor: theme.palette.primary.main,
                       },
                     },
                     '& .MuiInputLabel-root': {
-                      color: 'primary', // fioletowy kolor etykiety
+                      color: theme.palette.primary.main, // fioletowy kolor etykiety
                       '&.Mui-focused': {
-                        color: 'primary',
+                        color: theme.palette.primary.main,
                       },
                     },
                   }}
@@ -123,19 +122,19 @@ export default function SignInSide() {
                   sx={{
                     '& .MuiOutlinedInput-root': {
                       '& fieldset': {
-                        borderColor: 'primary', // fioletowy kolor obramówki
+                        borderColor: theme.palette.primary.main, // fioletowy kolor obramówki
                       },
                       '&:hover fieldset': {
-                        borderColor: 'primary',
+                        borderColor: theme.palette.primary.main,
                       },
                       '&.Mui-focused fieldset': {
-                        borderColor: 'primary',
+                        borderColor: theme.palette.primary.main,
                       },
                     },
                     '& .MuiInputLabel-root': {
-                      color: 'primary', // fioletowy kolor etykiety
+                      color: theme.palette.primary.main, // fioletowy kolor etykiety
                       '&.Mui-focused': {
-                        color: 'primary',
+                        color: theme.palette.primary.main,
                       },
                     },
                   }}
@@ -145,7 +144,7 @@ export default function SignInSide() {
                   label="Zapamiętaj mnie"
                   sx={{
                     '& .MuiFormControlLabel-label': {
-                      color: 'primary', // fioletowy kolor tekstu
+                      color: theme.palette.primary.main, // fioletowy kolor tekstu
                     },
                   }}
                 />
@@ -158,7 +157,7 @@ export default function SignInSide() {
                     mb: 2, 
                     backgroundColor: '#9C27B0',
                     '&:hover': {
-                      backgroundColor: 'secondary',
+                      backgroundColor: theme.palette.primary.light,
                       color: '#9C27B0',
                     },
                   }}
@@ -167,12 +166,12 @@ export default function SignInSide() {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2" sx={{ color: 'primary', textDecoration: 'none' }}>
+                    <Link href="#" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
                       Zapomniałeś hasła?
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2" sx={{ color: 'primary', textDecoration: 'none' }}>
+                    <Link href="#" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
                       {'Nie masz jeszcze konta? Zarejestruj się'}
                     </Link>
                   </Grid>
@@ -188,7 +187,7 @@ export default function SignInSide() {
             sm={false}
             md={4.5}
             sx={{
-              backgroundColor: 'primary'
+              backgroundColor: theme.palette.primary.main
             }}
           />
         </Grid>
@@ -197,11 +196,10 @@ export default function SignInSide() {
           item
           xs={12}
           sx={{
-            backgroundColor: 'primary',
+            backgroundColor: theme.palette.primary.main,
             height: '12.5vh' // 12.5% wysokości ekranu
           }}
         />
       </Grid>
-    </ThemeProvider>
   );
 }

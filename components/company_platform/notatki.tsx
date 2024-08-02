@@ -18,7 +18,7 @@ const StyledPaper = styled(Paper)({
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: 'primary',
+  backgroundColor: theme.palette.primary.main,
   color: '#fff',
   '&:hover': {
     backgroundColor: '#9342a0'
@@ -28,22 +28,22 @@ const StyledButton = styled(Button)({
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: 'primary',
+      borderColor: theme.palette.primary.main,
     },
     '&:hover fieldset': {
-      borderColor: 'primary',
+      borderColor: theme.palette.primary.main,
     },
     '&.Mui-focused fieldset': {
-      borderColor: 'primary',
+      borderColor: theme.palette.primary.main,
     },
     '& .MuiInputBase-input': {
-      color: 'primary',
+      color: theme.palette.primary.main,
     },
   },
   '& .MuiInputLabel-root': {
-    color: 'primary',
+    color: theme.palette.primary.main,
     '&.Mui-focused': {
-      color: 'primary',
+      color: theme.palette.primary.main,
     },
   },
 });
@@ -112,7 +112,7 @@ const PlusOfferCompany: React.FC = () => {
     <List>
       {items.map((item, index) => (
         <ListItem key={index}>
-          <CheckIcon sx={{ color: 'primary', marginRight: 1 }} />
+          <CheckIcon sx={{ color: theme.palette.primary.main, marginRight: 1 }} />
           <ListItemText primary={`${item},`} />
         </ListItem>
       ))}

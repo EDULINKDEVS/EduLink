@@ -15,6 +15,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { useTheme } from '@mui/material';
 
 const tiers = [
   {
@@ -67,7 +68,7 @@ export default function Pricing() {
       return newExpanded;
     });
   };
-
+  const theme = useTheme();
   return (
     <Container
       id="pricing"
@@ -115,7 +116,7 @@ export default function Pricing() {
                 justifyContent: 'space-between',
                 border: tier.title === 'Pakiet Profesionalny' ? '2px solid' : '2px solid',
                 borderColor: tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
-                background: tier.title === 'Pakiet Profesionalny' ? 'primary' : undefined,
+                background: tier.title === 'Pakiet Profesionalny' ? theme.palette.primary.main : undefined,
               }}
             >
               <CardContent>
@@ -166,7 +167,7 @@ export default function Pricing() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'custom',
+                    borderColor: theme.palette.primary.dark,
                   }}
                 />
                 {tier.description.slice(0, 1).map((line) => (
@@ -182,7 +183,7 @@ export default function Pricing() {
                     <CheckCircleRoundedIcon
                       sx={{
                         width: 20,
-                        color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
+                        color: tier.title === 'Pakiet Profesionalny' ? theme.palette.primary.light : theme.palette.primary.main,
                       }}
                     />
                     <Typography
@@ -211,7 +212,7 @@ export default function Pricing() {
                       <CheckCircleRoundedIcon
                         sx={{
                           width: 20,
-                          color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
+                          color: tier.title === 'Pakiet Profesionalny' ? theme.palette.primary.light : theme.palette.primary.main,
                         }}
                       />
                       <Typography
@@ -237,7 +238,7 @@ export default function Pricing() {
                 <Button className='ubuntu-medium'
                   sx={{
                     textAlign: 'center',
-                    color: tier.title === 'Pakiet Profesionalny' ? 'secondary' : 'primary',
+                    color: tier.title === 'Pakiet Profesionalny' ? theme.palette.primary.light : theme.palette.primary.main,
                   }}
                   onClick={() => handleExpandClick(index)}
                   endIcon={expanded[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}

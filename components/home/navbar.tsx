@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PaletteMode } from "@mui/material";
+import { PaletteMode, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -33,7 +33,7 @@ function AppAppBar() {
     setOpen(newOpen);
   };
 
-
+  const theme = useTheme();
   return (
     <div>
       <AppBar
@@ -165,8 +165,8 @@ function AppAppBar() {
                   color: "secondary", // Ustawienie koloru tekstu na biały
                   '&: hover' : {
                     opacity: "0.5",
-                    backgroundColor: 'secondary',
-                    color: 'custom'
+                    backgroundColor: theme.palette.primary.light,
+                    color: theme.palette.primary.dark
                   }
                 }}
                 href="/login"                  

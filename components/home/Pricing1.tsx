@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { useTheme } from '@mui/material';
 
 const tiers = [
   {
@@ -97,6 +98,7 @@ const tiers = [
 ];
 
 export default function Pricing1() {
+  const theme = useTheme();
   return (
      
     <Container
@@ -147,7 +149,7 @@ export default function Pricing1() {
                   tier.title === 'Pakiet Profesionalny' ? '#3A758B5' : 'undefined',
                 background:
                   tier.title === 'Pakiet Profesionalny'
-                    ? 'primary'
+                    ? theme.palette.primary.light
                     : undefined,
               }}
             >
@@ -201,7 +203,7 @@ export default function Pricing1() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'custom',
+                    borderColor: theme.palette.primary.dark,
                   }}
                 />
                 {tier.description.map((line) => (
@@ -220,8 +222,8 @@ export default function Pricing1() {
                         width: 20,
                         color:
                           tier.title === 'Pakiet Profesionalny'
-                            ? 'secondary'
-                            : 'primary',
+                            ? theme.palette.primary.light
+                            : theme.palette.primary.main,
                       }}
                     />
                     <Typography
@@ -242,20 +244,20 @@ export default function Pricing1() {
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Pakiet Profesionalny'
-                      ? 'secondary'
-                      : 'primary',
+                      ? theme.palette.primary.light
+                      : theme.palette.primary.main,
 
                       color:
                       tier.title === 'Pakiet Profesionalny'
-                      ? 'custom'
-                      : 'secondary',
+                      ? theme.palette.primary.dark
+                      : theme.palette.primary.light,
 
 
                       
                      ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
-                        backgroundColor: 'primary', color:'secondary',
+                        backgroundColor: theme.palette.primary.main, color:theme.palette.primary.light,
                      } : {
-                        backgroundColor: "secondary", color: 'custom'
+                        backgroundColor: "secondary", color: theme.palette.primary.dark
                      }
                       
                       

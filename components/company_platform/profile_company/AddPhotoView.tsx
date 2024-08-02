@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
-import { Container, Typography, Box, Button, IconButton } from '@mui/material';
+import { Container, Typography, Box, Button, IconButton, useTheme } from '@mui/material';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShowAnim from '../helpers_company/ShowAnim';
@@ -18,16 +18,16 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
   const handleRemoveImage = () => {
     setImage(null);
   };
-
+  const theme = useTheme();
   return (
     <ShowAnim>
 
     <Container className='ubuntu-medium' maxWidth="sm">
       <Box textAlign="center" mt={5}>
-        <Typography variant="h4" component="h1" gutterBottom color='secondary'>
+        <Typography variant="h4" component="h1" gutterBottom color={theme.palette.primary.light}>
           Dodaj swoje logo
         </Typography>
-        <Typography variant="subtitle1" component="p" gutterBottom color='secondary'>
+        <Typography variant="subtitle1" component="p" gutterBottom color={theme.palette.primary.light}>
           Niech inni widzą twoją innowacyjną współpracę!
         </Typography>
         <Box
@@ -65,11 +65,11 @@ const AddPhotoView = ({setSteps}: {setSteps: (value: number) => void}) => {
           )}
         </Box>
         <Button sx={{
-          color: 'custom',
-          backgroundColor: 'secondary',
+          color: theme.palette.primary.dark,
+          backgroundColor: theme.palette.primary.light,
           '&:hover' : {
-                    backgroundColor: 'primary',
-                    color: 'secondary'
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.light
                   }
         }} variant="contained"  onClick={()=>{setSteps(1)}}>
           {image ? 'Dodaj zdjęcie' : 'Dalej'}

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, useTheme } from '@mui/material';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 
 function Intro() {
+  const theme = useTheme();
   return (
     <Box  display="flex" flexDirection="column" alignItems="center" padding="1rem" justifyContent="center" height="100vh">
       <Typography variant="h2" gutterBottom fontWeight="bold"> Witaj!</Typography>
@@ -28,8 +29,8 @@ function Intro() {
             variant="contained"
             startIcon={<UpgradeIcon />}
             sx={{
-              backgroundColor: 'primary',
-              borderColor: 'custom',
+              backgroundColor: theme.palette.primary.main,
+              borderColor: theme.palette.primary.dark,
               border: 'solid',
               '&:hover': {
                 backgroundColor: '#ffffff',

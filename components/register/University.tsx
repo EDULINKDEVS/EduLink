@@ -5,7 +5,8 @@ import {
   Autocomplete,
   IconButton,
   Grid,
-  Button
+  Button,
+  useTheme
 } from '@mui/material';
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import AddIcon from '@mui/icons-material/Add';
@@ -20,6 +21,7 @@ import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 
 
 const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityType) => {
+  const theme = useTheme();
   const dataContext = useSchoolsData();
   const registerContext = useContext(RegisterContext);
   const [currentDegree, setCurrentDegree] = useState<degreeEnum | null>(null);
@@ -178,32 +180,32 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
             </StyledPaper>
           </StyledFormControl>
           <StyledFormControl>
-            <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
+            <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
             <StyledRadioGroup
               value={currentDegreeLabel === null ? '' : (currentDegreeLabel)}
               onChange={(event) => {
                 setCurrentDegreeLabel(event.target.value as degreeLabelEnum);
               }}
               >
-              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="W trakcie" />
-              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Absolwent" />
+              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="W trakcie" />
+              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Absolwent" />
             </StyledRadioGroup>
           </StyledFormControl>
           </>
           }
           {currentDegreeLabel !== null &&
             <StyledFormControl>
-              <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
+              <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>Rodzaj absolwenta</FormLabel>
               <StyledRadioGroup
                 value={currentDegree || ''}
                 onChange={(event) => {
                   setCurrentDegree(event.target.value as degreeEnum);
                 }}
                 >
-                <StyledFormControlLabel value={degreeEnum.BACHELOR} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Licencjat" />
-                <StyledFormControlLabel value={degreeEnum.ENGINEER} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Inżynier" />
-                <StyledFormControlLabel value={degreeEnum.MASTER} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Magister" />
-                <StyledFormControlLabel value={degreeEnum.DOCTOR} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Doktor" />
+                <StyledFormControlLabel value={degreeEnum.BACHELOR} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Licencjat" />
+                <StyledFormControlLabel value={degreeEnum.ENGINEER} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Inżynier" />
+                <StyledFormControlLabel value={degreeEnum.MASTER} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Magister" />
+                <StyledFormControlLabel value={degreeEnum.DOCTOR} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Doktor" />
               </StyledRadioGroup>
             </StyledFormControl>
           }

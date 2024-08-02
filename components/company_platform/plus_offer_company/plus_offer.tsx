@@ -1,54 +1,56 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, Typography, Paper, Grid, Autocomplete, List, ListItem, ListItemText } from '@mui/material';
+import { Box, TextField, Button, Typography, Paper, Grid, Autocomplete, List, ListItem, ListItemText, useTheme } from '@mui/material';
 import { styled } from '@mui/system';
 import { traits, hardSkills } from '@/context/schoolsData/exampleSchoolsData';
 import CheckIcon from '@mui/icons-material/Check';
 
-const StyledContainer = styled(Box)({
-  height: '100vh',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
 
-const StyledPaper = styled(Paper)({
-  padding: 20,
-  width: '600px',
-  backgroundColor: '#fff',
-});
 
-const StyledButton = styled(Button)({
-  backgroundColor: 'primary',
-  color: '#fff',
-  '&:hover': {
-    backgroundColor: '#9342a0'
-  }
-});
-
-const StyledTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'primary',
+const PlusOfferCompany: React.FC = () => { 
+  const theme = useTheme();
+  const StyledContainer = styled(Box)({
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  });
+  
+  const StyledPaper = styled(Paper)({
+    padding: 20,
+    width: '600px',
+    backgroundColor: '#fff',
+  });
+  
+  const StyledButton = styled(Button)({
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#9342a0'
+    }
+  });
+  
+  const StyledTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '& .MuiInputBase-input': {
+        color: theme.palette.primary.dark,
+      },
     },
-    '&:hover fieldset': {
-      borderColor: 'primary',
+    '& .MuiInputLabel-root': {
+      color: theme.palette.primary.dark,
+      '&.Mui-focused': {
+        color: theme.palette.primary.main,
+      },
     },
-    '&.Mui-focused fieldset': {
-      borderColor: 'primary',
-    },
-    '& .MuiInputBase-input': {
-      color: 'custom',
-    },
-  },
-  '& .MuiInputLabel-root': {
-    color: 'custom',
-    '&.Mui-focused': {
-      color: 'primary',
-    },
-  },
-});
-
-const PlusOfferCompany: React.FC = () => {
+  });
   const [formData, setFormData] = useState({
     position: '',
     location: '',
@@ -111,13 +113,13 @@ const PlusOfferCompany: React.FC = () => {
     <List>
       {items.map((item, index) => (
         <ListItem key={index}>
-          <CheckIcon sx={{ color: 'primary', marginRight: 1 }} />
+          <CheckIcon sx={{ color: theme.palette.primary.main, marginRight: 1 }} />
           <ListItemText primary={`${item},`} />
         </ListItem>
       ))}
     </List>
   );
-
+  
   return (
     <StyledContainer>
       <StyledPaper>

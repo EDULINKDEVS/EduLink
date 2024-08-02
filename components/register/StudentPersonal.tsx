@@ -6,55 +6,17 @@ import {
   Box,
   Grid,
   Paper,
-  MenuItem
+  MenuItem,
+  useTheme
 } from '@mui/material';
 import { styled } from '@mui/system';
 import * as Yup from 'yup';
 import { RegisterContext, RegisterContextType } from '@/context/register/RegisterContext';
 
-const StyledPaper = styled(Paper)({
-  margin: 'auto',
-  width: 'clamp(200px,95%,500px)',
-  backgroundColor: '#fff',
-  boxShadow: 'none',
-  
-});
 
-const StyledButton = styled(Button)({
-  backgroundColor: 'primary',
-  color: '#fff',
-  '&:hover': {
-    backgroundColor: '#9342a0'
-  }
-});
-
-const StyledTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'primary',
-    },
-    '&:hover fieldset': {
-      borderColor: 'primary',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'primary',
-    },
-  },
-  '& .MuiInputBase-input': {
-    color: 'primary',
-  },
-  '& .MuiInputLabel-root': {
-    color: 'primary',
-  },
-});
-
-const ErrorText = styled(Typography)({
-  color: 'red',
-  textAlign: 'center',
-  marginTop: 20,
-});
 
 const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
+  const theme = useTheme();
   const registerContext = useContext(RegisterContext) as RegisterContextType;
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [generalError, setGeneralError] = useState<string>('');
@@ -182,7 +144,47 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-
+  const StyledPaper = styled(Paper)({
+    margin: 'auto',
+    width: 'clamp(200px,95%,500px)',
+    backgroundColor: '#fff',
+    boxShadow: 'none',
+    
+  });
+  
+  const StyledButton = styled(Button)({
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#9342a0'
+    }
+  });
+  
+  const StyledTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+    },
+    '& .MuiInputBase-input': {
+      color: theme.palette.primary.main,
+    },
+    '& .MuiInputLabel-root': {
+      color: theme.palette.primary.main,
+    },
+  });
+  
+  const ErrorText = styled(Typography)({
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 20,
+  });
   return (
     <Box sx={{ animation: '.7s showAnimLev1 forwards' }}>
       <Box>

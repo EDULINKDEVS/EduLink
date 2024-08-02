@@ -1,7 +1,7 @@
 import { degreeEnum, degreeLabelEnum } from "@/context/register/types";
-import { FormControl, FormControlLabel, Paper, RadioGroup, TextField } from "@mui/material";
+import { FormControl, FormControlLabel, Paper, RadioGroup, TextField, useTheme } from "@mui/material";
 import styled from "styled-components";
-
+import theme from "@/theme/theme";
 export type UniversityType = {
     name?: string;
     degree?: degreeEnum;
@@ -27,10 +27,10 @@ export type UniversityType = {
   });
   
   export const StyledFormControlLabel = styled(FormControlLabel)({
-    color: 'primary',
+    color: theme.palette.primary.main,
     fontWeight: 'bold',
     '& .MuiTypography-root': {
-      color: 'primary',
+      color: theme.palette.primary.main,
       fontWeight: 'bold',
     },
   });
@@ -38,20 +38,20 @@ export type UniversityType = {
   export const StyledTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: 'primary',
+        borderColor: theme.palette.primary.main,
       },
       '&:hover fieldset': {
-        borderColor: 'primary',
+        borderColor: theme.palette.primary.main,
       },
       '&.Mui-focused fieldset': {
-        borderColor: 'primary',
+        borderColor: theme.palette.primary.main,
       },
     },
     '& .MuiInputBase-input': {
-      color: 'primary',
+      color: theme.palette.primary.main,
     },
     '& .MuiInputLabel-root': {
-      color: 'primary',
+      color: theme.palette.primary.main,
     },
     width: '100%',
   });

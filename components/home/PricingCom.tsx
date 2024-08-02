@@ -51,6 +51,7 @@ const tiers = [
 ];
 
 export default function PricingCom() {
+  const theme = useTheme();
   return (
     <Container
       id="pricing"
@@ -101,7 +102,7 @@ export default function PricingCom() {
                   tier.title === 'Profesionalne' ? '3A758B5' : 'undefined',
                 background:
                   tier.title === 'Profesionalne'
-                    ? 'primary'
+                    ? theme.palette.primary.main
                     : undefined,
               }}
             >
@@ -155,7 +156,7 @@ export default function PricingCom() {
                   sx={{
                     my: 2,
                     opacity: 0.2,
-                    borderColor: 'custom',
+                    borderColor: theme.palette.primary.dark,
                   }}
                 />
                 {tier.description.map((line) => (
@@ -174,8 +175,8 @@ export default function PricingCom() {
                         width: 20,
                         color:
                           tier.title === 'Profesionalne'
-                            ? 'secondary'
-                            : 'primary',
+                            ? theme.palette.primary.light
+                            : theme.palette.primary.main,
                       }}
                     />
                     <Typography
@@ -196,20 +197,20 @@ export default function PricingCom() {
                 <Button sx={{
                     backgroundColor:
                     tier.title === 'Profesionalne'
-                      ? 'secondary'
-                      : 'primary',
+                      ? theme.palette.primary.light
+                      : theme.palette.primary.main,
 
                       color:
                       tier.title === 'Profesionalne'
-                      ? 'custom'
-                      : 'secondary',
+                      ? theme.palette.primary.dark
+                      : theme.palette.primary.light,
 
 
                       
                      ' &:hover' : tier.title === 'Profesionalne' ? {
-                        backgroundColor: 'primary', color:'secondary',
+                        backgroundColor: theme.palette.primary.main, color:theme.palette.primary.light,
                      } : {
-                        backgroundColor: "secondary", color: 'custom'
+                        backgroundColor: "secondary", color: theme.palette.primary.dark
                      }
                       
                       

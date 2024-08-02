@@ -1,22 +1,23 @@
 import React from 'react';
-import { Container, Typography, Box, TextField, Button } from '@mui/material';
+import { Container, Typography, Box, TextField, Button, useTheme } from '@mui/material';
 import ShowAnim from '../helpers/ShowAnim';
 
 const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void }) => {
+  const theme = useTheme();
   return (
     <ShowAnim>
 
     <Container maxWidth="sm">
       <Box textAlign="center" mt={5}>
-        <Typography sx={{color:'secondary'}} variant="h4" component="h1" gutterBottom>
+        <Typography sx={{color:theme.palette.primary.light}} variant="h4" component="h1" gutterBottom>
           Dodaj opis
         </Typography>
-        <Typography sx={{color:'secondary'}} variant="subtitle1" component="p" gutterBottom>
+        <Typography sx={{color:theme.palette.primary.light}} variant="subtitle1" component="p" gutterBottom>
           Napisz coś o sobie. Wskaż swoje doświadczenie i mocne strony.
         </Typography>
         <Box 
       sx={{
-        color: 'secondary',
+        color: theme.palette.primary.light,
         borderColor: "secondary",
       }}
       mt={4}
@@ -34,23 +35,23 @@ const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void })
         fullWidth
         InputProps={{
           sx: {
-            color: 'secondary', // Kolor wpisywanego tekstu
+            color: theme.palette.primary.light, // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'secondary', // Kolor obramowania
+              borderColor: theme.palette.primary.light, // Kolor obramowania
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'secondary', // Kolor obramowania podczas hover
+              borderColor: theme.palette.primary.light, // Kolor obramowania podczas hover
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'secondary', // Kolor obramowania podczas focus
+              borderColor: theme.palette.primary.light, // Kolor obramowania podczas focus
             },
           },
         }}
         InputLabelProps={{
           sx: {
-            color: 'secondary', // Kolor tekstu etykiety
+            color: theme.palette.primary.light, // Kolor tekstu etykiety
             '&.Mui-focused': {
-              color: 'secondary', // Kolor tekstu etykiety podczas focus
+              color: theme.palette.primary.light, // Kolor tekstu etykiety podczas focus
             },
           },
         }}
@@ -58,24 +59,24 @@ const AddDescriptionView = ({ setSteps }: { setSteps: (value: number) => void })
     </Box>
         <Box display="flex" justifyContent="space-between" width="100%">
           <Button sx={{
-            backgroundColor:'secondary', 
-            color: 'primary', 
+            backgroundColor:theme.palette.primary.light, 
+            color: theme.palette.primary.main, 
             fontWeight:"600",
             '&:hover' : {
-                    backgroundColor: 'primary',
-                    color: 'secondary' }
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.light }
             
            }} variant="contained" onClick={() => setSteps(0)}>
             Wróć
           </Button>
           <Button
           sx={{
-            backgroundColor:'secondary', 
-            color: 'primary', 
+            backgroundColor:theme.palette.primary.light, 
+            color: theme.palette.primary.main, 
             fontWeight:"600",
             '&:hover' : {
-                    backgroundColor: 'primary',
-                    color: 'secondary' }
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.light }
             
            }} variant="contained" color="primary">
             Zapisz opis

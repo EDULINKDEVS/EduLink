@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import React, { useState } from 'react';
 import StudentPersonal from './StudentPersonal';
 import StudentStatus from './StudentStatus';
@@ -9,6 +9,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TraitSelector from './FeaturesChosing';
 import RegisterLocation from './RegisterLocation';
 const StudentRegister = () => {
+  const theme = useTheme();
   const [step, setStep] = useState(0);
   const router = useRouter();
   const stepsComponentsTab = [
@@ -54,6 +55,7 @@ const StudentRegister = () => {
     left: '5px',
     cursor: 'pointer'
   })
+  
   return (
     <StyledContainer>
       
@@ -68,13 +70,13 @@ const StudentRegister = () => {
       <ArrowBackIcon sx={{
       fontSize: '2em',
       color:{
-        sm: 'custom',
-        lg: 'secondary'
+        sm: theme.palette.primary.dark,
+        lg: theme.palette.primary.light
       }
     }}/>
       </BackButton>
       <LeftContainer>
-        <SchoolIcon style={{ fontSize: 300, color: 'secondary' }} />
+        <SchoolIcon style={{ fontSize: 300, color: theme.palette.primary.light }} />
       </LeftContainer>
       <RightContainer>
         <Box sx={{

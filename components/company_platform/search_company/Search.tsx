@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button, Grid } from '@mui/material';
+import { Box, Container, Typography, Button, Grid, useTheme } from '@mui/material';
 import React, { useState } from 'react';
 import JobList from './JobList';
 import { jobs } from './example';
@@ -21,11 +21,11 @@ const Search: React.FC = () => {
   };
 
   const paginatedJobs = jobs.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
-
+  const theme = useTheme();
   return (
     <Container sx={{animation: '1s showAnimLev1 forwards', opacity: 0, height:'100vh' , overflow: 'auto'}}>
       <Box sx={{ mt: 5, textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, color: 'secondary' }}>
+        <Typography variant="h3" sx={{ fontWeight: 700, color: theme.palette.primary.light }}>
           Oferty wybrane dla Ciebie
         </Typography>
       </Box>
@@ -33,24 +33,24 @@ const Search: React.FC = () => {
       <Grid container spacing={2} justifyContent="center" sx={{ mt: 3 }}>
         <Grid item>
           <Button sx={{
-            backgroundColor:'secondary' , 
-            color: 'primary', 
+            backgroundColor:theme.palette.primary.light , 
+            color: theme.palette.primary.main, 
             fontWeight:"600",
             '&:hover': {
                 backgroundColor: '#9342a0',
-                color: 'secondary'
+                color: theme.palette.primary.light
             }}} variant="contained" onClick={handlePrev} disabled={page === 0}>
             Wróć
           </Button>
         </Grid>
         <Grid item>
           <Button sx={{
-            backgroundColor:'secondary' , 
-            color: 'primary', 
+            backgroundColor:theme.palette.primary.light , 
+            color: theme.palette.primary.main, 
             fontWeight:"600",
             '&:hover': {
                 backgroundColor: '#9342a0',
-                color: 'secondary'
+                color: theme.palette.primary.light
               }}} variant="contained"  onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
             Dalej
           </Button>

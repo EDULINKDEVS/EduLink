@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Typography, Paper, Grid, IconButton } from '@mui/material';
+import { Box, Button, Typography, Paper, Grid, IconButton, useTheme } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface JobOffer {
@@ -15,6 +15,7 @@ interface JobOffer {
 const WatchOffer: React.FC = () => {
   const [offers, setOffers] = useState<JobOffer[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const theme = useTheme();
 
   useEffect(() => {
     const savedOffers = JSON.parse(localStorage.getItem('jobOffers') || '[]');
@@ -48,7 +49,7 @@ const WatchOffer: React.FC = () => {
         Twoje oferty
       </Typography>
       <Box sx={{ mt: 2 }}>
-        <Typography variant="h6" sx={{ color: 'primary' }}>Stanowisko: {currentOffer.position}</Typography>
+        <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>Stanowisko: {currentOffer.position}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Lokalizacja: {currentOffer.location}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności twarde: {currentOffer.hardSkills.join(', ')}</Typography>
         <Typography variant="body1" sx={{ mt: 2, color: '#555555' }}>Umiejętności miękkie: {currentOffer.softSkills.join(', ')}</Typography>
@@ -59,11 +60,11 @@ const WatchOffer: React.FC = () => {
       <Grid container justifyContent="space-between" mt={2}>
         <Button 
           sx={{ 
-            backgroundColor: 'primary', 
-            color: 'secondary', 
+            backgroundColor: theme.palette.primary.main, 
+            color: theme.palette.primary.light, 
             '&:hover': { 
-              backgroundColor: 'primary', 
-              color: 'secondary' 
+              backgroundColor: theme.palette.primary.main, 
+              color: theme.palette.primary.light 
             } 
           }} 
           variant="contained" 
@@ -73,11 +74,11 @@ const WatchOffer: React.FC = () => {
         </Button>
         <Button 
           sx={{ 
-            backgroundColor: 'primary', 
-            color: 'secondary', 
+            backgroundColor: theme.palette.primary.main, 
+            color: theme.palette.primary.light, 
             '&:hover': { 
-              backgroundColor: 'primary', 
-              color: 'secondary' 
+              backgroundColor: theme.palette.primary.main, 
+              color: theme.palette.primary.light 
             } 
           }} 
           variant="contained" 
@@ -90,7 +91,7 @@ const WatchOffer: React.FC = () => {
         <IconButton onClick={handleDelete}>
           <DeleteIcon sx={{
             fontSize: '40px',
-            color: 'primary'
+            color: theme.palette.primary.main
           }}/>
         </IconButton>
       </Grid>

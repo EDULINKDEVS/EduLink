@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, List, ListItem, ListItemText, TextField, Avatar, Typography } from '@mui/material';
+import { Box, List, ListItem, ListItemText, TextField, Avatar, Typography, useTheme } from '@mui/material';
 import { User, users, companies } from './usersExample';
 
 interface UserListProps {
@@ -24,7 +24,7 @@ const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
     setVisibleUsers(filteredUsers.slice(0, newPage * 22));
     setPage(newPage);
   };
-
+  const theme = useTheme();
   return (
     <Box sx={{
         overflow: 'hidden',
@@ -34,7 +34,7 @@ const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
       <TextField 
         InputProps={{
           sx: {
-            color: 'custom', // Kolor wpisywanego tekstu
+            color: theme.palette.primary.dark, // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: '#primary', // Kolor obramowania
             },
@@ -48,7 +48,7 @@ const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
         }}
         InputLabelProps={{
           sx: {
-            color: 'custom', // Kolor tekstu etykiety
+            color: theme.palette.primary.dark, // Kolor tekstu etykiety
             '&.Mui-focused': {
               color: '#primary', // Kolor tekstu etykiety podczas focus
             },
@@ -63,7 +63,7 @@ const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Szukaj"
         
-        sx={{ marginBottom: 2, color:'custom' }}
+        sx={{ marginBottom: 2, color:theme.palette.primary.dark }}
         
       />
       <List sx={{height: '100%', overflowY: 'auto' }} onScroll={(e) => {

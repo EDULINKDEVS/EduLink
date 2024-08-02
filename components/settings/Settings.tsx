@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button, Grid, Paper, Switch, FormControlLabel, Box } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid, Paper, Switch, FormControlLabel, Box, useTheme } from '@mui/material';
 import { styled } from '@mui/system';
 
 const PurpleSwitch = styled(Switch)(({ theme }) => ({
   '& .MuiSwitch-switchBase.Mui-checked': {
-    color: 'primary',
+    color: theme.palette.primary.main,
     '&:hover': {
       backgroundColor: 'rgba(167, 88, 181, 0.08)',
     },
   },
   '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-    backgroundColor: 'primary',
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
 const Settings = () => {
+  const theme = useTheme();
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [school, setSchool] = useState<string>('');
@@ -107,7 +108,7 @@ const Settings = () => {
           style={{ cursor: 'pointer' }}
           sx={{
             '&:hover': {
-              color: 'primary',
+              color: theme.palette.primary.main,
             },
           }}
         >
@@ -124,23 +125,23 @@ const Settings = () => {
                 onChange={handlePasswordChange}
                 InputProps={{
                   sx: {
-                    color: 'custom', // Kolor wpisywanego tekstu
+                    color: theme.palette.primary.dark, // Kolor wpisywanego tekstu
                     '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania
+                      borderColor: theme.palette.primary.main, // Kolor obramowania
                     },
                     '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania podczas hover
+                      borderColor: theme.palette.primary.main, // Kolor obramowania podczas hover
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania podczas focus
+                      borderColor: theme.palette.primary.main, // Kolor obramowania podczas focus
                     },
                   },
                 }}
                 InputLabelProps={{
                   sx: {
-                    color: 'primary', // Kolor tekstu etykiety
+                    color: theme.palette.primary.main, // Kolor tekstu etykiety
                     '&.Mui-focused': {
-                      color: 'primary', // Kolor tekstu etykiety podczas focus
+                      color: theme.palette.primary.main, // Kolor tekstu etykiety podczas focus
                     },
                   },
                 }}
@@ -171,23 +172,23 @@ const Settings = () => {
                 helperText={passwordError}
                 InputProps={{
                   sx: {
-                    color: 'custom', // Kolor wpisywanego tekstu
+                    color: theme.palette.primary.dark, // Kolor wpisywanego tekstu
                     '& .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania
+                      borderColor: theme.palette.primary.main, // Kolor obramowania
                     },
                     '&:hover .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania podczas hover
+                      borderColor: theme.palette.primary.main, // Kolor obramowania podczas hover
                     },
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                      borderColor: 'primary', // Kolor obramowania podczas focus
+                      borderColor: theme.palette.primary.main, // Kolor obramowania podczas focus
                     },
                   },
                 }}
                 InputLabelProps={{
                   sx: {
-                    color: 'primary', // Kolor tekstu etykiety
+                    color: theme.palette.primary.main, // Kolor tekstu etykiety
                     '&.Mui-focused': {
-                      color: 'primary', // Kolor tekstu etykiety podczas focus
+                      color: theme.palette.primary.main, // Kolor tekstu etykiety podczas focus
                     },
                   },
                 }}
@@ -196,11 +197,11 @@ const Settings = () => {
             <Grid item xs={12}>
               <Button
                 sx={{
-                  color: 'secondary',
-                  backgroundColor: 'primary',
+                  color: theme.palette.primary.light,
+                  backgroundColor: theme.palette.primary.main,
                   '&:hover': {
-              color: 'primary',
-              backgroundColor:'secondary'}
+              color: theme.palette.primary.main,
+              backgroundColor:theme.palette.primary.light}
                 }}
                 variant="contained"
                 onClick={handlePasswordSave}
@@ -213,7 +214,7 @@ const Settings = () => {
         )}
         <Typography sx={{
             '&:hover': {
-              color: 'primary',
+              color: theme.palette.primary.main,
             },
           }}
           variant="h6"
@@ -227,7 +228,7 @@ const Settings = () => {
           <Grid container spacing={2} style={{ marginTop: '1em' }}>
             <Grid item xs={12}>
               <FormControlLabel
-                sx={{ color: 'custom' }}
+                sx={{ color: theme.palette.primary.dark }}
                 control={<PurpleSwitch checked={notifications.appStatus} onChange={handleNotificationChange} name="appStatus" />}
                 label="Chcę otrzymywać powiadomienia o statusie swoich aplikacji."
               />
@@ -258,11 +259,11 @@ const Settings = () => {
             </Grid>
             <Grid item xs={12}>
               <Button sx={{
-                backgroundColor:'primary',
-                color:'secondary',
+                backgroundColor:theme.palette.primary.main,
+                color:theme.palette.primary.light,
                 '&:hover': {
-              color: 'primary',
-              backgroundColor:'secondary'
+              color: theme.palette.primary.main,
+              backgroundColor:theme.palette.primary.light
                 }
               }} variant="contained" onClick={handleNotificationsSave}>
                 Zapisz

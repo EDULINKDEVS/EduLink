@@ -1,7 +1,8 @@
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import React from 'react';
 
 const Custom404 = () => {
+  const theme = useTheme();
   return (
     <Box sx={{
         height: '100vh',
@@ -10,7 +11,7 @@ const Custom404 = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'custom'
+        color: theme.palette.primary.dark
     }}>
       Spierdalaj
     </Box>

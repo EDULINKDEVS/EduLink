@@ -10,7 +10,8 @@ import {
   FormLabel,
   Button,
   TextField,
-  Autocomplete
+  Autocomplete,
+  useTheme
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
@@ -19,87 +20,10 @@ import { School } from '@/context/schoolsData/exampleSchoolsData';
 import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 import { degreeLabelEnum } from '@/context/register/types';
 
-const StyledPaper = styled(Paper)({
-  width: '400px',
-  backgroundColor: '#fff',
-  boxShadow: 'none',
-  marginTop: 20,
 
-});
-
-const StyledRadioGroup = styled(RadioGroup)({
-  display: 'flex',
-  flexDirection: 'row',
-});
-
-const StyledFormControl = styled(FormControl)({
-  marginTop: 20,
-  width: '100%',
-});
-
-const StyledFormControlLabel = styled(FormControlLabel)({
-  color: 'primary',
-  fontWeight: 'bold',
-  '& .MuiTypography-root': {
-    color: 'primary',
-    fontWeight: 'bold',
-  },
-});
-
-const StyledButton = styled(Button)({
-  backgroundColor: 'primary',
-  color: '#fff',
-  marginTop: 20,
-  '&:hover': {
-    backgroundColor: '#9342a0',
-  },
-});
-
-const StyledTextField = styled(TextField)({
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'primary',
-    },
-    '&:hover fieldset': {
-      borderColor: 'primary',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'primary',
-    },
-  },
-  '& .MuiInputBase-input': {
-    color: 'primary',
-  },
-  '& .MuiInputLabel-root': {
-    color: 'primary',
-  },
-  width: '100%',
-});
-const cities = [
-  "Warszawa",
-  "Kraków",
-  "Łódź",
-  "Wrocław",
-  "Poznań",
-  "Gdańsk",
-  "Szczecin",
-  "Bydgoszcz",
-  "Lublin",
-  "Katowice"
-];
-
-
-const suggestions = [
-  'Techniku asdmoipms',
-  'Option 2',
-  'Option 3',
-  'Option 4',
-  'Option 5',
-];
 
 const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
-  const [currentDegreeLabel, setCurrentDegreeLabel] = useState<degreeLabelEnum | null>(null);
-
+  const theme = useTheme();
   const registerContext = useContext(RegisterContext);
   const dataContext = useSchoolsData();
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -163,6 +87,83 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
   }
   const [schools, setSchools] = useState<String[]>([]);
   const [profiles, setProfiles] = useState<String[]>([]);
+  const StyledPaper = styled(Paper)({
+    width: '400px',
+    backgroundColor: '#fff',
+    boxShadow: 'none',
+    marginTop: 20,
+  
+  });
+  
+  const StyledRadioGroup = styled(RadioGroup)({
+    display: 'flex',
+    flexDirection: 'row',
+  });
+  
+  const StyledFormControl = styled(FormControl)({
+    marginTop: 20,
+    width: '100%',
+  });
+  
+  const StyledFormControlLabel = styled(FormControlLabel)({
+    color: theme.palette.primary.main,
+    fontWeight: 'bold',
+    '& .MuiTypography-root': {
+      color: theme.palette.primary.main,
+      fontWeight: 'bold',
+    },
+  });
+  
+  const StyledButton = styled(Button)({
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+    marginTop: 20,
+    '&:hover': {
+      backgroundColor: '#9342a0',
+    },
+  });
+  
+  const StyledTextField = styled(TextField)({
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main,
+      },
+    },
+    '& .MuiInputBase-input': {
+      color: theme.palette.primary.main,
+    },
+    '& .MuiInputLabel-root': {
+      color: theme.palette.primary.main,
+    },
+    width: '100%',
+  });
+  const cities = [
+    "Warszawa",
+    "Kraków",
+    "Łódź",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Szczecin",
+    "Bydgoszcz",
+    "Lublin",
+    "Katowice"
+  ];
+  
+  
+  const suggestions = [
+    'Techniku asdmoipms',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+  ];
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
       <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
@@ -170,21 +171,21 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
       </Typography>
       <StyledPaper>
         <FormControl component="fieldset">
-          <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Status</FormLabel>
+          <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>Status</FormLabel>
           <StyledRadioGroup value={registerContext?.registerData.status} onChange={handleStatusChange}>
-            <StyledFormControlLabel value="school" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Uczeń" />
-            <StyledFormControlLabel value="study" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Student" />
+            <StyledFormControlLabel value="school" control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Uczeń" />
+            <StyledFormControlLabel value="study" control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Student" />
           </StyledRadioGroup>
         </FormControl>
 
         {registerContext?.registerData.status === 'school' && (
           <>
             <StyledFormControl>
-              <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
+              <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>Rodzaj szkoły</FormLabel>
               <StyledRadioGroup value={registerContext.registerData.school_level} onChange={handleSchoolTypeChange}>
-                <StyledFormControlLabel value="vocational" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="vocational" />
-                <StyledFormControlLabel value="technical" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="technical" />
-                <StyledFormControlLabel value="high_school" control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="high school" />
+                <StyledFormControlLabel value="vocational" control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="vocational" />
+                <StyledFormControlLabel value="technical" control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="technical" />
+                <StyledFormControlLabel value="high_school" control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="high school" />
               </StyledRadioGroup>
             </StyledFormControl>
             {
@@ -251,7 +252,7 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                 </StyledPaper>
                 }
                     <StyledFormControl>
-            <FormLabel component="legend" style={{ color: 'primary', fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
+            <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>Rodzaj studenta</FormLabel>
             <StyledRadioGroup
               value={registerContext.registerData.degreeLabel === null ? '' : (registerContext.registerData.degreeLabel)}
               onChange={(event) => {
@@ -261,8 +262,8 @@ const StudentStatus = ({ setStep }: { setStep: (value: number) => void }) => {
                 });
               }}
               >
-              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="W trakcie" />
-              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: 'primary', '&.Mui-checked': { color: 'primary' } }} />} label="Absolwent" />
+              <StyledFormControlLabel value={degreeLabelEnum.DURING} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="W trakcie" />
+              <StyledFormControlLabel value={degreeLabelEnum.GRADUATE} control={<Radio sx={{ color: theme.palette.primary.main, '&.Mui-checked': { color: theme.palette.primary.main } }} />} label="Absolwent" />
             </StyledRadioGroup>
           </StyledFormControl>
 

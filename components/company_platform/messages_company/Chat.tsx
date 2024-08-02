@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, List, ListItem, ListItemText, Typography, Paper, Avatar } from '@mui/material';
+import { Box, TextField, Button, List, ListItem, ListItemText, Typography, Paper, Avatar, useTheme } from '@mui/material';
 
 interface Message {
   sender: string;
@@ -23,7 +23,7 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
       handleSend();
     }
   };
-
+  const theme = useTheme();
   return (
     <Paper elevation={3} sx={{ padding: 2, flex: 1, display: 'flex', flexDirection: 'column', height: '93%', animation: '1s showAnimLev1 forwards' }}>
       <Box display="flex" alignItems="center" mb={2}>
@@ -36,8 +36,8 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
             <ListItemText
               primary={msg.content}
               sx={{
-                backgroundColor: msg.sender === 'User' ? 'primary' : 'secondary',
-                color: msg.sender === 'User' ? 'secondary' : 'primary',
+                backgroundColor: msg.sender === 'User' ? theme.palette.primary.main : theme.palette.primary.light,
+                color: msg.sender === 'User' ? theme.palette.primary.light : theme.palette.primary.main,
                 borderRadius: 2,
                 padding: 1,
                 maxWidth: '75%',
@@ -50,23 +50,23 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
         <TextField
          InputProps={{
           sx: {
-            color: 'custom', // Kolor wpisywanego tekstu
+            color: theme.palette.primary.dark, // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'primary', // Kolor obramowania
+              borderColor: theme.palette.primary.main, // Kolor obramowania
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'primary', // Kolor obramowania podczas hover
+              borderColor: theme.palette.primary.main, // Kolor obramowania podczas hover
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'primary', // Kolor obramowania podczas focus
+              borderColor: theme.palette.primary.main, // Kolor obramowania podczas focus
             },
           },
         }}
         InputLabelProps={{
           sx: {
-            color: 'custom', // Kolor tekstu etykiety
+            color: theme.palette.primary.dark, // Kolor tekstu etykiety
             '&.Mui-focused': {
-              color: 'primary', // Kolor tekstu etykiety podczas focus
+              color: theme.palette.primary.main, // Kolor tekstu etykiety podczas focus
             },
           },
         }}
@@ -78,12 +78,12 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
           placeholder="Wpisz wiadomość..."
         />
         <Button sx={{
-          backgroundColor: 'primary',
+          backgroundColor: theme.palette.primary.main,
           marginLeft: 1,
 
         '&:hover' : {
-                    backgroundColor: 'primary',
-                    color: 'secondary' }
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.light }
 
         }} variant="contained"  onClick={handleSend} >
           Wyślij

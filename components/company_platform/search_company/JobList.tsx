@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Paper, Grid, Button, Avatar } from '@mui/material';
+import { Box, Typography, Paper, Grid, Button, Avatar, useTheme } from '@mui/material';
 
 interface Job {
   title: string;
@@ -17,6 +17,7 @@ interface JobListProps {
 }
 
 const JobList: React.FC<JobListProps> = ({ jobs }) => {
+  const theme = useTheme();
   return (
     <Box sx={{ mt: 5 }}>
       {jobs.map((job, index) => (
@@ -26,7 +27,7 @@ const JobList: React.FC<JobListProps> = ({ jobs }) => {
               <Avatar src={job.avatar} sx={{ width: 106, height: 106 }} />
             </Grid>
             <Grid item xs={12} sm={7}>
-              <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary' }}>{job.title}</Typography>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.primary.main }}>{job.title}</Typography>
               <Typography variant="body1" sx={{ color: '#555555' }}>{job.company}</Typography>
               <Typography variant="body1" sx={{ color: '#555555', fontStyle: 'italic' }}>{job.direction}</Typography>
               <Typography variant="body2" sx={{ color: '#777777', mb: 2 }}>{job.location}</Typography>
@@ -37,11 +38,11 @@ const JobList: React.FC<JobListProps> = ({ jobs }) => {
             </Grid>
             <Grid item xs={12} sm={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Button sx={{
-                color: 'secondary',
-                backgroundColor: 'primary',
+                color: theme.palette.primary.light,
+                backgroundColor: theme.palette.primary.main,
                 '&:hover': {
                   backgroundColor: '#9342a0',
-                  color: 'secondary'
+                  color: theme.palette.primary.light
                 }
               }} variant="contained" href={job.link} target="_blank">
                 Zobacz więcej

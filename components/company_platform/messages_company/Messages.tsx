@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Box, Paper, Typography, Avatar } from '@mui/material';
+import { Container, Box, Paper, Typography, Avatar, useTheme } from '@mui/material';
 import Chat from './Chat';
 import UserList from './List';
 import { User } from './usersExample';
@@ -10,9 +10,9 @@ const Messages = () => {
     const handleSelectUser = (user: User) => {
       setSelectedUser(user);
     };
-  
+    const theme = useTheme();
     return (
-      <Container sx={{ display: 'flex', height: '90vh', padding: '18px', backgroundColor: 'secondary', borderRadius: '25px', opacity: 0, animation: '1s showAnimLev1 forwards' }}>
+      <Container sx={{ display: 'flex', height: '90vh', padding: '18px', backgroundColor: theme.palette.primary.light, borderRadius: '25px', opacity: 0, animation: '1s showAnimLev1 forwards' }}>
         <Paper sx={{ width: 300, marginRight: 2 }}>
           <UserList onSelectUser={handleSelectUser} />
         </Paper>
