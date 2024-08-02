@@ -102,7 +102,6 @@ export default function Pricing1() {
   return (
      
     <Container
-      id="pricing"
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
@@ -113,7 +112,7 @@ export default function Pricing1() {
         gap: { xs: 3, sm: 6 },
       }}
     >
-      <Box
+      <Box 
         sx={{
           width: { sm: '100%', md: '60%' },
           textAlign: { sm: 'left', md: 'center' },
@@ -131,7 +130,7 @@ export default function Pricing1() {
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
         {tiers.map((tier) => (
-          <Grid
+          <Grid 
             item
             key={tier.title}
             xs={12}

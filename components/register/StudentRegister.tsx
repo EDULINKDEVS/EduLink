@@ -75,7 +75,9 @@ const StudentRegister = () => {
       }
     }}/>
       </BackButton>
-      <LeftContainer>
+      <LeftContainer sx={{
+        backgroundColor: theme.palette.primary.main
+      }}>
         <SchoolIcon style={{ fontSize: 300, color: theme.palette.primary.light }} />
       </LeftContainer>
       <RightContainer>

@@ -10,18 +10,20 @@ import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
+    <ThemeProvider theme={theme}> {/* Dodano theme jako atrybut */}
     <SchoolsDataProvider>
       <AuthContextProvider>
         <RegisterContextProvider>
-          <ThemeProvider theme={theme}> {/* Dodano theme jako atrybut */}
+          
             <Box sx={{ backgroundColor: theme.palette.primary.light, scrollBehavior: "smooth" }}>
               <Component {...pageProps} />
               <Swither />
             </Box>
-          </ThemeProvider>
+          
         </RegisterContextProvider>
       </AuthContextProvider>
     </SchoolsDataProvider>
+    </ThemeProvider>
   );
 }
 

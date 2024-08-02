@@ -133,21 +133,26 @@ function AppAppBar() {
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
-                gap: 0.5,
+                gap: 2,
                 alignItems: "center",
               }}
             >
 
               <Button
-                color="primary" 
-                variant="text" 
-                size="small"
-                component="a"
-                href="#register"
-                sx={{
-                  color: "custom",
-                }}
-
+            color="primary" // Kolor tekstu zostaje zmieniony na biały (domyślnie)
+            variant="contained" // Ustawienie wariantu na "contained"
+            size="small" // Rozmiar przycisku
+            component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
+            href="#register"
+            sx={{
+              backgroundColor: "#9B30FF", // Ustawienie tła jako gradientu liniowego
+              color: "secondary", // Ustawienie koloru tekstu na biały
+              '&: hover' : {
+                opacity: "0.5",
+                backgroundColor: theme.palette.primary.light,
+                color: theme.palette.primary.dark
+              }
+            }}
               >
                 Rejestracja
               </Button>
@@ -209,7 +214,7 @@ function AppAppBar() {
                   <MenuItem >
                     Współpraca
                   </MenuItem>
-                  <MenuItem href="/offer">
+                  <MenuItem href="#pricing">
                     Abonamenty
                   </MenuItem>
               

@@ -16,10 +16,10 @@ import { useTheme } from '@mui/material';
 const tiers = [
   {
     title: 'Podstawowe',
-    price: '3,99',
+    price: '99,99',
     description: [
-    'Możliwość wystawienia ogłoszeń w ilości : 2',
-    'Wybór 5 umiejętności per ogłoszenie',
+    'Limit wystawiania ogłoszeń : 1 (każde kolejne ogłoszenie : 40zł' ,
+    'Wybór 3 umiejętności poszukiwanych per ogłoszenie',
     
     ],
     buttonText: 'Rozpocznij teraz',
@@ -28,11 +28,11 @@ const tiers = [
   {
     title: 'Profesionalne',
     subheader: 'Polecane',
-    price: '99',
+    price: '299,99',
     description: [
-      'Możliwość wystawienia ogłoszeń w ilości : 3',
-      'Wybór 10 umiejętności per ogłoszenie',
-      'Brak ograniczeń wyszukiwań',
+      'Limit wystawiania ogłoszeń : 2 (każde kolejne ogłoszenie : 20zł' ,
+      'Wybór 10 umiejętności poszukiwanych per ogłoszenie',
+      'Brak ograniczeń w wyszukiwaniu'
       
     ],
     buttonText: 'Rozpocznij teraz',
@@ -41,10 +41,10 @@ const tiers = [
   },
   {
     title: 'Premium',
-    price: '4,99',
+    price: '199,99',
     description: [
-      'Możliwość wystawienia ogłoszeń w ilości : 1',
-      'Wybór 3 umiejętności per ogłoszenie',
+      'Limit wystawiania ogłoszeń : 2 (każde kolejne ogłoszenie : 30zł' ,
+      'Wybór 5 umiejętności poszukiwanych per ogłoszenie',
     ],
     buttonText: 'Rozpocznij teraz',
     buttonVariant: 'outlined',
@@ -130,10 +130,10 @@ export default function PricingCom() {
                           theme.palette.mode === 'light' ? '' : 'none',
                         backgroundColor: 'primary.contrastText',
                         '& .MuiChip-label': {
-                          color: 'primary.dark',
+                          color: 'primary.main',
                         },
                         '& .MuiChip-icon': {
-                          color: 'primary.dark',
+                          color: 'primary.main',
                         },
                       }}
                     />
