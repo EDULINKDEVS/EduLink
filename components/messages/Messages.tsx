@@ -4,7 +4,7 @@ import Chat from './Chat';
 import UserList from './List';
 import { User } from './usersExample';
 
-const Messages = () => {
+const Messages = ({type}: {type:string}) => {
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
   
     const handleSelectUser = (user: User) => {
@@ -14,7 +14,7 @@ const Messages = () => {
     return (
       <Container sx={{ display: 'flex', height: '90vh', padding: '18px', backgroundColor: theme.palette.primary.light, borderRadius: '25px', opacity: 0, animation: '1s showAnimLev1 forwards' }}>
         <Paper sx={{ width: 300, marginRight: 2 }}>
-          <UserList onSelectUser={handleSelectUser} />
+          <UserList onSelectUser={handleSelectUser} type={type} />
         </Paper>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           {selectedUser ? <Chat selectedUser={selectedUser} /> : <Typography variant="h5">Wybierz firmę, z którą chciałbyś czatować</Typography>}

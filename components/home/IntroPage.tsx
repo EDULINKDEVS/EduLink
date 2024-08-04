@@ -22,7 +22,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         minHeight: "100vh",
         minWidth: "200px",
         maxWidth: "1200px",
-        width: "80%",
+        width: "100%",
         mx: "auto",
       }}
     >
@@ -41,24 +41,19 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
           </Grid>
         </Grid>
       </Box>
+      <Box sx={{marginTop: '140px'}}>
 
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
           <Slider />
-        </Grid>
       </Box>
 
       <Box>
         <Grid container justifyContent={'center'} sx={{
-          minHeight: '70vh',
+          minHeight: {
+            xs: '1100px',
+            sm: '600px'
+          },
         }}>
-          <Grid item xs={6} padding={2} display={'flex'} id="register" ref={registerRef} justifyContent={'center'}>
+          <Grid item xs={12} sm={6} padding={2} display={'flex'} id="register" ref={registerRef} justifyContent={'center'}>
               <CardFlip
               frontIcon={<SchoolIcon sx={{
                 fontSize: '150px',
@@ -76,7 +71,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
             />
           </Grid>
 
-          <Grid item xs={6} padding={2} display={'flex'} justifyContent={'center'}>
+          <Grid item xs={12} sm={6} padding={2} display={'flex'} justifyContent={'center'}>
             <CardFlip
               frontIcon={<HandshakeIcon sx={{
                 fontSize: '150px',

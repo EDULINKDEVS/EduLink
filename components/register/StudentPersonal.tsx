@@ -13,31 +13,56 @@ import { styled } from '@mui/system';
 import * as Yup from 'yup';
 import { RegisterContext, RegisterContextType } from '@/context/register/RegisterContext';
 
+const StyledPaper = styled(Paper)<{ theme: any }>(({ theme }) => ({
+  margin: 'auto',
+  width: 'clamp(200px,95%,500px)',
+  backgroundColor: '#fff',
+  boxShadow: 'none',
+}));
 
+const StyledButton = styled(Button)<{ theme: any }>(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: '#fff',
+  '&:hover': {
+    backgroundColor: '#9342a0'
+  }
+}));
+
+const StyledTextField = styled(TextField)<{ theme: any }>(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&:hover fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+  },
+  '& .MuiInputBase-input': {
+    color: theme.palette.primary.main,
+  },
+  '& .MuiInputLabel-root': {
+    color: theme.palette.primary.main,
+  },
+}));
+
+const ErrorText = styled(Typography)({
+  color: 'red',
+  textAlign: 'center',
+  marginTop: 20,
+});
 
 const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const theme = useTheme();
   const registerContext = useContext(RegisterContext) as RegisterContextType;
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [generalError, setGeneralError] = useState<string>('');
-  // const [birthDay, setBirthDay] = useState<string>(
-  //   registerContext.registerData.dateOfBirth.getDate().toString()
-  // );
-  // const [birthMonth, setBirthMonth] = useState<string>(
-  //   (registerContext.registerData.dateOfBirth.getMonth() + 1).toString()
-  // );
-  // const [birthYear, setBirthYear] = useState<string>(
-  //   registerContext.registerData.dateOfBirth.getFullYear().toString()
-  // );
-  const [birthDay, setBirthDay] = useState<string>(
-    '10'
-  );
-  const [birthMonth, setBirthMonth] = useState<string>(
-    '10'
-  );
-  const [birthYear, setBirthYear] = useState<string>(
-    '1998'
-  );
+  
+  const [birthDay, setBirthDay] = useState<string>('10');
+  const [birthMonth, setBirthMonth] = useState<string>('10');
+  const [birthYear, setBirthYear] = useState<string>('1998');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -50,26 +75,18 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const handleBlur = async (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     try {
-
       if (name === 'confirm_pass') {
-
-
         if (registerContext.registerData.pass !== value) {
           setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
         } else {
- 
           setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: '' }));
         }
-      }
-      else{
+      } else {
         await validationSchema.validateAt(name, { [name]: value });
         setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
-  
       }
-      
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        
         setErrors((prevErrors) => ({ ...prevErrors, [name]: err.message }));
       }
     }
@@ -103,9 +120,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
       if (values.pass !== values.confirm_pass) {
         setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
         setGeneralError('Uzupełnij poprawnie wszystkie pola');
-
       } else {
-
         setErrors({});
         setGeneralError('');
         return true;
@@ -117,12 +132,10 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
           if (error.path) newErrors[error.path] = error.message;
         });
       }
-      
       setErrors(newErrors);
       if (registerContext.registerData.pass !== registerContext.registerData.confirm_pass) {
         setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
         setGeneralError('Uzupełnij poprawnie wszystkie pola');
-
       }
       setGeneralError('Uzupełnij poprawnie wszystkie pola');
       return false;
@@ -144,54 +157,14 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-  const StyledPaper = styled(Paper)({
-    margin: 'auto',
-    width: 'clamp(200px,95%,500px)',
-    backgroundColor: '#fff',
-    boxShadow: 'none',
-    
-  });
-  
-  const StyledButton = styled(Button)({
-    backgroundColor: theme.palette.primary.main,
-    color: '#fff',
-    '&:hover': {
-      backgroundColor: '#9342a0'
-    }
-  });
-  
-  const StyledTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: theme.palette.primary.main,
-      },
-      '&:hover fieldset': {
-        borderColor: theme.palette.primary.main,
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: theme.palette.primary.main,
-      },
-    },
-    '& .MuiInputBase-input': {
-      color: theme.palette.primary.main,
-    },
-    '& .MuiInputLabel-root': {
-      color: theme.palette.primary.main,
-    },
-  });
-  
-  const ErrorText = styled(Typography)({
-    color: 'red',
-    textAlign: 'center',
-    marginTop: 20,
-  });
+
   return (
     <Box sx={{ animation: '.7s showAnimLev1 forwards' }}>
       <Box>
         <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
           REJESTRACJA
         </Typography>
-        <StyledPaper>
+        <StyledPaper theme={theme}>
           <Box component="form" onSubmit={handleSubmit} noValidate>
             <StyledTextField
               fullWidth
@@ -205,6 +178,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               error={!!errors.f_name}
               helperText={errors.f_name}
               required
+              theme={theme}
             />
             <StyledTextField
               fullWidth
@@ -218,6 +192,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               error={!!errors.l_name}
               helperText={errors.l_name}
               required
+              theme={theme}
             />
             <StyledTextField
               fullWidth
@@ -232,6 +207,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               error={!!errors.pass}
               helperText={errors.pass}
               required
+              theme={theme}
             />
             <StyledTextField
               fullWidth
@@ -242,18 +218,11 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               label="Potwierdź hasło"
               value={registerContext.registerData.confirm_pass}
               onChange={handleChange}
-              onBlur={(e) => {
-                handleBlur(e);
-                // if (registerContext.registerData.pass !== e.target.value) {
-                //   setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: 'Hasła muszą być takie same' }));
-                // } else {
-                //   console.log('asdas');
-                //   setErrors((prevErrors) => ({ ...prevErrors, confirm_pass: '' }));
-                // }
-              }}
+              onBlur={handleBlur}
               error={!!errors.confirm_pass}
               helperText={errors.confirm_pass}
               required
+              theme={theme}
             />
             <StyledTextField
               fullWidth
@@ -267,6 +236,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               error={!!errors.phone}
               helperText={errors.phone}
               required
+              theme={theme}
             />
             <StyledTextField
               fullWidth
@@ -280,6 +250,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               error={!!errors.email}
               helperText={errors.email}
               required
+              theme={theme}
             />
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -296,6 +267,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
                   error={!!errors.birthDay}
                   helperText={errors.birthDay}
                   required
+                  theme={theme}
                 >
                   {days.map(day => (
                     <MenuItem key={day} value={day}>
@@ -318,6 +290,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
                   error={!!errors.birthMonth}
                   helperText={errors.birthMonth}
                   required
+                  theme={theme}
                 >
                   {months.map(month => (
                     <MenuItem key={month} value={month}>
@@ -340,6 +313,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
                   error={!!errors.birthYear}
                   helperText={errors.birthYear}
                   required
+                  theme={theme}
                 >
                   {years.map(year => (
                     <MenuItem key={year} value={year}>
@@ -350,7 +324,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               </Grid>
             </Grid>
             <Grid container justifyContent="center" marginTop={2}>
-              <StyledButton type="submit" variant="contained">
+              <StyledButton type="submit" variant="contained" theme={theme}>
                 Dalej
               </StyledButton>
             </Grid>

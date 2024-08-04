@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Box, List, ListItem, ListItemText, TextField, Avatar, Typography } from '@mui/material';
-import { User, users, companies } from './usersExample';
+import { User, companies, employies, emp } from './usersExample';
 
 interface UserListProps {
   onSelectUser: (user: User) => void;
+  type: string
 }
 
-const UserList: React.FC<UserListProps> = ({ onSelectUser }) => {
+const UserList: React.FC<UserListProps> = ({ onSelectUser, type }) => {
   const [search, setSearch] = useState('');
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [visibleUsers, setVisibleUsers] = useState<User[]>([]);
   const [page, setPage] = useState(1);
-
+  const [obj, setObj] = useState<User[] | null>(null);
+  useEffect(()=>{
+    type === 'employee' ? setObj(companies) : setObj(emp);
+  },[type])
   useEffect(() => {
-    const result = companies.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()));
-    setFilteredUsers(result);
-    setVisibleUsers(result.slice(0, 22));
-    setPage(1);
-  }, [search]);
+    if(obj){
+
+      const result = obj.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()));
+      setFilteredUsers(result);
+      setVisibleUsers(result.slice(0, 22));
+      onSelectUser(result[0]);
+      setPage(1);
+    }
+  }, [search, obj]);
 
   const loadMore = () => {
     const newPage = page + 1;

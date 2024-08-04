@@ -26,7 +26,7 @@ const Search: React.FC = () => {
   return (
     <Container sx={{animation: '1s showAnimLev1 forwards', opacity: 0}}>
       <Box sx={{ mt: 5, textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, color: theme.palette.primary.light }}>
+        <Typography variant="h3" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
           Oferty wybrane dla Ciebie
         </Typography>
       </Box>
