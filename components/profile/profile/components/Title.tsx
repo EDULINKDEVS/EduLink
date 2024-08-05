@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-const Title = () => {
-  return (
-    <div>Title</div>
-  )
+interface BoxProps {
+  textColor: string;
+  backgroundColor: string;
+  fontSize: number;
+  text:string;
 }
 
-export default Title
+const Box: React.FC<BoxProps> = ({ textColor, backgroundColor, fontSize, text }) => {
+  const boxStyle: React.CSSProperties = {
+    color: textColor,
+    backgroundColor: backgroundColor,
+    fontSize: `${fontSize}px`,
+    padding: '10px',
+    borderRadius: '5px',
+  };
+
+  return (
+    <div style={boxStyle}>
+      {text}
+    </div>
+  );
+}
+
+export default Box;

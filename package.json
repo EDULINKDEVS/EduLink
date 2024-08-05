@@ -27,6 +27,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
+    "react-swiper": "^0.1.5",
     "styled-components": "^6.1.11",
     "swiper": "^11.1.9",
     "uuid": "^10.0.0",

@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay, Keyboard } from 'swiper/core';
-import 'swiper/swiper-bundle.css';
-
-// Install Swiper modules
-SwiperCore.use([Navigation, Pagination, Autoplay, Keyboard]);
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay, Keyboard } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 interface SliderProps {
   enableSwipe: boolean;
   enableArrowNavigation: boolean;
   autoScrollInterval: number | null;
   enableNumericNavigation: boolean;
+  slides: Array<React.ReactNode>;
 }
 
 const Slider: React.FC<SliderProps> = ({
   enableSwipe,
   enableArrowNavigation,
   autoScrollInterval,
-  enableNumericNavigation
+  enableNumericNavigation,
+  slides
 }) => {
   return (
-    <Box>
+    <div>
       <Swiper
+        modules={[Pagination, Navigation, Autoplay, Keyboard]}
         navigation={enableArrowNavigation}
         pagination={enableNumericNavigation ? { clickable: true } : false}
         autoplay={autoScrollInterval ? { delay: autoScrollInterval, disableOnInteraction: false } : false}
-        keyboard={enableSwipe}
+        keyboard={{ enabled: enableSwipe }}
         allowTouchMove={enableSwipe}
       >
-        <SwiperSlide><Box>Slide 1</Box></SwiperSlide>
-        <SwiperSlide><Box>Slide 2</Box></SwiperSlide>
-        <SwiperSlide><Box>Slide 3</Box></SwiperSlide>
-        <SwiperSlide><Box>Slide 4</Box></SwiperSlide>
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>{slide}</SwiperSlide>
+        ))}
       </Swiper>
-    </Box>
+    </div>
   );
 };
 
