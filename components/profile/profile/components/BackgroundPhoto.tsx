@@ -45,7 +45,7 @@ const BackgroundPhoto: React.FC = () => {
           sx={{
             position: 'absolute',
             top: 10,
-            right: 50, // Przesunięcie przycisku edycji w lewo
+            right: 50,
             color: 'white'
           }}
           component="span"
