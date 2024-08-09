@@ -11,7 +11,7 @@ const Background = ({ path }: { path: string }) => {
         top: "0",
         left: "0",
         backgroundSize: "cover",
-        backgroundImage: `url("/images/grafika3.webp")`,
+        backgroundImage: `url("/images/bg.jpg")`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         width: "100%",

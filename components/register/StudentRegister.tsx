@@ -35,7 +35,6 @@ const StudentRegister = () => {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     @media (min-width: 1200px) {
       display: flex;
     }
@@ -43,7 +42,7 @@ const StudentRegister = () => {
 
   const RightContainer = styled(Box)`
     flex: 1.5;
-    background-color: secondary;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,9 +75,11 @@ const StudentRegister = () => {
     }}/>
       </BackButton>
       <LeftContainer sx={{
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: 'white',
+        borderRight: `3px solid ${theme.palette.primary.main}`,
+        
       }}>
-        <SchoolIcon style={{ fontSize: 300, color: theme.palette.primary.light }} />
+        <SchoolIcon style={{ fontSize: 300, color: theme.palette.primary.main }} />
       </LeftContainer>
       <RightContainer>
         <Box sx={{

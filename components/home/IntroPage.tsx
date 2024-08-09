@@ -21,7 +21,6 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
       sx={{
         minHeight: "100vh",
         minWidth: "200px",
-        maxWidth: "1200px",
         width: "100%",
         mx: "auto",
       }}
