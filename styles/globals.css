@@ -105,6 +105,17 @@ a {
   }
 }
 
+@keyframes showJoin {
+  from{
+    transform: scale(0.2) translateX(-50%);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1) translateX(-50%);
+    opacity: 1;
+  }
+}
+
 @keyframes showAnim {
   from {
     opacity: 0;

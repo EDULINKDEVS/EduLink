@@ -26,7 +26,6 @@ interface AppAppBarProps {
 }
 
 function AppAppBar() {
-  const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -37,14 +36,12 @@ function AppAppBar() {
   return (
     <div>
       <AppBar
-        position="fixed"
         sx={{
           boxShadow: 0,
           bgcolor: "transparent",
           backgroundImage: "none",
         }}
       >
-        <Container>
           <Toolbar
             
             variant="regular"
@@ -53,8 +50,8 @@ function AppAppBar() {
               alignItems: "center",
               justifyContent: "space-between",
               flexShrink: 0,
-              bgcolor: 'white',
               backdropFilter: "blur(24px)",
+              color:'white',
               maxHeight: 40,
               border: "1px solid",
               borderColor: "divider",
@@ -74,7 +71,7 @@ function AppAppBar() {
               <Box
                 component={SchoolIcon}
                 sx={{
-                  color: "custom", 
+                  color: "white", 
                   fontSize: 58, 
                   
                 }}
@@ -91,7 +88,6 @@ function AppAppBar() {
                   
                   <Typography
                     variant="body2"
-                    color="text.primary"
                     sx={{ fontWeight: "600" }}
                   >
                     O nas
@@ -103,7 +99,6 @@ function AppAppBar() {
                 >
                   <Typography
                     variant="body2"
-                    color="text.primary"
                     sx={{ fontWeight: "600" }}
                   >
                     Współpraca
@@ -114,7 +109,6 @@ function AppAppBar() {
                 >
                   <Typography
                     variant="body2"
-                    color="text.primary"
                     sx={{ fontWeight: "600" }}
                   >
                     Abonamenty
@@ -249,7 +243,6 @@ function AppAppBar() {
               </Drawer>
             </Box>
           </Toolbar>
-        </Container>
       </AppBar>
     </div>
   );
