@@ -14,7 +14,7 @@ const dbConfig = {
 type School = {
   id: number;
   name: string;
-  lev: "lev" | "voc" | "tech" | "university";
+  lev: "lev" | "voc" | "tech" | "universities";
 };
 
 interface SchoolRow extends RowDataPacket, School {}
@@ -33,7 +33,7 @@ const handler = async (
       return res.status(400).json({ message: 'City ID parameter is required and must be a string' });
     }
 
-    if (!lev || (lev !== 'voc' && lev !== 'high' && lev !== 'tech' && lev !== 'university')) {
+    if (!lev || (lev !== 'voc' && lev !== 'high' && lev !== 'tech' && lev !== 'universities')) {
       return res.status(400).json({ message: 'Wrong lev parameter' });
     }
 

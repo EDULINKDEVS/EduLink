@@ -2,6 +2,8 @@ import { SchoolDB } from "./types";
 
 export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB[]> => {
     try {
+      console.log(city);
+      console.log(lev);
 
       const response = await fetch(`/api/graddata/getschools?city_id=${encodeURIComponent(city)}&lev=${encodeURIComponent(lev)}`);
   

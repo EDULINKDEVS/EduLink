@@ -34,6 +34,8 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
   const [citiesState, setCitiesState] = useState<string[]>([]);
   const [universities, setUniversities] = useState<string[]>([]); 
   const [edited, setEdited] = useState(false);
+  const [schools, setSchools] = useState<string[]>([]);
+  const [profiles, setProfiles] = useState<string[]>([]);
    useEffect(()=>{
     setCitiesState(dataContext.schoolsClass.cities);
   }, [dataContext.schoolsClass.cities])
@@ -51,6 +53,14 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
       setEdit(true);
     }
   }, [name, degree, city, faculty, id, degreeLabel]);
+
+  useEffect(()=>{
+    setSchools(registerContext?.schoolsDB.map(el => el.name) || []);
+  },[registerContext?.schoolsDB]);
+
+  useEffect(()=>{
+    setProfiles(registerContext?.profilesDB.map(el => el.name) || []);
+  }, [registerContext?.profilesDB]);
 
   useEffect(() => {
     const validate = () => {
@@ -85,11 +95,11 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
 
   const handleAdd = useCallback(() => {
     if(id && currentDegree && currentDegreeLabel){
-      registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id, currentDegreeLabel);
+      registerContext?.handleEditSchool(currentName, cityName, facultyName, currentDegree, id, currentDegreeLabel, registerContext.dispatch);
       setEdit(false);
     }
     else{
-      (currentDegree && currentDegreeLabel)&& registerContext?.handleAddSchool(currentName, cityName, facultyName, currentDegree, currentDegreeLabel);
+      (currentDegree && currentDegreeLabel)&& registerContext?.handleAddSchool(currentName, cityName, facultyName, currentDegree, currentDegreeLabel, registerContext.dispatch);
          setCurrentDegree(null);
       setCurrentName('');
       setCurrentDegreeLabel(null);
@@ -100,7 +110,7 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
 
   const handleDelete = useCallback(() => {
     if (id) {
-      registerContext?.handleRemoveSchool(id);
+      registerContext?.handleRemoveSchool(id, registerContext.dispatch);
     }
   }, [id, registerContext]);
   const [faculties, setFaculties] = useState<string[]>([]);
@@ -116,18 +126,19 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
         <Box>
           <StyledFormControl>
             <StyledPaper>
+  
               <Autocomplete
                 freeSolo
-                options={citiesState}
+                options={registerContext?.citiesDB.map(element => element.name) || []}
                 inputValue={cityName}
                 onBlur={() => {
-                  setUniversities(dataContext.schoolsClass.generateUniversities(cityName));
-              }}
+                  registerContext?.getSchoolsDB(cityName, 'universities');
+                }}
                 onInputChange={handleCityInputChange}
                 renderInput={(params) => (
                   <StyledTextField
                   {...params}
-                  label="Miasto"
+                  label="Miasto"  
                     variant="outlined"
                     />
                   )}
@@ -141,10 +152,10 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
               <Autocomplete
                 freeSolo
 
-                options={universities}
+                options={schools}
                 inputValue={currentName}
                 onBlur={()=>{
-                  setFaculties(dataContext.schoolsClass.generateFaculties(currentName));
+                  registerContext?.getProfilesDB(currentName);
                 }}
                 onInputChange={handleInputChange}
                 renderInput={(params) => (
@@ -166,7 +177,7 @@ const University = ({ city,faculty, name, degree, id, degreeLabel }: UniversityT
             <StyledPaper>
               <Autocomplete
                 freeSolo
-                options={faculties}
+                options={profiles}
                 inputValue={facultyName}
                 onInputChange={handleFacultyInputChange}
                 renderInput={(params) => (
