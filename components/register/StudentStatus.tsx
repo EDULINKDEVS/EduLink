@@ -88,7 +88,6 @@ interface StudentStatusProps {
 const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
   const theme = useTheme();
   const registerContext = useContext(RegisterContext);
-  const dataContext = useSchoolsData();
   const [schools, setSchools] = useState<string[]>([]);
   const [profiles, setProfiles] = useState<string[]>([]);
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,9 +165,23 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
     return false;
   };
   useEffect(() => {
-    registerContext?.getCities();
+    registerContext?.getCitiesDB();
 
   }, [])
+
+  useEffect(()=>{
+    if(registerContext?.schoolsDB){
+      
+      setSchools(registerContext?.schoolsDB.map(el => el.name));
+    }
+  }, [registerContext?.schoolsDB]);
+
+  useEffect(()=>{
+    if(registerContext?.profilesDB){
+      
+      setProfiles(registerContext?.profilesDB.map(el => el.name));
+    }
+  }, [registerContext?.profilesDB]);
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
       <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight="bold">
@@ -217,18 +230,17 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                 <StyledPaper theme={theme}>
                   <Autocomplete
                     freeSolo
-                    options={registerContext.cities}
+                    options={registerContext.citiesDB.map(element => element)}
                     getOptionLabel={(option) => option.name}
                     inputValue={registerContext.registerData.school_city}
                     onInputChange={handleInputChangeCity}
                     onBlur={async () => {
+                      await setSchools([])
+                      await registerContext.setSchoolsDB([]);
                       if (registerContext?.registerData.school_city) {
-                        await registerContext?.getSchoolsWithProfiles(registerContext.registerData.school_city);
-                        setSchools(
-                          registerContext.schoolsDB
-                            .filter(element => element.lev === statusSchool(registerContext.registerData.school_level))
-                            .map(element => element.school_name)
-                        );
+                        registerContext?.getSchoolsDB(registerContext.registerData.school_city, statusSchool(registerContext.registerData.school_level));
+                    
+                       
                       }
                     }}
                     renderOption={(props, option) => (
@@ -246,18 +258,15 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                       options={schools}
                       inputValue={registerContext.registerData.school_name}
                       onInputChange={handleInputChangeName}
-                      onBlur={() => {
-                        
-                        const element = registerContext.schoolsDB
-                          .find(element => element.school_name === registerContext.registerData.school_name);
-                          console.log(registerContext.schoolsDB);
-                          console.log(element);
-                          if(element){
-                            const prof = element.profiles.map(profile => profile.profile_name);
-                            console.log(prof);
-                            setProfiles(prof);
-                          }
-                            
+                      onBlur={
+                        async () => {
+                        setProfiles([])
+                        registerContext.setProfilesDB([])
+                        if (registerContext?.registerData.school_name) {
+                          await registerContext?.getProfilesDB(registerContext.registerData.school_name);
+                         
+                         
+                        }
                       }}
                         
                                      

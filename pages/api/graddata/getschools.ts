@@ -11,17 +11,13 @@ const dbConfig = {
   database: process.env.DB_NAME,
 };
 
-type SchoolProfile = {
-  profile_id: number | null;
-  profile_name: string | null;
+type School = {
+  id: number;
+  name: string;
+  lev: "lev" | "voc" | "tech" | "university";
 };
 
-type School = {
-  school_id: number;
-  school_name: string;
-  lev: string;
-  profiles: SchoolProfile[];
-};
+interface SchoolRow extends RowDataPacket, School {}
 
 const handler = async (
   req: NextApiRequest,
@@ -30,52 +26,28 @@ const handler = async (
   try {
     const connection = await mysql.createConnection(dbConfig);
 
-    const { city } = req.query;
-
-    if (!city || typeof city !== 'string') {
-      return res.status(400).json({ message: 'City parameter is required and must be a string' });
+    const { city_id, lev } = req.query;
+    console.log(city_id);
+    console.log(lev);
+    if (!city_id || typeof city_id !== 'string') {
+      return res.status(400).json({ message: 'City ID parameter is required and must be a string' });
     }
 
-    const [rows] = await connection.execute<RowDataPacket[]>(
-    `  SELECT 
-      p.name as profile_name,
-      p.id as profile_id,
-      s.id as school_id,
-      s.name as schoolName,
-      s.lev as schoolLev
-      FROM 
-          school_profile_assignment pga
-      JOIN
-          profiles p ON p.id = pga.profile_id
-      JOIN
-          schools s ON s.id = pga.school_id
-      JOIN
-          cities c ON c.id = s.city
-      WHERE
-      c.id = ?`,
-      [city]
+    if (!lev || (lev !== 'voc' && lev !== 'high' && lev !== 'tech' && lev !== 'university')) {
+      return res.status(400).json({ message: 'Wrong lev parameter' });
+    }
+
+    const [rows] = await connection.execute<SchoolRow[]>(
+      `SELECT id, name, lev
+      FROM schools
+      WHERE city = ?
+      AND lev = ?`,
+      [city_id, lev]
     );
 
     await connection.end();
 
-    const schools = rows.reduce<School[]>((acc, row) => {
-      const school = acc.find(s => s.school_id === row.school_id);
-      if (school) {
-        if (row.profile_id && row.profile_name) {
-          school.profiles.push({ profile_id: row.profile_id, profile_name: row.profile_name });
-        }
-      } else {
-        acc.push({
-          school_id: row.school_id,
-          school_name: row.schoolName,
-          lev: row.schoolLev,
-          profiles: row.profile_id && row.profile_name ? [{ profile_id: row.profile_id, profile_name: row.profile_name }] : []
-        });
-      }
-      return acc;
-    }, []);
-    console.log(schools); 
-    res.status(200).json(schools);
+    res.status(200).json(rows);
 
   } catch (error) {
     res.status(500).json({ message: 'An error occurred', error: (error as Error).message });
