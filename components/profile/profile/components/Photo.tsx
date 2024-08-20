@@ -3,7 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 
 
 
-const Photo = ({ brightness, b_radius, size, alt, path }: {brightness:number, b_radius:number,size:string, alt:string, path:string}) => {
+const Photo = ({ brightness, b_radius, size, alt, path }: {brightness:number, b_radius:number,size:number, alt:string, path:string}) => {
 
   return (
     <Box p={2} display="flex" flexDirection="column" alignItems="center">
@@ -12,7 +12,7 @@ const Photo = ({ brightness, b_radius, size, alt, path }: {brightness:number, b_
             src={path} 
             alt={alt} 
             style={{ 
-              width: size, 
+              width: `${size}px`, 
               borderRadius: b_radius, 
               filter: `brightness(${brightness}%)` 
             }} 

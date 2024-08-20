@@ -4,7 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const BackgroundPhoto: React.FC = () => {
-  const defaultCover = 'https://via.placeholder.com/600x200';
+  const defaultCover = 'https://via.placeholder.com/600x400';
   const [coverPicture, setCoverPicture] = useState<string>(defaultCover);
 
   const handleCoverPictureChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ const BackgroundPhoto: React.FC = () => {
   return (
     <Box
       sx={{
-        height: 200,
+        height: 400,
         backgroundImage: `url(${coverPicture})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',

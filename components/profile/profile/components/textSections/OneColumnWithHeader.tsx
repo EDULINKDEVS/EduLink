@@ -3,10 +3,12 @@ import React from 'react';
 
 interface OneColumnWithHeaderProps {
   header: string;
+  header_font_size: number;
   text: string;
+  text_font_size: number;
 }
 
-const OneColumnWithHeader: React.FC<OneColumnWithHeaderProps> = ({ header, text }) => {
+const OneColumnWithHeader: React.FC<OneColumnWithHeaderProps> = ({ header, header_font_size, text, text_font_size }) => {
   return (
     <Box 
       sx={{ 
@@ -17,10 +19,10 @@ const OneColumnWithHeader: React.FC<OneColumnWithHeaderProps> = ({ header, text 
         boxShadow: 2 
       }}
     >
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{fontSize: header_font_size}}>
         {header}
       </Typography>
-      <Typography component="pre" sx={{ whiteSpace: 'pre-wrap' }}>
+      <Typography component="pre" sx={{ whiteSpace: 'pre-wrap', fontSize: text_font_size }}>
         {text}
       </Typography>
     </Box>

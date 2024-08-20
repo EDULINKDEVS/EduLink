@@ -9,10 +9,13 @@ import theme from "@/theme/theme";
 import "@/styles/globals.css";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ProfileProvider } from "@/context/profile/ProfileContext";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
     <SchoolsDataProvider>
+      <ProfileProvider>
+
       <AuthContextProvider>
         <RegisterContextProvider>
           <DndProvider backend={HTML5Backend}>
@@ -25,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           
         </RegisterContextProvider>
       </AuthContextProvider>
+      </ProfileProvider>
     </SchoolsDataProvider>
     </ThemeProvider>
   );

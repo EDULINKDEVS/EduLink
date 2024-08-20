@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-const OneColumn: React.FC<{ text: string }> = ({ text }) => {
+const OneColumn: React.FC<{ text: string, size: number }> = ({ text, size }) => {
   return (
     <Box 
       sx={{ 
@@ -13,7 +13,7 @@ const OneColumn: React.FC<{ text: string }> = ({ text }) => {
         maxWidth: '80%'
       }}
     >
-      <Typography component="pre" sx={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+      <Typography component="pre" sx={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', fontSize: size }}>
         {text}
       </Typography>
     </Box>

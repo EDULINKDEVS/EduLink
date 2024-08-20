@@ -3,6 +3,18 @@ import { v4 as uuidv4 } from "uuid";
 import { degreeEnum, registerSchoolsActions, School, Action, degreeLabelEnum } from "./types";
 import { schoolReducer } from "./reducer";
 
+type SchoolProfile = {
+  profile_id: number | null;
+  profile_name: string | null;
+};
+
+type SchoolDB = {
+  school_id: number;
+  school_name: string;
+  lev: string;
+  profiles: SchoolProfile[];
+};
+
 type RegisterDataType = {
   email: string;
   confirm_email: string;
@@ -20,7 +32,52 @@ type RegisterDataType = {
   dateOfBirth: Date | null;
 };
 
+const setCookie = (name: string, value: string, days: number) => {
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = `${name}=${value};${expires};path=/`;
+};
 
+
+export type response_cities={
+  id:string;
+  name:string;
+}
+
+const _getSchoolsWithProfiles = async (city: string): Promise<SchoolDB[]> => {
+  try {
+    const response = await fetch(`/api/graddata/getschools?city=${encodeURIComponent(city)}`);
+    
+    if (!response.ok) {
+      throw new Error(`Network response was not ok (status: ${response.status}) for city: ${city}`);
+    }
+
+    const data = await response.json();
+    return data;
+    
+  } catch (error) {
+    console.error('Failed to fetch schools and profiles for city:', city, 'Error:', error);
+  }
+  
+  return [];
+};
+
+const getCitiesDB = async () => {
+  try {
+    const response = await fetch('/api/graddata/getcities');
+    
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    
+    const data = await response.json();
+    return data.cities;
+  } catch (error) {
+    console.error('Failed to fetch cities:', error);
+    return []; 
+  }
+};
 
 export type RegisterContextType = {
   schools: School[];
@@ -28,13 +85,18 @@ export type RegisterContextType = {
   handleEditSchool: (name: string, city:string, faculty:string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
+  cities: {name:string, id:string}[];
+  getCities: ()=>void;
   setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
+  getSchoolsWithProfiles: (value: string) => void;
 };
 
 export const RegisterContext = createContext<RegisterContextType | undefined>(undefined);
 
 const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
+  const [cities, setCities] = useState<{name:string, id:string}[]>([]);
   const [schools, dispatch] = useReducer<React.Reducer<School[], Action>>(schoolReducer, []);
+  const [schoolsDB, setSchoolsDB] = useState<SchoolDB[]>([]);
   const [registerData, setRegisterData] = useState<RegisterDataType>({
     email: '',
     confirm_email: '',
@@ -52,6 +114,24 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dateOfBirth: null
   });
 
+  const getSchoolsWithProfiles = (city: string) => {
+    const cityID = (cities.find(_city => _city.name === city)?.id)?.toString();
+    if(cityID){
+      _getSchoolsWithProfiles(cityID).then((result) => {
+        setSchoolsDB(result);
+      })
+    }
+  }
+
+  const getCities = () => {
+    if(cities.length === 0){
+      getCitiesDB().then((res)=>{
+        console.log(res);
+        setCities(res)
+      });
+    }
+    
+  }
   const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => {
     if (name && degree) {
       const newSchool: School = {
@@ -93,7 +173,10 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     handleEditSchool,
     handleRemoveSchool,
     registerData,
-    setRegisterData
+    cities,
+    getCities,
+    setRegisterData,
+    getSchoolsWithProfiles
   };
 
   return <RegisterContext.Provider value={value}>{children}</RegisterContext.Provider>;

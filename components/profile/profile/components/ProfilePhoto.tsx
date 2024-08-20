@@ -42,6 +42,7 @@ const ProfilePhoto = () => {
         >
             <Avatar
                 src={profilePicture}
+                variant='square'
                 sx={{
                     width: 200,
                     height: 200,
@@ -53,7 +54,7 @@ const ProfilePhoto = () => {
                     className="profile-overlay"
                     sx={{
                         position: 'absolute',
-                        borderRadius: '50%',
+                        // borderRadius: '50%',
                         top: 0,
                         left: 0,
                         width: '100%',

@@ -26,7 +26,6 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
       }}
     >
       <AppAppBar />
-
       <Box>
         <Grid container justifyContent={"center"} alignItems={"center"}>
           <Grid
@@ -41,7 +40,6 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         </Grid>
       </Box>
       <Box sx={{marginTop: '140px'}}>
-
           <Slider />
       </Box>
 
@@ -69,7 +67,6 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
 
             />
           </Grid>
-
           <Grid item xs={12} sm={6} padding={2} display={'flex'} justifyContent={'center'}>
             <CardFlip
               frontIcon={<HandshakeIcon sx={{
@@ -85,10 +82,8 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
               }} />}
               frontText={"JESTEM PRACODAWCĄ SZUKAJĄCYM PRACOWNIKA"}
               path='/register/company'
-
             />
           </Grid>
-
         </Grid>
       </Box>
 

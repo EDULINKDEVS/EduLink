@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Box,
   Typography,
@@ -22,6 +22,8 @@ import { degreeLabelEnum } from '@/context/register/types';
 interface ThemedProps {
   theme: Theme;
 }
+
+
 
 const StyledPaper = styled(Paper)<ThemedProps>(({ theme }) => ({
   width: '400px',
@@ -151,19 +153,11 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
     }
     return false;
   };
+  useEffect(() => {
+    registerContext?.getCities();
 
-  const cities = [
-    'Warszawa',
-    'Kraków',
-    'Łódź',
-    'Wrocław',
-    'Poznań',
-    'Gdańsk',
-    'Szczecin',
-    'Bydgoszcz',
-    'Lublin',
-    'Katowice',
-  ];
+  }, [registerContext])
+
 
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
@@ -213,14 +207,16 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                 <StyledPaper theme={theme}>
                   <Autocomplete
                     freeSolo
-                    options={cities}
+                    options={registerContext.cities}
+                    getOptionLabel={(option) => option.name}
                     inputValue={registerContext.registerData.school_city}
                     onInputChange={handleInputChangeCity}
-                    onBlur={() => {
-                      if (registerContext.registerData.school_level !== '') {
-                        setSchools(dataContext.schoolsClass.getSchoolsByDegreeAndCity(registerContext.registerData.school_level, registerContext.registerData.school_city));
-                      }
-                    }}
+                    onBlur={() => { registerContext.getSchoolsWithProfiles(registerContext.registerData.school_city) }}
+                    renderOption={(props, option) => (
+                      <li {...props} key={option.id}>
+                        {option.name}
+                      </li>
+                    )}
                     renderInput={(params) => <StyledTextField {...params} label="Miasto" variant="outlined" theme={theme} />}
                   />
                 </StyledPaper>
