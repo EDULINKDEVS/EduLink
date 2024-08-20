@@ -91,7 +91,6 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
   const dataContext = useSchoolsData();
   const [schools, setSchools] = useState<string[]>([]);
   const [profiles, setProfiles] = useState<string[]>([]);
-
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const status = event.currentTarget.value as 'school' | 'study';
     registerContext?.setRegisterData({
@@ -99,6 +98,19 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
       status,
     });
   };
+
+  const statusSchool = (value: string) => {
+    switch(value){
+      case 'vocational':
+        return 'voc';
+      case 'technical':
+        return 'tech';
+      case 'high_school':
+        return 'high';
+      default:
+        return 'error';
+    }
+  }
 
   const handleSchoolTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const schoolType = event.currentTarget.value as 'vocational' | 'technical' | 'high_school';
@@ -156,9 +168,7 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
   useEffect(() => {
     registerContext?.getCities();
 
-  }, [registerContext])
-
-
+  }, [])
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
       <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight="bold">
@@ -200,7 +210,7 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                   label="high school"
                   theme={theme}
                 />
-              </StyledRadioGroup>
+              </StyledRadioGroup> 
             </StyledFormControl>
             {registerContext.registerData.school_level !== '' && (
               <>
@@ -211,7 +221,16 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                     getOptionLabel={(option) => option.name}
                     inputValue={registerContext.registerData.school_city}
                     onInputChange={handleInputChangeCity}
-                    onBlur={() => { registerContext.getSchoolsWithProfiles(registerContext.registerData.school_city) }}
+                    onBlur={async () => {
+                      if (registerContext?.registerData.school_city) {
+                        await registerContext?.getSchoolsWithProfiles(registerContext.registerData.school_city);
+                        setSchools(
+                          registerContext.schoolsDB
+                            .filter(element => element.lev === statusSchool(registerContext.registerData.school_level))
+                            .map(element => element.school_name)
+                        );
+                      }
+                    }}
                     renderOption={(props, option) => (
                       <li {...props} key={option.id}>
                         {option.name}
@@ -228,8 +247,20 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                       inputValue={registerContext.registerData.school_name}
                       onInputChange={handleInputChangeName}
                       onBlur={() => {
-                        setProfiles(dataContext.schoolsClass.getProfilesBySchools(registerContext.registerData.school_name));
+                        
+                        const element = registerContext.schoolsDB
+                          .find(element => element.school_name === registerContext.registerData.school_name);
+                          console.log(registerContext.schoolsDB);
+                          console.log(element);
+                          if(element){
+                            const prof = element.profiles.map(profile => profile.profile_name);
+                            console.log(prof);
+                            setProfiles(prof);
+                          }
+                            
                       }}
+                        
+                                     
                       renderInput={(params) => <StyledTextField {...params} label="Nazwa szkoły" variant="outlined" theme={theme} />}
                     />
                   </StyledPaper>

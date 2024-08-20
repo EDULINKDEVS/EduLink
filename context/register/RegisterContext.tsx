@@ -2,10 +2,11 @@ import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { degreeEnum, registerSchoolsActions, School, Action, degreeLabelEnum } from "./types";
 import { schoolReducer } from "./reducer";
-
+import Cookies from 'js-cookie';
+import { getWithExpiry, setWithExpiry } from "../localStorageSetter";
 type SchoolProfile = {
-  profile_id: number | null;
-  profile_name: string | null;
+  profile_id: number;
+  profile_name: string;
 };
 
 type SchoolDB = {
@@ -40,53 +41,58 @@ const setCookie = (name: string, value: string, days: number) => {
 };
 
 
-export type response_cities={
-  id:string;
-  name:string;
+
+
+export type response_cities = {
+  id: string;
+  name: string;
 }
 
 const _getSchoolsWithProfiles = async (city: string): Promise<SchoolDB[]> => {
   try {
     const response = await fetch(`/api/graddata/getschools?city=${encodeURIComponent(city)}`);
-    
+
     if (!response.ok) {
       throw new Error(`Network response was not ok (status: ${response.status}) for city: ${city}`);
     }
 
     const data = await response.json();
     return data;
-    
+
   } catch (error) {
     console.error('Failed to fetch schools and profiles for city:', city, 'Error:', error);
   }
-  
+
   return [];
 };
 
 const getCitiesDB = async () => {
+  console.log('elo');
   try {
+
     const response = await fetch('/api/graddata/getcities');
-    
+
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    
+
     const data = await response.json();
     return data.cities;
   } catch (error) {
     console.error('Failed to fetch cities:', error);
-    return []; 
+    return [];
   }
 };
 
 export type RegisterContextType = {
   schools: School[];
-  handleAddSchool: (name: string,city:string, faculty:string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => void;
-  handleEditSchool: (name: string, city:string, faculty:string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => void;
+  handleAddSchool: (name: string, city: string, faculty: string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => void;
+  handleEditSchool: (name: string, city: string, faculty: string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => void;
   handleRemoveSchool: (id: string) => void;
   registerData: RegisterDataType;
-  cities: {name:string, id:string}[];
-  getCities: ()=>void;
+  cities: { name: string, id: string }[];
+  schoolsDB: SchoolDB[],
+  getCities: () => void;
   setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
   getSchoolsWithProfiles: (value: string) => void;
 };
@@ -94,7 +100,7 @@ export type RegisterContextType = {
 export const RegisterContext = createContext<RegisterContextType | undefined>(undefined);
 
 const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
-  const [cities, setCities] = useState<{name:string, id:string}[]>([]);
+  const [cities, setCities] = useState<{ name: string, id: string }[]>([]);
   const [schools, dispatch] = useReducer<React.Reducer<School[], Action>>(schoolReducer, []);
   const [schoolsDB, setSchoolsDB] = useState<SchoolDB[]>([]);
   const [registerData, setRegisterData] = useState<RegisterDataType>({
@@ -114,25 +120,44 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dateOfBirth: null
   });
 
-  const getSchoolsWithProfiles = (city: string) => {
-    const cityID = (cities.find(_city => _city.name === city)?.id)?.toString();
-    if(cityID){
-      _getSchoolsWithProfiles(cityID).then((result) => {
-        setSchoolsDB(result);
-      })
+  const getCities = async () => {
+    const data = await getWithExpiry<{ name: string; id: string }[]>('cities');
+
+    if (!data) {
+
+      const citiesFromApi = await getCitiesDB();
+      if (citiesFromApi) {
+        setCities(citiesFromApi);
+        setWithExpiry('cities', citiesFromApi, 30);
+      }
+    } else {
+      setCities(data);
+
     }
+  };
+
+  const getSchoolsWithProfiles = async (city: string) => {
+    const data = await getWithExpiry<SchoolDB[]>(`${city}_schools`);
+    console.log(data);
+    if (!data) {
+      const cityID = cities.find((_city) => _city.name === city)?.id;
+      if (cityID) {
+        const schoolsFromApi = await _getSchoolsWithProfiles(cityID);
+        if (schoolsFromApi) {
+          setSchoolsDB(schoolsFromApi);
+          setWithExpiry(`${city}_schools`, schoolsFromApi, 30);
+        }
+      }
+    } else {
+      setSchoolsDB(data);
+    }
+  };
+
+  const get_schools_or_universities = (city_name: string) => {
+
   }
 
-  const getCities = () => {
-    if(cities.length === 0){
-      getCitiesDB().then((res)=>{
-        console.log(res);
-        setCities(res)
-      });
-    }
-    
-  }
-  const handleAddSchool = (name: string, city:string, faculty:string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => {
+  const handleAddSchool = (name: string, city: string, faculty: string, degree: degreeEnum, degreeLabel: degreeLabelEnum) => {
     if (name && degree) {
       const newSchool: School = {
         id: uuidv4(),
@@ -146,7 +171,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleEditSchool = (name: string,city:string, faculty:string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => {
+  const handleEditSchool = (name: string, city: string, faculty: string, degree: degreeEnum, id: string, degreeLabel: degreeLabelEnum) => {
     const updatedSchool: School = {
       id,
       name,
@@ -165,7 +190,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: registerSchoolsActions.REMOVE_SCHOOL, payload: id });
   };
   const register = () => {
-    
+
   }
   const value: RegisterContextType = {
     schools,
@@ -175,6 +200,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     registerData,
     cities,
     getCities,
+    schoolsDB,
     setRegisterData,
     getSchoolsWithProfiles
   };
