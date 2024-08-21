@@ -67,11 +67,14 @@ export enum registerSchoolsActions {
       setRegisterData: React.Dispatch<React.SetStateAction<RegisterDataType>>;
       getCitiesDB: () => void;
       getSchoolsDB: (value: string, lev:string) => void;
+      getSkillsDB: (value: "hard" | "traits") => void;
       getProfilesDB: (value:string) => void;
       setCitiesDB: Dispatch<SetStateAction<{ name: string; id: string; }[]>>;
       setSchoolsDB: Dispatch<SetStateAction<SchoolDB[]>>;
       setProfilesDB: Dispatch<SetStateAction<{ name: string; id: string; }[]>>;
       citiesDB: { name: string, id: string }[];
+      hardSkillsDB: {name:string, id:string}[];
+      traitsDB: {name:string, id:string}[];
       schoolsDB: SchoolDB[],
       profilesDB: {name:string, id:string}[]
     };

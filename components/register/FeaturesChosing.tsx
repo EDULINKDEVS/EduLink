@@ -54,21 +54,23 @@ const StyledButton = styled(Button)({
 });
 
 const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, type: 'traits' | 'hard' }) => {
-  const dataContext = useSchoolsData();
   const registerContext = useContext(RegisterContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
   const [amountOfTraits, setAmountOfTraits] = useState(12);
   const [allTraits, setAllTraits] = useState<string[]>([]);
-  useEffect(()=>{ 
-    if(registerContext?.registerData.status === 'school'){
-      registerContext?.registerData.school_name ? setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext?.registerData.school_profile, type) ): 'nic';
-    }else{
-      registerContext?.schools[0] && setAllTraits(dataContext.schoolsClass.getSortedAttributes(registerContext.schools[0].faculty, type));
-    }
+  useEffect(()=>{
+    const getFromDB = async () =>{
+      await registerContext?.getSkillsDB(type);
+      if(registerContext){
+        console.log('asda');
+        const sk:string[] = type === 'traits' ? registerContext?.traitsDB.map(el => el.name) : registerContext?.hardSkillsDB.map(el=> el.name);
+        setAllTraits(sk);
+      }
 
-    console.log(allTraits)
-  },[registerContext, dataContext, allTraits, type]);
+    } 
+    getFromDB();
+  },[registerContext?.traitsDB, registerContext?.hardSkillsDB]);
 
   useEffect(() => {
     const handleResize = () => {

@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useReducer, useState } from "react";
 import { School, Action, SchoolDB, RegisterDataType, RegisterContextType } from "./types";
 import { schoolReducer } from "./reducer";
 import { handleAddSchool, handleEditSchool, handleRemoveSchool } from "./schoolTableFunctions";
-import { _getCitiesDB, _getProfilesDB, _getSchoolsDB } from "./dbfunctions";
+import { _getCitiesDB, _getProfilesDB, _getSchoolsDB, _getSkillsDB } from "./dbfunctions";
 
 export const RegisterContext = createContext<RegisterContextType | undefined>(undefined);
 
@@ -10,6 +10,8 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   const [schools, dispatch] = useReducer<React.Reducer<School[], Action>>(schoolReducer, []);
   const [citiesDB, setCitiesDB] = useState<{ name: string, id: string }[]>([]);
   const [schoolsDB, setSchoolsDB] = useState<SchoolDB[]>([]);
+  const [traitsDB, setTraitsDB] = useState<{name:string, id:string}[]>([]);
+  const [hardSkillsDB, setHardSkillsDB] = useState<{name:string, id:string}[]>([]);
   const [profilesDB, setProfilesDB] = useState<{ name: string, id: string }[]>([]);
   const [registerData, setRegisterData] = useState<RegisterDataType>({
     email: '',
@@ -70,6 +72,26 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const getSkillsDB = async (value: "hard" | "traits") => {
+    const data = await sessionStorage.getItem(value);
+    if((value === 'hard' && hardSkillsDB.length === 0) || (value === 'traits' && traitsDB.length === 0)){
+
+      if(data) {
+        const parsedSkills = JSON.parse(data);
+        value === 'hard' ? setHardSkillsDB(parsedSkills) : setTraitsDB(parsedSkills); 
+      }
+      else{
+        const skills = await _getSkillsDB(value);
+        value === 'hard' ? setHardSkillsDB(skills) : setTraitsDB(skills); 
+        sessionStorage.setItem(value, JSON.stringify(skills));
+      }
+    }
+  }
+
+  const registerUser = async () => {
+    
+  }
+
   const value: RegisterContextType = {
     dispatch,
     schools,
@@ -81,10 +103,13 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
     getCitiesDB,
     getSchoolsDB,
     getProfilesDB,
+    getSkillsDB,
     setCitiesDB,
     setSchoolsDB,
     setProfilesDB,
     citiesDB,
+    hardSkillsDB,
+    traitsDB,
     schoolsDB,
     profilesDB
   };

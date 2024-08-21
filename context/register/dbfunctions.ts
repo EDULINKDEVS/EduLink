@@ -1,4 +1,4 @@
-import { SchoolDB } from "./types";
+import { degreeEnum, SchoolDB } from "./types";
 
 export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB[]> => {
     try {
@@ -56,3 +56,39 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
       return [];
   }
 
+
+  export const _getSkillsDB = async (value: 'hard' | 'traits') => {
+    try {
+        const response = await fetch(`/api/graddata/${value === 'hard' ? 'gethardskills' : 'gettraits'}`);
+      
+      if(!response.ok){
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    }
+    catch(error){
+      console.error('Failed to fetch skills');
+    }
+  }
+
+  type pupilDataPackage = {
+    schoolName:string;
+    schoolCity:string;
+    schoolProfile:string;
+    schoolLevel: "voc" | "tech" | "high";
+    degreeLabel: "DURING" | "GRADUATE"
+  }
+
+  
+
+  type studentDataPackage = {
+      schoolName:string;
+      schoolCity:string;
+      schoolProfile:string;
+      schoolLabel: 'DURING' | 'GRADUATE';
+      schoolDegree: degreeEnum;
+  }
+  export const _registerUser = async (email:string, phone:string, f_name:string, l_name:string, pass:string, status: "school" | "study", dateOfBirth: Date, pupilPack?:pupilDataPackage, studentPack?:studentDataPackage[] ) =>{
+    
+  }
