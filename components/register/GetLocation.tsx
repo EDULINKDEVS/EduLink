@@ -1,8 +1,10 @@
 import { Box, IconButton, TextField } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { RegisterContext } from "@/context/register/RegisterContext";
 
 const GetLocation = () => {
+  const registerContext = useContext(RegisterContext);
   const [city, setCity] = useState('');
   const mapRef = useRef<HTMLDivElement>(null);
   const [loadInfo, setLoadInfo] = useState(false);
@@ -117,8 +119,8 @@ const GetLocation = () => {
       <TextField
         label="Wpisz miasto"
         variant="outlined"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        value={registerContext?.registerData.city}
+        onChange={(e) => registerContext?.setRegisterData({...registerContext.registerData, city: e.currentTarget.value}) }
       />
       {loadInfo && (
         <div

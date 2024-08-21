@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box, Grid, Paper, useTheme } from '@mui/material';
 import styled from 'styled-components';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import { RegisterContext } from '@/context/register/RegisterContext';
 
 
 
 const CompanyRegister: React.FC = () => {
+  const registerContext = useContext(RegisterContext);
   const [formData, setFormData] = useState({
     companyName: '',
     nip: '',

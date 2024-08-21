@@ -50,6 +50,7 @@ export enum registerSchoolsActions {
       school_profile: string;
       degreeLabel: degreeLabelEnum | null;
       dateOfBirth: Date | null;
+      city:string;
     };
     
     export type response_cities = {
@@ -75,7 +76,12 @@ export enum registerSchoolsActions {
       citiesDB: { name: string, id: string }[];
       hardSkillsDB: {name:string, id:string}[];
       traitsDB: {name:string, id:string}[];
-      schoolsDB: SchoolDB[],
-      profilesDB: {name:string, id:string}[]
+      schoolsDB: SchoolDB[];
+      profilesDB: {name:string, id:string}[];
+      traits: string[];
+      setTraits: React.Dispatch<React.SetStateAction<string[]>>;
+      hard_skills: string[];
+      setHardSkills: React.Dispatch<React.SetStateAction<string[]>>;
+      registerUser: () => Promise<void>;
     };
     

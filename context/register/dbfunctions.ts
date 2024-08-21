@@ -72,7 +72,7 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
     }
   }
 
-  type pupilDataPackage = {
+  export type pupilDataPackage = {
     schoolName:string;
     schoolCity:string;
     schoolProfile:string;
@@ -82,13 +82,64 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
 
   
 
-  type studentDataPackage = {
+  export type studentDataPackage = {
       schoolName:string;
       schoolCity:string;
       schoolProfile:string;
       schoolLabel: 'DURING' | 'GRADUATE';
       schoolDegree: degreeEnum;
   }
-  export const _registerUser = async (email:string, phone:string, f_name:string, l_name:string, pass:string, status: "school" | "study", dateOfBirth: Date, pupilPack?:pupilDataPackage, studentPack?:studentDataPackage[] ) =>{
-    
-  }
+
+
+
+  export const _registerUser = async (
+    email: string,
+    phone: string,
+    f_name: string,
+    l_name: string,
+    pass: string,
+    status: "school" | "study",
+    dateOfBirth: Date,
+    traits: string[],
+    hard_skills: string[],
+    city:string,
+    pupilPack?: pupilDataPackage,
+    studentPack?: studentDataPackage[],
+
+  ): Promise<{ message: string }> => {
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          phone,
+          f_name,
+          l_name,
+          pass,
+          status,
+          dateOfBirth,
+          pupilPack,
+          studentPack,
+          traits,
+          hard_skills,
+          city
+        })
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
+      }
+  
+      const data = await response.json();
+      return data;
+  
+    } catch (error) {
+      console.error('Error during user registration:', error);
+      throw new Error('Failed to register user');
+    }
+  };
+  

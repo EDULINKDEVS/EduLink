@@ -60,17 +60,32 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
   const [amountOfTraits, setAmountOfTraits] = useState(12);
   const [allTraits, setAllTraits] = useState<string[]>([]);
   useEffect(()=>{
-    const getFromDB = async () =>{
-      await registerContext?.getSkillsDB(type);
-      if(registerContext){
-        console.log('asda');
-        const sk:string[] = type === 'traits' ? registerContext?.traitsDB.map(el => el.name) : registerContext?.hardSkillsDB.map(el=> el.name);
-        setAllTraits(sk);
+    registerContext?.getSkillsDB(type);
+  }, [])
+  useEffect(()=>{
+    const getTr = async ()=>{
+      if(type === "hard"){
+        
+        registerContext && setAllTraits(registerContext?.hardSkillsDB.map(el => el.name))
       }
+      else{
+        registerContext && setAllTraits(registerContext?.traitsDB.map(el => el.name))
 
-    } 
-    getFromDB();
+      }
+    }
+    getTr();
   },[registerContext?.traitsDB, registerContext?.hardSkillsDB]);
+
+  useEffect(()=>{
+    if(registerContext){
+      if(type === 'hard'){
+        setSelectedTraits(registerContext?.hard_skills);
+      }
+      else{
+        setSelectedTraits(registerContext?.traits)
+      }
+    }
+  },[]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -241,6 +256,12 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
           }}>Dalej</StyledButton>
           :
           <StyledButton onClick={()=>{
+            if(type === 'hard'){
+              registerContext?.setHardSkills(selectedTraits);
+            }
+            else{
+              registerContext?.setTraits(selectedTraits);
+            }
             setStep(4)
           }}>Dalej</StyledButton>
 

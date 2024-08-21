@@ -1,7 +1,7 @@
-type pupilDataPackage = {
-    schoolName:string;
+export type pupilDataPackage = {
+    schoolID:string;
     schoolCity:string;
-    schoolProfile:string;
+    schoolProfileID:string;
     schoolLevel: "voc" | "tech" | "high";
     degreeLabel: "DURING" | "GRADUATE"
   }
@@ -27,7 +27,7 @@ function isValidPhoneNumber(phoneNumber: string) {
     MASTER = "MASTER",
     DOCTOR = "DOCTOR"
   }
-  type studentDataPackage = {
+  export type studentDataPackage = {
       schoolName:string;
       schoolCity:string;
       schoolProfile:string;
