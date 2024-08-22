@@ -102,13 +102,12 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
     dateOfBirth: Date,
     traits: string[],
     hard_skills: string[],
-    city:string,
+    city: string,
     pupilPack?: pupilDataPackage,
     studentPack?: studentDataPackage[],
-
   ): Promise<{ message: string }> => {
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/api/auth/registerEmployee', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -129,12 +128,14 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
         })
       });
   
+      const responseText = await response.text();
+      console.log("Response Text:", responseText);
+  
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed');
+        throw new Error(responseText);
       }
   
-      const data = await response.json();
+      const data = JSON.parse(responseText);
       return data;
   
     } catch (error) {

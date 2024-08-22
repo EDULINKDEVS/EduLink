@@ -252,16 +252,12 @@ const TraitSelector = ({ setStep, type }: { setStep: (value: number) => void, ty
         {
           type === 'traits' ?
           <StyledButton onClick={()=>{
+            registerContext?.setTraits(selectedTraits);
             setStep(3)
           }}>Dalej</StyledButton>
           :
           <StyledButton onClick={()=>{
-            if(type === 'hard'){
               registerContext?.setHardSkills(selectedTraits);
-            }
-            else{
-              registerContext?.setTraits(selectedTraits);
-            }
             setStep(4)
           }}>Dalej</StyledButton>
 
