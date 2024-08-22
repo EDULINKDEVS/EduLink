@@ -45,7 +45,7 @@ const StyledTextField = styled(TextField)({
 });
 
 const StyledButton = styled(Button)({
-  backgroundColor: "primary",
+  backgroundColor: "black",
   color: "#fff",
   marginTop: 20,
   "&:hover": {

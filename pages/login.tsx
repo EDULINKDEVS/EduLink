@@ -11,7 +11,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
+import { useTheme } from '@mui/material/styles';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/router';
 
 function Copyright(props: any) {
   return (
@@ -26,180 +30,201 @@ function Copyright(props: any) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
   const theme = useTheme();
+  const { login } = useAuth();
+  const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email') as string;
+    const password = data.get('password') as string;
+    const rememberMe = data.get('remember') === 'on';
+
+    const result = await login(email, password, rememberMe);
+
+    setLoading(false);
+
+    if (result) {
+      setError(result);
+    } else {
+      router.push('/');
+      console.log('Zalogowano pomyślnie');
+    }
+  };
+
   return (
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        {/* Górna fioletowa sekcja */}
+    <Grid container component="main" sx={{ height: '100vh' }}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={12}
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          height: '12.5vh' // 12.5% wysokości ekranu
+        }}
+      />
+      <Grid container sx={{ height: '75vh' }}>
         <Grid
           item
-          xs={12}
+          xs={false}
+          sm={false}
+          md={4.5}
           sx={{
-            backgroundColor: theme.palette.primary.main,
-            height: '12.5vh' // 12.5% wysokości ekranu
+            backgroundColor: theme.palette.primary.main
           }}
         />
-        <Grid container sx={{ height: '75vh' }}>
-          {/* Lewa fioletowa sekcja */}
-          <Grid
-            item
-            xs={false}
-            sm={false}
-            md={4.5}
+        <Grid item xs={12} sm={12} md={3} component={Paper} elevation={6} square>
+          <Box
             sx={{
-              backgroundColor: theme.palette.primary.main
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              height: 'auto',
             }}
-          />
-          {/* Sekcja logowania */}
-          <Grid item xs={12} sm={12} md={3} component={Paper} elevation={6} square>
-            <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                height: 'auto',
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Logowanie
-              </Typography>
-              <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Adres Email"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: theme.palette.primary.main, // fioletowy kolor obramówki
-                      },
-                      '&:hover fieldset': {
-                        borderColor: theme.palette.primary.main,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: theme.palette.primary.main,
-                      },
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Logowanie
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Adres Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                disabled={loading}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: theme.palette.primary.main,
                     },
-                    '& .MuiInputLabel-root': {
-                      color: theme.palette.primary.main, // fioletowy kolor etykiety
-                      '&.Mui-focused': {
-                        color: theme.palette.primary.main,
-                      },
+                    '&:hover fieldset': {
+                      borderColor: theme.palette.primary.main,
                     },
-                  }}
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Hasło"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: theme.palette.primary.main, // fioletowy kolor obramówki
-                      },
-                      '&:hover fieldset': {
-                        borderColor: theme.palette.primary.main,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: theme.palette.primary.main,
-                      },
+                    '&.Mui-focused fieldset': {
+                      borderColor: theme.palette.primary.main,
                     },
-                    '& .MuiInputLabel-root': {
-                      color: theme.palette.primary.main, // fioletowy kolor etykiety
-                      '&.Mui-focused': {
-                        color: theme.palette.primary.main,
-                      },
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: theme.palette.primary.main,
+                    '&.Mui-focused': {
+                      color: theme.palette.primary.main,
                     },
-                  }}
-                />
-                <FormControlLabel 
-                  control={<Checkbox value="remember" color="secondary" />}
-                  label="Zapamiętaj mnie"
-                  sx={{
-                    '& .MuiFormControlLabel-label': {
-                      color: theme.palette.primary.main, // fioletowy kolor tekstu
+                  },
+                }}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Hasło"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                disabled={loading}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: theme.palette.primary.main,
                     },
-                  }}
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ 
-                    mt: 3, 
-                    mb: 2, 
-                    backgroundColor: '#9C27B0',
-                    '&:hover': {
-                      backgroundColor: theme.palette.primary.light,
-                      color: '#9C27B0',
+                    '&:hover fieldset': {
+                      borderColor: theme.palette.primary.main,
                     },
-                  }}
-                >
-                  Zaloguj się
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
-                      Zapomniałeś hasła?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link href="#" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
-                      {'Nie masz jeszcze konta? Zarejestruj się'}
-                    </Link>
-                  </Grid>
+                    '&.Mui-focused fieldset': {
+                      borderColor: theme.palette.primary.main,
+                    },
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: theme.palette.primary.main,
+                    '&.Mui-focused': {
+                      color: theme.palette.primary.main,
+                    },
+                  },
+                }}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="secondary" disabled={loading} />}
+                label="Zapamiętaj mnie"
+                sx={{
+                  '& .MuiFormControlLabel-label': {
+                    color: theme.palette.primary.main,
+                  },
+                }}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: '#9C27B0',
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.light,
+                    color: '#9C27B0',
+                  },
+                }}
+                disabled={loading}
+              >
+                {loading ? <CircularProgress size={24} sx={{ color: '#fff' }} /> : 'Zaloguj się'}
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
+                    Zapomniałeś hasła?
+                  </Link>
                 </Grid>
-                <Copyright sx={{ mt: 5 }} />
-              </Box>
+                <Grid item>
+                  <Link href="/register" variant="body2" sx={{ color: theme.palette.primary.main, textDecoration: 'none' }}>
+                    {'Nie masz jeszcze konta? Zarejestruj się'}
+                  </Link>
+                </Grid>
+              </Grid>
+              {error && <h5>
+
+                {error}
+              </h5>
+              }
+              <Copyright sx={{ mt: 5 }} />
             </Box>
-          </Grid>
-          {/* Prawa fioletowa sekcja */}
-          <Grid
-            item
-            xs={false}
-            sm={false}
-            md={4.5}
-            sx={{
-              backgroundColor: theme.palette.primary.main
-            }}
-          />
+          </Box>
         </Grid>
-        {/* Dolna fioletowa sekcja */}
         <Grid
           item
-          xs={12}
+          xs={false}
+          sm={false}
+          md={4.5}
           sx={{
-            backgroundColor: theme.palette.primary.main,
-            height: '12.5vh' // 12.5% wysokości ekranu
+            backgroundColor: theme.palette.primary.main
           }}
         />
       </Grid>
+
+      <Grid
+        item
+        xs={12}
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          height: '12.5vh'
+        }}
+      />
+    </Grid>
   );
 }

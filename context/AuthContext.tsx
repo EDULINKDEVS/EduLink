@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState, useEffect } from "react";
 import { School } from "./register/types";
 
 type UserGraduate = {
@@ -31,66 +31,76 @@ type UserEmployer = {
   phone:string;
 };
 
-enum loginBackInfo {
-  BAD_USER_OR_PASSWORD = '404',
-  SERVER_ERROR = '500',
-  UNCORRECT_DATA = '400',
-}
-
 enum userBackInfo {
   NIEPRAWIDLOWY_EMAIL_LUB_HASLO = "nieprawidłowy email lub hasło",
   BLAD_PODCZAS_PROBY_POLACZENIA_Z_SERWEREM = "błąd podczas próby połączenia z serwerem",
   NIEPRAWIDLOWE_DANE = "nieprawidłowe dane",
 }
 
-type user = {
-  label: 'employee' | 'employer'
-}
-
 type AuthContextType = {
   user: string | null;
-  setUser: (value: string | null) => void
-  // Login: (email: string, password: string) => Promise<userBackInfo>;
+  setUser: (value: string | null) => void;
+  login: (email: string, password: string, rememberMe: boolean) => Promise<userBackInfo | null>;
+  logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<string| null>(null);
+  const [user, setUser] = useState<string | null>(() => {
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
   };
 
-  // const Login = async (email: string, password: string): Promise<userBackInfo> => {
-  //   if (!validateEmail(email)) {
-  //     return userBackInfo.NIEPRAWIDLOWE_DANE;
-  //   }
+  const login = async (email: string, password: string, rememberMe: boolean): Promise<userBackInfo | null> => {
+    if (!validateEmail(email)) {
+      return userBackInfo.NIEPRAWIDLOWE_DANE;
+    }
+    console.log(email);
+    console.log(password);
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-  //   try {
-  //     const response;
+      if (response.status === 200) {
+        const data = await response.json();
+        setUser(data.userId);
+        if (rememberMe) {
+          localStorage.setItem('user', JSON.stringify(data.userId));
+        }
+        return null;
+      } else if (response.status === 404) {
+        return userBackInfo.NIEPRAWIDLOWY_EMAIL_LUB_HASLO;
+      } else if (response.status === 500) {
+        return userBackInfo.BLAD_PODCZAS_PROBY_POLACZENIA_Z_SERWEREM;
+      } else {
+        return userBackInfo.NIEPRAWIDLOWE_DANE;
+      }
+    } catch (error) {
+      return userBackInfo.BLAD_PODCZAS_PROBY_POLACZENIA_Z_SERWEREM;
+    }
+  };
 
-  //     if (response.status === 200) {
-  //       const userData = await response.json();
-  //       setUser(userData);
-  //       return null;
-  //     } else if (response.status === 404) {
-  //       return userBackInfo.NIEPRAWIDLOWY_EMAIL_LUB_HASLO;
-  //     } else if (response.status === 500) {
-  //       return userBackInfo.BLAD_PODCZAS_PROBY_POLACZENIA_Z_SERWEREM;
-  //     } else {
-  //       return userBackInfo.NIEPRAWIDLOWE_DANE;
-  //     }
-  //   } catch (error) {
-  //     return userBackInfo.BLAD_PODCZAS_PROBY_POLACZENIA_Z_SERWEREM;
-  //   }
-  // };
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   const value = {
     user,
-    setUser
-    // Login,
+    setUser,
+    login,
+    logout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -105,4 +115,3 @@ export const useAuth = () => {
   }
   return context;
 };
-

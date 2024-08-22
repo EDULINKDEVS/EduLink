@@ -51,7 +51,7 @@ function AppAppBar() {
               justifyContent: "space-between",
               flexShrink: 0,
               backdropFilter: "blur(24px)",
-              color:'white',
+              color:'black',
               maxHeight: 40,
               border: "1px solid",
               borderColor: "divider",
@@ -71,7 +71,7 @@ function AppAppBar() {
               <Box
                 component={SchoolIcon}
                 sx={{
-                  color: "white", 
+                  color: "black", 
                   fontSize: 58, 
                   
                 }}
@@ -125,14 +125,14 @@ function AppAppBar() {
             >
 
               <Button
-            color="primary" // Kolor tekstu zostaje zmieniony na biały (domyślnie)
-            variant="contained" // Ustawienie wariantu na "contained"
-            size="small" // Rozmiar przycisku
-            component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
+            color="primary"
+            variant="contained" 
+            size="small"
+            component="a"
             href="#register"
             sx={{
-              backgroundColor: "#9B30FF", // Ustawienie tła jako gradientu liniowego
-              color: "secondary", // Ustawienie koloru tekstu na biały
+              backgroundColor: "white",
+              color: "black",
               '&: hover' : {
                 opacity: "0.5",
                 backgroundColor: theme.palette.primary.light,
@@ -152,7 +152,7 @@ function AppAppBar() {
                 size="small" // Rozmiar przycisku
                 component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
                 sx={{
-                  backgroundColor: "#9B30FF", // Ustawienie tła jako gradientu liniowego
+                  backgroundColor: "black", // Ustawienie tła jako gradientu liniowego
                   color: "secondary", // Ustawienie koloru tekstu na biały
                   '&: hover' : {
                     opacity: "0.5",

@@ -1,9 +1,7 @@
-import { createConnection } from "net";
 import type { NextApiRequest, NextApiResponse } from "next";
 import dotenv from 'dotenv';
 import mysql, { ResultSetHeader } from 'mysql2/promise';
 import { hashPassword } from "@/lib/helpers";
-import { checkRegisterData, pupilDataPackage, studentDataPackage } from "@/lib/checkRegisterData";
 dotenv.config();
 
 const dbConfig = {

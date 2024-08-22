@@ -10,95 +10,52 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import WorkIcon from '@mui/icons-material/Work';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import IntroOptionElement from "./IntroOptionElement";
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 const Page = () => {
   return (
-    <Container id='page'>
-      <Box
-        sx={{
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
+    <Box sx={{
+      height: "100vh",
+      width: "100vw",
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '50px  ',
+    }}>
 
-        <Background path="/images/bg3.jpg" />
-        
+      <Box fontSize={"4em"}>
+
+        <AnimW value="FOLLWELL" tempo={.1}/>
       </Box>
-      <Box
-        sx={{
-          color: 'white',
-          zIndex: 102,
-          fontSize: {xs: '1.4em', lg:'4em'},
-          fontStyle: 'italic',
-          fontWeight: '200',
-          
-          position: 'absolute',
-          top: {lg:'400px', xs:'200px'},
-          padding: '30px',
-          left:0,
-          width:'100%',
-          display: 'flex',
-          justifyContent: 'center',
-          '&:before': {
-            opacity: '1',
-              animation: '2s showSH forwards',
-              position: 'absolute',
-              width: '100vw',
-              height: '100%',
-              content: '""',
-              backgroundColor: 'rgba(0, 0, 0, 0.4)',
-              top: 0,        
-        }
-        
-        
-          
-        }}
-      >
-        <AnimW value="Praca na którą zasługujesz" />
-
+      <Box width={'30%'}>
+        <hr />
       </Box>
-      <Box sx={{
-        position: 'absolute',
-        top: 640,
-        zIndex: 200,
-        color:'white',
-        width:'400px',
-        height: '200px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '50%',
-        animation: '1s 2s showJoin forwards',
-        left: '50%',
-        opacity: '0',
-        backgroundColor: 'rgba(0, 0, 0, .4)',
-        cursor: 'pointer',
-        transition: ' .5s',
-        boxShadow: '0 0 100px 20px black',
-        '&:hover':{
-          boxShadow: '0 0 100px 20px white',
+      <Grid container>
 
-        }
-      }}>
-    <Stack sx={{
+        <Grid item xs={12} sm={4} justifyContent={'center'} display={'flex'} alignItems={'center'}>
+          <IntroOptionElement value="Rejestracja" icon={<AppRegistrationIcon sx={{ fontSize: '2em' }} />} />
 
-    }}
-        direction="column" alignItems="center">
-      <IconButton color="primary">
-        <BusinessCenterIcon sx={{        
-      fontSize: '4em',
-      transform:'scale(1.5)',
-      
-      color: 'white',
+        </Grid>
+        <Grid item xs={12} sm={4} justifyContent={'center'} alignItems={'center'}>
+          <IntroOptionElement value="Zobacz oferty" icon={<WorkOutlineIcon sx={{ fontSize: '2em' }} />} />
 
-      }} />
-      </IconButton>
-      <Typography variant="caption"sx={{        
-      fontSize: '2em',
-      }} >Dołącz do nas</Typography>
-    </Stack>
+        </Grid>
+        <Grid item xs={12} sm={4} justifyContent={'center'} alignItems={'center'}>
+          <IntroOptionElement value="Logowanie" icon={<HowToRegIcon sx={{ fontSize: '2em' }} />} />
 
+        </Grid>
+      </Grid>
+      <Box width={'50%'}>
+        <hr />
       </Box>
-    </Container>
+      <Box fontSize={"3em"}>
+        <AnimW value="Twój portal z ofertami pracy" defaultDuration={1} tempo={.05}/>
+      </Box>
+
+    </Box>
   );
 };
 

@@ -23,7 +23,8 @@ const Slider = () => {
           style={{
             animation: '2s showAnimLev1 forwards',
             height: 'auto',
-            width: '100%'
+            width: '100%',
+            maxWidth: '1200px',
           }}
           src={image}
           alt="image load error"
@@ -54,14 +55,14 @@ const Slider = () => {
 
     <Box
       sx={{
+        minHeight: '100vh',
         display: "flex",
-        alignItems: "center",
         justifyContent: 'center'
       }}
-    >
-      <Box sx={{
-        flex: 10
-      }}>
+      >
+
+      <Box>
+
         {imagesComponents[currentImageIndex]}
       </Box>
     </Box>

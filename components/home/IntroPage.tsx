@@ -34,6 +34,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
             display={"flex"}
             justifyContent={"center"}
             maxWidth={"100%"}
+            // bgcolor={'black'}
           >
             <Page />
           </Grid>

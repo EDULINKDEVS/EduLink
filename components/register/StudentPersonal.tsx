@@ -11,7 +11,8 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import * as Yup from 'yup';
-import { RegisterContext, RegisterContextType } from '@/context/register/RegisterContext';
+import { RegisterContext } from '@/context/register/RegisterContext';
+import { RegisterContextType } from '@/context/register/types';
 
 const StyledPaper = styled(Paper)<{ theme: any }>(({ theme }) => ({
   margin: 'auto',

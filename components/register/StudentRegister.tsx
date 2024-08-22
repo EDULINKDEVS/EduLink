@@ -52,7 +52,7 @@ const StudentRegister = () => {
     position: 'absolute',
     top: '4px',
     left: '5px',
-    cursor: 'pointer'
+    cursor: 'pointer',
   })
   
   return (
@@ -70,24 +70,18 @@ const StudentRegister = () => {
       fontSize: '2em',
       color:{
         sm: theme.palette.primary.dark,
-        lg: theme.palette.primary.light
       }
     }}/>
       </BackButton>
-      <LeftContainer sx={{
-        backgroundColor: 'white',
-        borderRight: `3px solid ${theme.palette.primary.main}`,
-        
-      }}>
-        <SchoolIcon style={{ fontSize: 300, color: theme.palette.primary.main }} />
-      </LeftContainer>
       <RightContainer>
         <Box sx={{
-          height: '80vh',
+          height: '90vh',
           overflowY: 'auto',
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          alignItems: 'center'
         }}>
+          
           {stepsComponentsTab[step]}
         </Box>
       </RightContainer>

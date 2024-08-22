@@ -1,7 +1,7 @@
 import { Box, styled } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-const AnimW = ({ value, defaultDuration = 0 }: { value: string, defaultDuration?: number }) => {
+const AnimW = ({ value, defaultDuration = 0, tempo = .1 }: { value: string, defaultDuration?: number, tempo?: number}) => {
   const [state, setState] = useState<string[]>([]);
   const FadeInText = styled('span')(({ theme }) => ({
     '@keyframes fade-in': {
@@ -24,7 +24,7 @@ const AnimW = ({ value, defaultDuration = 0 }: { value: string, defaultDuration?
       {state.map((char, index) => (
         <FadeInText sx={{
             opacity:0,
-            animation: `fade-in 1s ${index * .1 + defaultDuration}s ease-in-out forwards`,
+            animation: `fade-in 1s ${index * tempo + defaultDuration}s ease-in-out forwards`,
 
         }} key={index}>{char}</FadeInText>
       ))}
