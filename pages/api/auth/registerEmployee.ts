@@ -80,7 +80,8 @@ const handler = async (
 
     const connection = await mysql.createConnection(dbConfig);
     console.log('Database connection established');
-
+    const hashedPass = await hashPassword(pass);
+    console.log(hashPassword);
     try {
       await connection.beginTransaction();
       console.log('Transaction started');
@@ -88,21 +89,23 @@ const handler = async (
       const [user] = await connection.execute(`
         INSERT INTO users (label, email, pass, last_login_date, register_date, is_active)
         VALUES (?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?);
-      `, ['employee', email, hashPassword(pass), 0]);
+      `, ['employee', email, hashedPass, 0]);
       console.log('User inserted into users table');
 
       const userId = (user as ResultSetHeader).insertId;
       console.log('User ID:', userId);
-
+      let dateObj = await new Date(dateOfBirth);
+        const sqlDate = await dateObj.toISOString().slice(0, 10);
+        console.log(sqlDate);
       await connection.execute(`
         INSERT INTO employies_data (f_name, l_name, phone, birth, status, user_id, city) 
         VALUES (?, ?, ?, ?, ?, ?, ?); 
-      `, [f_name, l_name, phone, dateOfBirth, status, userId, city]);
+      `, [f_name, l_name, phone, sqlDate, status, userId, city]);
       console.log('User data inserted into employies_data table');
 
       if (status === 'pupil') {
         await connection.execute(`
-          INSERT INTO userGraduationAssigmentSchool (school_name, lev, city, profile_name, user_id, stat)
+          INSERT INTO userGraduationAssigmentSchool (schoolName, lev, city, profileName, user_id, stat)
           VALUES (?, ?, ?, ?, ?, ?);
         `, [pupilPack.schoolName, pupilPack.schoolLevel, pupilPack.schoolCity, pupilPack.schoolProfile, userId, pupilPack.degreeLabel]);
         console.log('Pupil data inserted into userGraduationAssigmentSchool table');

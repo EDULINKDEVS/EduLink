@@ -92,6 +92,18 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const registerUser = async () => {
+    const status = registerData.status === 'school' ? 'pupil' : 'student';
+    let r_traits:string[] = [];
+    let r_hardSkills:string[] = [];
+    traits.forEach(trait => {
+      const t = traitsDB.find(el => el.name === trait)?.id;
+
+      t && r_traits.push(t);
+    });
+    hard_skills.forEach(skill => {
+      const t = hardSkillsDB.find(el => el.name === skill)?.id
+      t && r_hardSkills.push(t);
+    })
     if (registerData.status === 'school') {
       const d = registerData.school_level === 'vocational' ? "voc" :
                 registerData.school_level === "technical" ? "tech" :
@@ -106,18 +118,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
           schoolLevel: d,
           degreeLabel: registerData.degreeLabel
         };
-        let r_traits:string[] = [];
-        let r_hardSkills:string[] = [];
-        traits.forEach(trait => {
-          const t = traitsDB.find(el => el.name === trait)?.id;
 
-          t && r_traits.push(t);
-        });
-        hard_skills.forEach(skill => {
-          const t = hardSkillsDB.find(el => el.name === skill)?.id
-          t && r_hardSkills.push(t);
-        })
-        
         if (registerData.status && registerData.dateOfBirth) {
           await _registerUser(
             registerData.email,
@@ -125,7 +126,7 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
             registerData.f_name,
             registerData.l_name,
             registerData.pass,
-            registerData.status, 
+            status, 
             registerData.dateOfBirth,
             r_traits,
             r_hardSkills,
@@ -155,10 +156,10 @@ const RegisterContextProvider = ({ children }: { children: ReactNode }) => {
           registerData.f_name,
           registerData.l_name,
           registerData.pass,
-          registerData.status,  
+          status,  
           registerData.dateOfBirth,
-          traits,
-          hard_skills,
+          r_traits,
+          r_hardSkills,
           registerData.city,
           undefined,
           studentPack

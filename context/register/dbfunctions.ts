@@ -98,7 +98,7 @@ export const _getSchoolsDB = async (city: string, lev: string): Promise<SchoolDB
     f_name: string,
     l_name: string,
     pass: string,
-    status: "school" | "study",
+    status: "student" | "pupil",
     dateOfBirth: Date,
     traits: string[],
     hard_skills: string[],
