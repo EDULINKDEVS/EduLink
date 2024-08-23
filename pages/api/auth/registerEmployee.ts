@@ -126,10 +126,14 @@ const handler = async (
 
       for (const skill of hard_skills) {
         await connection.execute(`
-          INSERT INTO user_traits_assignment (user_id, traits_id) VALUES (?, ?);
+          INSERT INTO user_hard_skills_assignment (user_id, hard_skill_id) VALUES (?, ?);
         `, [userId, skill]);
         console.log('Hard skill data inserted into user_traits_assignment table');
       }
+
+      await connection.execute(`INSERT INTO user_table (user_id) VALUES (?);`, [userId]);
+      console.log('Profile table structure is created');
+
 
       await connection.commit();
       console.log('Transaction committed');

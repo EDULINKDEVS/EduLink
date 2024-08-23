@@ -16,7 +16,6 @@ import {
 import { styled, Theme } from '@mui/system';
 import { RegisterContext } from '@/context/register/RegisterContext';
 import StudiesTabCreator from './StudiesTabCreator';
-import { useSchoolsData } from '@/context/schoolsData/SchoolsDataProvider';
 import { degreeLabelEnum } from '@/context/register/types';
 
 interface ThemedProps {

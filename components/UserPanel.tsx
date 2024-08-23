@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import UserOptionWraper from './userpanel/nav/UserOptionWraper';
 import PanelContent from './content/PanelContent';
+import { useAuth } from '@/context/AuthContext';
 
 export const optionsEnum = {
     SETTINGS: 'settings',
@@ -28,11 +29,20 @@ export const optionsEnum = {
     ROW = 'row'
   }
 const UserPanel = ({type}: {type:string}) => {
+  const {dataClass} = useAuth();
   const [optionsFD, setOptionFD] = useState<optionsFBEnum>(optionsFBEnum.ROW);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [active, setActive] = useState(0);
 
-
-
+  useEffect(()=>{
+    const g = dataClass?.mainData?.is_active;
+    if(g){
+      setActive(1);
+    }else{
+      setActive(0)
+    }
+    console.log(dataClass);
+  }, [dataClass?.mainData?.is_active])
   const handleIconClick = (id: string) => {
     if(id === 'back'){
         setSelectedOption(null);

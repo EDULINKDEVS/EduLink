@@ -1,35 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState, useEffect } from "react";
-import { School } from "./register/types";
-
-type UserGraduate = {
-  schoolName: string;
-  city: string;
-  name: string;
-  profile: string;
-  lev: "vocational" | "technical" | "high_school";
-};
-
-type UserEmployee = {
-  f_name: string;
-  l_name: string;
-  phone: string;
-  email: string;
-  birth: Date;
-  school: School[] | UserGraduate;
-  skills: string[];
-  city: string;
-};
-
-type UserEmployer = {
-  name: string;
-  email: string;
-  nip: string;
-  street: string;
-  zip: string;
-  city: string;
-  num:string;
-  phone:string;
-};
+import { UserDataGetter } from "./creatingUserDataObjectFunctions/getUserData";
 
 enum userBackInfo {
   NIEPRAWIDLOWY_EMAIL_LUB_HASLO = "nieprawidłowy email lub hasło",
@@ -37,21 +7,27 @@ enum userBackInfo {
   NIEPRAWIDLOWE_DANE = "nieprawidłowe dane",
 }
 
+type userType = {
+  userID: string;
+  userToken: string;
+}
+
 type AuthContextType = {
-  user: string | null;
-  setUser: (value: string | null) => void;
+  user: userType | null;
+  setUser: (value: userType | null) => void;
   login: (email: string, password: string, rememberMe: boolean) => Promise<userBackInfo | null>;
   logout: () => void;
+  dataClass: UserDataGetter | null;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<string | null>(() => {
+  const [user, setUser] = useState<userType | null>(() => {
     const savedUser = localStorage.getItem('user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-
+  const [dataClass, setDataClass] = useState<UserDataGetter | null>(null)
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
@@ -61,8 +37,6 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     if (!validateEmail(email)) {
       return userBackInfo.NIEPRAWIDLOWE_DANE;
     }
-    console.log(email);
-    console.log(password);
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -71,12 +45,23 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       if (response.status === 200) {
         const data = await response.json();
-        setUser(data.userId);
+        setUser({userID: data.userId, userToken: data.token});
+        const dataClass = await new UserDataGetter(data.userId);
+        await dataClass.getMainData();
+        await dataClass.getEmployiesData();
+        await dataClass.getProfileAssign();
+        if(dataClass.employeeData?.status === 'pupil'){
+          await dataClass.getSchoolData();
+        }else{
+          await dataClass.getUniversities();
+        }
+        await dataClass.getUserSkills();
+        await setDataClass(dataClass);
+
         if (rememberMe) {
-          localStorage.setItem('user', JSON.stringify(data.userId));
+          localStorage.setItem('user', JSON.stringify(data));
         }
         return null;
       } else if (response.status === 404) {
@@ -101,6 +86,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     setUser,
     login,
     logout,
+    dataClass
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

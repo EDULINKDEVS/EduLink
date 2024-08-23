@@ -32,7 +32,7 @@ function Copyright(props: any) {
 
 export default function SignInSide() {
   const theme = useTheme();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -46,6 +46,8 @@ export default function SignInSide() {
     const email = data.get('email') as string;
     const password = data.get('password') as string;
     const rememberMe = data.get('remember') === 'on';
+
+    
 
     const result = await login(email, password, rememberMe);
 
