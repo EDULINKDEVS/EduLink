@@ -100,25 +100,18 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         </Grid>
       </Box>
 
-      <Box>
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"center"}
-          marginTop={"90px"}
-        >
-          <Pricing />
-        </Grid>
-      </Box>
+      
 
       <Box>
-        <Grid
+        <Grid sx={{
+          backgroundColor: 'white'
+        }}
           item
           xs={12}
           display={"flex"}
           justifyContent={"center"}
           marginTop={"90px"}
+          
         >
           <PricingCom />
         </Grid>

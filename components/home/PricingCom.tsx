@@ -10,45 +10,45 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useTheme } from '@mui/material';
 
 const tiers = [
   {
     title: 'Podstawowe',
-    price: '99,99',
+    price: '299,99',
     description: [
     'Limit wystawiania ogłoszeń : 1 (każde kolejne ogłoszenie : 40zł' ,
     'Wybór 3 umiejętności poszukiwanych per ogłoszenie',
     
     ],
-    buttonText: 'Rozpocznij teraz',
+    buttonText: 'Wybierz',
     buttonVariant: 'outlined',
   },
   {
     title: 'Profesionalne',
     subheader: 'Polecane',
-    price: '299,99',
+    price: '499,99',
     description: [
       'Limit wystawiania ogłoszeń : 2 (każde kolejne ogłoszenie : 20zł' ,
       'Wybór 10 umiejętności poszukiwanych per ogłoszenie',
-      'Brak ograniczeń w wyszukiwaniu'
+      // 'Brak ograniczeń w wyszukiwaniu'
       
     ],
-    buttonText: 'Rozpocznij teraz',
+    buttonText: 'Wybierz',
     buttonVariant: 'contained',
     
   },
-  {
-    title: 'Premium',
-    price: '199,99',
-    description: [
-      'Limit wystawiania ogłoszeń : 2 (każde kolejne ogłoszenie : 30zł' ,
-      'Wybór 5 umiejętności poszukiwanych per ogłoszenie',
-    ],
-    buttonText: 'Rozpocznij teraz',
-    buttonVariant: 'outlined',
-  },
+  // {
+  //   title: 'Premium',
+  //   price: '199,99',
+  //   description: [
+  //     'Limit wystawiania ogłoszeń : 2 (każde kolejne ogłoszenie : 30zł' ,
+  //     'Wybór 5 umiejętności poszukiwanych per ogłoszenie',
+  //   ],
+  //   buttonText: 'Rozpocznij teraz',
+  //   buttonVariant: 'outlined',
+  // },
 ];
 
 export default function PricingCom() {
@@ -65,6 +65,7 @@ export default function PricingCom() {
         alignItems: 'center',
         gap: { xs: 3, sm: 6 },
         
+        
       }}
     >
       <Box
@@ -73,14 +74,11 @@ export default function PricingCom() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="primary" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
-          ABONAMENT DLA FIRM
+        <Typography component="h2" variant="h4" color="black" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
+          Oferta dla firm
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          {/* Quickly build an effective pricing table for your potential customers with
-          this layout. <br />
-          It&apos;s built with default Material UI components with little
-          customization. */}
+          Wybierz swój pakiet
         </Typography>
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
@@ -98,13 +96,14 @@ export default function PricingCom() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
-                border: tier.title === 'Profesionalne' ? '2px solid' : '2px solid',
+                border: tier.title === 'Profesionalne' ? '0px solid' : '0px solid',
+                borderRadius: 4,
                 borderColor:
                   tier.title === 'Profesionalne' ? '3A758B5' : 'undefined',
                 background:
                   tier.title === 'Profesionalne'
-                    ? theme.palette.primary.main
-                    : undefined,
+                    ? theme.palette.primary.light
+                    : theme.palette.primary.main,
               }}
             >
               <CardContent>
@@ -112,15 +111,15 @@ export default function PricingCom() {
                   sx={{
                     mb: 1,
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'center',
-                    color: tier.title === 'Profesionalne' ? 'grey.100' : '',
+                    color: tier.title === 'Profesionalne' ? '#A18672' : '#ECE3DC',
                   }}
                 >
                   <Typography component="h3" variant="h6">
                     {tier.title}
                   </Typography>
-                  {tier.title === 'Profesionalne' && (
+                  {/* {tier.title === 'Profesionalne' && (
                     <Chip
                       icon={<AutoAwesomeIcon />}
                       label={tier.subheader}
@@ -137,26 +136,26 @@ export default function PricingCom() {
                         },
                       }}
                     />
-                  )}
+                  )} */}
                 </Box>
                 <Box
                   sx={{
                     display: 'flex',
                     alignItems: 'baseline',
-                    color: tier.title === 'Profesionalne' ? 'grey.50' : undefined,
+                    color: tier.title === 'Profesionalne' ? undefined : undefined,
                   }}
                 >
-                  <Typography component="h3" variant="h2">
+                  <Typography component="h3" variant="h2" >
                     {tier.price} 
                   </Typography>
                   <Typography component="h3" variant="h6">
-                    zł &nbsp; miesięcznie 
+                    zł &nbsp; /miesięcznie 
                   </Typography>
                 </Box>
                 <Divider
                   sx={{
                     my: 2,
-                    opacity: 0.2,
+                    opacity: 1,
                     borderColor: theme.palette.primary.dark,
                   }}
                 />
@@ -171,13 +170,10 @@ export default function PricingCom() {
                       
                     }}
                   >
-                    <CheckCircleRoundedIcon
+                    <CheckCircleOutlineIcon
                       sx={{
                         width: 20,
-                        color:
-                          tier.title === 'Profesionalne'
-                            ? theme.palette.primary.light
-                            : theme.palette.primary.main,
+                        
                       }}
                     />
                     <Typography
@@ -185,7 +181,7 @@ export default function PricingCom() {
                       variant="subtitle2"
                       sx={{
                         color:
-                          tier.title === 'Profesionalne' ? 'grey.200' : undefined,
+                          tier.title === 'Profesionalne' ? undefined : undefined,
                           fontSize: "15px"
                       }}
                     >
@@ -194,24 +190,29 @@ export default function PricingCom() {
                   </Box>
                 ))}
               </CardContent>
-              {/* <CardActions>
+              <CardActions>
                 <Button sx={{
+                  textTransform : 'none', 
+                    fontWeight: "bold",
+                    borderRadius: 4, 
+                    border: tier.title === 'Profesionalne'? '1px solid' : undefined,
+                    borderColor: tier.title === 'Profesionalne' ? theme.palette.primary.main : undefined ,
                     backgroundColor:
                     tier.title === 'Profesionalne'
                       ? theme.palette.primary.light
-                      : theme.palette.primary.main,
+                      : theme.palette.common.white,
 
                       color:
                       tier.title === 'Profesionalne'
                       ? theme.palette.primary.dark
-                      : theme.palette.primary.light,
+                      : theme.palette.primary.dark,
 
 
                       
                      ' &:hover' : tier.title === 'Profesionalne' ? {
-                        backgroundColor: theme.palette.primary.main, color:theme.palette.primary.light,
+                        backgroundColor: theme.palette.primary.main, color:theme.palette.primary.dark,
                      } : {
-                        backgroundColor: "secondary", color: theme.palette.primary.dark
+                        backgroundColor: theme.palette.primary.light, color:theme.palette.primary.dark,
                      }
                       
                       
@@ -224,7 +225,7 @@ export default function PricingCom() {
                 >
                   {tier.buttonText}
                 </Button>
-              </CardActions> */}
+              </CardActions>
             </Card>
           </Grid>
         ))}

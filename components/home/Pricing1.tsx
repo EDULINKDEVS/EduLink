@@ -83,10 +83,11 @@ export default function Pricing1() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        <Typography component="h2" variant="h4" color="primary" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
-          ABONAMENT DLA STUDENTÓW
+        <Typography component="h2" variant="h4" color="black" fontFamily={'playfair-display, sans-serif'} fontWeight={600}>
+          Abonament dla studentów
         </Typography>
         <Typography variant="body1" color="text.secondary">
+          Wybierz swój pakiet
         </Typography>
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
@@ -109,7 +110,9 @@ export default function Pricing1() {
                     ? theme.palette.primary.main
                     : undefined,
                 borderRadius: 4,
-                position: 'relative'
+                position: 'relative',
+                overflow: 'visible',
+                
               }}
             >
                {tier.title === 'Pakiet Profesionalny' && (
@@ -121,13 +124,12 @@ export default function Pricing1() {
                         position: 'absolute',
                         backgroundColor: "white",
                         color: "black",
-                        top: "0px",
+                        top: "-15px",
                         left: "50%",
                         transform: "translateX(-50%)",
                         fontWeight: 'bold',
-                        padding: '0 20px'
-                        
-                        
+                        padding: '0 20px',
+
                       }}
                     />
                   )}
@@ -197,10 +199,15 @@ export default function Pricing1() {
               {/* Przycisk Pokaż więcej */}
               <Button sx={{
                 color: "black",
-                border: tier.title === 'Pakiet Profesionalny' ? undefined :"3px solid",
+                border: tier.title === 'Pakiet Profesionalny' ? undefined :"2px solid",
                 borderColor: tier.title === 'Pakiet Profesionalny' ? undefined : theme.palette.primary.light,
                 borderRadius: 4,
-                backgroundColor: "white"
+                backgroundColor: "white",
+                ' &:hover' : tier.title === 'Pakiet Profesionalny' ? {
+                        backgroundColor: theme.palette.primary.light, color:theme.palette.primary.dark,
+                     } : {
+                        backgroundColor: theme.palette.primary.main, color:theme.palette.primary.dark,
+                     },
               }} onClick={() => handleExpandClick(index)}>
                 {expanded[index] ? 'Pokaż mniej' : 'Pokaż więcej'}
               </Button>

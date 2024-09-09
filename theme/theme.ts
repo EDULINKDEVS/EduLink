@@ -7,7 +7,11 @@ const theme = createTheme({
       main: '#A18672',
       light:'#ECE3DC', 
       dark: 'black',
+ 
     },
+    common: {
+      white: 'white'
+    }
    
   },
 });
