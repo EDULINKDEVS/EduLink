@@ -14,6 +14,9 @@ import IntroOptionElement from "./IntroOptionElement";
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import hand from "../public/images/hand.webp" ; 
+
+
 const Page = () => {
   return (
     <Box sx={{
@@ -23,37 +26,14 @@ const Page = () => {
       alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
-      gap: '50px  ',
+      // gap: '50px  ',
+      backgroundImage: 'url(/images/hand.webp)',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
     }}>
-
-      <Box fontSize={"4em"}>
-
-        <AnimW value="FOLLWELL" tempo={.1}/>
-      </Box>
-      <Box width={'30%'}>
-        <hr />
-      </Box>
-      <Grid container>
-
-        <Grid item xs={12} sm={4} justifyContent={'center'} display={'flex'} alignItems={'center'}>
-          <IntroOptionElement value="Rejestracja" icon={<AppRegistrationIcon sx={{ fontSize: '2em' }} />} />
-
-        </Grid>
-        <Grid item xs={12} sm={4} justifyContent={'center'} alignItems={'center'}>
-          <IntroOptionElement value="Zobacz oferty" icon={<WorkOutlineIcon sx={{ fontSize: '2em' }} />} />
-
-        </Grid>
-        <Grid item xs={12} sm={4} justifyContent={'center'} alignItems={'center'}>
-          <IntroOptionElement value="Logowanie" icon={<HowToRegIcon sx={{ fontSize: '2em' }} />} />
-
-        </Grid>
-      </Grid>
-      <Box width={'50%'}>
-        <hr />
-      </Box>
-      <Box fontSize={"3em"}>
-        <AnimW value="Twój portal z ofertami pracy" defaultDuration={1} tempo={.05}/>
-      </Box>
+        
+   
 
     </Box>
   );

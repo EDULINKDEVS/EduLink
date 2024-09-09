@@ -48,10 +48,10 @@ function AppAppBar() {
             sx={(theme) => ({
               display: "flex",
               alignItems: "center",
-              justifyContent: "space-between",
+              justifyContent: "flex-end",
               flexShrink: 0,
               backdropFilter: "blur(24px)",
-              color:'black',
+              color:'white',
               maxHeight: 40,
               border: "1px solid",
               borderColor: "divider",
@@ -59,7 +59,7 @@ function AppAppBar() {
           >
             <Box
               sx={{
-                flexGrow: 1,
+                flexGrow: 0,
                 display: "flex",
                 alignItems: "center",
                 ml: "-18px",
@@ -67,19 +67,24 @@ function AppAppBar() {
               }}
             >
 
-             <Link href='#top'>
-              <Box
-                component={SchoolIcon}
-                sx={{
-                  color: "black", 
-                  fontSize: 58, 
-                  
-                }}
-                
-              />
-              </Link>
+            
 
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <MenuItem
+                  sx={{ py: "6px", px: "12px" }}
+                  href="#"
+                >
+                
+                  
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: "450" }}
+                  >
+                    Strona główna
+                  </Typography>
+                </MenuItem>
+
+
                 <MenuItem
                   sx={{ py: "6px", px: "12px" }}
                   href="#"
@@ -88,32 +93,47 @@ function AppAppBar() {
                   
                   <Typography
                     variant="body2"
-                    sx={{ fontWeight: "600" }}
+                    sx={{ fontWeight: "450" }}
                   >
                     O nas
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  sx={{ py: "6px", px: "12px" }}
-                  href="#"
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{ fontWeight: "600" }}
-                  >
-                    Współpraca
-                  </Typography>
-                </MenuItem>
+              
+
                 <MenuItem
                   href="#pricing"
                 >
                   <Typography
                     variant="body2"
-                    sx={{ fontWeight: "600" }}
+                    sx={{ fontWeight: "450" }}
                   >
-                    Abonamenty
+                    Płatności
                   </Typography>
                 </MenuItem>
+
+                <MenuItem
+                  href="#register"
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: "450" }}
+                  >
+                    Zarejestruj się
+                  </Typography>
+                </MenuItem>
+
+                <MenuItem
+                  href="#login"
+                >
+                  <Typography
+                    variant="body2"
+                    sx={{ fontWeight: "450" }}
+                  >
+                    Zaloguj się
+                  </Typography>
+                </MenuItem>
+
+     
               </Box>
             </Box>
             <Box
@@ -124,46 +144,10 @@ function AppAppBar() {
               }}
             >
 
-              <Button
-            color="primary"
-            variant="contained" 
-            size="small"
-            component="a"
-            href="#register"
-            sx={{
-              backgroundColor: "white",
-              color: "black",
-              '&: hover' : {
-                opacity: "0.5",
-                backgroundColor: theme.palette.primary.light,
-                color: theme.palette.primary.dark
-              }
-            }}
-              >
-                Rejestracja
-              </Button>
-            
 
 
 
-              <Button
-                color="primary" // Kolor tekstu zostaje zmieniony na biały (domyślnie)
-                variant="contained" // Ustawienie wariantu na "contained"
-                size="small" // Rozmiar przycisku
-                component="a" // Element HTML, na który będzie odnośnik (a - oznacza odnośnik)
-                sx={{
-                  backgroundColor: "black", // Ustawienie tła jako gradientu liniowego
-                  color: "secondary", // Ustawienie koloru tekstu na biały
-                  '&: hover' : {
-                    opacity: "0.5",
-                    backgroundColor: theme.palette.primary.light,
-                    color: theme.palette.primary.dark
-                  }
-                }}
-                href="/login"                  
-              >
-                Logowanie
-              </Button>
+        
             </Box>
             <Box sx={{ display: { sm: "", md: "none" } }}>
               <Button
@@ -194,18 +178,24 @@ function AppAppBar() {
                       flexGrow: 1,
                     }}
                   ></Box>
+                   <MenuItem >
+                    Strona główna
+                  </MenuItem>
                   <MenuItem >
                     O nas 
                   </MenuItem>
-                  <MenuItem >
-                    Współpraca
-                  </MenuItem>
                   <MenuItem href="#pricing">
-                    Abonamenty
+                    Płatności
+                  </MenuItem>
+                  <MenuItem href="#register">
+                    Zarejestruj się
+                  </MenuItem>
+                  <MenuItem href="#login">
+                    Zaloguj się
                   </MenuItem>
               
                   <Divider />
-                  <MenuItem>
+                  {/* <MenuItem>
                     <Button
                       variant="contained"
                       component="a"
@@ -238,7 +228,7 @@ function AppAppBar() {
                       >
                       Logowanie
                     </Button>
-                  </MenuItem>
+                  </MenuItem> */}
                 </Box>
               </Drawer>
             </Box>

@@ -40,11 +40,11 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{marginTop: '140px'}}>
+      {/* <Box sx={{marginTop: '140px'}}>
           <Slider />
-      </Box>
+      </Box> */}
 
-      <Box>
+      {/* <Box>
         <Grid container justifyContent={'center'} sx={{
           minHeight: {
             xs: '1100px',
@@ -86,7 +86,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
             />
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
 
       <Box>
         <Grid
