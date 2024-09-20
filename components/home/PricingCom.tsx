@@ -116,7 +116,7 @@ export default function PricingCom() {
                     color: tier.title === 'Profesionalne' ? '#A18672' : '#ECE3DC',
                   }}
                 >
-                  <Typography component="h3" variant="h6">
+                  <Typography component="h3" variant="h6" fontWeight={'bold'}>
                     {tier.title}
                   </Typography>
                   {/* {tier.title === 'Profesionalne' && (

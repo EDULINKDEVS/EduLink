@@ -10,7 +10,8 @@ import SchoolIcon from '@mui/icons-material/School';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import PricingCom from "@/components/home/PricingCom";
 import Pricing1 from "@/components/home/Pricing1";
-
+import Footer from './Footer';
+import Team from "@/components/home/Team"
 type IntroPageProps = {
   registerRef: RefObject<HTMLDivElement>;
 };
@@ -87,7 +88,15 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
           </Grid>
         </Grid>
       </Box> */}
-
+     
+     
+     
+      <Box>
+        <Team />
+      </Box>
+    
+    
+    
       <Box>
         <Grid
           item
@@ -115,6 +124,11 @@ const IntroPage: React.FC<IntroPageProps> = ({ registerRef }) => {
         >
           <PricingCom />
         </Grid>
+        <Box>
+          <Grid>
+            <Footer/>
+          </Grid>
+        </Box>
       </Box>
     </Box>
   );

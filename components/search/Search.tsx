@@ -26,19 +26,34 @@ const Search: React.FC = () => {
   return (
     <Container sx={{animation: '1s showAnimLev1 forwards', opacity: 0}}>
       <Box sx={{ mt: 5, textAlign: 'center' }}>
-        <Typography variant="h3" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>
-          Oferty wybrane dla Ciebie
+        <Typography variant="h3" sx={{ fontWeight: 700, color: theme.palette.common.black }}>
+          OFERTY WYBRANE DLA CIEBIE
         </Typography>
       </Box>
       <JobList jobs={paginatedJobs} />
       <Grid container spacing={2} justifyContent="center" sx={{ mt: 3 }}>
         <Grid item>
-          <Button sx={{backgroundColor:theme.palette.primary.light , color: theme.palette.primary.main, fontWeight:"600"}} variant="contained" onClick={handlePrev} disabled={page === 0}>
+          <Button sx={{
+           backgroundColor:theme.palette.common.white, 
+           color: theme.palette.common.black,
+           border: '1px solid',
+           borderRadius: 2, 
+           borderColor: theme.palette.primary.main ,
+           ':hover': {backgroundColor:'white'}
+             }} variant="outlined" onClick={handlePrev} disabled={page === 0}>
             Wróć
           </Button>
         </Grid>
         <Grid item>
-          <Button sx={{backgroundColor:theme.palette.primary.light , color: theme.palette.primary.main, fontWeight:"600"}} variant="contained"  onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
+          <Button sx={{
+            backgroundColor:theme.palette.common.white, 
+            color: theme.palette.common.black,
+            border: '1px solid',
+            borderRadius: 2, 
+            borderColor: theme.palette.primary.main ,
+            fontWeight:"600",
+            ':hover': {backgroundColor:'white'}
+            }} variant="outlined"  onClick={handleNext} disabled={(page + 1) * ITEMS_PER_PAGE >= jobs.length}>
             Dalej
           </Button>
         </Grid>

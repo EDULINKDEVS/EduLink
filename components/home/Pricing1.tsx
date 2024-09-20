@@ -138,12 +138,13 @@ export default function Pricing1() {
                   sx={{
                     mb: 1,
                     display: 'flex',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'center',
                     color: tier.title === 'Pakiet Profesionalny' ? theme.palette.primary.light : theme.palette.primary.main,
+                  
                   }}
                 >
-                  <Typography component="h3" variant="h6">
+                  <Typography component="h3" variant="h6" fontWeight={'bold'}>
                     {tier.title}
                   </Typography>
                  

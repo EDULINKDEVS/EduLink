@@ -10,7 +10,8 @@ const theme = createTheme({
  
     },
     common: {
-      white: 'white'
+      white: 'white',
+      black: 'black'
     }
    
   },
