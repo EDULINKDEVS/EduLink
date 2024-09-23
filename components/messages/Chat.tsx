@@ -50,7 +50,7 @@ const Chat: React.FC<{ selectedUser: { name: string, avatar: string } }> = ({ se
         <TextField
          InputProps={{
           sx: {
-            color: theme.palette.primary.dark, // Kolor wpisywanego tekstu
+            color: theme.palette.common.black, // Kolor wpisywanego tekstu
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: theme.palette.primary.main, // Kolor obramowania
             },

@@ -42,7 +42,7 @@ const StudentRegister = () => {
 
   const RightContainer = styled(Box)`
     flex: 1.5;
-    background-color: white;
+    background-color: theme.palette.primary.light; //kolor tła na pierwsej stronie rejestracji dla studenta
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +56,7 @@ const StudentRegister = () => {
   })
   
   return (
-    <StyledContainer>
+    <StyledContainer >
       
       <BackButton onClick={()=>{
         if(step === 0){

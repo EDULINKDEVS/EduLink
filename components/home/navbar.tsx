@@ -187,7 +187,7 @@ function AppAppBar() {
                   <MenuItem href="#pricing">
                     Płatności
                   </MenuItem>
-                  <MenuItem href="#register">
+                  <MenuItem href='http://localhost:3000/Wybor'>
                     Zarejestruj się
                   </MenuItem>
                   <MenuItem href="#login">

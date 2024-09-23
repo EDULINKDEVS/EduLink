@@ -26,7 +26,7 @@ interface ThemedProps {
 
 const StyledPaper = styled(Paper)<ThemedProps>(({ theme }) => ({
   width: '400px',
-  backgroundColor: '#fff',
+  backgroundColor: 'yellow',
   boxShadow: 'none',
   marginTop: 20,
 }));
@@ -34,6 +34,7 @@ const StyledPaper = styled(Paper)<ThemedProps>(({ theme }) => ({
 const StyledRadioGroup = styled(RadioGroup)({
   display: 'flex',
   flexDirection: 'row',
+
 });
 
 const StyledFormControl = styled(FormControl)({
@@ -42,10 +43,10 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const StyledFormControlLabel = styled(FormControlLabel)<ThemedProps>(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.common.black,
   fontWeight: 'bold',
   '& .MuiTypography-root': {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.black,
     fontWeight: 'bold',
   },
 }));
@@ -183,12 +184,12 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
   }, [registerContext?.profilesDB]);
   return (
     <Box sx={{ animation: '.7s showAnim forwards', padding: '10px' }}>
-      <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight="bold">
+      <Typography variant="h4" color='theme.palette.common.black' align="center" gutterBottom fontWeight="bold">
         Wybierz swój status
       </Typography>
       <StyledPaper theme={theme}>
         <FormControl component="fieldset">
-          <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
+          <FormLabel component="legend" style={{ color: theme.palette.common.black, fontWeight: 'bold' }}>
             Status
           </FormLabel>
           <StyledRadioGroup value={registerContext?.registerData.status} onChange={handleStatusChange}>
@@ -200,7 +201,7 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
         {registerContext?.registerData.status === 'school' && (
           <>
             <StyledFormControl>
-              <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
+              <FormLabel component="legend" style={{ color: theme.palette.common.black, fontWeight: 'bold' }}>
                 Rodzaj szkoły
               </FormLabel>
               <StyledRadioGroup value={registerContext.registerData.school_level} onChange={handleSchoolTypeChange}>
@@ -286,7 +287,7 @@ const StudentStatus: React.FC<StudentStatusProps> = ({ setStep }) => {
                     </StyledPaper>
                   )}
                 <StyledFormControl>
-                  <FormLabel component="legend" style={{ color: theme.palette.primary.main, fontWeight: 'bold' }}>
+                  <FormLabel component="legend" style={{ color: theme.palette.common.black, fontWeight: 'bold' }}>
                     Rodzaj studenta
                   </FormLabel>
                   <StyledRadioGroup

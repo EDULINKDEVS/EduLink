@@ -17,15 +17,18 @@ import { RegisterContextType } from '@/context/register/types';
 const StyledPaper = styled(Paper)<{ theme: any }>(({ theme }) => ({
   margin: 'auto',
   width: 'clamp(200px,95%,500px)',
-  backgroundColor: '#fff',
+  backgroundColor: theme.palette.primary.light,
   boxShadow: 'none',
 }));
 
 const StyledButton = styled(Button)<{ theme: any }>(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: '#fff',
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.common.black,
+  border: '1px solid #ECE3DC ',
+  borderColor: theme.palette.primary.main,
+  borderRadius: 4 , 
   '&:hover': {
-    backgroundColor: '#9342a0'
+    backgroundColor: theme.palette.primary.light
   }
 }));
 
@@ -42,10 +45,10 @@ const StyledTextField = styled(TextField)<{ theme: any }>(({ theme }) => ({
     },
   },
   '& .MuiInputBase-input': {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.black,
   },
   '& .MuiInputLabel-root': {
-    color: theme.palette.primary.main,
+    color: theme.palette.common.black,
   },
 }));
 
@@ -160,9 +163,9 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
 
   return (
-    <Box sx={{ animation: '.7s showAnimLev1 forwards' }}>
-      <Box>
-        <Typography variant="h4" color="primary" align="center" gutterBottom fontWeight={'bold'}>
+    <Box sx={{ animation: '.7s showAnimLev1 forwards'}}>
+      <Box sx={{ backgroundColor: theme.palette.primary.light }}>
+        <Typography variant="h4" color="black" align="center" gutterBottom fontWeight={'bold'}>
           REJESTRACJA
         </Typography>
         <StyledPaper theme={theme}>
@@ -325,7 +328,7 @@ const StudentPersonal = ({ setStep }: { setStep: (value: number) => void }) => {
               </Grid>
             </Grid>
             <Grid container justifyContent="center" marginTop={2}>
-              <StyledButton type="submit" variant="contained" theme={theme}>
+              <StyledButton type="submit" variant="outlined" theme={theme} sx={{backgroundColor: theme.palette.common.white,}}>
                 Dalej
               </StyledButton>
             </Grid>
