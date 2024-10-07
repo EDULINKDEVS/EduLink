@@ -14,7 +14,7 @@ const StudiesTabCreator = () => {
   return (
     <Box sx={{ width: '100%' }}>
       {
-        schoolTab.length === 0 && <span>Dodaj pierwszą szkołę</span>
+        schoolTab.length === 0 && <span></span>
       }
       {
         schoolTab.map((element) => {

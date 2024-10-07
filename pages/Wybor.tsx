@@ -12,13 +12,13 @@ function Wybor() {
       gap: '20px'
   }} >
     <Button sx={{
-      width: "120px",  padding: "10px"  }} variant= 'contained' href='/register/student'
+      width: "520px",  padding: "30px" , height: "800px"  }} variant= 'contained' href='/register/student'
     > 
         Student
     </Button>
 
     <Button sx={{
-      width: "120px",  padding: "10px"  }} variant= 'contained' href='/register/company' > 
+      width: "520px",  padding: "30px" , height: "800px"  }} variant= 'contained' href='/register/company' > 
       Firma
       </Button>
   </Box>
