@@ -14,7 +14,7 @@ const StudiesTabCreator = () => {
   return (
     <Box sx={{ width: '100%' }}>
       {
-        schoolTab.length === 0 && <span></span>
+        schoolTab.length === 0 && <span></span> //Dodaj pierwszą szkołe - tekst w środku span
       }
       {
         schoolTab.map((element) => {
@@ -32,7 +32,7 @@ const StudiesTabCreator = () => {
           );
         })
       }
-      <University key={'new'} />
+      <University/>
     </Box>
   );
 };
